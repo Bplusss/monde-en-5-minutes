@@ -8,6 +8,7 @@ export const identity: CountrySummary & { capital: string; currencyCode: string;
   flag: "🇪🇸",
   status: "available",
   continent: "Europe",
+  wikidataId: "Q29",
   capital: "Madrid",
   currencyCode: "EUR",
 };

@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CountryCategoryPage } from "@/components/CountryCategoryPage";
-import { FULL_COUNTRIES, getFullCountry } from "@/data/countries-full";
+import { FULL_COUNTRIES, getFullCountry, getFullCountryWithLiveData } from "@/data/countries-full";
 import { CATEGORIES, getCategory } from "@/lib/categories";
 import type { CategoryKey } from "@/lib/types";
+
+export const revalidate = 3600;
 
 export function generateStaticParams() {
   return Object.keys(FULL_COUNTRIES).flatMap((country) =>
@@ -26,7 +28,7 @@ export async function generateMetadata({ params }: PageProps<"/[country]/[catego
 
 export default async function CountryCategoryRoute({ params }: PageProps<"/[country]/[category]">) {
   const { country: countrySlug, category: categorySlug } = await params;
-  const country = getFullCountry(countrySlug);
+  const country = await getFullCountryWithLiveData(countrySlug);
   const cat = getCategory(categorySlug);
   if (!country || !cat) notFound();
 

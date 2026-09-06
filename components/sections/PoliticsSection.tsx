@@ -30,6 +30,9 @@ export function PoliticsSection({ country }: { country: Country }) {
               <p className="text-xs text-muted">{politics.headOfState.title}</p>
               <p className="truncate text-base font-semibold">{politics.headOfState.name}</p>
               <p className="text-xs text-muted">Depuis le {politics.headOfState.since}</p>
+              {politics.headOfState.source && (
+                <SourceTag source={politics.headOfState.source} sourceUrl={politics.headOfState.sourceUrl} className="mt-1" />
+              )}
             </div>
           </CardContent>
         </Card>
@@ -42,6 +45,9 @@ export function PoliticsSection({ country }: { country: Country }) {
               <p className="text-xs text-muted">{politics.headOfGovernment.title}</p>
               <p className="truncate text-base font-semibold">{politics.headOfGovernment.name}</p>
               <p className="text-xs text-muted">Depuis le {politics.headOfGovernment.since}</p>
+              {politics.headOfGovernment.source && (
+                <SourceTag source={politics.headOfGovernment.source} sourceUrl={politics.headOfGovernment.sourceUrl} className="mt-1" />
+              )}
             </div>
           </CardContent>
         </Card>

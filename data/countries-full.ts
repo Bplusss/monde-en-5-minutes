@@ -1,4 +1,5 @@
 import type { Country } from "@/lib/types";
+import { applyMetricOverrides, fetchMetricOverrides } from "@/lib/metrics-overlay";
 import { france } from "./france";
 import { italy } from "./italy";
 import { germany } from "./germany";
@@ -16,4 +17,12 @@ export const FULL_COUNTRIES: Record<string, Country> = {
 
 export function getFullCountry(slug: string): Country | undefined {
   return FULL_COUNTRIES[slug];
+}
+
+/** `getFullCountry` plus any weekly-refreshed metrics stored in Supabase — falls back to static data alone if unavailable. */
+export async function getFullCountryWithLiveData(slug: string): Promise<Country | undefined> {
+  const country = FULL_COUNTRIES[slug];
+  if (!country) return undefined;
+  const overrides = await fetchMetricOverrides(slug);
+  return applyMetricOverrides(country, overrides);
 }

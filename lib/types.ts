@@ -26,6 +26,8 @@ export interface CountrySummary {
   status: CountryStatus;
   /** French continent label (e.g. "Europe", "Afrique") — used to group/sort the country list. */
   continent: string;
+  /** Wikidata QID (e.g. "Q142" for France) — used to look up the current head of state/government generically for every country. */
+  wikidataId?: string;
 }
 
 export interface City {
@@ -112,8 +114,8 @@ export interface ReligionData {
 export interface PoliticsData {
   stateForm: string;
   regime: string;
-  headOfState: { title: string; name: string; since: string };
-  headOfGovernment: { title: string; name: string; since: string };
+  headOfState: { title: string; name: string; since: string; source?: string; sourceUrl?: string };
+  headOfGovernment: { title: string; name: string; since: string; source?: string; sourceUrl?: string };
   legislature: { name: string; chambers: { name: string; seats: number }[] };
   constitution: { adopted: string; source: string; sourceUrl?: string };
   summary: string;

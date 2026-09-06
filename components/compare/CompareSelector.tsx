@@ -1,13 +1,38 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowLeftRight, Scale } from "lucide-react";
 import { COUNTRIES } from "@/data/countries-registry";
-import { getFullCountry } from "@/data/countries-full";
-import type { CountrySummary } from "@/lib/types";
+import type { Country, CountrySummary } from "@/lib/types";
 import { type CountrySortMode, sortCountriesAlpha, groupCountriesByContinent } from "@/lib/country-sort";
 import { SortToggle } from "@/components/SortToggle";
 import { CountryComparison } from "./CountryComparison";
+
+/** Fetches the (possibly Supabase-refreshed) country from /api/country/[slug] — undefined for no/unavailable slug. */
+function useLiveCountry(slug: string): Country | undefined {
+  const [country, setCountry] = useState<Country | undefined>(undefined);
+
+  useEffect(() => {
+    if (!slug) {
+      setCountry(undefined);
+      return;
+    }
+    let cancelled = false;
+    fetch(`/api/country/${slug}`)
+      .then((res) => (res.ok ? res.json() : undefined))
+      .then((data) => {
+        if (!cancelled) setCountry(data);
+      })
+      .catch(() => {
+        if (!cancelled) setCountry(undefined);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [slug]);
+
+  return country;
+}
 
 function CountrySelect({
   value,
@@ -56,8 +81,8 @@ export function CompareSelector() {
   const [slugB, setSlugB] = useState("");
   const [sortMode, setSortMode] = useState<CountrySortMode>("alpha");
 
-  const countryA = slugA ? getFullCountry(slugA) : undefined;
-  const countryB = slugB ? getFullCountry(slugB) : undefined;
+  const countryA = useLiveCountry(slugA);
+  const countryB = useLiveCountry(slugB);
   const canCompare = !!countryA && !!countryB && slugA !== slugB;
 
   const emptyMessage = !slugA && !slugB

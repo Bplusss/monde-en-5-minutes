@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CountryCategoryPage } from "@/components/CountryCategoryPage";
-import { FULL_COUNTRIES, getFullCountry } from "@/data/countries-full";
+import { FULL_COUNTRIES, getFullCountry, getFullCountryWithLiveData } from "@/data/countries-full";
+
+export const revalidate = 3600;
 
 export function generateStaticParams() {
   return Object.keys(FULL_COUNTRIES).map((country) => ({ country }));
@@ -20,7 +22,7 @@ export async function generateMetadata({ params }: PageProps<"/[country]">): Pro
 
 export default async function CountryPage({ params }: PageProps<"/[country]">) {
   const { country: slug } = await params;
-  const country = getFullCountry(slug);
+  const country = await getFullCountryWithLiveData(slug);
   if (!country) notFound();
 
   return <CountryCategoryPage country={country} category="geographie" />;
