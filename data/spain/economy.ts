@@ -5,11 +5,12 @@ const INE_URL = "https://www.ine.es/";
 export const economy: EconomyData = {
   currency: { name: "Euro", code: "EUR", symbol: "€" },
   gdp: {
-    value: 1_591.6,
-    unit: "Md€ courants",
+    value: 1_591_600_000_000,
+    unit: "€",
     year: 2024,
     source: "INE",
     sourceUrl: INE_URL,
+    note: "Euros courants.",
   },
   gdpPerCapita: {
     value: 32_590,

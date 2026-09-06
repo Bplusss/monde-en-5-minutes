@@ -1,5 +1,5 @@
 import type { CategoryKey, Country } from "@/lib/types";
-import { formatCompact, formatNumber, formatPercent, withUnit } from "@/lib/format";
+import { formatCompact, formatCurrencyCompact, formatNumber, formatPercent, withUnit } from "@/lib/format";
 
 export interface ComparisonMetric {
   key: string;
@@ -84,14 +84,14 @@ export const COMPARISON_METRICS: ComparisonMetric[] = [
     key: "gdp",
     label: "PIB",
     category: "economie",
-    format: (c) => withUnit(formatNumber(c.economy.gdp.value), "Md€"),
+    format: (c) => formatCurrencyCompact(c.economy.gdp.value, c.economy.gdp.unit ?? "€"),
     rawValue: (c) => c.economy.gdp.value,
   },
   {
     key: "gdpPerCapita",
     label: "PIB par habitant",
     category: "economie",
-    format: (c) => withUnit(formatNumber(c.economy.gdpPerCapita.value), "€"),
+    format: (c) => formatCurrencyCompact(c.economy.gdpPerCapita.value, c.economy.gdpPerCapita.unit ?? "€"),
     rawValue: (c) => c.economy.gdpPerCapita.value,
   },
   {

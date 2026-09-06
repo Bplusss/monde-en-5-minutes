@@ -5,11 +5,12 @@ const DESTATIS_URL = "https://www.destatis.de/DE/Themen/Wirtschaft/Volkswirtscha
 export const economy: EconomyData = {
   currency: { name: "Euro", code: "EUR", symbol: "€" },
   gdp: {
-    value: 4_306,
-    unit: "Md€ courants",
+    value: 4_306_000_000_000,
+    unit: "€",
     year: 2024,
     source: "Destatis",
     sourceUrl: DESTATIS_URL,
+    note: "Euros courants.",
   },
   gdpPerCapita: {
     value: 50_819,

@@ -5,11 +5,12 @@ const ISTAT_PIL_URL = "https://www.istat.it/wp-content/uploads/2025/09/Conti-eco
 export const economy: EconomyData = {
   currency: { name: "Euro", code: "EUR", symbol: "€" },
   gdp: {
-    value: 2_192.2,
-    unit: "Md€ courants",
+    value: 2_192_200_000_000,
+    unit: "€",
     year: 2024,
     source: "ISTAT",
     sourceUrl: ISTAT_PIL_URL,
+    note: "Euros courants.",
   },
   gdpPerCapita: {
     value: 37_197,

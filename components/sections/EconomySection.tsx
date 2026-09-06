@@ -1,7 +1,7 @@
 import { Coins, TrendingUp, Users } from "lucide-react";
 import { getCategory } from "@/lib/categories";
 import type { Country } from "@/lib/types";
-import { formatNumber, formatPercent, withUnit } from "@/lib/format";
+import { formatCurrencyCompact, formatPercent } from "@/lib/format";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card, CardContent } from "@/components/ui/Card";
 import { StatTile } from "@/components/ui/StatTile";
@@ -25,8 +25,8 @@ export function EconomySection({ country }: { country: Country }) {
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <StatTile
-          label={`PIB (${economy.gdp.unit})`}
-          value={withUnit(formatNumber(economy.gdp.value), "Md€")}
+          label="PIB"
+          value={formatCurrencyCompact(economy.gdp.value, economy.gdp.unit ?? "€")}
           icon={<Coins className="size-4" aria-hidden />}
           accentText={cat.text}
           accentBg={cat.bg}
@@ -37,7 +37,7 @@ export function EconomySection({ country }: { country: Country }) {
         />
         <StatTile
           label="PIB par habitant"
-          value={withUnit(formatNumber(economy.gdpPerCapita.value), "€")}
+          value={formatCurrencyCompact(economy.gdpPerCapita.value, economy.gdpPerCapita.unit ?? "€")}
           icon={<TrendingUp className="size-4" aria-hidden />}
           accentText={cat.text}
           accentBg={cat.bg}

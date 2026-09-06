@@ -5,11 +5,12 @@ const COMPTES_URL = "https://www.insee.fr/fr/statistiques/8068582";
 export const economy: EconomyData = {
   currency: { name: "Euro", code: "EUR", symbol: "€" },
   gdp: {
-    value: 2_919.9,
-    unit: "Md€ courants",
+    value: 2_919_900_000_000,
+    unit: "€",
     year: 2024,
     source: "INSEE",
     sourceUrl: COMPTES_URL,
+    note: "Euros courants.",
   },
   gdpPerCapita: {
     value: 43_000,
