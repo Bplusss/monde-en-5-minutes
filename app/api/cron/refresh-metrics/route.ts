@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 import { getSupabaseClient } from "@/lib/supabase";
 import { fetchMetricOverrides } from "@/lib/metrics-overlay";
 import { FULL_COUNTRIES } from "@/data/countries-full";
-import type { Country } from "@/lib/types";
 
 export const maxDuration = 60;
 
@@ -64,14 +63,6 @@ async function fetchWikidataOfficeholder(
   return { name: binding.personLabel.value, since };
 }
 
-/** Reads the current value for one of the numeric metric keys off the static baseline Country. */
-function getStaticValue(country: Country, metricKey: string): number | undefined {
-  const [category, field] = metricKey.split(".");
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const value = (country as any)[category]?.[field]?.value;
-  return typeof value === "number" ? value : undefined;
-}
-
 /** Automated sanity guard: reject a fetched value that swings too far from the last known one — protects against a bad API response given there's no human review before publish. */
 function withinTolerance(newValue: number, baseline: number | undefined, pct = 0.25): boolean {
   if (baseline === undefined || baseline === 0) return true;
@@ -105,7 +96,7 @@ export async function GET(request: Request) {
           result.skipped.push(`${metricKey} (pas de donnée)`);
           continue;
         }
-        const baseline = (existingByKey.get(metricKey)?.value as number | undefined) ?? getStaticValue(country, metricKey);
+        const baseline = existingByKey.get(metricKey)?.value as number | undefined;
         if (!withinTolerance(point.value, baseline)) {
           result.skipped.push(`${metricKey} (écart > 25 % vs ${baseline}, valeur ignorée : ${point.value})`);
           continue;
@@ -124,10 +115,13 @@ export async function GET(request: Request) {
     }
 
     // --- Computed: population density from the freshly fetched (or existing) total ---
-    const total = fetched.find((f) => f.metricKey === "population.total")?.value ?? getStaticValue(country, "population.total");
+    const total =
+      fetched.find((f) => f.metricKey === "population.total")?.value ??
+      (existingByKey.get("population.total")?.value as number | undefined) ??
+      country.population.total.value;
     if (total && country.geography.areaKm2.value) {
       const density = total / country.geography.areaKm2.value;
-      const baseline = (existingByKey.get("population.density")?.value as number | undefined) ?? getStaticValue(country, "population.density");
+      const baseline = existingByKey.get("population.density")?.value as number | undefined;
       if (withinTolerance(density, baseline)) {
         fetched.push({
           metricKey: "population.density",
