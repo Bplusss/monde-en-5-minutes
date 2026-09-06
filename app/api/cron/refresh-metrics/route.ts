@@ -78,6 +78,19 @@ export async function GET(request: Request) {
   const supabase = getSupabaseClient();
   if (!supabase) return NextResponse.json({ error: "supabase not configured" }, { status: 500 });
 
+  // Safe (non-secret) shape diagnostics — helps spot stray whitespace/quotes in env vars without ever exposing the key itself.
+  const rawUrl = process.env.SUPABASE_URL ?? "";
+  const rawKey = process.env.SUPABASE_SERVICE_ROLE_KEY ?? "";
+  const envDiagnostics = {
+    urlLength: rawUrl.length,
+    urlTrimmedEqualsRaw: rawUrl.trim() === rawUrl,
+    urlStartsHttps: rawUrl.startsWith("https://"),
+    urlEndsWithSlash: rawUrl.endsWith("/"),
+    keyLength: rawKey.length,
+    keyTrimmedEqualsRaw: rawKey.trim() === rawKey,
+    keyPrefix: rawKey.slice(0, 10),
+  };
+
   const summary: Record<string, { updated: string[]; skipped: string[]; errors: string[] }> = {};
 
   for (const country of Object.values(FULL_COUNTRIES)) {
@@ -162,7 +175,7 @@ export async function GET(request: Request) {
             },
             { onConflict: "country_slug,metric_key" },
           );
-          if (error) result.errors.push(`${metricKey}: ${error.message}`);
+          if (error) result.errors.push(`${metricKey}: ${error.message} [code=${error.code} details=${error.details} hint=${error.hint}]`);
           else result.updated.push(metricKey);
         } catch (e) {
           result.errors.push(`${metricKey}: ${e instanceof Error ? e.message : "erreur inconnue"}`);
@@ -186,10 +199,10 @@ export async function GET(request: Request) {
         })),
         { onConflict: "country_slug,metric_key" },
       );
-      if (error) result.errors.push(`upsert: ${error.message}`);
+      if (error) result.errors.push(`upsert: ${error.message} [code=${error.code} details=${error.details} hint=${error.hint}]`);
       else result.updated.push(...fetched.map((f) => f.metricKey));
     }
   }
 
-  return NextResponse.json({ ranAt: new Date().toISOString(), summary });
+  return NextResponse.json({ ranAt: new Date().toISOString(), envDiagnostics, summary });
 }
