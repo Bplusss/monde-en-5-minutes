@@ -40,13 +40,17 @@ async function fetchWikidataOfficeholder(
   property: "P35" | "P6",
 ): Promise<{ name: string; since: string | null } | null> {
   const query = `
-    SELECT ?personLabel ?start WHERE {
+    SELECT ?personLabel ?start ?rank WHERE {
       wd:${wikidataId} p:${property} ?statement .
       ?statement ps:${property} ?person .
+      ?statement wikibase:rank ?rank .
+      FILTER(?rank != wikibase:DeprecatedRank)
       FILTER NOT EXISTS { ?statement pq:P582 ?end }
       OPTIONAL { ?statement pq:P580 ?start }
       SERVICE wikibase:label { bd:serviceParam wikibase:language "fr,en". }
-    } LIMIT 1
+    }
+    ORDER BY DESC(?rank)
+    LIMIT 1
   `;
   const url = `https://query.wikidata.org/sparql?format=json&query=${encodeURIComponent(query)}`;
   const res = await fetch(url, {
@@ -56,11 +60,14 @@ async function fetchWikidataOfficeholder(
   if (!res.ok) return null;
   const json = await res.json();
   const binding = json?.results?.bindings?.[0];
-  if (!binding?.personLabel?.value) return null;
+  const name = binding?.personLabel?.value as string | undefined;
+  // A label service that fails to resolve returns the raw entity ID (e.g. "Q3052772") as the "label" —
+  // reject that rather than publish a meaningless code as someone's name.
+  if (!name || /^Q\d+$/.test(name)) return null;
   const since = binding.start?.value
     ? new Intl.DateTimeFormat("fr-FR", { day: "numeric", month: "long", year: "numeric" }).format(new Date(binding.start.value))
     : null;
-  return { name: binding.personLabel.value, since };
+  return { name, since };
 }
 
 /** Automated sanity guard: reject a fetched value that swings too far from the last known one — protects against a bad API response given there's no human review before publish. */
