@@ -47,7 +47,7 @@ async function fetchWikidataOfficeholder(
       FILTER(?rank != wikibase:DeprecatedRank)
       FILTER NOT EXISTS { ?statement pq:P582 ?end }
       OPTIONAL { ?statement pq:P580 ?start }
-      SERVICE wikibase:label { bd:serviceParam wikibase:language "fr,en". }
+      SERVICE wikibase:label { bd:serviceParam wikibase:language "fr,en,mul". }
     }
     ORDER BY DESC(?rank)
     LIMIT 1
