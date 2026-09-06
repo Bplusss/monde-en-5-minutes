@@ -1,0 +1,39 @@
+import type { Country } from "@/lib/types";
+import { identity } from "./identity";
+import { geography } from "./geography";
+import { population } from "./population";
+import { languages } from "./languages";
+import { religion } from "./religion";
+import { politics } from "./politics";
+import { economy } from "./economy";
+import { history } from "./history";
+import { culture } from "./culture";
+import { territories } from "./territories";
+import { curiosities } from "./curiosities";
+import { cities } from "./cities";
+import { rivers } from "./rivers";
+import { regions } from "./regions";
+
+export const spain: Country = {
+  ...identity,
+  geography,
+  population,
+  languages,
+  religion,
+  politics,
+  economy,
+  history,
+  culture,
+  territories,
+  curiosities,
+  cities,
+  rivers,
+  regions,
+  maps: {
+    outlineGeojsonUrl: "/geo/spain-outline.json",
+    regionsGeojsonUrl: "/geo/spain-regions.json",
+    riversGeojsonUrl: "/geo/spain-rivers.json",
+    center: [-3.7, 40.2],
+    zoom: 4.6,
+  },
+};

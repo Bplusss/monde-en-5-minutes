@@ -1,0 +1,1360 @@
+[
+  {
+    "id": "IDN",
+    "slug": "indonesie",
+    "name": "Indonésie",
+    "flag": "🇮🇩",
+    "continent": "Asie"
+  },
+  {
+    "id": "MYS",
+    "slug": "malaisie",
+    "name": "Malaisie",
+    "flag": "🇲🇾",
+    "continent": "Asie"
+  },
+  {
+    "id": "CHL",
+    "slug": "chili",
+    "name": "Chili",
+    "flag": "🇨🇱",
+    "continent": "Amérique du Sud"
+  },
+  {
+    "id": "BOL",
+    "slug": "bolivie",
+    "name": "Bolivie",
+    "flag": "🇧🇴",
+    "continent": "Amérique du Sud"
+  },
+  {
+    "id": "PER",
+    "slug": "perou",
+    "name": "Pérou",
+    "flag": "🇵🇪",
+    "continent": "Amérique du Sud"
+  },
+  {
+    "id": "ARG",
+    "slug": "argentine",
+    "name": "Argentine",
+    "flag": "🇦🇷",
+    "continent": "Amérique du Sud"
+  },
+  {
+    "id": "CYP",
+    "slug": "chypre",
+    "name": "Chypre",
+    "flag": "🇨🇾",
+    "continent": "Asie"
+  },
+  {
+    "id": "IND",
+    "slug": "inde",
+    "name": "Inde",
+    "flag": "🇮🇳",
+    "continent": "Asie"
+  },
+  {
+    "id": "CHN",
+    "slug": "republique-populaire-de-chine",
+    "name": "République populaire de Chine",
+    "flag": "🇨🇳",
+    "continent": "Asie"
+  },
+  {
+    "id": "LBN",
+    "slug": "liban",
+    "name": "Liban",
+    "flag": "🇱🇧",
+    "continent": "Asie"
+  },
+  {
+    "id": "ETH",
+    "slug": "ethiopie",
+    "name": "Éthiopie",
+    "flag": "🇪🇹",
+    "continent": "Afrique"
+  },
+  {
+    "id": "SDS",
+    "slug": "soudan-du-sud",
+    "name": "Soudan du Sud",
+    "flag": "🇸🇸",
+    "continent": "Afrique"
+  },
+  {
+    "id": "SOM",
+    "slug": "somalie",
+    "name": "Somalie",
+    "flag": "🇸🇴",
+    "continent": "Afrique"
+  },
+  {
+    "id": "KEN",
+    "slug": "kenya",
+    "name": "Kenya",
+    "flag": "🇰🇪",
+    "continent": "Afrique"
+  },
+  {
+    "id": "MWI",
+    "slug": "malawi",
+    "name": "Malawi",
+    "flag": "🇲🇼",
+    "continent": "Afrique"
+  },
+  {
+    "id": "TZA",
+    "slug": "tanzanie",
+    "name": "Tanzanie",
+    "flag": "🇹🇿",
+    "continent": "Afrique"
+  },
+  {
+    "id": "SYR",
+    "slug": "syrie",
+    "name": "Syrie",
+    "flag": "🇸🇾",
+    "continent": "Asie"
+  },
+  {
+    "id": "FRA",
+    "slug": "france",
+    "name": "France",
+    "flag": "🇫🇷",
+    "continent": "Europe"
+  },
+  {
+    "id": "SUR",
+    "slug": "suriname",
+    "name": "Suriname",
+    "flag": "🇸🇷",
+    "continent": "Amérique du Sud"
+  },
+  {
+    "id": "GUY",
+    "slug": "guyana",
+    "name": "Guyana",
+    "flag": "🇬🇾",
+    "continent": "Amérique du Sud"
+  },
+  {
+    "id": "KOR",
+    "slug": "coree-du-sud",
+    "name": "Corée du Sud",
+    "flag": "🇰🇷",
+    "continent": "Asie"
+  },
+  {
+    "id": "PRK",
+    "slug": "coree-du-nord",
+    "name": "Corée du Nord",
+    "flag": "🇰🇵",
+    "continent": "Asie"
+  },
+  {
+    "id": "MAR",
+    "slug": "maroc",
+    "name": "Maroc",
+    "flag": "🇲🇦",
+    "continent": "Afrique"
+  },
+  {
+    "id": "CRI",
+    "slug": "costa-rica",
+    "name": "Costa Rica",
+    "flag": "🇨🇷",
+    "continent": "Amérique du Nord"
+  },
+  {
+    "id": "NIC",
+    "slug": "nicaragua",
+    "name": "Nicaragua",
+    "flag": "🇳🇮",
+    "continent": "Amérique du Nord"
+  },
+  {
+    "id": "COG",
+    "slug": "republique-du-congo",
+    "name": "République du Congo",
+    "flag": "🇨🇬",
+    "continent": "Afrique"
+  },
+  {
+    "id": "COD",
+    "slug": "republique-democratique-du-congo",
+    "name": "République démocratique du Congo",
+    "flag": "🇨🇩",
+    "continent": "Afrique"
+  },
+  {
+    "id": "BTN",
+    "slug": "bhoutan",
+    "name": "Bhoutan",
+    "flag": "🇧🇹",
+    "continent": "Asie"
+  },
+  {
+    "id": "UKR",
+    "slug": "ukraine",
+    "name": "Ukraine",
+    "flag": "🇺🇦",
+    "continent": "Europe"
+  },
+  {
+    "id": "BLR",
+    "slug": "bielorussie",
+    "name": "Biélorussie",
+    "flag": "🇧🇾",
+    "continent": "Europe"
+  },
+  {
+    "id": "NAM",
+    "slug": "namibie",
+    "name": "Namibie",
+    "flag": "🇳🇦",
+    "continent": "Afrique"
+  },
+  {
+    "id": "ZAF",
+    "slug": "afrique-du-sud",
+    "name": "Afrique du Sud",
+    "flag": "🇿🇦",
+    "continent": "Afrique"
+  },
+  {
+    "id": "OMN",
+    "slug": "oman",
+    "name": "Oman",
+    "flag": "🇴🇲",
+    "continent": "Asie"
+  },
+  {
+    "id": "UZB",
+    "slug": "ouzbekistan",
+    "name": "Ouzbékistan",
+    "flag": "🇺🇿",
+    "continent": "Asie"
+  },
+  {
+    "id": "KAZ",
+    "slug": "kazakhstan",
+    "name": "Kazakhstan",
+    "flag": "🇰🇿",
+    "continent": "Asie"
+  },
+  {
+    "id": "TJK",
+    "slug": "tadjikistan",
+    "name": "Tadjikistan",
+    "flag": "🇹🇯",
+    "continent": "Asie"
+  },
+  {
+    "id": "LTU",
+    "slug": "lituanie",
+    "name": "Lituanie",
+    "flag": "🇱🇹",
+    "continent": "Europe"
+  },
+  {
+    "id": "BRA",
+    "slug": "bresil",
+    "name": "Brésil",
+    "flag": "🇧🇷",
+    "continent": "Amérique du Sud"
+  },
+  {
+    "id": "URY",
+    "slug": "uruguay",
+    "name": "Uruguay",
+    "flag": "🇺🇾",
+    "continent": "Amérique du Sud"
+  },
+  {
+    "id": "MNG",
+    "slug": "mongolie",
+    "name": "Mongolie",
+    "flag": "🇲🇳",
+    "continent": "Asie"
+  },
+  {
+    "id": "RUS",
+    "slug": "russie",
+    "name": "Russie",
+    "flag": "🇷🇺",
+    "continent": "Europe"
+  },
+  {
+    "id": "CZE",
+    "slug": "tchequie",
+    "name": "Tchéquie",
+    "flag": "🇨🇿",
+    "continent": "Europe"
+  },
+  {
+    "id": "DEU",
+    "slug": "allemagne",
+    "name": "Allemagne",
+    "flag": "🇩🇪",
+    "continent": "Europe"
+  },
+  {
+    "id": "EST",
+    "slug": "estonie",
+    "name": "Estonie",
+    "flag": "🇪🇪",
+    "continent": "Europe"
+  },
+  {
+    "id": "LVA",
+    "slug": "lettonie",
+    "name": "Lettonie",
+    "flag": "🇱🇻",
+    "continent": "Europe"
+  },
+  {
+    "id": "NOR",
+    "slug": "norvege",
+    "name": "Norvège",
+    "flag": "🇳🇴",
+    "continent": "Europe"
+  },
+  {
+    "id": "SWE",
+    "slug": "suede",
+    "name": "Suède",
+    "flag": "🇸🇪",
+    "continent": "Europe"
+  },
+  {
+    "id": "FIN",
+    "slug": "finlande",
+    "name": "Finlande",
+    "flag": "🇫🇮",
+    "continent": "Europe"
+  },
+  {
+    "id": "VNM",
+    "slug": "viet-nam",
+    "name": "Viêt Nam",
+    "flag": "🇻🇳",
+    "continent": "Asie"
+  },
+  {
+    "id": "KHM",
+    "slug": "cambodge",
+    "name": "Cambodge",
+    "flag": "🇰🇭",
+    "continent": "Asie"
+  },
+  {
+    "id": "LUX",
+    "slug": "luxembourg",
+    "name": "Luxembourg",
+    "flag": "🇱🇺",
+    "continent": "Europe"
+  },
+  {
+    "id": "ARE",
+    "slug": "emirats-arabes-unis",
+    "name": "Émirats arabes unis",
+    "flag": "🇦🇪",
+    "continent": "Asie"
+  },
+  {
+    "id": "BEL",
+    "slug": "belgique",
+    "name": "Belgique",
+    "flag": "🇧🇪",
+    "continent": "Europe"
+  },
+  {
+    "id": "GEO",
+    "slug": "georgie",
+    "name": "Géorgie",
+    "flag": "🇬🇪",
+    "continent": "Asie"
+  },
+  {
+    "id": "MKD",
+    "slug": "macedoine-du-nord",
+    "name": "Macédoine du Nord",
+    "flag": "🇲🇰",
+    "continent": "Europe"
+  },
+  {
+    "id": "ALB",
+    "slug": "albanie",
+    "name": "Albanie",
+    "flag": "🇦🇱",
+    "continent": "Europe"
+  },
+  {
+    "id": "AZE",
+    "slug": "azerbaidjan",
+    "name": "Azerbaïdjan",
+    "flag": "🇦🇿",
+    "continent": "Asie"
+  },
+  {
+    "id": "TUR",
+    "slug": "turquie",
+    "name": "Turquie",
+    "flag": "🇹🇷",
+    "continent": "Asie"
+  },
+  {
+    "id": "ESP",
+    "slug": "espagne",
+    "name": "Espagne",
+    "flag": "🇪🇸",
+    "continent": "Europe"
+  },
+  {
+    "id": "LAO",
+    "slug": "laos",
+    "name": "Laos",
+    "flag": "🇱🇦",
+    "continent": "Asie"
+  },
+  {
+    "id": "KGZ",
+    "slug": "kirghizistan",
+    "name": "Kirghizistan",
+    "flag": "🇰🇬",
+    "continent": "Asie"
+  },
+  {
+    "id": "ARM",
+    "slug": "armenie",
+    "name": "Arménie",
+    "flag": "🇦🇲",
+    "continent": "Asie"
+  },
+  {
+    "id": "DNK",
+    "slug": "danemark",
+    "name": "Danemark",
+    "flag": "🇩🇰",
+    "continent": "Europe"
+  },
+  {
+    "id": "LBY",
+    "slug": "libye",
+    "name": "Libye",
+    "flag": "🇱🇾",
+    "continent": "Afrique"
+  },
+  {
+    "id": "TUN",
+    "slug": "tunisie",
+    "name": "Tunisie",
+    "flag": "🇹🇳",
+    "continent": "Afrique"
+  },
+  {
+    "id": "ROU",
+    "slug": "roumanie",
+    "name": "Roumanie",
+    "flag": "🇷🇴",
+    "continent": "Europe"
+  },
+  {
+    "id": "HUN",
+    "slug": "hongrie",
+    "name": "Hongrie",
+    "flag": "🇭🇺",
+    "continent": "Europe"
+  },
+  {
+    "id": "SVK",
+    "slug": "slovaquie",
+    "name": "Slovaquie",
+    "flag": "🇸🇰",
+    "continent": "Europe"
+  },
+  {
+    "id": "POL",
+    "slug": "pologne",
+    "name": "Pologne",
+    "flag": "🇵🇱",
+    "continent": "Europe"
+  },
+  {
+    "id": "IRL",
+    "slug": "irlande",
+    "name": "Irlande",
+    "flag": "🇮🇪",
+    "continent": "Europe"
+  },
+  {
+    "id": "GBR",
+    "slug": "royaume-uni",
+    "name": "Royaume-Uni",
+    "flag": "🇬🇧",
+    "continent": "Europe"
+  },
+  {
+    "id": "GRC",
+    "slug": "grece",
+    "name": "Grèce",
+    "flag": "🇬🇷",
+    "continent": "Europe"
+  },
+  {
+    "id": "ZMB",
+    "slug": "zambie",
+    "name": "Zambie",
+    "flag": "🇿🇲",
+    "continent": "Afrique"
+  },
+  {
+    "id": "SLE",
+    "slug": "sierra-leone",
+    "name": "Sierra Leone",
+    "flag": "🇸🇱",
+    "continent": "Afrique"
+  },
+  {
+    "id": "GIN",
+    "slug": "guinee",
+    "name": "Guinée",
+    "flag": "🇬🇳",
+    "continent": "Afrique"
+  },
+  {
+    "id": "LBR",
+    "slug": "liberia",
+    "name": "Liberia",
+    "flag": "🇱🇷",
+    "continent": "Afrique"
+  },
+  {
+    "id": "CAF",
+    "slug": "republique-centrafricaine",
+    "name": "République centrafricaine",
+    "flag": "🇨🇫",
+    "continent": "Afrique"
+  },
+  {
+    "id": "SDN",
+    "slug": "soudan",
+    "name": "Soudan",
+    "flag": "🇸🇩",
+    "continent": "Afrique"
+  },
+  {
+    "id": "DJI",
+    "slug": "djibouti",
+    "name": "Djibouti",
+    "flag": "🇩🇯",
+    "continent": "Afrique"
+  },
+  {
+    "id": "ERI",
+    "slug": "erythree",
+    "name": "Érythrée",
+    "flag": "🇪🇷",
+    "continent": "Afrique"
+  },
+  {
+    "id": "AUT",
+    "slug": "autriche",
+    "name": "Autriche",
+    "flag": "🇦🇹",
+    "continent": "Europe"
+  },
+  {
+    "id": "IRQ",
+    "slug": "irak",
+    "name": "Irak",
+    "flag": "🇮🇶",
+    "continent": "Asie"
+  },
+  {
+    "id": "ITA",
+    "slug": "italie",
+    "name": "Italie",
+    "flag": "🇮🇹",
+    "continent": "Europe"
+  },
+  {
+    "id": "CHE",
+    "slug": "suisse",
+    "name": "Suisse",
+    "flag": "🇨🇭",
+    "continent": "Europe"
+  },
+  {
+    "id": "IRN",
+    "slug": "iran",
+    "name": "Iran",
+    "flag": "🇮🇷",
+    "continent": "Asie"
+  },
+  {
+    "id": "NLD",
+    "slug": "pays-bas",
+    "name": "Pays-Bas",
+    "flag": "🇳🇱",
+    "continent": "Europe"
+  },
+  {
+    "id": "LIE",
+    "slug": "liechtenstein",
+    "name": "Liechtenstein",
+    "flag": "🇱🇮",
+    "continent": "Europe"
+  },
+  {
+    "id": "CIV",
+    "slug": "cote-d-ivoire",
+    "name": "Côte d'Ivoire",
+    "flag": "🇨🇮",
+    "continent": "Afrique"
+  },
+  {
+    "id": "SRB",
+    "slug": "serbie",
+    "name": "Serbie",
+    "flag": "🇷🇸",
+    "continent": "Europe"
+  },
+  {
+    "id": "MLI",
+    "slug": "mali",
+    "name": "Mali",
+    "flag": "🇲🇱",
+    "continent": "Afrique"
+  },
+  {
+    "id": "SEN",
+    "slug": "senegal",
+    "name": "Sénégal",
+    "flag": "🇸🇳",
+    "continent": "Afrique"
+  },
+  {
+    "id": "NGA",
+    "slug": "nigeria",
+    "name": "Nigeria",
+    "flag": "🇳🇬",
+    "continent": "Afrique"
+  },
+  {
+    "id": "BEN",
+    "slug": "benin",
+    "name": "Bénin",
+    "flag": "🇧🇯",
+    "continent": "Afrique"
+  },
+  {
+    "id": "AGO",
+    "slug": "angola",
+    "name": "Angola",
+    "flag": "🇦🇴",
+    "continent": "Afrique"
+  },
+  {
+    "id": "HRV",
+    "slug": "croatie",
+    "name": "Croatie",
+    "flag": "🇭🇷",
+    "continent": "Europe"
+  },
+  {
+    "id": "SVN",
+    "slug": "slovenie",
+    "name": "Slovénie",
+    "flag": "🇸🇮",
+    "continent": "Europe"
+  },
+  {
+    "id": "QAT",
+    "slug": "qatar",
+    "name": "Qatar",
+    "flag": "🇶🇦",
+    "continent": "Asie"
+  },
+  {
+    "id": "SAU",
+    "slug": "arabie-saoudite",
+    "name": "Arabie saoudite",
+    "flag": "🇸🇦",
+    "continent": "Asie"
+  },
+  {
+    "id": "BWA",
+    "slug": "botswana",
+    "name": "Botswana",
+    "flag": "🇧🇼",
+    "continent": "Afrique"
+  },
+  {
+    "id": "ZWE",
+    "slug": "zimbabwe",
+    "name": "Zimbabwe",
+    "flag": "🇿🇼",
+    "continent": "Afrique"
+  },
+  {
+    "id": "PAK",
+    "slug": "pakistan",
+    "name": "Pakistan",
+    "flag": "🇵🇰",
+    "continent": "Asie"
+  },
+  {
+    "id": "BGR",
+    "slug": "bulgarie",
+    "name": "Bulgarie",
+    "flag": "🇧🇬",
+    "continent": "Europe"
+  },
+  {
+    "id": "THA",
+    "slug": "thailande",
+    "name": "Thaïlande",
+    "flag": "🇹🇭",
+    "continent": "Asie"
+  },
+  {
+    "id": "SMR",
+    "slug": "saint-marin",
+    "name": "Saint-Marin",
+    "flag": "🇸🇲",
+    "continent": "Europe"
+  },
+  {
+    "id": "HTI",
+    "slug": "haiti",
+    "name": "Haïti",
+    "flag": "🇭🇹",
+    "continent": "Amérique du Nord"
+  },
+  {
+    "id": "DOM",
+    "slug": "republique-dominicaine",
+    "name": "République dominicaine",
+    "flag": "🇩🇴",
+    "continent": "Amérique du Nord"
+  },
+  {
+    "id": "TCD",
+    "slug": "tchad",
+    "name": "Tchad",
+    "flag": "🇹🇩",
+    "continent": "Afrique"
+  },
+  {
+    "id": "KWT",
+    "slug": "koweit",
+    "name": "Koweït",
+    "flag": "🇰🇼",
+    "continent": "Asie"
+  },
+  {
+    "id": "SLV",
+    "slug": "salvador",
+    "name": "Salvador",
+    "flag": "🇸🇻",
+    "continent": "Amérique du Nord"
+  },
+  {
+    "id": "GTM",
+    "slug": "guatemala",
+    "name": "Guatemala",
+    "flag": "🇬🇹",
+    "continent": "Amérique du Nord"
+  },
+  {
+    "id": "TLS",
+    "slug": "timor-oriental",
+    "name": "Timor oriental",
+    "flag": "🇹🇱",
+    "continent": "Asie"
+  },
+  {
+    "id": "BRN",
+    "slug": "brunei",
+    "name": "Brunei",
+    "flag": "🇧🇳",
+    "continent": "Asie"
+  },
+  {
+    "id": "MCO",
+    "slug": "monaco",
+    "name": "Monaco",
+    "flag": "🇲🇨",
+    "continent": "Europe"
+  },
+  {
+    "id": "DZA",
+    "slug": "algerie",
+    "name": "Algérie",
+    "flag": "🇩🇿",
+    "continent": "Afrique"
+  },
+  {
+    "id": "MOZ",
+    "slug": "mozambique",
+    "name": "Mozambique",
+    "flag": "🇲🇿",
+    "continent": "Afrique"
+  },
+  {
+    "id": "SWZ",
+    "slug": "eswatini",
+    "name": "Eswatini",
+    "flag": "🇸🇿",
+    "continent": "Afrique"
+  },
+  {
+    "id": "BDI",
+    "slug": "burundi",
+    "name": "Burundi",
+    "flag": "🇧🇮",
+    "continent": "Afrique"
+  },
+  {
+    "id": "RWA",
+    "slug": "rwanda",
+    "name": "Rwanda",
+    "flag": "🇷🇼",
+    "continent": "Afrique"
+  },
+  {
+    "id": "MMR",
+    "slug": "birmanie",
+    "name": "Birmanie",
+    "flag": "🇲🇲",
+    "continent": "Asie"
+  },
+  {
+    "id": "BGD",
+    "slug": "bangladesh",
+    "name": "Bangladesh",
+    "flag": "🇧🇩",
+    "continent": "Asie"
+  },
+  {
+    "id": "AND",
+    "slug": "andorre",
+    "name": "Andorre",
+    "flag": "🇦🇩",
+    "continent": "Europe"
+  },
+  {
+    "id": "AFG",
+    "slug": "afghanistan",
+    "name": "Afghanistan",
+    "flag": "🇦🇫",
+    "continent": "Asie"
+  },
+  {
+    "id": "MNE",
+    "slug": "montenegro",
+    "name": "Monténégro",
+    "flag": "🇲🇪",
+    "continent": "Europe"
+  },
+  {
+    "id": "BIH",
+    "slug": "bosnie-herzegovine",
+    "name": "Bosnie-Herzégovine",
+    "flag": "🇧🇦",
+    "continent": "Europe"
+  },
+  {
+    "id": "UGA",
+    "slug": "ouganda",
+    "name": "Ouganda",
+    "flag": "🇺🇬",
+    "continent": "Afrique"
+  },
+  {
+    "id": "CUB",
+    "slug": "cuba",
+    "name": "Cuba",
+    "flag": "🇨🇺",
+    "continent": "Amérique du Nord"
+  },
+  {
+    "id": "HND",
+    "slug": "honduras",
+    "name": "Honduras",
+    "flag": "🇭🇳",
+    "continent": "Amérique du Nord"
+  },
+  {
+    "id": "ECU",
+    "slug": "equateur",
+    "name": "Équateur",
+    "flag": "🇪🇨",
+    "continent": "Amérique du Sud"
+  },
+  {
+    "id": "COL",
+    "slug": "colombie",
+    "name": "Colombie",
+    "flag": "🇨🇴",
+    "continent": "Amérique du Sud"
+  },
+  {
+    "id": "PRY",
+    "slug": "paraguay",
+    "name": "Paraguay",
+    "flag": "🇵🇾",
+    "continent": "Amérique du Sud"
+  },
+  {
+    "id": "PRT",
+    "slug": "portugal",
+    "name": "Portugal",
+    "flag": "🇵🇹",
+    "continent": "Europe"
+  },
+  {
+    "id": "MDA",
+    "slug": "moldavie",
+    "name": "Moldavie",
+    "flag": "🇲🇩",
+    "continent": "Europe"
+  },
+  {
+    "id": "TKM",
+    "slug": "turkmenistan",
+    "name": "Turkménistan",
+    "flag": "🇹🇲",
+    "continent": "Asie"
+  },
+  {
+    "id": "JOR",
+    "slug": "jordanie",
+    "name": "Jordanie",
+    "flag": "🇯🇴",
+    "continent": "Asie"
+  },
+  {
+    "id": "NPL",
+    "slug": "nepal",
+    "name": "Népal",
+    "flag": "🇳🇵",
+    "continent": "Asie"
+  },
+  {
+    "id": "LSO",
+    "slug": "lesotho",
+    "name": "Lesotho",
+    "flag": "🇱🇸",
+    "continent": "Afrique"
+  },
+  {
+    "id": "CMR",
+    "slug": "cameroun",
+    "name": "Cameroun",
+    "flag": "🇨🇲",
+    "continent": "Afrique"
+  },
+  {
+    "id": "GAB",
+    "slug": "gabon",
+    "name": "Gabon",
+    "flag": "🇬🇦",
+    "continent": "Afrique"
+  },
+  {
+    "id": "NER",
+    "slug": "niger",
+    "name": "Niger",
+    "flag": "🇳🇪",
+    "continent": "Afrique"
+  },
+  {
+    "id": "BFA",
+    "slug": "burkina-faso",
+    "name": "Burkina Faso",
+    "flag": "🇧🇫",
+    "continent": "Afrique"
+  },
+  {
+    "id": "TGO",
+    "slug": "togo",
+    "name": "Togo",
+    "flag": "🇹🇬",
+    "continent": "Afrique"
+  },
+  {
+    "id": "GHA",
+    "slug": "ghana",
+    "name": "Ghana",
+    "flag": "🇬🇭",
+    "continent": "Afrique"
+  },
+  {
+    "id": "GNB",
+    "slug": "guinee-bissau",
+    "name": "Guinée-Bissau",
+    "flag": "🇬🇼",
+    "continent": "Afrique"
+  },
+  {
+    "id": "USA",
+    "slug": "etats-unis",
+    "name": "États-Unis",
+    "flag": "🇺🇸",
+    "continent": "Amérique du Nord"
+  },
+  {
+    "id": "CAN",
+    "slug": "canada",
+    "name": "Canada",
+    "flag": "🇨🇦",
+    "continent": "Amérique du Nord"
+  },
+  {
+    "id": "MEX",
+    "slug": "mexique",
+    "name": "Mexique",
+    "flag": "🇲🇽",
+    "continent": "Amérique du Nord"
+  },
+  {
+    "id": "BLZ",
+    "slug": "belize",
+    "name": "Belize",
+    "flag": "🇧🇿",
+    "continent": "Amérique du Nord"
+  },
+  {
+    "id": "PAN",
+    "slug": "panama",
+    "name": "Panama",
+    "flag": "🇵🇦",
+    "continent": "Amérique du Nord"
+  },
+  {
+    "id": "VEN",
+    "slug": "venezuela",
+    "name": "Venezuela",
+    "flag": "🇻🇪",
+    "continent": "Amérique du Sud"
+  },
+  {
+    "id": "PNG",
+    "slug": "papouasie-nouvelle-guinee",
+    "name": "Papouasie-Nouvelle-Guinée",
+    "flag": "🇵🇬",
+    "continent": "Océanie"
+  },
+  {
+    "id": "EGY",
+    "slug": "egypte",
+    "name": "Égypte",
+    "flag": "🇪🇬",
+    "continent": "Afrique"
+  },
+  {
+    "id": "YEM",
+    "slug": "yemen",
+    "name": "Yémen",
+    "flag": "🇾🇪",
+    "continent": "Asie"
+  },
+  {
+    "id": "MRT",
+    "slug": "mauritanie",
+    "name": "Mauritanie",
+    "flag": "🇲🇷",
+    "continent": "Afrique"
+  },
+  {
+    "id": "GNQ",
+    "slug": "guinee-equatoriale",
+    "name": "Guinée équatoriale",
+    "flag": "🇬🇶",
+    "continent": "Afrique"
+  },
+  {
+    "id": "GMB",
+    "slug": "gambie",
+    "name": "Gambie",
+    "flag": "🇬🇲",
+    "continent": "Afrique"
+  },
+  {
+    "id": "VAT",
+    "slug": "cite-du-vatican",
+    "name": "Cité du Vatican",
+    "flag": "🇻🇦",
+    "continent": "Europe"
+  },
+  {
+    "id": "AUS",
+    "slug": "australie",
+    "name": "Australie",
+    "flag": "🇦🇺",
+    "continent": "Océanie"
+  },
+  {
+    "id": "FJI",
+    "slug": "fidji",
+    "name": "Fidji",
+    "flag": "🇫🇯",
+    "continent": "Océanie"
+  },
+  {
+    "id": "NZL",
+    "slug": "nouvelle-zelande",
+    "name": "Nouvelle-Zélande",
+    "flag": "🇳🇿",
+    "continent": "Océanie"
+  },
+  {
+    "id": "MDG",
+    "slug": "madagascar",
+    "name": "Madagascar",
+    "flag": "🇲🇬",
+    "continent": "Afrique"
+  },
+  {
+    "id": "PHL",
+    "slug": "philippines",
+    "name": "Philippines",
+    "flag": "🇵🇭",
+    "continent": "Asie"
+  },
+  {
+    "id": "LKA",
+    "slug": "sri-lanka",
+    "name": "Sri Lanka",
+    "flag": "🇱🇰",
+    "continent": "Asie"
+  },
+  {
+    "id": "BHS",
+    "slug": "bahamas",
+    "name": "Bahamas",
+    "flag": "🇧🇸",
+    "continent": "Amérique du Nord"
+  },
+  {
+    "id": "TWN",
+    "slug": "taiwan",
+    "name": "Taïwan",
+    "flag": "🇹🇼",
+    "continent": "Asie"
+  },
+  {
+    "id": "JPN",
+    "slug": "japon",
+    "name": "Japon",
+    "flag": "🇯🇵",
+    "continent": "Asie"
+  },
+  {
+    "id": "ISL",
+    "slug": "islande",
+    "name": "Islande",
+    "flag": "🇮🇸",
+    "continent": "Europe"
+  },
+  {
+    "id": "SYC",
+    "slug": "seychelles",
+    "name": "Seychelles",
+    "flag": "🇸🇨",
+    "continent": "Afrique"
+  },
+  {
+    "id": "KIR",
+    "slug": "kiribati",
+    "name": "Kiribati",
+    "flag": "🇰🇮",
+    "continent": "Océanie"
+  },
+  {
+    "id": "MHL",
+    "slug": "iles-marshall",
+    "name": "Îles Marshall",
+    "flag": "🇲🇭",
+    "continent": "Océanie"
+  },
+  {
+    "id": "TTO",
+    "slug": "trinite-et-tobago",
+    "name": "Trinité-et-Tobago",
+    "flag": "🇹🇹",
+    "continent": "Amérique du Nord"
+  },
+  {
+    "id": "GRD",
+    "slug": "grenade",
+    "name": "Grenade",
+    "flag": "🇬🇩",
+    "continent": "Amérique du Nord"
+  },
+  {
+    "id": "VCT",
+    "slug": "saint-vincent-et-les-grenadines",
+    "name": "Saint-Vincent-et-les-Grenadines",
+    "flag": "🇻🇨",
+    "continent": "Amérique du Nord"
+  },
+  {
+    "id": "BRB",
+    "slug": "barbade",
+    "name": "Barbade",
+    "flag": "🇧🇧",
+    "continent": "Amérique du Nord"
+  },
+  {
+    "id": "LCA",
+    "slug": "sainte-lucie",
+    "name": "Sainte-Lucie",
+    "flag": "🇱🇨",
+    "continent": "Amérique du Nord"
+  },
+  {
+    "id": "DMA",
+    "slug": "dominique",
+    "name": "Dominique",
+    "flag": "🇩🇲",
+    "continent": "Amérique du Nord"
+  },
+  {
+    "id": "ATG",
+    "slug": "antigua-et-barbuda",
+    "name": "Antigua-et-Barbuda",
+    "flag": "🇦🇬",
+    "continent": "Amérique du Nord"
+  },
+  {
+    "id": "KNA",
+    "slug": "saint-christophe-et-nieves",
+    "name": "Saint-Christophe-et-Niévès",
+    "flag": "🇰🇳",
+    "continent": "Amérique du Nord"
+  },
+  {
+    "id": "JAM",
+    "slug": "jamaique",
+    "name": "Jamaïque",
+    "flag": "🇯🇲",
+    "continent": "Amérique du Nord"
+  },
+  {
+    "id": "MUS",
+    "slug": "maurice",
+    "name": "Maurice",
+    "flag": "🇲🇺",
+    "continent": "Afrique"
+  },
+  {
+    "id": "COM",
+    "slug": "comores",
+    "name": "Comores",
+    "flag": "🇰🇲",
+    "continent": "Afrique"
+  },
+  {
+    "id": "STP",
+    "slug": "sao-tome-et-principe",
+    "name": "Sao Tomé-et-Principe",
+    "flag": "🇸🇹",
+    "continent": "Afrique"
+  },
+  {
+    "id": "CPV",
+    "slug": "cap-vert",
+    "name": "Cap-Vert",
+    "flag": "🇨🇻",
+    "continent": "Afrique"
+  },
+  {
+    "id": "MLT",
+    "slug": "malte",
+    "name": "Malte",
+    "flag": "🇲🇹",
+    "continent": "Europe"
+  },
+  {
+    "id": "SGP",
+    "slug": "singapour",
+    "name": "Singapour",
+    "flag": "🇸🇬",
+    "continent": "Asie"
+  },
+  {
+    "id": "TON",
+    "slug": "tonga",
+    "name": "Tonga",
+    "flag": "🇹🇴",
+    "continent": "Océanie"
+  },
+  {
+    "id": "WSM",
+    "slug": "samoa",
+    "name": "Samoa",
+    "flag": "🇼🇸",
+    "continent": "Océanie"
+  },
+  {
+    "id": "SLB",
+    "slug": "iles-salomon",
+    "name": "Îles Salomon",
+    "flag": "🇸🇧",
+    "continent": "Océanie"
+  },
+  {
+    "id": "TUV",
+    "slug": "tuvalu",
+    "name": "Tuvalu",
+    "flag": "🇹🇻",
+    "continent": "Océanie"
+  },
+  {
+    "id": "MDV",
+    "slug": "maldives",
+    "name": "Maldives",
+    "flag": "🇲🇻",
+    "continent": "Asie"
+  },
+  {
+    "id": "NRU",
+    "slug": "nauru",
+    "name": "Nauru",
+    "flag": "🇳🇷",
+    "continent": "Océanie"
+  },
+  {
+    "id": "FSM",
+    "slug": "etats-federes-de-micronesie",
+    "name": "États fédérés de Micronésie",
+    "flag": "🇫🇲",
+    "continent": "Océanie"
+  },
+  {
+    "id": "VUT",
+    "slug": "vanuatu",
+    "name": "Vanuatu",
+    "flag": "🇻🇺",
+    "continent": "Océanie"
+  },
+  {
+    "id": "PLW",
+    "slug": "palaos",
+    "name": "Palaos",
+    "flag": "🇵🇼",
+    "continent": "Océanie"
+  },
+  {
+    "id": "BHR",
+    "slug": "bahrein",
+    "name": "Bahreïn",
+    "flag": "🇧🇭",
+    "continent": "Asie"
+  }
+]

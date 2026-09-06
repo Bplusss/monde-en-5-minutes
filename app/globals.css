@@ -1,26 +1,113 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #faf9f7;
+  --surface: #ffffff;
+  --surface-muted: #f3f1ed;
+  --border: #e7e3db;
+  --foreground: #14171c;
+  --muted: #6b7178;
+  --brand: #16233f;
+  --brand-foreground: #ffffff;
+  --accent: #b5122e;
+  --ring: #16233f;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-border: var(--border);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-muted: var(--muted);
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-accent: var(--accent);
+  --color-ring: var(--ring);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-fraunces);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0d0f13;
+    --surface: #15181e;
+    --surface-muted: #1b1f26;
+    --border: #262b33;
+    --foreground: #f3f2ef;
+    --muted: #9aa1ac;
+    --brand: #8ea3cf;
+    --brand-foreground: #0d0f13;
+    --accent: #e2536a;
+    --ring: #8ea3cf;
   }
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-display), Georgia, serif;
+}
+
+/* Numbers and KPIs must never break mid-value: unit stays glued to figure. */
+.kpi-value {
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.container-app {
+  max-width: 1180px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .container-app {
+    padding-inline: 2rem;
+  }
+}
+
+.focus-ring {
+  outline: none;
+}
+.focus-ring:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.maplibregl-ctrl-attrib {
+  font-size: 10px !important;
+}
+.maplibregl-popup-content {
+  background: var(--surface) !important;
+  color: var(--foreground) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.16) !important;
+  padding: 10px 14px !important;
+}
+.maplibregl-popup-tip {
+  border-top-color: var(--surface) !important;
+  border-bottom-color: var(--surface) !important;
 }

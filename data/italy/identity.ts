@@ -1,0 +1,13 @@
+import type { CountrySummary } from "@/lib/types";
+
+export const identity: CountrySummary & { capital: string; currencyCode: string; nameWithArticle: string } = {
+  id: "ITA",
+  slug: "italie",
+  name: "Italie",
+  nameWithArticle: "l'Italie",
+  flag: "🇮🇹",
+  status: "available",
+  continent: "Europe",
+  capital: "Rome",
+  currencyCode: "EUR",
+};
