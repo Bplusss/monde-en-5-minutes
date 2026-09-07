@@ -1,0 +1,31 @@
+import type { Region } from "@/lib/types";
+
+/** Les 26 cantons suisses, noms français usuels. */
+export const regions: Region[] = [
+  { code: "ZH", name: "Zurich" },
+  { code: "BE", name: "Berne" },
+  { code: "LU", name: "Lucerne" },
+  { code: "UR", name: "Uri" },
+  { code: "SZ", name: "Schwytz" },
+  { code: "OW", name: "Obwald" },
+  { code: "NW", name: "Nidwald" },
+  { code: "GL", name: "Glaris" },
+  { code: "ZG", name: "Zoug" },
+  { code: "FR", name: "Fribourg" },
+  { code: "SO", name: "Soleure" },
+  { code: "BS", name: "Bâle-Ville" },
+  { code: "BL", name: "Bâle-Campagne" },
+  { code: "SH", name: "Schaffhouse" },
+  { code: "AR", name: "Appenzell Rhodes-Extérieures" },
+  { code: "AI", name: "Appenzell Rhodes-Intérieures" },
+  { code: "SG", name: "Saint-Gall" },
+  { code: "GR", name: "Grisons" },
+  { code: "AG", name: "Argovie" },
+  { code: "TG", name: "Thurgovie" },
+  { code: "TI", name: "Tessin" },
+  { code: "VD", name: "Vaud" },
+  { code: "VS", name: "Valais" },
+  { code: "NE", name: "Neuchâtel" },
+  { code: "GE", name: "Genève" },
+  { code: "JU", name: "Jura" },
+];

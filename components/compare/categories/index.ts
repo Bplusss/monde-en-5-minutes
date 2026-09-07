@@ -8,8 +8,8 @@ import { PoliticsCompare } from "./PoliticsCompare";
 import { EconomyCompare } from "./EconomyCompare";
 import { HistoryCompare } from "./HistoryCompare";
 import { CultureCompare } from "./CultureCompare";
-import { TerritoryCompare } from "./TerritoryCompare";
-import { CuriositiesCompare } from "./CuriositiesCompare";
+import { EnvironmentCompare } from "./EnvironmentCompare";
+import { AtRetenirCompare } from "./AtRetenirCompare";
 
 export const COMPARE_CATEGORY_COMPONENTS: Record<CategoryKey, ComponentType<{ a: Country; b: Country }>> = {
   geographie: GeographyCompare,
@@ -20,6 +20,6 @@ export const COMPARE_CATEGORY_COMPONENTS: Record<CategoryKey, ComponentType<{ a:
   economie: EconomyCompare,
   histoire: HistoryCompare,
   culture: CultureCompare,
-  territoire: TerritoryCompare,
-  curiosites: CuriositiesCompare,
+  environnement: EnvironmentCompare,
+  a_retenir: AtRetenirCompare,
 };

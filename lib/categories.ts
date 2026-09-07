@@ -5,10 +5,10 @@ import {
   Church,
   Landmark,
   Coins,
-  History,
-  UtensilsCrossed,
-  Globe2,
-  Sparkles,
+  Scroll,
+  Drama,
+  Leaf,
+  Lightbulb,
   type LucideIcon,
 } from "lucide-react";
 import type { CategoryKey } from "./types";
@@ -32,7 +32,7 @@ export const CATEGORIES: CategoryConfig[] = [
     key: "geographie",
     slug: "geographie",
     emoji: "🗺️",
-    label: "Géographie",
+    label: "Géographie et territoire",
     icon: Map,
     text: "text-emerald-700 dark:text-emerald-400",
     bg: "bg-emerald-50 dark:bg-emerald-950/40",
@@ -67,8 +67,8 @@ export const CATEGORIES: CategoryConfig[] = [
   {
     key: "religion",
     slug: "religion",
-    emoji: "🕊️",
-    label: "Religion",
+    emoji: "🛐",
+    label: "Religions",
     icon: Church,
     text: "text-stone-700 dark:text-stone-300",
     bg: "bg-stone-100 dark:bg-stone-800/40",
@@ -103,9 +103,9 @@ export const CATEGORIES: CategoryConfig[] = [
   {
     key: "histoire",
     slug: "histoire",
-    emoji: "🕰️",
-    label: "Les grandes périodes",
-    icon: History,
+    emoji: "📜",
+    label: "Histoire",
+    icon: Scroll,
     text: "text-rose-700 dark:text-rose-400",
     bg: "bg-rose-50 dark:bg-rose-950/40",
     border: "border-rose-200 dark:border-rose-900",
@@ -115,9 +115,9 @@ export const CATEGORIES: CategoryConfig[] = [
   {
     key: "culture",
     slug: "culture",
-    emoji: "🍜",
-    label: "Culture & vie quotidienne",
-    icon: UtensilsCrossed,
+    emoji: "🎭",
+    label: "Culture",
+    icon: Drama,
     text: "text-pink-700 dark:text-pink-400",
     bg: "bg-pink-50 dark:bg-pink-950/40",
     border: "border-pink-200 dark:border-pink-900",
@@ -125,23 +125,23 @@ export const CATEGORIES: CategoryConfig[] = [
     bar: "bg-pink-500",
   },
   {
-    key: "territoire",
-    slug: "territoire",
-    emoji: "🌍",
-    label: "Territoire",
-    icon: Globe2,
-    text: "text-cyan-700 dark:text-cyan-400",
-    bg: "bg-cyan-50 dark:bg-cyan-950/40",
-    border: "border-cyan-200 dark:border-cyan-900",
-    ring: "ring-cyan-500",
-    bar: "bg-cyan-500",
+    key: "environnement",
+    slug: "environnement",
+    emoji: "🌱",
+    label: "Environnement",
+    icon: Leaf,
+    text: "text-teal-700 dark:text-teal-400",
+    bg: "bg-teal-50 dark:bg-teal-950/40",
+    border: "border-teal-200 dark:border-teal-900",
+    ring: "ring-teal-500",
+    bar: "bg-teal-500",
   },
   {
-    key: "curiosites",
-    slug: "curiosites",
-    emoji: "🤯",
-    label: "Curiosités",
-    icon: Sparkles,
+    key: "a_retenir",
+    slug: "a-retenir",
+    emoji: "💡",
+    label: "À retenir",
+    icon: Lightbulb,
     text: "text-fuchsia-700 dark:text-fuchsia-400",
     bg: "bg-fuchsia-50 dark:bg-fuchsia-950/40",
     border: "border-fuchsia-200 dark:border-fuchsia-900",
@@ -152,6 +152,10 @@ export const CATEGORIES: CategoryConfig[] = [
 
 export function getCategory(slug: string): CategoryConfig | undefined {
   return CATEGORIES.find((c) => c.slug === slug);
+}
+
+export function getCategoryByKey(key: CategoryKey): CategoryConfig {
+  return CATEGORIES.find((c) => c.key === key)!;
 }
 
 export const DEFAULT_CATEGORY = CATEGORIES[0].slug;

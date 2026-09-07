@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: PageProps<"/[country]">): Pro
   if (!country) return {};
   return {
     title: country.name,
-    description: `Découvrez ${country.nameWithArticle} en quelques minutes : géographie, population, langues, religion, politique, économie, histoire, culture, territoire et curiosités.`,
+    description: `Découvrez ${country.nameWithArticle} en quelques minutes : géographie et territoire, population, langues, religions, politique, économie, histoire, culture, environnement, et l'essentiel à retenir.`,
     alternates: { canonical: `/${country.slug}` },
   };
 }

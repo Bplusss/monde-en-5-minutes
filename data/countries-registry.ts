@@ -30,6 +30,11 @@ export function getCountryByIso3(iso3: string): CountrySummary | undefined {
   return COUNTRIES.find((c) => c.id === iso3);
 }
 
+/** Looks up a country by its French display name — used to turn a plain-text list (e.g. `GeographyData.borderingCountries`) into real links. */
+export function getCountryByName(name: string): CountrySummary | undefined {
+  return COUNTRIES.find((c) => c.name === name);
+}
+
 export function getAvailableCountries(): CountrySummary[] {
   return COUNTRIES.filter((c) => c.status === "available");
 }

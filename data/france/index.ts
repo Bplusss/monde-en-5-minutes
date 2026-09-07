@@ -9,7 +9,8 @@ import { economy } from "./economy";
 import { history } from "./history";
 import { culture } from "./culture";
 import { territories } from "./territories";
-import { curiosities } from "./curiosities";
+import { environment } from "./environment";
+import { keyFacts } from "./keyfacts";
 import { cities } from "./cities";
 import { rivers } from "./rivers";
 import { regions } from "./regions";
@@ -25,7 +26,8 @@ export const france: Country = {
   history,
   culture,
   territories,
-  curiosities,
+  environment,
+  keyFacts,
   cities,
   rivers,
   regions,

@@ -5,6 +5,16 @@ import { italy } from "./italy";
 import { germany } from "./germany";
 import { spain } from "./spain";
 import { portugal } from "./portugal";
+import { austria } from "./autriche";
+import { netherlands } from "./pays-bas";
+import { unitedKingdom } from "./royaume-uni";
+import { belgium } from "./belgique";
+import { norway } from "./norvege";
+import { poland } from "./pologne";
+import { switzerland } from "./suisse";
+import { sweden } from "./suede";
+import { greece } from "./grece";
+import { denmark } from "./danemark";
 
 /** Full `Country` records — the only ones that can be rendered as a country page or in a comparison. */
 export const FULL_COUNTRIES: Record<string, Country> = {
@@ -13,6 +23,16 @@ export const FULL_COUNTRIES: Record<string, Country> = {
   [germany.slug]: germany,
   [spain.slug]: spain,
   [portugal.slug]: portugal,
+  [austria.slug]: austria,
+  [netherlands.slug]: netherlands,
+  [unitedKingdom.slug]: unitedKingdom,
+  [belgium.slug]: belgium,
+  [norway.slug]: norway,
+  [poland.slug]: poland,
+  [switzerland.slug]: switzerland,
+  [sweden.slug]: sweden,
+  [greece.slug]: greece,
+  [denmark.slug]: denmark,
 };
 
 export function getFullCountry(slug: string): Country | undefined {

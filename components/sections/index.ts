@@ -8,8 +8,8 @@ import { PoliticsSection } from "./PoliticsSection";
 import { EconomySection } from "./EconomySection";
 import { HistorySection } from "./HistorySection";
 import { CultureSection } from "./CultureSection";
-import { TerritoriesSection } from "./TerritoriesSection";
-import { CuriositiesSection } from "./CuriositiesSection";
+import { EnvironmentSection } from "./EnvironmentSection";
+import { AtRetenirSection } from "./AtRetenirSection";
 
 export const SECTION_COMPONENTS: Record<CategoryKey, ComponentType<{ country: Country }>> = {
   geographie: GeographySection,
@@ -20,6 +20,6 @@ export const SECTION_COMPONENTS: Record<CategoryKey, ComponentType<{ country: Co
   economie: EconomySection,
   histoire: HistorySection,
   culture: CultureSection,
-  territoire: TerritoriesSection,
-  curiosites: CuriositiesSection,
+  environnement: EnvironmentSection,
+  a_retenir: AtRetenirSection,
 };

@@ -4,7 +4,7 @@ import { formatCompact, formatCurrencyCompact, formatNumber, formatPercent, with
 export interface ComparisonMetric {
   key: string;
   label: string;
-  /** Which of the site's 10 categories this metric belongs to — drives the section grouping in the comparison view. */
+  /** Which of the site's categories this metric belongs to — drives the section grouping in the comparison view. */
   category: CategoryKey;
   format: (country: Country) => string;
   /** Raw numeric value used to size the comparison bars — must be the same unit for both countries. */
@@ -69,14 +69,14 @@ export const COMPARISON_METRICS: ComparisonMetric[] = [
   {
     key: "regionsCount",
     label: "Régions",
-    category: "territoire",
+    category: "geographie",
     format: (c) => String(c.territories.metropolitanRegions.length),
     rawValue: (c) => c.territories.metropolitanRegions.length,
   },
   {
     key: "overseasCount",
     label: "Territoires d'outre-mer",
-    category: "territoire",
+    category: "geographie",
     format: (c) => String(c.territories.overseas.length),
     rawValue: (c) => c.territories.overseas.length,
   },
@@ -107,6 +107,20 @@ export const COMPARISON_METRICS: ComparisonMetric[] = [
     category: "politique",
     format: (c) => formatNumber(legislatureSeats(c)),
     rawValue: legislatureSeats,
+  },
+  {
+    key: "renewableShare",
+    label: "Part des renouvelables",
+    category: "environnement",
+    format: (c) => formatPercent(c.environment.renewableShare.value, 1),
+    rawValue: (c) => c.environment.renewableShare.value,
+  },
+  {
+    key: "co2PerCapita",
+    label: "Émissions de CO₂ par habitant",
+    category: "environnement",
+    format: (c) => withUnit(formatNumber(c.environment.co2PerCapita.value, 1), "t"),
+    rawValue: (c) => c.environment.co2PerCapita.value,
   },
 ];
 

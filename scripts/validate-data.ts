@@ -77,7 +77,8 @@ function validateCountry(country: Country) {
     "history",
     "culture",
     "territories",
-    "curiosities",
+    "environment",
+    "keyFacts",
   ];
   for (const cat of requiredCategories) {
     if (!country[cat]) err(`${p} : catégorie manquante "${String(cat)}".`);
@@ -94,9 +95,12 @@ function validateCountry(country: Country) {
     }
   }
 
-  for (const c of country.curiosities) {
-    if (!c.source) warn(`${p}.curiosities : "${c.title}" sans source.`);
+  for (const f of country.keyFacts) {
+    if (!f.source) warn(`${p}.keyFacts : "${f.title}" sans source.`);
   }
+
+  checkSourced(`${p}.environment.renewableShare`, country.environment.renewableShare);
+  checkSourced(`${p}.environment.co2PerCapita`, country.environment.co2PerCapita);
 
   for (const city of country.cities) {
     if (city.population) checkSourced(`${p}.cities.${city.name}.population`, city.population, true);

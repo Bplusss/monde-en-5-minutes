@@ -3,8 +3,8 @@
  * Kept as separate, narrow interfaces (rather than one giant blob) so the
  * shape maps cleanly onto future Supabase tables: country_stats,
  * country_languages, country_religions, country_politics, country_economy,
- * country_history, country_culture, country_territories, country_curiosities,
- * cities, rivers, regions, sources.
+ * country_history, country_culture, country_territories, country_environment,
+ * country_key_facts, cities, rivers, regions, sources.
  */
 
 export interface Sourced<T> {
@@ -203,7 +203,24 @@ export interface TerritoriesData {
   overseas: OverseasTerritory[];
 }
 
-export interface Curiosity {
+export interface EnvironmentIndicator {
+  label: string;
+  value: Sourced<string | number>;
+}
+
+export interface EnvironmentData {
+  renewableShare: Sourced<number>;
+  co2PerCapita: Sourced<number>;
+  /** Extra stats beyond the two headline figures — e.g. forest cover, protected area. */
+  indicators: EnvironmentIndicator[];
+  /** Main natural hazards the country faces, kept short (labels, not paragraphs). */
+  risks: string[];
+  /** Attribution for `risks`, a plain label list rather than individually `Sourced` values. */
+  risksSource: { source: string; sourceUrl?: string };
+  summary: string;
+}
+
+export interface KeyFact {
   title: string;
   description: string;
   source?: string;
@@ -219,8 +236,8 @@ export type CategoryKey =
   | "economie"
   | "histoire"
   | "culture"
-  | "territoire"
-  | "curiosites";
+  | "environnement"
+  | "a_retenir";
 
 export interface Country extends CountrySummary {
   capital: string;
@@ -236,7 +253,8 @@ export interface Country extends CountrySummary {
   history: HistoryData;
   culture: CultureData;
   territories: TerritoriesData;
-  curiosities: Curiosity[];
+  environment: EnvironmentData;
+  keyFacts: KeyFact[];
   cities: City[];
   rivers: River[];
   regions: Region[];

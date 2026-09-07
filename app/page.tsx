@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { WorldMap } from "@/components/map/WorldMap";
 import { Button } from "@/components/ui/Button";
+import { CountrySearchBar } from "@/components/CountrySearchBar";
 import { CATEGORIES } from "@/lib/categories";
+import { COUNTRIES } from "@/data/countries-registry";
 
 export default function HomePage() {
   return (
@@ -18,15 +20,23 @@ export default function HomePage() {
               Géographie, population, économie, histoire, culture : l&apos;essentiel d&apos;un pays, présenté de
               façon claire, visuelle et sourcée. Sans jugement, sans opinion — que des faits.
             </p>
-            <div className="mt-6 flex flex-wrap items-center gap-3">
+            <div className="mt-6">
+              <CountrySearchBar countries={COUNTRIES} />
+            </div>
+            <div className="mt-4 flex flex-wrap items-center gap-3">
               <Link href="/pays">
-                <Button>Voir tous les pays</Button>
+                <Button variant="secondary">Voir tous les pays</Button>
               </Link>
             </div>
           </div>
 
-          <div className="aspect-[3/2] w-full overflow-hidden rounded-2xl border border-border sm:aspect-[16/9]">
-            <WorldMap className="size-full" />
+          <div>
+            <div className="aspect-[3/2] w-full overflow-hidden rounded-2xl border border-border sm:aspect-[16/9]">
+              <WorldMap className="size-full" />
+            </div>
+            <p className="mt-2 text-center text-sm text-muted">
+              🖱️ Cliquez sur un pays pour découvrir sa fiche.
+            </p>
           </div>
         </div>
       </section>
@@ -37,7 +47,7 @@ export default function HomePage() {
             Dix angles pour comprendre un pays
           </h2>
           <p className="mt-2 text-[15px] leading-relaxed text-muted">
-            Chaque fiche pays suit la même structure claire, de la géographie aux curiosités.
+            Chaque fiche pays suit la même structure claire, de la géographie à l&apos;essentiel à retenir.
           </p>
         </div>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">

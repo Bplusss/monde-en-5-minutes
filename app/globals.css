@@ -61,9 +61,13 @@ body {
   font-family: var(--font-display), Georgia, serif;
 }
 
-/* Numbers and KPIs must never break mid-value: unit stays glued to figure. */
+/*
+ * KPI figures: tabular numerals for alignment. Number-to-unit gluing is done
+ * via non-breaking spaces in lib/format.ts, not by forcing the whole value
+ * onto one line here — a blanket `white-space: nowrap` would force free-text
+ * values (e.g. a currency name) to overflow their card instead of wrapping.
+ */
 .kpi-value {
-  white-space: nowrap;
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.01em;
 }
