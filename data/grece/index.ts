@@ -34,6 +34,7 @@ export const greece: Country = {
   maps: {
     outlineGeojsonUrl: "/geo/grece-outline.json",
     regionsGeojsonUrl: "/geo/grece-regions.json",
+    riversGeojsonUrl: "/geo/grece-rivers.json",
     center: [23.5, 39.0],
     zoom: 5.8,
   },

@@ -34,6 +34,7 @@ export const norway: Country = {
   maps: {
     outlineGeojsonUrl: "/geo/norvege-outline.json",
     regionsGeojsonUrl: "/geo/norvege-regions.json",
+    riversGeojsonUrl: "/geo/norvege-rivers.json",
     center: [10.5, 64.5],
     zoom: 3.9,
   },

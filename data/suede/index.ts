@@ -34,6 +34,7 @@ export const sweden: Country = {
   maps: {
     outlineGeojsonUrl: "/geo/suede-outline.json",
     regionsGeojsonUrl: "/geo/suede-regions.json",
+    riversGeojsonUrl: "/geo/suede-rivers.json",
     center: [16.5, 62.5],
     zoom: 4.0,
   },
