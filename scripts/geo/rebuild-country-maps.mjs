@@ -72,15 +72,43 @@ const COUNTRIES = [
   { slug: "germany", adm0: "DEU", regionMatch: "code", codeProp: "id" },
   { slug: "grece", adm0: "GRC", regionMatch: "code", codeProp: "code" },
   { slug: "italy", adm0: "ITA", regionMatch: "group", groups: ITALY_GROUPS },
-  { slug: "norvege", adm0: "NOR", regionMatch: "code", codeProp: "code" },
-  { slug: "pays-bas", adm0: "NLD", regionMatch: "code", codeProp: "code" },
+  { slug: "norvege", adm0: "NOR", regionMatch: "code", codeProp: "code", mainlandBbox: [4, 57, 31.5, 71.5] },
+  { slug: "pays-bas", adm0: "NLD", regionMatch: "code", codeProp: "code", mainlandBbox: [3.0, 50.5, 7.5, 53.7] },
   { slug: "pologne", adm0: "POL", regionMatch: "code", codeProp: "code" },
-  { slug: "portugal", adm0: "PRT", regionMatch: "name", nameAliases: { "Lisbonne": "Lisboa" } },
-  { slug: "spain", adm0: "ESP", regionMatch: "group", groups: SPAIN_GROUPS },
+  { slug: "portugal", adm0: "PRT", regionMatch: "name", nameAliases: { "Lisbonne": "Lisboa" }, mainlandBbox: [-9.6, 36.9, -6.1, 42.2] },
+  { slug: "spain", adm0: "ESP", regionMatch: "group", groups: SPAIN_GROUPS, mainlandBbox: [-9.5, 35.0, 4.4, 43.9] },
   { slug: "suede", adm0: "SWE", regionMatch: "code", codeProp: "code" },
   { slug: "suisse", adm0: "CHE", regionMatch: "code", codeProp: "code" },
   { slug: "royaume-uni", adm0: "GBR", regionMatch: "none" },
 ];
+
+/**
+ * Some countries' Natural Earth admin0 entry bundles remote dependencies
+ * into the same MultiPolygon as the mainland (e.g. Portugal's PRT includes
+ * Madeira and the Azores, Spain's ESP includes the Canary Islands, the
+ * Netherlands' NLD includes its Caribbean municipalities, Norway's NOR
+ * includes Svalbard/Jan Mayen/Bouvet Island). Drop any polygon ring outside
+ * `bbox` so the main outline shows only the mainland (+ close-by islands)
+ * — remote territories get their own map via build-overseas-maps.mjs.
+ */
+function filterToMainland(geometry, bbox) {
+  if (geometry.type !== "MultiPolygon") return geometry;
+  const polys = geometry.coordinates.filter((poly) => {
+    const [minx, miny, maxx, maxy] = bboxOfRing(poly[0]);
+    const [bminx, bminy, bmaxx, bmaxy] = bbox;
+    return minx >= bminx && maxx <= bmaxx && miny >= bminy && maxy <= bmaxy;
+  });
+  return { type: "MultiPolygon", coordinates: polys };
+}
+
+function bboxOfRing(ring) {
+  let minx = Infinity, miny = Infinity, maxx = -Infinity, maxy = -Infinity;
+  for (const [x, y] of ring) {
+    minx = Math.min(minx, x); maxx = Math.max(maxx, x);
+    miny = Math.min(miny, y); maxy = Math.max(maxy, y);
+  }
+  return [minx, miny, maxx, maxy];
+}
 
 function countPoints(geometry) {
   let n = 0;
@@ -121,10 +149,11 @@ async function main() {
     } else {
       const current = readFeatureCollection(outlinePath);
       const before = countPoints(current.features[0].geometry);
-      current.features[0].geometry = neOutline.geometry;
-      const after = countPoints(neOutline.geometry);
+      const geometry = country.mainlandBbox ? filterToMainland(neOutline.geometry, country.mainlandBbox) : neOutline.geometry;
+      current.features[0].geometry = geometry;
+      const after = countPoints(geometry);
       writeFeatureCollection(outlinePath, current.features);
-      console.log(`  outline: ${before} -> ${after} points`);
+      console.log(`  outline: ${before} -> ${after} points${country.mainlandBbox ? " (mainland-filtered)" : ""}`);
     }
 
     // --- Regions ---------------------------------------------------------

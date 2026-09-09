@@ -12,10 +12,11 @@ export const territories: TerritoriesData = {
     { name: "Territoires britanniques d'outre-mer", count: 14, source: WIKI, sourceUrl: WIKI_URL },
   ],
   metropolitanRegions: regions,
+  overseasMapGeojsonUrl: "/geo/royaume-uni-overseas.json",
   overseas: [
-    { name: "Gibraltar", status: "Territoire britannique d'outre-mer", population: { value: 33_701, year: 2019, source: WIKI, sourceUrl: WIKI_URL } },
-    { name: "Bermudes", status: "Territoire britannique d'outre-mer", population: { value: 62_506, year: 2019, source: WIKI, sourceUrl: WIKI_URL } },
-    { name: "Îles Caïmans", status: "Territoire britannique d'outre-mer", population: { value: 78_554, year: 2022, source: WIKI, sourceUrl: WIKI_URL } },
-    { name: "Îles Falkland (Malouines)", status: "Territoire britannique d'outre-mer", population: { value: 3_377, year: 2019, source: WIKI, sourceUrl: WIKI_URL } },
+    { name: "Gibraltar", status: "Territoire britannique d'outre-mer", population: { value: 33_701, year: 2019, source: WIKI, sourceUrl: WIKI_URL }, mapGroupId: "gibraltar" },
+    { name: "Bermudes", status: "Territoire britannique d'outre-mer", population: { value: 62_506, year: 2019, source: WIKI, sourceUrl: WIKI_URL }, mapGroupId: "bermudes" },
+    { name: "Îles Caïmans", status: "Territoire britannique d'outre-mer", population: { value: 78_554, year: 2022, source: WIKI, sourceUrl: WIKI_URL }, mapGroupId: "iles-caimans" },
+    { name: "Îles Falkland (Malouines)", status: "Territoire britannique d'outre-mer", population: { value: 3_377, year: 2019, source: WIKI, sourceUrl: WIKI_URL }, mapGroupId: "falkland" },
   ],
 };
