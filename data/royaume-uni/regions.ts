@@ -1,6 +1,6 @@
 import type { Region } from "@/lib/types";
 
-/** Les 4 nations constitutives du Royaume-Uni — pas de couche cartographique dédiée pour ce pays (voir index.ts). */
+/** Les 4 nations constitutives du Royaume-Uni — carte dédiée dans royaume-uni-regions.json (voir index.ts). */
 export const regions: Region[] = [
   { code: "ENG", name: "Angleterre" },
   { code: "SCT", name: "Écosse" },

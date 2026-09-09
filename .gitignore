@@ -37,6 +37,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# cached source datasets (regenerate via scripts/geo/*)
+/.cache
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

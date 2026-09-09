@@ -33,6 +33,7 @@ export const unitedKingdom: Country = {
   regions,
   maps: {
     outlineGeojsonUrl: "/geo/royaume-uni-outline.json",
+    regionsGeojsonUrl: "/geo/royaume-uni-regions.json",
     riversGeojsonUrl: "/geo/royaume-uni-rivers.json",
     center: [-2.5, 54.5],
     zoom: 5.0,
