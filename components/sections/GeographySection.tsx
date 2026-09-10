@@ -32,7 +32,7 @@ export function GeographySection({ country }: { country: Country }) {
       <div className="grid gap-4 sm:grid-cols-3">
         <StatTile
           label="Superficie"
-          value={withUnit(formatNumber(geography.areaKm2.value), geography.areaKm2.unit ?? "km²")}
+          value={withUnit(formatNumber(geography.areaKm2.value, geography.areaKm2.value < 1 ? 2 : 0), geography.areaKm2.unit ?? "km²")}
           icon={<MapPinned className="size-4" aria-hidden />}
           accentText={cat.text}
           accentBg={cat.bg}

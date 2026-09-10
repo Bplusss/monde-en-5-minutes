@@ -8,7 +8,10 @@ import { Button } from "@/components/ui/Button";
 export function CountryHeader({ country }: { country: Country }) {
   const kpis = [
     { value: withUnit(formatCompact(country.population.total.value), "habitants"), label: "Population" },
-    { value: withUnit(formatCompact(country.geography.areaKm2.value, 0), "km²"), label: "Superficie" },
+    {
+      value: withUnit(formatCompact(country.geography.areaKm2.value, country.geography.areaKm2.value < 1 ? 2 : 0), "km²"),
+      label: "Superficie",
+    },
     { value: withUnit(String(country.regions.length), "régions"), label: "Territoire" },
   ];
 

@@ -24,7 +24,7 @@ interface CountryMapProps {
  * `Country.rivers`, so a new country needs new data, never a new component.
  */
 export function CountryMap({ maps, layer, className, cities = [], rivers = [] }: CountryMapProps) {
-  const { center, zoom } = maps;
+  const { center, zoom, maxZoom = 9 } = maps;
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<MapLibreMap | null>(null);
 
@@ -49,7 +49,7 @@ export function CountryMap({ maps, layer, className, cities = [], rivers = [] }:
       center,
       zoom,
       minZoom: Math.max(zoom - 1.2, 0),
-      maxZoom: 9,
+      maxZoom,
       attributionControl: { compact: true },
       dragRotate: false,
       touchPitch: false,

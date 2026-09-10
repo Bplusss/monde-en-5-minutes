@@ -37,7 +37,13 @@ const RIVER_MATCHES = {
     { riverName: "Danube", neNames: ["Danube"] },
   ],
   estonie: [{ riverName: "Narva", neNames: ["Narva"] }],
+  bielorussie: [
+    { riverName: "Dniepr", neNames: ["Dnipro"] },
+    { riverName: "Pripiat", neNames: ["Pripyat"] },
+    { riverName: "Dvina occidentale", neNames: ["Daugava"] },
+  ],
   irlande: [{ riverName: "Shannon", neNames: ["Shannon"] }],
+  luxembourg: [{ riverName: "Moselle", neNames: ["Mosel"] }],
   finlande: [
     { riverName: "Kemijoki", neNames: ["Kemijoki"] },
     { riverName: "Oulujoki", neNames: ["Oulu"] },

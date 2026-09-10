@@ -15,10 +15,11 @@ const ROOT = path.resolve(import.meta.dirname, "../..");
 const GEO_DIR = path.join(ROOT, "public/geo");
 
 const COUNTRIES = [
-  "albanie", "autriche", "belgique", "bulgarie", "croatie", "danemark",
-  "estonie", "finlande", "france", "germany", "grece", "hongrie", "irlande",
-  "italy", "lituanie", "norvege", "pays-bas", "pologne", "portugal",
-  "royaume-uni", "spain", "suede", "suisse", "tchequie",
+  "albanie", "andorre", "autriche", "belgique", "bielorussie", "bulgarie",
+  "croatie", "danemark", "estonie", "finlande", "france", "germany", "grece",
+  "hongrie", "irlande", "italy", "lituanie", "luxembourg", "norvege",
+  "pays-bas", "pologne", "portugal", "royaume-uni", "spain", "suede",
+  "suisse", "tchequie",
 ];
 
 /** Extracts { code, name } pairs from a regions.ts file's simple object-literal array. */

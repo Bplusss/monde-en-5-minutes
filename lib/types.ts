@@ -59,6 +59,8 @@ export interface CountryMaps {
   riversGeojsonUrl?: string;
   center: [number, number]; // [lon, lat]
   zoom: number;
+  /** Overrides the default max zoom (9) — needed for microstates (e.g. Vatican) whose whole territory only becomes visible well past that. */
+  maxZoom?: number;
 }
 
 export interface GeographyData {
