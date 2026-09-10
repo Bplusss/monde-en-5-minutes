@@ -37,6 +37,16 @@ const RIVER_MATCHES = {
     { riverName: "Danube", neNames: ["Danube"] },
   ],
   estonie: [{ riverName: "Narva", neNames: ["Narva"] }],
+  hongrie: [
+    { riverName: "Danube (Duna)", neNames: ["Danube"] },
+    { riverName: "Tisza", neNames: ["Tisa"] },
+    { riverName: "Dráva", neNames: ["Mur"] }, // NE dissolves the lower Drava into the "Mur" line (name_alt: "Drava")
+  ],
+  tchequie: [
+    { riverName: "Vltava", neNames: ["Vltava"] },
+    { riverName: "Labe (Elbe)", neNames: ["Elbe"] },
+    { riverName: "Morava", neNames: ["Morava"] },
+  ],
   lituanie: [
     { riverName: "Nemunas (Niémen)", neNames: ["Neman"] },
     { riverName: "Neris (Vilia)", neNames: ["Neris"] },

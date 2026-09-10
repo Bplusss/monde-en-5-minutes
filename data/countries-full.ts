@@ -20,6 +20,8 @@ import { lithuania } from "./lituanie";
 import { bulgaria } from "./bulgarie";
 import { croatia } from "./croatie";
 import { estonia } from "./estonie";
+import { hungary } from "./hongrie";
+import { czechia } from "./tchequie";
 
 /** Full `Country` records — the only ones that can be rendered as a country page or in a comparison. */
 export const FULL_COUNTRIES: Record<string, Country> = {
@@ -43,6 +45,8 @@ export const FULL_COUNTRIES: Record<string, Country> = {
   [bulgaria.slug]: bulgaria,
   [croatia.slug]: croatia,
   [estonia.slug]: estonia,
+  [hungary.slug]: hungary,
+  [czechia.slug]: czechia,
 };
 
 export function getFullCountry(slug: string): Country | undefined {
