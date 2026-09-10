@@ -15,6 +15,13 @@ export interface ComparisonMetric {
 
 const capitalPopulation = (c: Country) => c.cities.find((city) => city.isCapital)?.population?.value ?? 0;
 
+/** Reads the optional "nuclear share" environment indicator by label — absent for countries where nuclear power isn't part of the electricity mix. */
+const NUCLEAR_SHARE_LABEL = "Part du nucléaire dans l'électricité";
+const nuclearShare = (c: Country): number | undefined => {
+  const value = c.environment.indicators.find((i) => i.label === NUCLEAR_SHARE_LABEL)?.value.value;
+  return typeof value === "number" ? value : undefined;
+};
+
 /**
  * Generic metric list: works for any pair of `Country` records, never a
  * hardcoded pair of nations. New metrics only need to read from the shared
@@ -121,6 +128,14 @@ export const COMPARISON_METRICS: ComparisonMetric[] = [
     category: "environnement",
     format: (c) => withUnit(formatNumber(c.environment.co2PerCapita.value, 1), "t"),
     rawValue: (c) => c.environment.co2PerCapita.value,
+  },
+  {
+    key: "nuclearShare",
+    label: "Part du nucléaire dans l'électricité",
+    category: "environnement",
+    format: (c) => formatPercent(nuclearShare(c) ?? 0, 1),
+    rawValue: (c) => nuclearShare(c) ?? 0,
+    isAvailable: (c) => nuclearShare(c) !== undefined,
   },
 ];
 
