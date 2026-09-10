@@ -3,6 +3,7 @@ import { Inter, Fraunces } from "next/font/google";
 import Script from "next/script";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const MAPLIBRE_VERSION = "5.24.0";
@@ -19,8 +20,6 @@ const fraunces = Fraunces({
   axes: ["opsz", "SOFT", "WONK"],
   display: "swap",
 });
-
-const SITE_URL = "https://le-monde-en-5-minutes.example";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

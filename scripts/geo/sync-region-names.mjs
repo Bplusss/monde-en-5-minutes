@@ -43,9 +43,17 @@ function main() {
     if (only.length && !only.includes(slug)) continue;
     const geoPath = path.join(GEO_DIR, `${slug}-regions.json`);
     if (!existsSync(geoPath)) continue;
-
-    const byCode = new Map(parseRegionsTs(slug).map((e) => [e.code, e.name]));
     const geo = JSON.parse(readFileSync(geoPath, "utf8"));
+
+    // regions.ts sometimes stores the bare code ("VAN"), sometimes the full
+    // ISO one ("BE-VAN") like the GeoJSON does — index both forms.
+    const countryPrefix = geo.features[0]?.properties.code?.split("-")[0];
+    const byCode = new Map();
+    for (const e of parseRegionsTs(slug)) {
+      byCode.set(e.code, e.name);
+      if (countryPrefix) byCode.set(`${countryPrefix}-${e.code}`, e.name);
+    }
+
     let changed = 0;
     const unmatched = [];
     for (const f of geo.features) {

@@ -5,22 +5,55 @@
 // Usage: node scripts/geo/build-rivers.mjs [slug ...]
 //   (no args = rebuild every country listed in RIVER_MATCHES below)
 //
-// For each country, RIVER_MATCHES lists { riverName, neNames }: `riverName`
-// must equal the `name` field of that river in data/<slug>/rivers.ts exactly
-// (required for the click-to-see-info popup on CountryMap to find it),
-// `neNames` are the Natural Earth `properties.name` value(s) whose
-// geometry to use — sometimes a river is split into several dissolved
-// segments in the source data, so more than one name may be needed.
+// For each country, RIVER_MATCHES lists { riverName, neNames } or
+// { riverName, osm }: `riverName` must equal the `name` field of that river
+// in data/<slug>/rivers.ts exactly (required for the click-to-see-info popup
+// on CountryMap to find it). `neNames` are the Natural Earth
+// `properties.name` value(s) whose geometry to use — sometimes a river is
+// split into several dissolved segments in the source data, so more than one
+// name may be needed. When a river has no Natural Earth geometry at all
+// (too minor for the 1:10m dataset — e.g. Denmark's Gudenå), `osm` falls
+// back to OpenStreetMap's Overpass API instead: { nameRegex, bbox } fetches
+// every `waterway=river` way whose name matches within that
+// [minLon, minLat, maxLon, maxLat] box, cached under .cache/osm-rivers/ so
+// re-runs don't re-hit the (rate-limited) public API. OSM data is ODbL —
+// keep that in mind if this ever needs public attribution.
 //
 // After writing each file this also clips it to the country's own outline
 // (see clip-rivers.mjs) so a river shared with a neighbour only draws the
 // segment inside this country.
-import { readFileSync, writeFileSync, existsSync } from "node:fs";
+import { readFileSync, writeFileSync, existsSync, mkdirSync } from "node:fs";
 import path from "node:path";
 import * as turf from "@turf/turf";
 import { ensureNaturalEarthData } from "./fetch-natural-earth.mjs";
 
 const GEO_DIR = path.resolve(import.meta.dirname, "../../public/geo");
+const OSM_CACHE_DIR = path.resolve(import.meta.dirname, "../../.cache/osm-rivers");
+
+/** Fetches (and caches) every `waterway=river` OSM way whose name matches `nameRegex` inside `bbox` ([minLon,minLat,maxLon,maxLat]). Returns an array of [lon,lat] coordinate arrays. */
+async function fetchOsmRiverWays(cacheKey, nameRegex, bbox) {
+  mkdirSync(OSM_CACHE_DIR, { recursive: true });
+  const cachePath = path.join(OSM_CACHE_DIR, `${cacheKey}.json`);
+  if (existsSync(cachePath)) return JSON.parse(readFileSync(cachePath, "utf8"));
+
+  const [minLon, minLat, maxLon, maxLat] = bbox;
+  const query = `[out:json][timeout:30];way["waterway"="river"]["name"~"${nameRegex}"](${minLat},${minLon},${maxLat},${maxLon});out geom;`;
+  const res = await fetch("https://overpass-api.de/api/interpreter", {
+    method: "POST",
+    body: `data=${encodeURIComponent(query)}`,
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+  });
+  const text = await res.text();
+  let json;
+  try {
+    json = JSON.parse(text);
+  } catch {
+    throw new Error(`Overpass request for "${nameRegex}" failed (likely rate-limited): ${text.slice(0, 200)}`);
+  }
+  const lines = json.elements.filter((e) => e.type === "way" && e.geometry).map((e) => e.geometry.map((pt) => [pt.lon, pt.lat]));
+  writeFileSync(cachePath, JSON.stringify(lines));
+  return lines;
+}
 
 const RIVER_MATCHES = {
   albanie: [
@@ -62,6 +95,10 @@ const RIVER_MATCHES = {
   lituanie: [
     { riverName: "Nemunas (Niémen)", neNames: ["Neman"] },
     { riverName: "Neris (Vilia)", neNames: ["Neris"] },
+  ],
+  danemark: [
+    // No Natural Earth geometry at 1:10m for the Gudenå (too minor); OSM has it.
+    { riverName: "Gudenå", osm: { nameRegex: "Guden", bbox: [8.0, 54.5, 13.0, 57.0] } },
   ],
 };
 
@@ -115,14 +152,23 @@ async function main() {
 
     const features = [];
     const missing = [];
-    for (const { riverName, neNames } of matches) {
-      const segments = neRivers.features.filter((f) => neNames.includes(f.properties.name));
-      if (!segments.length) { missing.push(riverName); continue; }
-      const lines = [];
-      for (const seg of segments) {
-        const parts = seg.geometry.type === "LineString" ? [seg.geometry.coordinates] : seg.geometry.coordinates;
-        lines.push(...parts);
+    for (const { riverName, neNames, osm } of matches) {
+      let lines = [];
+      if (neNames) {
+        const segments = neRivers.features.filter((f) => neNames.includes(f.properties.name));
+        for (const seg of segments) {
+          const parts = seg.geometry.type === "LineString" ? [seg.geometry.coordinates] : seg.geometry.coordinates;
+          lines.push(...parts);
+        }
       }
+      if (!lines.length && osm) {
+        try {
+          lines = await fetchOsmRiverWays(`${slug}-${riverName}`, osm.nameRegex, osm.bbox);
+        } catch (err) {
+          console.warn(`! ${slug}/${riverName}: OSM fetch failed — ${err.message}`);
+        }
+      }
+      if (!lines.length) { missing.push(riverName); continue; }
       const geometry = lines.length === 1 ? { type: "LineString", coordinates: lines[0] } : { type: "MultiLineString", coordinates: lines };
       features.push({ type: "Feature", geometry, properties: { name: riverName } });
     }
