@@ -35,7 +35,7 @@ export const portugal: Country = {
     outlineGeojsonUrl: "/geo/portugal-outline.json",
     regionsGeojsonUrl: "/geo/portugal-regions.json",
     riversGeojsonUrl: "/geo/portugal-rivers.json",
-    center: [-8.2, 39.6],
-    zoom: 5.6,
+    center: [-7.9, 39.6],
+    zoom: 4.9,
   },
 };

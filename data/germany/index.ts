@@ -35,7 +35,7 @@ export const germany: Country = {
     outlineGeojsonUrl: "/geo/germany-outline.json",
     regionsGeojsonUrl: "/geo/germany-regions.json",
     riversGeojsonUrl: "/geo/germany-rivers.json",
-    center: [10.2, 51.2],
-    zoom: 4.7,
+    center: [10.4, 51.3],
+    zoom: 4.0,
   },
 };

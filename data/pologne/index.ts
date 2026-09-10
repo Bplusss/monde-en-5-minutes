@@ -35,7 +35,7 @@ export const poland: Country = {
     outlineGeojsonUrl: "/geo/pologne-outline.json",
     regionsGeojsonUrl: "/geo/pologne-regions.json",
     riversGeojsonUrl: "/geo/pologne-rivers.json",
-    center: [19.5, 52.1],
-    zoom: 5.8,
+    center: [19.1, 52.0],
+    zoom: 3.9,
   },
 };

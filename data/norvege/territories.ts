@@ -9,6 +9,7 @@ export const territories: TerritoriesData = {
     { name: "Communes (kommuner)", count: 357, source: "SSB (Statistisk sentralbyrå)", sourceUrl: "https://www.ssb.no/en/" },
   ],
   metropolitanRegions: regions,
+  overseasMapGeojsonUrl: "/geo/norvege-overseas.json",
   overseas: [
     {
       name: "Svalbard",
@@ -19,10 +20,12 @@ export const territories: TerritoriesData = {
         source: "SSB (Statistisk sentralbyrå)",
         sourceUrl: "https://www.ssb.no/en/befolkning/folketall/statistikk/befolkningen-pa-svalbard",
       },
+      mapGroupId: "svalbard",
     },
     {
       name: "Jan Mayen",
       status: "Île volcanique inhabitée en permanence, occupée par une station météorologique et une base militaire norvégienne.",
+      mapGroupId: "jan-mayen",
     },
   ],
 };

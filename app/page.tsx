@@ -34,8 +34,10 @@ export default function HomePage() {
             <div className="aspect-[3/2] w-full overflow-hidden rounded-2xl border border-border sm:aspect-[16/9]">
               <WorldMap className="size-full" />
             </div>
-            <p className="mt-2 text-center text-sm text-muted">
-              🖱️ Cliquez sur un pays pour découvrir sa fiche.
+            <p className="mt-3 flex items-center justify-center gap-1.5 text-center text-sm font-medium text-foreground">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-3.5 py-1.5 shadow-sm">
+                🖱️ Cliquez sur un pays pour découvrir sa fiche complète
+              </span>
             </p>
           </div>
         </div>

@@ -35,7 +35,7 @@ export const netherlands: Country = {
     outlineGeojsonUrl: "/geo/pays-bas-outline.json",
     regionsGeojsonUrl: "/geo/pays-bas-regions.json",
     riversGeojsonUrl: "/geo/pays-bas-rivers.json",
-    center: [5.3, 52.2],
-    zoom: 6.5,
+    center: [5.3, 52.1],
+    zoom: 5.3,
   },
 };

@@ -35,7 +35,7 @@ export const sweden: Country = {
     outlineGeojsonUrl: "/geo/suede-outline.json",
     regionsGeojsonUrl: "/geo/suede-regions.json",
     riversGeojsonUrl: "/geo/suede-rivers.json",
-    center: [16.5, 62.5],
-    zoom: 4.0,
+    center: [17.6, 63.0],
+    zoom: 2.8,
   },
 };

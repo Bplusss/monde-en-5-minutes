@@ -35,7 +35,7 @@ export const france: Country = {
     outlineGeojsonUrl: "/geo/france-outline.json",
     regionsGeojsonUrl: "/geo/france-regions.json",
     riversGeojsonUrl: "/geo/france-rivers.json",
-    center: [2.5, 46.6],
-    zoom: 4.6,
+    center: [2.4, 46.4],
+    zoom: 3.5,
   },
 };

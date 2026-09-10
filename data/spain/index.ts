@@ -35,7 +35,7 @@ export const spain: Country = {
     outlineGeojsonUrl: "/geo/spain-outline.json",
     regionsGeojsonUrl: "/geo/spain-regions.json",
     riversGeojsonUrl: "/geo/spain-rivers.json",
-    center: [-3.7, 40.2],
-    zoom: 4.6,
+    center: [-2.5, 40.0],
+    zoom: 3.5,
   },
 };

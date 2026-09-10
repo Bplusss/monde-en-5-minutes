@@ -35,7 +35,7 @@ export const austria: Country = {
     outlineGeojsonUrl: "/geo/autriche-outline.json",
     regionsGeojsonUrl: "/geo/autriche-regions.json",
     riversGeojsonUrl: "/geo/autriche-rivers.json",
-    center: [14.5, 47.5],
-    zoom: 6.3,
+    center: [13.3, 47.7],
+    zoom: 4.3,
   },
 };

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { FULL_COUNTRIES } from "@/data/countries-full";
 
 export function SiteFooter() {
   return (
@@ -10,11 +9,6 @@ export function SiteFooter() {
           <Link href="/pays" className="focus-ring rounded hover:text-foreground">
             Pays
           </Link>
-          {Object.values(FULL_COUNTRIES).map((country) => (
-            <Link key={country.slug} href={`/${country.slug}`} className="focus-ring rounded hover:text-foreground">
-              {country.name}
-            </Link>
-          ))}
           <Link href="/comparer" className="focus-ring rounded hover:text-foreground">
             Comparer
           </Link>

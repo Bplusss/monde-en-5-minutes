@@ -35,7 +35,7 @@ export const italy: Country = {
     outlineGeojsonUrl: "/geo/italy-outline.json",
     regionsGeojsonUrl: "/geo/italy-regions.json",
     riversGeojsonUrl: "/geo/italy-rivers.json",
-    center: [12.5, 42.5],
-    zoom: 4.6,
+    center: [12.6, 42.1],
+    zoom: 3.7,
   },
 };

@@ -28,15 +28,26 @@ function within(bbox, region) {
   return minx >= rminx && maxx <= rmaxx && miny >= rminy && maxy <= rmaxy;
 }
 
-// Sub-regions of Natural Earth's single "France" admin0 multipolygon: these
-// DROMs aren't separate map units in NE (unlike New Caledonia, French
-// Polynesia, etc.), so extract them by bounding box instead.
-const FRA_SUBREGIONS = {
-  guyane: { name: "Guyane", bbox: [-55, 1.5, -51, 6] },
-  martinique: { name: "Martinique", bbox: [-61.5, 14.2, -60.5, 15.0] },
-  guadeloupe: { name: "Guadeloupe", bbox: [-62.0, 15.7, -60.9, 16.6] },
-  "la-reunion": { name: "La Réunion", bbox: [54.9, -21.6, 56.0, -20.7] },
-  mayotte: { name: "Mayotte", bbox: [44.9, -13.1, 45.35, -12.6] },
+// Sub-regions of a single admin0 multipolygon that aren't their own Natural
+// Earth map unit (unlike New Caledonia, French Polynesia, etc.), so they're
+// extracted by bounding box instead.
+const SUBREGIONS = {
+  france: {
+    guyane: { name: "Guyane", bbox: [-55, 1.5, -51, 6] },
+    martinique: { name: "Martinique", bbox: [-61.5, 14.2, -60.5, 15.0] },
+    guadeloupe: { name: "Guadeloupe", bbox: [-62.0, 15.7, -60.9, 16.6] },
+    "la-reunion": { name: "La Réunion", bbox: [54.9, -21.6, 56.0, -20.7] },
+    mayotte: { name: "Mayotte", bbox: [44.9, -13.1, 45.35, -12.6] },
+  },
+  "pays-bas": {
+    bonaire: { name: "Bonaire", bbox: [-68.5, 11.9, -68.1, 12.4] },
+    "sint-eustatius": { name: "Sint Eustatius", bbox: [-63.05, 17.4, -62.9, 17.6] },
+    saba: { name: "Saba", bbox: [-63.3, 17.58, -63.2, 17.68] },
+  },
+  norvege: {
+    svalbard: { name: "Svalbard", bbox: [9, 74, 35, 81] },
+    "jan-mayen": { name: "Jan Mayen", bbox: [-9.5, 70.5, -7.5, 71.5] },
+  },
 };
 
 // Overseas territories that ARE their own Natural Earth admin0 map unit.
@@ -56,31 +67,58 @@ const DIRECT_ADM0 = {
     CYM: { group: "iles-caimans", name: "Îles Caïmans" },
     FLK: { group: "falkland", name: "Îles Falkland (Malouines)" },
   },
+  "pays-bas": {
+    ABW: { group: "aruba", name: "Aruba" },
+    CUW: { group: "curacao", name: "Curaçao" },
+    SXM: { group: "sint-maarten", name: "Sint Maarten" },
+  },
+  danemark: {
+    GRL: { group: "groenland", name: "Groenland" },
+    FRO: { group: "iles-feroe", name: "Îles Féroé" },
+  },
 };
+
+/** Builds one country's overseas GeoJSON from its direct-admin0 units plus any bbox sub-regions of its own admin0 multipolygon. */
+function buildOverseas(slug, admin0Features, adm0a3ForSubregions) {
+  const features = [];
+  for (const [adm0a3, { group, name }] of Object.entries(DIRECT_ADM0[slug] ?? {})) {
+    const f = admin0Features.find((x) => x.properties.ADM0_A3 === adm0a3);
+    if (!f) { console.warn(`! ${adm0a3} not found`); continue; }
+    features.push({ type: "Feature", geometry: f.geometry, properties: { group, name } });
+  }
+  const subregions = SUBREGIONS[slug];
+  if (subregions && adm0a3ForSubregions) {
+    const parent = admin0Features.find((f) => f.properties.ADM0_A3 === adm0a3ForSubregions);
+    for (const [group, { name, bbox }] of Object.entries(subregions)) {
+      const polys = parent.geometry.coordinates.filter((poly) => within(bboxOfRing(poly[0]), bbox));
+      if (!polys.length) { console.warn(`! no ${adm0a3ForSubregions} polygons matched ${group}`); continue; }
+      const geometry = polys.length === 1 ? { type: "Polygon", coordinates: polys[0] } : { type: "MultiPolygon", coordinates: polys };
+      features.push({ type: "Feature", geometry, properties: { group, name } });
+    }
+  }
+  return features;
+}
 
 async function main() {
   const { admin0: admin0Path, admin1: admin1Path } = await ensureNaturalEarthData();
   const admin0 = JSON.parse(readFileSync(admin0Path, "utf8"));
   const admin1 = JSON.parse(readFileSync(admin1Path, "utf8"));
 
-  // --- France --------------------------------------------------------------
-  const fraFeatures = [];
-  for (const [adm0a3, { group, name }] of Object.entries(DIRECT_ADM0.france)) {
-    const f = admin0.features.find((x) => x.properties.ADM0_A3 === adm0a3);
-    if (!f) { console.warn(`! ${adm0a3} not found`); continue; }
-    fraFeatures.push({ type: "Feature", geometry: f.geometry, properties: { group, name } });
+  // --- Countries whose overseas territories are direct admin0 units and/or
+  // bbox sub-regions of their own admin0 multipolygon. ---------------------
+  for (const [slug, parentAdm0a3] of [
+    ["france", "FRA"],
+    ["royaume-uni", null],
+    ["pays-bas", "NLD"],
+    ["danemark", null],
+    ["norvege", "NOR"],
+  ]) {
+    const features = buildOverseas(slug, admin0.features, parentAdm0a3);
+    writeFeatureCollection(path.join(GEO_DIR, `${slug}-overseas.json`), features);
+    console.log(`${slug}-overseas.json: ${features.length} territories`);
   }
-  const fra = admin0.features.find((f) => f.properties.ADM0_A3 === "FRA");
-  for (const [group, { name, bbox }] of Object.entries(FRA_SUBREGIONS)) {
-    const polys = fra.geometry.coordinates.filter((poly) => within(bboxOfRing(poly[0]), bbox));
-    if (!polys.length) { console.warn(`! no FRA polygons matched ${group}`); continue; }
-    const geometry = polys.length === 1 ? { type: "Polygon", coordinates: polys[0] } : { type: "MultiPolygon", coordinates: polys };
-    fraFeatures.push({ type: "Feature", geometry, properties: { group, name } });
-  }
-  writeFeatureCollection(path.join(GEO_DIR, "france-overseas.json"), fraFeatures);
-  console.log(`france-overseas.json: ${fraFeatures.length} territories`);
 
-  // --- Portugal --------------------------------------------------------------
+  // --- Portugal: NUTS-2 admin1 regions, not separate admin0 units ---------
   const prtFeatures = [];
   for (const [code, group, name] of [["PT-30", "madeira", "Madeira"], ["PT-20", "acores", "Açores"]]) {
     const f = admin1.features.find((x) => x.properties.iso_3166_2 === code);
@@ -89,16 +127,6 @@ async function main() {
   }
   writeFeatureCollection(path.join(GEO_DIR, "portugal-overseas.json"), prtFeatures);
   console.log(`portugal-overseas.json: ${prtFeatures.length} territories`);
-
-  // --- UK ----------------------------------------------------------------
-  const gbrFeatures = [];
-  for (const [adm0a3, { group, name }] of Object.entries(DIRECT_ADM0["royaume-uni"])) {
-    const f = admin0.features.find((x) => x.properties.ADM0_A3 === adm0a3);
-    if (!f) { console.warn(`! ${adm0a3} not found`); continue; }
-    gbrFeatures.push({ type: "Feature", geometry: f.geometry, properties: { group, name } });
-  }
-  writeFeatureCollection(path.join(GEO_DIR, "royaume-uni-overseas.json"), gbrFeatures);
-  console.log(`royaume-uni-overseas.json: ${gbrFeatures.length} territories`);
 }
 
 main();

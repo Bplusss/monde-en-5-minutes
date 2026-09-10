@@ -36,6 +36,6 @@ export const switzerland: Country = {
     regionsGeojsonUrl: "/geo/suisse-regions.json",
     riversGeojsonUrl: "/geo/suisse-rivers.json",
     center: [8.2, 46.8],
-    zoom: 7.3,
+    zoom: 5.1,
   },
 };

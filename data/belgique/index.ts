@@ -35,7 +35,7 @@ export const belgium: Country = {
     outlineGeojsonUrl: "/geo/belgique-outline.json",
     regionsGeojsonUrl: "/geo/belgique-regions.json",
     riversGeojsonUrl: "/geo/belgique-rivers.json",
-    center: [4.5, 50.6],
-    zoom: 7.5,
+    center: [4.4, 50.5],
+    zoom: 5.3,
   },
 };
