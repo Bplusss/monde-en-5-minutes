@@ -1,0 +1,29 @@
+import type { EnvironmentData } from "@/lib/types";
+
+export const environment: EnvironmentData = {
+  renewableShare: {
+    value: 31.8,
+    unit: "%",
+    year: 2023,
+    source: "Eurostat",
+    sourceUrl: "https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Renewable_energy_statistics",
+    note: "Part des énergies renouvelables dans la consommation finale brute d'énergie, portée par l'hydroélectricité.",
+  },
+  co2PerCapita: {
+    value: 4.1,
+    unit: "t",
+    year: 2023,
+    source: "countryeconomy.com",
+    sourceUrl: "https://countryeconomy.com/energy-and-environment/co2-emissions/croatia",
+  },
+  indicators: [
+    {
+      label: "Couverture forestière",
+      value: { value: 34.0, unit: "%", year: 2022, source: "Banque mondiale", sourceUrl: "https://data.worldbank.org/indicator/AG.LND.FRST.ZS?locations=HR" },
+    },
+  ],
+  risks: ["Séismes", "Incendies de forêt (littoral)", "Inondations", "Canicules et sécheresses estivales"],
+  risksSource: { source: "Direction croate de la protection civile (DUZS)", sourceUrl: "https://civilna-zastita.gov.hr/" },
+  summary:
+    "Grâce à son relief karstique et à ses nombreux barrages hydroélectriques, la Croatie affiche l'un des mix électriques les plus décarbonés d'Europe centrale, mais son littoral dalmate, densément boisé de pins et exposé à la bora et au sirocco, subit chaque été des incendies de forêt de grande ampleur ; le pays reste par ailleurs situé dans une zone sismique active, comme l'a rappelé le séisme de Zagreb de 2020.",
+};
