@@ -28,6 +28,10 @@ export const environment: EnvironmentData = {
         sourceUrl: "https://data.worldbank.org/indicator/AG.LND.FRST.ZS?locations=ES",
       },
     },
+    {
+      label: "Part du nucléaire dans l'électricité",
+      value: { value: 18.7, unit: "%", year: 2024, source: "Eurostat", sourceUrl: "https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20260129-2" },
+    },
   ],
   risks: ["Inondations", "Feux de forêt", "Sécheresse", "Séismes"],
   risksSource: { source: "Protección Civil — Ministerio del Interior", sourceUrl: "https://www.proteccioncivil.es" },

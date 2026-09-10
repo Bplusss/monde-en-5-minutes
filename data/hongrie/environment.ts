@@ -21,9 +21,13 @@ export const environment: EnvironmentData = {
       label: "Couverture forestière",
       value: { value: 22.6, unit: "%", year: 2022, source: "Banque mondiale", sourceUrl: "https://data.worldbank.org/indicator/AG.LND.FRST.ZS?locations=HU" },
     },
+    {
+      label: "Part du nucléaire dans l'électricité",
+      value: { value: 50.0, unit: "%", year: 2024, source: "Centrale nucléaire de Paks / Hungary Today", sourceUrl: "https://hungarytoday.hu/paks-nuclear-power-plant-accounts-for-half-of-the-electricity-production/" },
+    },
   ],
   risks: ["Inondations (Danube, Tisza)", "Sécheresses estivales", "Canicules"],
   risksSource: { source: "Direction générale hongroise de la gestion de l'eau (OVF)", sourceUrl: "https://www.ovf.hu/" },
   summary:
-    "Après une forte dépendance historique au charbon et au gaz russe, la Hongrie a connu depuis 2020 l'un des essors solaires les plus rapides d'Europe, le photovoltaïque couvrant désormais près d'un quart de sa production électrique. Le pays reste toutefois exposé aux crues du Danube et de la Tisza, ainsi qu'à des étés de plus en plus chauds et secs dans la Grande Plaine.",
+    "L'unique centrale nucléaire de Paks fournit à elle seule près de la moitié de l'électricité hongroise, la part restante se partageant entre gaz, charbon et un solaire en très forte croissance depuis 2020 — la Hongrie affichant désormais l'une des parts de photovoltaïque les plus élevées de l'UE dans sa production électrique. Le pays reste par ailleurs exposé aux crues du Danube et de la Tisza, ainsi qu'à des étés de plus en plus chauds et secs dans la Grande Plaine.",
 };

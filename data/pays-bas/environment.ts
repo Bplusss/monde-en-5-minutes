@@ -20,6 +20,10 @@ export const environment: EnvironmentData = {
       label: "Couverture forestière",
       value: { value: 11.1, unit: "%", year: 2023, source: "Banque mondiale", sourceUrl: "https://data.worldbank.org/indicator/AG.LND.FRST.ZS?locations=NL" },
     },
+    {
+      label: "Part du nucléaire dans l'électricité",
+      value: { value: 3.0, unit: "%", year: 2024, source: "Eurostat", sourceUrl: "https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20260129-2", note: "Un seul réacteur en service, à Borssele." },
+    },
   ],
   risks: ["Inondations", "Élévation du niveau de la mer", "Affaissement des sols", "Tempêtes"],
   risksSource: { source: "Rijkswaterstaat", sourceUrl: "https://www.rijkswaterstaat.nl/water/waterbeheer/bescherming-tegen-het-water" },

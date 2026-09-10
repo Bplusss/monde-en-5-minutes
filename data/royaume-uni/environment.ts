@@ -20,6 +20,10 @@ export const environment: EnvironmentData = {
       label: "Couverture forestière",
       value: { value: 13.29, unit: "%", year: 2023, source: "Banque mondiale", sourceUrl: "https://data.worldbank.org/indicator/AG.LND.FRST.ZS?locations=GB" },
     },
+    {
+      label: "Part du nucléaire dans l'électricité",
+      value: { value: 12.4, unit: "%", year: 2024, source: "Eurostat", sourceUrl: "https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20260129-2" },
+    },
   ],
   risks: ["Inondations", "Érosion côtière", "Tempêtes", "Canicules"],
   risksSource: {

@@ -21,9 +21,20 @@ export const environment: EnvironmentData = {
       label: "Couverture forestière",
       value: { value: 34.0, unit: "%", year: 2022, source: "Banque mondiale", sourceUrl: "https://data.worldbank.org/indicator/AG.LND.FRST.ZS?locations=HR" },
     },
+    {
+      label: "Part du nucléaire dans l'électricité",
+      value: {
+        value: 16.0,
+        unit: "%",
+        year: 2024,
+        source: "Centrale nucléaire de Krško (NEK)",
+        sourceUrl: "https://www.nek.si/en/about-us/about-nek",
+        note: "Sans réacteur sur son sol, la Croatie détient 50 % de la centrale slovène de Krško et reçoit la moitié de sa production.",
+      },
+    },
   ],
   risks: ["Séismes", "Incendies de forêt (littoral)", "Inondations", "Canicules et sécheresses estivales"],
   risksSource: { source: "Direction croate de la protection civile (DUZS)", sourceUrl: "https://civilna-zastita.gov.hr/" },
   summary:
-    "Grâce à son relief karstique et à ses nombreux barrages hydroélectriques, la Croatie affiche l'un des mix électriques les plus décarbonés d'Europe centrale, mais son littoral dalmate, densément boisé de pins et exposé à la bora et au sirocco, subit chaque été des incendies de forêt de grande ampleur ; le pays reste par ailleurs situé dans une zone sismique active, comme l'a rappelé le séisme de Zagreb de 2020.",
+    "Grâce à son relief karstique, à ses nombreux barrages hydroélectriques et à sa part de la centrale nucléaire slovène de Krško, la Croatie affiche l'un des mix électriques les plus décarbonés d'Europe centrale, mais son littoral dalmate, densément boisé de pins et exposé à la bora et au sirocco, subit chaque été des incendies de forêt de grande ampleur ; le pays reste par ailleurs situé dans une zone sismique active, comme l'a rappelé le séisme de Zagreb de 2020.",
 };

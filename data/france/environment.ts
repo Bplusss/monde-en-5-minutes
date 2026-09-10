@@ -28,6 +28,10 @@ export const environment: EnvironmentData = {
         sourceUrl: "https://data.worldbank.org/indicator/AG.LND.FRST.ZS?locations=FR",
       },
     },
+    {
+      label: "Part du nucléaire dans l'électricité",
+      value: { value: 67.3, unit: "%", year: 2024, source: "Eurostat", sourceUrl: "https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20260129-2", note: "Le plus fort taux de dépendance au nucléaire au monde." },
+    },
   ],
   risks: ["Inondations", "Feux de forêt", "Mouvements de terrain", "Tempêtes"],
   risksSource: {

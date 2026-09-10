@@ -21,6 +21,10 @@ export const environment: EnvironmentData = {
       label: "Couverture forestière",
       value: { value: 32.3, unit: "%", year: 2022, source: "Banque mondiale", sourceUrl: "https://data.worldbank.org/indicator/AG.LND.FRST.ZS?locations=CH" },
     },
+    {
+      label: "Part du nucléaire dans l'électricité",
+      value: { value: 31.2, unit: "%", year: 2024, source: "Office fédéral de l'énergie (OFEN)", sourceUrl: "https://www.bfe.admin.ch/bfe/fr/home.html" },
+    },
   ],
   risks: ["Inondations", "Avalanches", "Glissements de terrain", "Crues torrentielles"],
   risksSource: { source: "OFEV — Office fédéral de l'environnement", sourceUrl: "https://www.bafu.admin.ch/fr/dangers-naturels" },

@@ -21,6 +21,10 @@ export const environment: EnvironmentData = {
       label: "Couverture forestière",
       value: { value: 35.9, unit: "%", year: 2022, source: "Banque mondiale", sourceUrl: "https://data.worldbank.org/indicator/AG.LND.FRST.ZS?locations=BG" },
     },
+    {
+      label: "Part du nucléaire dans l'électricité",
+      value: { value: 38.0, unit: "%", year: 2025, source: "World Nuclear Association", sourceUrl: "https://world-nuclear.org/information-library/country-profiles/countries-a-f/bulgaria" },
+    },
   ],
   risks: ["Séismes", "Inondations", "Canicules et sécheresses", "Incendies de forêt"],
   risksSource: { source: "Agence exécutive de l'environnement de Bulgarie (ExEA)", sourceUrl: "https://eea.government.bg/en/" },
