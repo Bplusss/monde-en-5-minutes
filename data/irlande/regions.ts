@@ -1,0 +1,31 @@
+import type { Region } from "@/lib/types";
+
+/** Les 26 comtés traditionnels de la République d'Irlande. */
+export const regions: Region[] = [
+  { code: "IE-CW", name: "Carlow" },
+  { code: "IE-CN", name: "Cavan" },
+  { code: "IE-CE", name: "Clare" },
+  { code: "IE-CO", name: "Cork" },
+  { code: "IE-DL", name: "Donegal" },
+  { code: "IE-D", name: "Dublin" },
+  { code: "IE-G", name: "Galway" },
+  { code: "IE-KY", name: "Kerry" },
+  { code: "IE-KE", name: "Kildare" },
+  { code: "IE-KK", name: "Kilkenny" },
+  { code: "IE-LS", name: "Laois" },
+  { code: "IE-LM", name: "Leitrim" },
+  { code: "IE-LK", name: "Limerick" },
+  { code: "IE-LD", name: "Longford" },
+  { code: "IE-LH", name: "Louth" },
+  { code: "IE-MO", name: "Mayo" },
+  { code: "IE-MH", name: "Meath" },
+  { code: "IE-MN", name: "Monaghan" },
+  { code: "IE-OY", name: "Offaly" },
+  { code: "IE-RN", name: "Roscommon" },
+  { code: "IE-SO", name: "Sligo" },
+  { code: "IE-TA", name: "Tipperary" },
+  { code: "IE-WD", name: "Waterford" },
+  { code: "IE-WH", name: "Westmeath" },
+  { code: "IE-WX", name: "Wexford" },
+  { code: "IE-WW", name: "Wicklow" },
+];
