@@ -34,6 +34,7 @@ export const bulgaria: Country = {
   maps: {
     outlineGeojsonUrl: "/geo/bulgarie-outline.json",
     regionsGeojsonUrl: "/geo/bulgarie-regions.json",
+    riversGeojsonUrl: "/geo/bulgarie-rivers.json",
     center: [25.5, 42.8],
     zoom: 4.6,
   },

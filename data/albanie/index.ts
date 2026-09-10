@@ -34,6 +34,7 @@ export const albania: Country = {
   maps: {
     outlineGeojsonUrl: "/geo/albanie-outline.json",
     regionsGeojsonUrl: "/geo/albanie-regions.json",
+    riversGeojsonUrl: "/geo/albanie-rivers.json",
     center: [20.2, 41.2],
     zoom: 5.7,
   },

@@ -34,6 +34,7 @@ export const estonia: Country = {
   maps: {
     outlineGeojsonUrl: "/geo/estonie-outline.json",
     regionsGeojsonUrl: "/geo/estonie-regions.json",
+    riversGeojsonUrl: "/geo/estonie-rivers.json",
     center: [25.0, 58.6],
     zoom: 4.6,
   },

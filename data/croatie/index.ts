@@ -34,6 +34,7 @@ export const croatia: Country = {
   maps: {
     outlineGeojsonUrl: "/geo/croatie-outline.json",
     regionsGeojsonUrl: "/geo/croatie-regions.json",
+    riversGeojsonUrl: "/geo/croatie-rivers.json",
     center: [16.5, 44.5],
     zoom: 4.7,
   },

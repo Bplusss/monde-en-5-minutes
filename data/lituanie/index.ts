@@ -34,6 +34,7 @@ export const lithuania: Country = {
   maps: {
     outlineGeojsonUrl: "/geo/lituanie-outline.json",
     regionsGeojsonUrl: "/geo/lituanie-regions.json",
+    riversGeojsonUrl: "/geo/lituanie-rivers.json",
     center: [23.9, 55.2],
     zoom: 4.7,
   },
