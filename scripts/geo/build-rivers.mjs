@@ -118,6 +118,12 @@ const RIVER_MATCHES = {
     { riverName: "Dniestr (Nistru)", neNames: ["Dniester"] },
     { riverName: "Prout (Prut)", neNames: ["Prut"] },
   ],
+  ukraine: [
+    { riverName: "Dniepr (Dnipro)", neNames: ["Dnipro"] },
+    { riverName: "Dniestr", neNames: ["Dniester"] },
+    { riverName: "Boug méridional (Pivdennyi Bouh)", neNames: ["Southern Bug"] },
+    { riverName: "Desna", neNames: ["Desna"] },
+  ],
 };
 
 function writeFeatureCollection(filePath, features) {
