@@ -53,6 +53,7 @@ export function CountryMap({ maps, layer, className, cities = [], rivers = [] }:
       attributionControl: { compact: true },
       dragRotate: false,
       touchPitch: false,
+      cooperativeGestures: true,
     });
     mapRef.current = map;
     map.addControl(new window.maplibregl.NavigationControl({ showCompass: false }), "top-right");

@@ -56,6 +56,7 @@ export function WorldTerritoriesMap({ mainIso, overlayGeojsonUrl, overlayLabels,
       attributionControl: false,
       dragRotate: false,
       touchPitch: false,
+      cooperativeGestures: true,
     });
     mapRef.current = map;
     map.addControl(new window.maplibregl.NavigationControl({ showCompass: false }), "top-right");
