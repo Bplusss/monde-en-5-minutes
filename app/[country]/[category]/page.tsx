@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CountryCategoryPage } from "@/components/CountryCategoryPage";
+import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FULL_COUNTRIES, getFullCountry, getFullCountryWithLiveData } from "@/data/countries-full";
 import { CATEGORIES, getCategory } from "@/lib/categories";
 import type { CategoryKey } from "@/lib/types";
@@ -32,5 +33,18 @@ export default async function CountryCategoryRoute({ params }: PageProps<"/[coun
   const cat = getCategory(categorySlug);
   if (!country || !cat) notFound();
 
-  return <CountryCategoryPage country={country} category={cat.key as CategoryKey} />;
+  const isDefault = cat.slug === "geographie";
+  const breadcrumbItems = [
+    { name: "Accueil", url: "/" },
+    { name: "Pays", url: "/pays" },
+    { name: country.name, url: `/${country.slug}` },
+  ];
+  if (!isDefault) breadcrumbItems.push({ name: cat.label, url: `/${country.slug}/${cat.slug}` });
+
+  return (
+    <>
+      <BreadcrumbJsonLd items={breadcrumbItems} />
+      <CountryCategoryPage country={country} category={cat.key as CategoryKey} />
+    </>
+  );
 }
