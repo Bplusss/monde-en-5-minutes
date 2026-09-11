@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { ArrowLeftRight, Scale } from "lucide-react";
 import { COUNTRIES } from "@/data/countries-registry";
 import type { Country, CountrySummary } from "@/lib/types";
@@ -77,7 +78,11 @@ function CountrySelect({
 }
 
 export function CompareSelector() {
-  const [slugA, setSlugA] = useState("");
+  const searchParams = useSearchParams();
+  const preselected = searchParams.get("pays");
+  const initialSlugA = preselected && COUNTRIES.some((c) => c.slug === preselected) ? preselected : "";
+
+  const [slugA, setSlugA] = useState(initialSlugA);
   const [slugB, setSlugB] = useState("");
   const [sortMode, setSortMode] = useState<CountrySortMode>("alpha");
 

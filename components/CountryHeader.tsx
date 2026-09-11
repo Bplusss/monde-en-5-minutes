@@ -37,7 +37,7 @@ export function CountryHeader({ country }: { country: Country }) {
           </div>
 
           <div className="mt-6 flex flex-wrap items-center gap-3">
-            <Link href="/comparer">
+            <Link href={`/comparer?pays=${country.slug}`}>
               <Button variant="secondary" size="sm">
                 <Scale className="size-3.5" aria-hidden />
                 Comparer

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { CompareSelector } from "@/components/compare/CompareSelector";
 
 export const metadata: Metadata = {
@@ -16,7 +17,9 @@ export default function ComparerPage() {
           Une comparaison visuelle, pensée pour n&apos;importe quelle paire de pays disponibles.
         </p>
       </div>
-      <CompareSelector />
+      <Suspense fallback={null}>
+        <CompareSelector />
+      </Suspense>
     </div>
   );
 }
