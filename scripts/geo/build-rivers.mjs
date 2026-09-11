@@ -108,6 +108,16 @@ const RIVER_MATCHES = {
     { riverName: "Vardar", osm: { nameRegex: "Вардар", bbox: [20.4, 40.8, 23.1, 42.4] } },
     { riverName: "Crni Drim (Drin noir)", neNames: ["Drin"] },
   ],
+  "bosnie-herzegovine": [
+    { riverName: "Save (Sava)", neNames: ["Sava"] },
+    { riverName: "Drina", neNames: ["Drina"] },
+    // No Natural Earth geometry at 1:10m for the Bosna (too minor, despite giving the country its name); OSM has it.
+    { riverName: "Bosna", osm: { nameRegex: "^Bosna$", bbox: [17.6, 43.9, 18.5, 45.1] } },
+  ],
+  moldavie: [
+    { riverName: "Dniestr (Nistru)", neNames: ["Dniester"] },
+    { riverName: "Prout (Prut)", neNames: ["Prut"] },
+  ],
 };
 
 function writeFeatureCollection(filePath, features) {
