@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
 import { Inter, Fraunces } from "next/font/google";
-import Script from "next/script";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SITE_URL } from "@/lib/site";
+import { MAPLIBRE_CSS_URL } from "@/lib/maplibre-global";
 import "./globals.css";
-
-const MAPLIBRE_VERSION = "5.24.0";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -44,13 +42,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="fr" className={`${inter.variable} ${fraunces.variable} h-full antialiased`}>
       <head>
-        <link rel="stylesheet" href={`https://unpkg.com/maplibre-gl@${MAPLIBRE_VERSION}/dist/maplibre-gl.css`} />
+        <link rel="stylesheet" href={MAPLIBRE_CSS_URL} />
       </head>
       <body className="min-h-full flex flex-col bg-background text-foreground">
-        <Script
-          src={`https://unpkg.com/maplibre-gl@${MAPLIBRE_VERSION}/dist/maplibre-gl.js`}
-          strategy="beforeInteractive"
-        />
         <SiteHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter />

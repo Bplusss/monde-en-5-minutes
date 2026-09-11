@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { Map as MapLibreMap, MapMouseEvent, MapGeoJSONFeature } from "maplibre-gl";
-import "@/lib/maplibre-global";
+import { loadMapLibre } from "@/lib/maplibre-global";
 import { computeCentroid } from "@/lib/geo-utils";
 
 interface WorldTerritoriesMapProps {
@@ -34,6 +34,7 @@ export function WorldTerritoriesMap({ mainIso, overlayGeojsonUrl, overlayLabels,
 
   useEffect(() => {
     if (!containerRef.current) return;
+    let cancelled = false;
 
     const styles = getComputedStyle(document.documentElement);
     const surfaceMuted = styles.getPropertyValue("--surface-muted").trim() || "#f3f1ed";
@@ -42,120 +43,125 @@ export function WorldTerritoriesMap({ mainIso, overlayGeojsonUrl, overlayLabels,
     const surface = styles.getPropertyValue("--surface").trim() || "#ffffff";
     const accent = styles.getPropertyValue("--accent").trim() || "#b5122e";
 
-    const map = new window.maplibregl.Map({
-      container: containerRef.current,
-      style: {
-        version: 8,
-        sources: {},
-        layers: [{ id: "bg", type: "background", paint: { "background-color": surfaceMuted } }],
-      },
-      center: [10, 15],
-      zoom: 0.6,
-      minZoom: 0.4,
-      maxZoom: 8,
-      attributionControl: false,
-      dragRotate: false,
-      touchPitch: false,
-      cooperativeGestures: true,
-    });
-    mapRef.current = map;
-    map.addControl(new window.maplibregl.NavigationControl({ showCompass: false }), "top-right");
-    map.fitBounds(
-      [
-        [-165, -56],
-        [178, 78],
-      ],
-      { padding: 8, animate: false },
-    );
+    loadMapLibre().then((maplibregl) => {
+      if (cancelled || !containerRef.current) return;
 
-    map.on("load", async () => {
-      map.addSource("world", { type: "geojson", data: "/geo/world.json" });
-      map.addLayer({
-        id: "world-fill",
-        type: "fill",
-        source: "world",
-        paint: {
-          "fill-color": ["case", ["==", ["get", "iso_a3"], mainIso], brand, surface],
-          "fill-opacity": ["case", ["==", ["get", "iso_a3"], mainIso], 0.85, 0.5],
+      const map = new maplibregl.Map({
+        container: containerRef.current,
+        style: {
+          version: 8,
+          sources: {},
+          layers: [{ id: "bg", type: "background", paint: { "background-color": surfaceMuted } }],
         },
+        center: [10, 15],
+        zoom: 0.6,
+        minZoom: 0.4,
+        maxZoom: 8,
+        attributionControl: false,
+        dragRotate: false,
+        touchPitch: false,
+        cooperativeGestures: true,
       });
-      map.addLayer({
-        id: "world-outline",
-        type: "line",
-        source: "world",
-        paint: {
-          "line-color": border,
-          "line-width": ["case", ["==", ["get", "iso_a3"], mainIso], 1.4, 0.4],
-        },
-      });
+      mapRef.current = map;
+      map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
+      map.fitBounds(
+        [
+          [-165, -56],
+          [178, 78],
+        ],
+        { padding: 8, animate: false },
+      );
 
-      if (!overlayGeojsonUrl) return;
-      const geojson: GeoJSON.FeatureCollection = await fetch(overlayGeojsonUrl).then((r) => r.json());
-      const byGroup = new Map<string, GeoJSON.Feature[]>();
-      geojson.features.forEach((f) => {
-        const group = f.properties?.group as string | undefined;
-        if (!group) return;
-        if (!byGroup.has(group)) byGroup.set(group, []);
-        byGroup.get(group)!.push(f);
-      });
-
-      const pointFeatures: GeoJSON.Feature[] = [];
-      byGroup.forEach((feats, group) => {
-        const centroid = computeCentroid(feats);
-        if (!centroid) return;
-        pointFeatures.push({
-          type: "Feature",
-          properties: { group, name: overlayLabels[group] ?? group },
-          geometry: { type: "Point", coordinates: centroid },
+      map.on("load", async () => {
+        map.addSource("world", { type: "geojson", data: "/geo/world.json" });
+        map.addLayer({
+          id: "world-fill",
+          type: "fill",
+          source: "world",
+          paint: {
+            "fill-color": ["case", ["==", ["get", "iso_a3"], mainIso], brand, surface],
+            "fill-opacity": ["case", ["==", ["get", "iso_a3"], mainIso], 0.85, 0.5],
+          },
         });
-      });
-      const points: GeoJSON.FeatureCollection = { type: "FeatureCollection", features: pointFeatures };
-
-      map.addSource("overseas-shapes", { type: "geojson", data: geojson });
-      map.addLayer({
-        id: "overseas-fill",
-        type: "fill",
-        source: "overseas-shapes",
-        paint: { "fill-color": accent, "fill-opacity": 0.8 },
-      });
-      map.addLayer({
-        id: "overseas-line",
-        type: "line",
-        source: "overseas-shapes",
-        paint: { "line-color": accent, "line-width": 1 },
-      });
-
-      map.addSource("overseas-points", { type: "geojson", data: points });
-      map.addLayer({
-        id: "overseas-points",
-        type: "circle",
-        source: "overseas-points",
-        paint: {
-          "circle-radius": 5,
-          "circle-color": accent,
-          "circle-stroke-color": surface,
-          "circle-stroke-width": 1.5,
-        },
-      });
-
-      const showLabel = (e: MapMouseEvent & { features?: MapGeoJSONFeature[] }) => {
-        const name = e.features?.[0]?.properties?.name as string | undefined;
-        if (!name) return;
-        setHover({ x: e.point.x, y: e.point.y, name });
-      };
-      ["overseas-points", "overseas-fill"].forEach((layerId) => {
-        map.on("mousemove", layerId, showLabel);
-        map.on("mouseenter", layerId, () => (map.getCanvas().style.cursor = "pointer"));
-        map.on("mouseleave", layerId, () => {
-          map.getCanvas().style.cursor = "";
-          setHover(null);
+        map.addLayer({
+          id: "world-outline",
+          type: "line",
+          source: "world",
+          paint: {
+            "line-color": border,
+            "line-width": ["case", ["==", ["get", "iso_a3"], mainIso], 1.4, 0.4],
+          },
         });
-        map.on("click", layerId, showLabel);
+
+        if (!overlayGeojsonUrl) return;
+        const geojson: GeoJSON.FeatureCollection = await fetch(overlayGeojsonUrl).then((r) => r.json());
+        const byGroup = new Map<string, GeoJSON.Feature[]>();
+        geojson.features.forEach((f) => {
+          const group = f.properties?.group as string | undefined;
+          if (!group) return;
+          if (!byGroup.has(group)) byGroup.set(group, []);
+          byGroup.get(group)!.push(f);
+        });
+
+        const pointFeatures: GeoJSON.Feature[] = [];
+        byGroup.forEach((feats, group) => {
+          const centroid = computeCentroid(feats);
+          if (!centroid) return;
+          pointFeatures.push({
+            type: "Feature",
+            properties: { group, name: overlayLabels[group] ?? group },
+            geometry: { type: "Point", coordinates: centroid },
+          });
+        });
+        const points: GeoJSON.FeatureCollection = { type: "FeatureCollection", features: pointFeatures };
+
+        map.addSource("overseas-shapes", { type: "geojson", data: geojson });
+        map.addLayer({
+          id: "overseas-fill",
+          type: "fill",
+          source: "overseas-shapes",
+          paint: { "fill-color": accent, "fill-opacity": 0.8 },
+        });
+        map.addLayer({
+          id: "overseas-line",
+          type: "line",
+          source: "overseas-shapes",
+          paint: { "line-color": accent, "line-width": 1 },
+        });
+
+        map.addSource("overseas-points", { type: "geojson", data: points });
+        map.addLayer({
+          id: "overseas-points",
+          type: "circle",
+          source: "overseas-points",
+          paint: {
+            "circle-radius": 5,
+            "circle-color": accent,
+            "circle-stroke-color": surface,
+            "circle-stroke-width": 1.5,
+          },
+        });
+
+        const showLabel = (e: MapMouseEvent & { features?: MapGeoJSONFeature[] }) => {
+          const name = e.features?.[0]?.properties?.name as string | undefined;
+          if (!name) return;
+          setHover({ x: e.point.x, y: e.point.y, name });
+        };
+        ["overseas-points", "overseas-fill"].forEach((layerId) => {
+          map.on("mousemove", layerId, showLabel);
+          map.on("mouseenter", layerId, () => (map.getCanvas().style.cursor = "pointer"));
+          map.on("mouseleave", layerId, () => {
+            map.getCanvas().style.cursor = "";
+            setHover(null);
+          });
+          map.on("click", layerId, showLabel);
+        });
       });
     });
 
     return () => {
-      map.remove();
+      cancelled = true;
+      mapRef.current?.remove();
       mapRef.current = null;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps

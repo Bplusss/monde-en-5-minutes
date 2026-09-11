@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import type { Map as MapLibreMap } from "maplibre-gl";
-import "@/lib/maplibre-global";
+import { loadMapLibre } from "@/lib/maplibre-global";
 import { computeBounds } from "@/lib/geo-utils";
 
 const GLYPHS = "https://fonts.openmaptiles.org/{fontstack}/{range}.pbf";
@@ -27,50 +27,56 @@ export function OverseasTerritoryMap({ geojsonUrl, groupId, className }: Oversea
 
   useEffect(() => {
     if (!containerRef.current) return;
+    let cancelled = false;
     const styles = getComputedStyle(document.documentElement);
     const surfaceMuted = styles.getPropertyValue("--surface-muted").trim() || "#f3f1ed";
     const brand = styles.getPropertyValue("--brand").trim() || "#16233f";
 
-    const map = new window.maplibregl.Map({
-      container: containerRef.current,
-      style: {
-        version: 8,
-        glyphs: GLYPHS,
-        sources: {},
-        layers: [{ id: "bg", type: "background", paint: { "background-color": surfaceMuted } }],
-      },
-      center: [0, 0],
-      zoom: 1,
-      attributionControl: false,
-      interactive: false,
-    });
-    mapRef.current = map;
+    loadMapLibre().then((maplibregl) => {
+      if (cancelled || !containerRef.current) return;
 
-    map.on("load", async () => {
-      const geojson: GeoJSON.FeatureCollection = await fetch(geojsonUrl).then((r) => r.json());
-      const features = geojson.features.filter((f) => f.properties?.group === groupId);
-      if (!features.length) return;
-
-      map.addSource("territory", { type: "geojson", data: { type: "FeatureCollection", features } });
-      map.addLayer({
-        id: "territory-fill",
-        type: "fill",
-        source: "territory",
-        paint: { "fill-color": brand, "fill-opacity": 0.75 },
+      const map = new maplibregl.Map({
+        container: containerRef.current,
+        style: {
+          version: 8,
+          glyphs: GLYPHS,
+          sources: {},
+          layers: [{ id: "bg", type: "background", paint: { "background-color": surfaceMuted } }],
+        },
+        center: [0, 0],
+        zoom: 1,
+        attributionControl: false,
+        interactive: false,
       });
-      map.addLayer({
-        id: "territory-line",
-        type: "line",
-        source: "territory",
-        paint: { "line-color": brand, "line-width": 1 },
-      });
+      mapRef.current = map;
 
-      const bounds = computeBounds(features);
-      if (bounds) map.fitBounds(bounds, { padding: 18, animate: false, maxZoom: 9 });
+      map.on("load", async () => {
+        const geojson: GeoJSON.FeatureCollection = await fetch(geojsonUrl).then((r) => r.json());
+        const features = geojson.features.filter((f) => f.properties?.group === groupId);
+        if (!features.length) return;
+
+        map.addSource("territory", { type: "geojson", data: { type: "FeatureCollection", features } });
+        map.addLayer({
+          id: "territory-fill",
+          type: "fill",
+          source: "territory",
+          paint: { "fill-color": brand, "fill-opacity": 0.75 },
+        });
+        map.addLayer({
+          id: "territory-line",
+          type: "line",
+          source: "territory",
+          paint: { "line-color": brand, "line-width": 1 },
+        });
+
+        const bounds = computeBounds(features);
+        if (bounds) map.fitBounds(bounds, { padding: 18, animate: false, maxZoom: 9 });
+      });
     });
 
     return () => {
-      map.remove();
+      cancelled = true;
+      mapRef.current?.remove();
       mapRef.current = null;
     };
   }, [geojsonUrl, groupId]);

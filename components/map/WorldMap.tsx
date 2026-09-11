@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { Map as MapLibreMap, MapGeoJSONFeature } from "maplibre-gl";
-import "@/lib/maplibre-global";
+import { loadMapLibre } from "@/lib/maplibre-global";
 import { getCountryByIso3 } from "@/data/countries-registry";
 
 interface WorldMapProps {
@@ -31,98 +31,104 @@ export function WorldMap({ className }: WorldMapProps) {
 
   useEffect(() => {
     if (!containerRef.current) return;
+    let cancelled = false;
 
     const styles = getComputedStyle(document.documentElement);
     const surfaceMuted = styles.getPropertyValue("--surface-muted").trim() || "#f3f1ed";
     const brand = styles.getPropertyValue("--brand").trim() || "#16233f";
     const muted = styles.getPropertyValue("--muted").trim() || "#6b7178";
 
-    const map = new window.maplibregl.Map({
-      container: containerRef.current,
-      style: {
-        version: 8,
-        sources: {},
-        layers: [{ id: "bg", type: "background", paint: { "background-color": surfaceMuted } }],
-      },
-      center: [10, 15],
-      zoom: 0.6,
-      minZoom: 0.4,
-      maxZoom: 8,
-      attributionControl: { compact: true },
-      dragRotate: false,
-      touchPitch: false,
-      cooperativeGestures: true,
-    });
-    mapRef.current = map;
-    map.addControl(new window.maplibregl.NavigationControl({ showCompass: false }), "top-right");
-    map.fitBounds(
-      [
-        [-165, -56],
-        [178, 78],
-      ],
-      { padding: 8, animate: false },
-    );
+    loadMapLibre().then((maplibregl) => {
+      if (cancelled || !containerRef.current) return;
 
-    map.on("load", () => {
-      map.addSource("world", { type: "geojson", data: "/geo/world.json", generateId: true });
-
-      map.addLayer({
-        id: "world-fill",
-        type: "fill",
-        source: "world",
-        paint: {
-          "fill-color": ["case", ["boolean", ["feature-state", "hover"], false], brand, muted],
-          "fill-opacity": ["case", ["boolean", ["feature-state", "hover"], false], 0.9, 0.22],
+      const map = new maplibregl.Map({
+        container: containerRef.current,
+        style: {
+          version: 8,
+          sources: {},
+          layers: [{ id: "bg", type: "background", paint: { "background-color": surfaceMuted } }],
         },
+        center: [10, 15],
+        zoom: 0.6,
+        minZoom: 0.4,
+        maxZoom: 8,
+        attributionControl: { compact: true },
+        dragRotate: false,
+        touchPitch: false,
+        cooperativeGestures: true,
       });
+      mapRef.current = map;
+      map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
+      map.fitBounds(
+        [
+          [-165, -56],
+          [178, 78],
+        ],
+        { padding: 8, animate: false },
+      );
 
-      map.addLayer({
-        id: "world-outline",
-        type: "line",
-        source: "world",
-        paint: {
-          "line-color": ["case", ["boolean", ["feature-state", "hover"], false], brand, muted],
-          "line-width": ["case", ["boolean", ["feature-state", "hover"], false], 1.6, 0.7],
-          "line-opacity": ["case", ["boolean", ["feature-state", "hover"], false], 1, 0.55],
-        },
-      });
+      map.on("load", () => {
+        map.addSource("world", { type: "geojson", data: "/geo/world.json", generateId: true });
 
-      let hoveredId: string | number | undefined;
-      map.on("mousemove", "world-fill", (e) => {
-        map.getCanvas().style.cursor = "pointer";
-        const f = e.features?.[0];
-        if (!f) return;
-        if (hoveredId !== f.id) {
+        map.addLayer({
+          id: "world-fill",
+          type: "fill",
+          source: "world",
+          paint: {
+            "fill-color": ["case", ["boolean", ["feature-state", "hover"], false], brand, muted],
+            "fill-opacity": ["case", ["boolean", ["feature-state", "hover"], false], 0.9, 0.22],
+          },
+        });
+
+        map.addLayer({
+          id: "world-outline",
+          type: "line",
+          source: "world",
+          paint: {
+            "line-color": ["case", ["boolean", ["feature-state", "hover"], false], brand, muted],
+            "line-width": ["case", ["boolean", ["feature-state", "hover"], false], 1.6, 0.7],
+            "line-opacity": ["case", ["boolean", ["feature-state", "hover"], false], 1, 0.55],
+          },
+        });
+
+        let hoveredId: string | number | undefined;
+        map.on("mousemove", "world-fill", (e) => {
+          map.getCanvas().style.cursor = "pointer";
+          const f = e.features?.[0];
+          if (!f) return;
+          if (hoveredId !== f.id) {
+            if (hoveredId !== undefined) map.setFeatureState({ source: "world", id: hoveredId }, { hover: false });
+            hoveredId = f.id;
+            if (hoveredId !== undefined) map.setFeatureState({ source: "world", id: hoveredId }, { hover: true });
+          }
+          setHover({ x: e.point.x, y: e.point.y, name: (f.properties?.name_fr as string) ?? "" });
+        });
+        map.on("mouseleave", "world-fill", () => {
+          map.getCanvas().style.cursor = "";
           if (hoveredId !== undefined) map.setFeatureState({ source: "world", id: hoveredId }, { hover: false });
-          hoveredId = f.id;
-          if (hoveredId !== undefined) map.setFeatureState({ source: "world", id: hoveredId }, { hover: true });
-        }
-        setHover({ x: e.point.x, y: e.point.y, name: (f.properties?.name_fr as string) ?? "" });
-      });
-      map.on("mouseleave", "world-fill", () => {
-        map.getCanvas().style.cursor = "";
-        if (hoveredId !== undefined) map.setFeatureState({ source: "world", id: hoveredId }, { hover: false });
-        hoveredId = undefined;
-        setHover(null);
-      });
+          hoveredId = undefined;
+          setHover(null);
+        });
 
-      map.on("click", "world-fill", (e) => {
-        const f = e.features?.[0] as MapGeoJSONFeature | undefined;
-        const iso = f?.properties?.iso_a3 as string | undefined;
-        const name = (f?.properties?.name_fr as string | undefined) ?? "Ce pays";
-        const country = iso ? getCountryByIso3(iso) : undefined;
-        if (country?.status === "available") {
-          router.push(`/${country.slug}`);
-        } else {
-          setToast(`${name} — bientôt disponible`);
-          window.clearTimeout((map as unknown as { _toastTimer?: number })._toastTimer);
-          (map as unknown as { _toastTimer?: number })._toastTimer = window.setTimeout(() => setToast(null), 2200);
-        }
+        map.on("click", "world-fill", (e) => {
+          const f = e.features?.[0] as MapGeoJSONFeature | undefined;
+          const iso = f?.properties?.iso_a3 as string | undefined;
+          const name = (f?.properties?.name_fr as string | undefined) ?? "Ce pays";
+          const country = iso ? getCountryByIso3(iso) : undefined;
+          if (country?.status === "available") {
+            router.push(`/${country.slug}`);
+          } else {
+            setToast(`${name} — bientôt disponible`);
+            window.clearTimeout((map as unknown as { _toastTimer?: number })._toastTimer);
+            (map as unknown as { _toastTimer?: number })._toastTimer = window.setTimeout(() => setToast(null), 2200);
+          }
+        });
       });
     });
 
     return () => {
-      map.remove();
+      cancelled = true;
+      mapRef.current?.remove();
       mapRef.current = null;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
