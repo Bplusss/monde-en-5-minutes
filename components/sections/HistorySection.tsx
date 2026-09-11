@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card, CardContent } from "@/components/ui/Card";
 import { SourceTag } from "@/components/ui/SourceTag";
+import { ScrollableTabs } from "@/components/ScrollableTabs";
 
 function formatYear(y: number) {
   return y < 0 ? `${Math.abs(y)} av. J.-C.` : String(y);
@@ -30,26 +31,29 @@ export function HistorySection({ country }: { country: Country }) {
       />
 
       {/* Period navigation — a simplified timeline, not a full chronology. */}
-      <div className="no-scrollbar -mx-1 mb-6 flex gap-2 overflow-x-auto px-1 pb-1">
-        {history.periods.map((p) => {
-          const isActive = p.id === active.id;
-          return (
-            <button
-              key={p.id}
-              onClick={() => setActiveId(p.id)}
-              aria-pressed={isActive}
-              className={cn(
-                "focus-ring shrink-0 rounded-2xl border px-4 py-3 text-left transition-colors",
-                isActive ? cn(cat.bg, cat.border, cat.text) : "border-border bg-surface text-muted hover:text-foreground",
-              )}
-            >
-              <p className="whitespace-nowrap text-sm font-semibold">{p.title}</p>
-              <p className="whitespace-nowrap text-[11px] opacity-80">
-                {formatYear(p.startYear)} – {p.endYear === "present" ? "aujourd'hui" : formatYear(p.endYear)}
-              </p>
-            </button>
-          );
-        })}
+      <div className="mb-6">
+        <ScrollableTabs activeKey={activeId} className="gap-2 px-1 pb-1">
+          {history.periods.map((p) => {
+            const isActive = p.id === active.id;
+            return (
+              <button
+                key={p.id}
+                data-active={isActive}
+                onClick={() => setActiveId(p.id)}
+                aria-pressed={isActive}
+                className={cn(
+                  "focus-ring shrink-0 rounded-2xl border px-4 py-3 text-left transition-colors",
+                  isActive ? cn(cat.bg, cat.border, cat.text) : "border-border bg-surface text-muted hover:text-foreground",
+                )}
+              >
+                <p className="whitespace-nowrap text-sm font-semibold">{p.title}</p>
+                <p className="whitespace-nowrap text-[11px] opacity-80">
+                  {formatYear(p.startYear)} – {p.endYear === "present" ? "aujourd'hui" : formatYear(p.endYear)}
+                </p>
+              </button>
+            );
+          })}
+        </ScrollableTabs>
       </div>
 
       <Card>
