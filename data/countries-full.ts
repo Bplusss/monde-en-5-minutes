@@ -28,6 +28,9 @@ import { andorra } from "./andorre";
 import { belarus } from "./bielorussie";
 import { vaticanCity } from "./cite-du-vatican";
 import { luxembourg } from "./luxembourg";
+import { iceland } from "./islande";
+import { northMacedonia } from "./macedoine-du-nord";
+import { monaco } from "./monaco";
 
 /** Full `Country` records — the only ones that can be rendered as a country page or in a comparison. */
 export const FULL_COUNTRIES: Record<string, Country> = {
@@ -59,6 +62,9 @@ export const FULL_COUNTRIES: Record<string, Country> = {
   [belarus.slug]: belarus,
   [vaticanCity.slug]: vaticanCity,
   [luxembourg.slug]: luxembourg,
+  [iceland.slug]: iceland,
+  [northMacedonia.slug]: northMacedonia,
+  [monaco.slug]: monaco,
 };
 
 export function getFullCountry(slug: string): Country | undefined {

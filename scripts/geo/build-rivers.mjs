@@ -41,7 +41,8 @@ async function fetchOsmRiverWays(cacheKey, nameRegex, bbox) {
   const res = await fetch("https://overpass-api.de/api/interpreter", {
     method: "POST",
     body: `data=${encodeURIComponent(query)}`,
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    // Overpass rejects requests with no descriptive User-Agent (406 Not Acceptable).
+    headers: { "Content-Type": "application/x-www-form-urlencoded", "User-Agent": "monde5minutes-data-import/1.0" },
   });
   const text = await res.text();
   let json;
@@ -99,6 +100,13 @@ const RIVER_MATCHES = {
   danemark: [
     // No Natural Earth geometry at 1:10m for the Gudenå (too minor); OSM has it.
     { riverName: "Gudenå", osm: { nameRegex: "Guden", bbox: [8.0, 54.5, 13.0, 57.0] } },
+  ],
+  islande: [{ riverName: "Þjórsá", neNames: ["Thjórsá"] }],
+  "macedoine-du-nord": [
+    // No Natural Earth geometry at 1:10m for the Vardar (too minor); OSM has it,
+    // tagged under its Macedonian Cyrillic name (Вардар), with "Vardar" only in name:en.
+    { riverName: "Vardar", osm: { nameRegex: "Вардар", bbox: [20.4, 40.8, 23.1, 42.4] } },
+    { riverName: "Crni Drim (Drin noir)", neNames: ["Drin"] },
   ],
 };
 

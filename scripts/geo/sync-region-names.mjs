@@ -17,9 +17,9 @@ const GEO_DIR = path.join(ROOT, "public/geo");
 const COUNTRIES = [
   "albanie", "andorre", "autriche", "belgique", "bielorussie", "bulgarie",
   "croatie", "danemark", "estonie", "finlande", "france", "germany", "grece",
-  "hongrie", "irlande", "italy", "lituanie", "luxembourg", "norvege",
-  "pays-bas", "pologne", "portugal", "royaume-uni", "spain", "suede",
-  "suisse", "tchequie",
+  "hongrie", "irlande", "islande", "italy", "lituanie", "luxembourg",
+  "macedoine-du-nord", "norvege", "pays-bas", "pologne", "portugal",
+  "royaume-uni", "spain", "suede", "suisse", "tchequie",
 ];
 
 /** Extracts { code, name } pairs from a regions.ts file's simple object-literal array. */
