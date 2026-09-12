@@ -124,6 +124,57 @@ const RIVER_MATCHES = {
     { riverName: "Boug méridional (Pivdennyi Bouh)", neNames: ["Southern Bug"] },
     { riverName: "Desna", neNames: ["Desna"] },
   ],
+  lettonie: [
+    { riverName: "Daugava", neNames: ["Daugava"] },
+    { riverName: "Gauja", osm: { nameRegex: "^Gauja$", bbox: [24.3, 57.0, 26.5, 57.7] } },
+    { riverName: "Venta", neNames: ["Venta"] }, // No NE geometry at 1:10m (too minor) — checked.
+    { riverName: "Lielupe", neNames: ["Lielupe"] }, // No NE geometry at 1:10m (too minor) — checked.
+  ],
+  roumanie: [
+    { riverName: "Danube", neNames: ["Danube"] },
+    { riverName: "Mureș", neNames: ["Mures"] },
+    { riverName: "Olt", neNames: ["Olt"] },
+    { riverName: "Siret", osm: { nameRegex: "^Siret$", bbox: [26.0, 45.4, 27.6, 48.0] } },
+    { riverName: "Prut", neNames: ["Prut"] },
+  ],
+  slovaquie: [
+    { riverName: "Danube", neNames: ["Danube"] },
+    { riverName: "Váh", osm: { nameRegex: "Váh", bbox: [17.5, 47.7, 19.6, 49.4] } },
+    { riverName: "Hron", neNames: ["Hron"] }, // No NE geometry at 1:10m (too minor) — checked.
+    { riverName: "Hornád", neNames: ["Hornád"] }, // No NE geometry at 1:10m (too minor) — checked.
+    { riverName: "Nitra", neNames: ["Nitra"] }, // No NE geometry at 1:10m (too minor) — checked.
+  ],
+  liechtenstein: [
+    // NE's only "Rhine"-named line covers the lower Rhine (Netherlands/Germany); the
+    // Alpine Rhine section bordering Liechtenstein isn't present at 1:10m, so this
+    // falls back to OSM for the actual Vorarlberg/Liechtenstein/St. Gallen stretch.
+    { riverName: "Rhin", osm: { nameRegex: "^Rhein$", bbox: [9.4, 46.95, 9.65, 47.3] } },
+    { riverName: "Samina", neNames: ["Samina"] }, // No NE geometry at 1:10m (too minor) — checked.
+  ],
+  serbie: [
+    { riverName: "Danube", neNames: ["Danube"] },
+    { riverName: "Sava", neNames: ["Sava"] },
+    { riverName: "Tisza", neNames: ["Tisa"] },
+    // NE carries two distinct lines named "Morava" (this one and Czechia's); clipping
+    // to Serbia's own outline keeps only the Velika Morava segment.
+    { riverName: "Grande Morava (Velika Morava)", neNames: ["Morava"] },
+    { riverName: "Drina", neNames: ["Drina"] },
+  ],
+  slovenie: [
+    { riverName: "Save", neNames: ["Sava"] },
+    // Slovenia's (upper) Drava is NE's "Drau" line (name_alt "Drava") — distinct from
+    // the lower-Drava "Mur" line already used by croatie/hongrie.
+    { riverName: "Drave", neNames: ["Drau"] },
+    { riverName: "Soča", osm: { nameRegex: "Soča", bbox: [13.3, 45.6, 13.95, 46.55] } },
+    { riverName: "Mura", neNames: ["Mura"] }, // No NE geometry at 1:10m (too minor) — checked.
+    { riverName: "Savinja", neNames: ["Savinja"] }, // No NE geometry at 1:10m (too minor) — checked.
+  ],
+  montenegro: [
+    { riverName: "Tara", osm: { nameRegex: "^Tara$", bbox: [18.7, 42.75, 19.6, 43.35] } },
+    { riverName: "Morača", neNames: ["Morača"] }, // No NE geometry at 1:10m (too minor) — checked.
+    { riverName: "Lim", neNames: ["Lim"] }, // No NE geometry at 1:10m (too minor) — checked.
+  ],
+  // saint-marin: no rivers.ts entries (no watercourse meets the inclusion bar) — no key needed here, same as monaco/cite-du-vatican.
 };
 
 function writeFeatureCollection(filePath, features) {

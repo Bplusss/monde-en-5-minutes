@@ -20,6 +20,12 @@ const COUNTRIES = [
   "hongrie", "irlande", "islande", "italy", "lituanie", "luxembourg",
   "macedoine-du-nord", "malte", "moldavie", "norvege", "pays-bas", "pologne",
   "portugal", "royaume-uni", "spain", "suede", "suisse", "tchequie", "ukraine",
+  "lettonie", "roumanie", "slovaquie", "liechtenstein", "serbie",
+  "saint-marin", "montenegro",
+  // Note: "slovenie" intentionally excluded — its regions.ts uses Slovenia's 12
+  // statistical regions, but slovenie-regions.json holds Natural Earth's 212
+  // municipalities instead; the country doesn't reference that file in maps
+  // (see data/slovenie/index.ts), so there's nothing to sync.
 ];
 
 /** Extracts { code, name } pairs from a regions.ts file's simple object-literal array. */

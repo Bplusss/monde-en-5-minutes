@@ -35,6 +35,14 @@ import { bosniaAndHerzegovina } from "./bosnie-herzegovine";
 import { malta } from "./malte";
 import { moldova } from "./moldavie";
 import { ukraine } from "./ukraine";
+import { latvia } from "./lettonie";
+import { romania } from "./roumanie";
+import { slovakia } from "./slovaquie";
+import { liechtenstein } from "./liechtenstein";
+import { serbia } from "./serbie";
+import { slovenia } from "./slovenie";
+import { saintMarin } from "./saint-marin";
+import { montenegro } from "./montenegro";
 
 /** Full `Country` records — the only ones that can be rendered as a country page or in a comparison. */
 export const FULL_COUNTRIES: Record<string, Country> = {
@@ -73,6 +81,14 @@ export const FULL_COUNTRIES: Record<string, Country> = {
   [malta.slug]: malta,
   [moldova.slug]: moldova,
   [ukraine.slug]: ukraine,
+  [latvia.slug]: latvia,
+  [romania.slug]: romania,
+  [slovakia.slug]: slovakia,
+  [liechtenstein.slug]: liechtenstein,
+  [serbia.slug]: serbia,
+  [slovenia.slug]: slovenia,
+  [saintMarin.slug]: saintMarin,
+  [montenegro.slug]: montenegro,
 };
 
 export function getFullCountry(slug: string): Country | undefined {
