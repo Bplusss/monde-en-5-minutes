@@ -9,6 +9,10 @@ export function PoliticsSection({ country }: { country: Country }) {
   const cat = getCategory("politique")!;
   const { politics } = country;
 
+  // In presidential regimes (e.g. the US), one person holds both roles — show
+  // a single card instead of the same name twice.
+  const oneHead = politics.headOfState.name === politics.headOfGovernment.name;
+
   return (
     <div>
       <SectionHeading
@@ -20,37 +24,45 @@ export function PoliticsSection({ country }: { country: Country }) {
         description={politics.summary}
       />
 
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className={oneHead ? "grid gap-4" : "grid gap-4 sm:grid-cols-2"}>
         <Card>
           <CardContent className="flex items-start gap-3 pt-5">
             <span className={`flex size-9 shrink-0 items-center justify-center rounded-lg ${cat.bg} ${cat.text}`}>
               <Landmark className="size-4" aria-hidden />
             </span>
             <div className="min-w-0">
-              <p className="text-xs text-muted">{politics.headOfState.title}</p>
+              <p className="text-xs text-muted">
+                {oneHead ? "Chef de l'État et du gouvernement" : politics.headOfState.title}
+              </p>
               <p className="truncate text-base font-semibold">{politics.headOfState.name}</p>
-              <p className="text-xs text-muted">Depuis le {politics.headOfState.since}</p>
+              <p className="text-xs text-muted">
+                {oneHead ? politics.headOfState.title : null}
+                {oneHead ? " · " : null}
+                Depuis le {politics.headOfState.since}
+              </p>
               {politics.headOfState.source && (
                 <SourceTag source={politics.headOfState.source} sourceUrl={politics.headOfState.sourceUrl} className="mt-1" />
               )}
             </div>
           </CardContent>
         </Card>
-        <Card>
-          <CardContent className="flex items-start gap-3 pt-5">
-            <span className={`flex size-9 shrink-0 items-center justify-center rounded-lg ${cat.bg} ${cat.text}`}>
-              <Gavel className="size-4" aria-hidden />
-            </span>
-            <div className="min-w-0">
-              <p className="text-xs text-muted">{politics.headOfGovernment.title}</p>
-              <p className="truncate text-base font-semibold">{politics.headOfGovernment.name}</p>
-              <p className="text-xs text-muted">Depuis le {politics.headOfGovernment.since}</p>
-              {politics.headOfGovernment.source && (
-                <SourceTag source={politics.headOfGovernment.source} sourceUrl={politics.headOfGovernment.sourceUrl} className="mt-1" />
-              )}
-            </div>
-          </CardContent>
-        </Card>
+        {!oneHead && (
+          <Card>
+            <CardContent className="flex items-start gap-3 pt-5">
+              <span className={`flex size-9 shrink-0 items-center justify-center rounded-lg ${cat.bg} ${cat.text}`}>
+                <Gavel className="size-4" aria-hidden />
+              </span>
+              <div className="min-w-0">
+                <p className="text-xs text-muted">{politics.headOfGovernment.title}</p>
+                <p className="truncate text-base font-semibold">{politics.headOfGovernment.name}</p>
+                <p className="text-xs text-muted">Depuis le {politics.headOfGovernment.since}</p>
+                {politics.headOfGovernment.source && (
+                  <SourceTag source={politics.headOfGovernment.source} sourceUrl={politics.headOfGovernment.sourceUrl} className="mt-1" />
+                )}
+              </div>
+            </CardContent>
+          </Card>
+        )}
       </div>
 
       <Card className="mt-4">
