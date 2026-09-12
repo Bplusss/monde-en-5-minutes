@@ -3,27 +3,25 @@
 import { useEffect, useRef } from "react";
 import type { Map as MapLibreMap } from "maplibre-gl";
 import { loadMapLibre } from "@/lib/maplibre-global";
+import type { CountryMaps } from "@/lib/types";
 
-const WORLD_BOUNDS: [[number, number], [number, number]] = [
-  [-165, -56],
-  [178, 78],
-];
+const GLYPHS = "https://fonts.openmaptiles.org/{fontstack}/{range}.pbf";
 
 interface CountryLocatorMapProps {
   /** ISO 3166-1 alpha-3 code — matches `properties.iso_a3` in /geo/world.json. */
   iso3: string;
-  /** [lon, lat] to center the world view on — the country's own map center. */
-  center: [number, number];
+  maps: CountryMaps;
+  capital: { name: string; lat: number; lon: number };
   className?: string;
 }
 
 /**
- * A quiet, non-interactive world map showing where a country sits on the
- * globe: every country is drawn in a light, uniform tone, and the one this
- * page is about is picked out in a darker shade and kept at the center of
- * the view. Purely orientational — no hover, no click, no zoom controls.
+ * A world map zoomed in on one country: every country is drawn in a light,
+ * uniform tone, the one this page is about is picked out in a darker shade,
+ * and its capital is marked and labeled. Fully navigable (drag/scroll/zoom)
+ * so a visitor can zoom back out to see the country's place in the world.
  */
-export function CountryLocatorMap({ iso3, center, className }: CountryLocatorMapProps) {
+export function CountryLocatorMap({ iso3, maps, capital, className }: CountryLocatorMapProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<MapLibreMap | null>(null);
 
@@ -36,6 +34,8 @@ export function CountryLocatorMap({ iso3, center, className }: CountryLocatorMap
     const muted = styles.getPropertyValue("--muted").trim() || "#6b7178";
     const brand = styles.getPropertyValue("--brand").trim() || "#16233f";
     const surface = styles.getPropertyValue("--surface").trim() || "#ffffff";
+    const foreground = styles.getPropertyValue("--foreground").trim() || "#14171c";
+    const accent = styles.getPropertyValue("--accent").trim() || "#b5122e";
 
     loadMapLibre().then((maplibregl) => {
       if (cancelled || !containerRef.current) return;
@@ -44,15 +44,19 @@ export function CountryLocatorMap({ iso3, center, className }: CountryLocatorMap
         container: containerRef.current,
         style: {
           version: 8,
+          glyphs: GLYPHS,
           sources: {},
           layers: [{ id: "bg", type: "background", paint: { "background-color": surfaceMuted } }],
         },
-        center: [0, 15],
-        zoom: 0.5,
-        interactive: false,
+        center: maps.center,
+        zoom: maps.zoom,
+        minZoom: 0.5,
+        maxZoom: maps.maxZoom ?? 9,
         attributionControl: { compact: true },
+        cooperativeGestures: true,
       });
       mapRef.current = map;
+      map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
 
       map.on("load", () => {
         map.addSource("world", { type: "geojson", data: "/geo/world.json" });
@@ -77,29 +81,34 @@ export function CountryLocatorMap({ iso3, center, className }: CountryLocatorMap
           },
         });
 
-        // A microstate's fill is imperceptible at world scale, so a marker at its
-        // center guarantees the country is still visible regardless of its size.
-        map.addSource("target-point", {
+        map.addSource("capital", {
           type: "geojson",
-          data: { type: "Feature", geometry: { type: "Point", coordinates: center }, properties: {} },
+          data: { type: "Feature", geometry: { type: "Point", coordinates: [capital.lon, capital.lat] }, properties: { name: capital.name } },
         });
         map.addLayer({
-          id: "target-point-circle",
+          id: "capital-circle",
           type: "circle",
-          source: "target-point",
+          source: "capital",
           paint: {
-            "circle-radius": 4,
-            "circle-color": brand,
+            "circle-radius": 5,
+            "circle-color": accent,
             "circle-stroke-color": surface,
             "circle-stroke-width": 1.5,
           },
         });
-
-        // fitBounds picks the zoom that fits the whole world in this container's
-        // aspect ratio; we keep that zoom but recenter on the country so it sits
-        // in the middle of the (still fully visible) world.
-        map.fitBounds(WORLD_BOUNDS, { padding: 8, animate: false });
-        map.jumpTo({ center, zoom: map.getZoom() });
+        map.addLayer({
+          id: "capital-label",
+          type: "symbol",
+          source: "capital",
+          layout: {
+            "text-field": ["get", "name"],
+            "text-font": ["Noto Sans Regular"],
+            "text-size": 12,
+            "text-offset": [0, 1.2],
+            "text-anchor": "top",
+          },
+          paint: { "text-color": foreground, "text-halo-color": surface, "text-halo-width": 1.3 },
+        });
       });
     });
 
@@ -109,7 +118,7 @@ export function CountryLocatorMap({ iso3, center, className }: CountryLocatorMap
       mapRef.current = null;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [iso3, center[0], center[1]]);
+  }, [iso3, maps, capital.name, capital.lat, capital.lon]);
 
   return <div ref={containerRef} className={className} />;
 }

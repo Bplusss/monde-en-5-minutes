@@ -6,6 +6,11 @@ import { CountryLocatorMap } from "@/components/map/CountryLocatorMap";
 import { Button } from "@/components/ui/Button";
 
 export function CountryHeader({ country }: { country: Country }) {
+  const capitalCity = country.cities.find((c) => c.isCapital);
+  const capital = capitalCity
+    ? { name: capitalCity.name, lat: capitalCity.lat, lon: capitalCity.lon }
+    : { name: country.capital, lat: country.maps.center[1], lon: country.maps.center[0] };
+
   const kpis = [
     { value: withUnit(formatCompact(country.population.total.value), "habitants"), label: "Population" },
     {
@@ -48,7 +53,7 @@ export function CountryHeader({ country }: { country: Country }) {
         </div>
 
         <div className="aspect-[4/3] w-full overflow-hidden rounded-2xl border border-border bg-surface-muted sm:aspect-[16/10]">
-          <CountryLocatorMap iso3={country.id} center={country.maps.center} className="size-full" />
+          <CountryLocatorMap iso3={country.id} maps={country.maps} capital={capital} className="size-full" />
         </div>
       </div>
     </section>
