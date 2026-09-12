@@ -189,6 +189,18 @@ const RIVER_MATCHES = {
     { riverName: "Churchill", neNames: ["Churchill"] },
     { riverName: "Nelson", neNames: ["Nelson"] },
   ],
+  japon: [
+    // Checked: no NE geometry, and OSM only tags these in kanji (no Latin `name`
+    // in the areas queried) — a confirmed gap, not a skipped step.
+    { riverName: "Shinano", osm: { nameRegex: "^Shinano", bbox: [138.0, 36.5, 139.2, 37.98] } },
+    { riverName: "Tone", neNames: ["Tone"] },
+    { riverName: "Ishikari", neNames: ["Ishikari"] },
+    { riverName: "Kitakami", osm: { nameRegex: "^Kitakami", bbox: [140.9, 38.2, 141.7, 39.75] } },
+  ],
+  togo: [
+    { riverName: "Mono", osm: { nameRegex: "^Mono", bbox: [1.4, 6.2, 1.9, 9.6] } },
+    { riverName: "Oti (Pendjari)", neNames: ["Oti"] },
+  ],
 };
 
 function writeFeatureCollection(filePath, features) {
