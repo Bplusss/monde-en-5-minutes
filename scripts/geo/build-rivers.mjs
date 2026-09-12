@@ -175,6 +175,20 @@ const RIVER_MATCHES = {
     { riverName: "Lim", neNames: ["Lim"] }, // No NE geometry at 1:10m (too minor) — checked.
   ],
   // saint-marin: no rivers.ts entries (no watercourse meets the inclusion bar) — no key needed here, same as monaco/cite-du-vatican.
+  "etats-unis": [
+    { riverName: "Mississippi", neNames: ["Mississippi"] },
+    { riverName: "Missouri", neNames: ["Missouri"] },
+    { riverName: "Rio Grande", neNames: ["Rio Grande"] },
+    { riverName: "Colorado", neNames: ["Colorado"] },
+    { riverName: "Columbia", neNames: ["Columbia"] },
+  ],
+  canada: [
+    { riverName: "Fleuve Saint-Laurent", neNames: ["St. Lawrence"] },
+    { riverName: "Mackenzie", neNames: ["Mackenzie"] },
+    { riverName: "Fraser", neNames: ["Fraser"] },
+    { riverName: "Churchill", neNames: ["Churchill"] },
+    { riverName: "Nelson", neNames: ["Nelson"] },
+  ],
 };
 
 function writeFeatureCollection(filePath, features) {

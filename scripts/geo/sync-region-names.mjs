@@ -21,7 +21,7 @@ const COUNTRIES = [
   "macedoine-du-nord", "malte", "moldavie", "norvege", "pays-bas", "pologne",
   "portugal", "royaume-uni", "spain", "suede", "suisse", "tchequie", "ukraine",
   "lettonie", "roumanie", "slovaquie", "liechtenstein", "serbie",
-  "saint-marin", "montenegro",
+  "saint-marin", "montenegro", "etats-unis", "canada",
   // Note: "slovenie" intentionally excluded — its regions.ts uses Slovenia's 12
   // statistical regions, but slovenie-regions.json holds Natural Earth's 212
   // municipalities instead; the country doesn't reference that file in maps

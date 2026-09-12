@@ -43,6 +43,8 @@ import { serbia } from "./serbie";
 import { slovenia } from "./slovenie";
 import { saintMarin } from "./saint-marin";
 import { montenegro } from "./montenegro";
+import { etatsUnis } from "./etats-unis";
+import { canada } from "./canada";
 
 /** Full `Country` records — the only ones that can be rendered as a country page or in a comparison. */
 export const FULL_COUNTRIES: Record<string, Country> = {
@@ -89,6 +91,8 @@ export const FULL_COUNTRIES: Record<string, Country> = {
   [slovenia.slug]: slovenia,
   [saintMarin.slug]: saintMarin,
   [montenegro.slug]: montenegro,
+  [etatsUnis.slug]: etatsUnis,
+  [canada.slug]: canada,
 };
 
 export function getFullCountry(slug: string): Country | undefined {

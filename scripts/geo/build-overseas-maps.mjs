@@ -79,6 +79,13 @@ const DIRECT_ADM0 = {
   finlande: {
     ALD: { group: "aland", name: "Åland" },
   },
+  "etats-unis": {
+    PRI: { group: "porto-rico", name: "Porto Rico" },
+    GUM: { group: "guam", name: "Guam" },
+    VIR: { group: "iles-vierges-americaines", name: "Îles Vierges américaines" },
+    ASM: { group: "samoa-americaines", name: "Samoa américaines" },
+    MNP: { group: "iles-mariannes-du-nord", name: "Îles Mariannes du Nord" },
+  },
 };
 
 /** Builds one country's overseas GeoJSON from its direct-admin0 units plus any bbox sub-regions of its own admin0 multipolygon. */
@@ -116,6 +123,7 @@ async function main() {
     ["danemark", null],
     ["norvege", "NOR"],
     ["finlande", null],
+    ["etats-unis", null],
   ]) {
     const features = buildOverseas(slug, admin0.features, parentAdm0a3);
     writeFeatureCollection(path.join(GEO_DIR, `${slug}-overseas.json`), features);
