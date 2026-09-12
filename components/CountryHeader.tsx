@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Scale } from "lucide-react";
 import type { Country } from "@/lib/types";
 import { formatCompact, withUnit } from "@/lib/format";
-import { CountryMap } from "@/components/map/CountryMap";
+import { CountryLocatorMap } from "@/components/map/CountryLocatorMap";
 import { Button } from "@/components/ui/Button";
 
 export function CountryHeader({ country }: { country: Country }) {
@@ -48,7 +48,7 @@ export function CountryHeader({ country }: { country: Country }) {
         </div>
 
         <div className="aspect-[4/3] w-full overflow-hidden rounded-2xl border border-border bg-surface-muted sm:aspect-[16/10]">
-          <CountryMap maps={country.maps} layer="cities" cities={country.cities} className="size-full" />
+          <CountryLocatorMap iso3={country.id} center={country.maps.center} className="size-full" />
         </div>
       </div>
     </section>
