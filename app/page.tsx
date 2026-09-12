@@ -1,9 +1,9 @@
-import Link from "next/link";
+import { MousePointerClick } from "lucide-react";
 import { WorldMap } from "@/components/map/WorldMap";
-import { Button } from "@/components/ui/Button";
 import { CountrySearchBar } from "@/components/CountrySearchBar";
+import { RandomCountryButton } from "@/components/RandomCountryButton";
 import { CATEGORIES } from "@/lib/categories";
-import { COUNTRIES } from "@/data/countries-registry";
+import { COUNTRIES, getAvailableCountries } from "@/data/countries-registry";
 
 export default function HomePage() {
   return (
@@ -23,10 +23,8 @@ export default function HomePage() {
             <div className="mt-6">
               <CountrySearchBar countries={COUNTRIES} />
             </div>
-            <div className="mt-4 flex flex-wrap items-center gap-3">
-              <Link href="/pays">
-                <Button variant="secondary">Voir tous les pays</Button>
-              </Link>
+            <div className="mt-3 flex flex-wrap items-center gap-3">
+              <RandomCountryButton countries={getAvailableCountries()} />
             </div>
           </div>
 
@@ -34,10 +32,9 @@ export default function HomePage() {
             <div className="aspect-[3/2] w-full overflow-hidden rounded-2xl border border-border sm:aspect-[16/9]">
               <WorldMap className="size-full" />
             </div>
-            <p className="mt-3 flex items-center justify-center gap-1.5 text-center text-sm font-medium text-foreground">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-3.5 py-1.5 shadow-sm">
-                🖱️ Cliquez sur un pays pour découvrir sa fiche complète
-              </span>
+            <p className="mt-3 flex items-center justify-center gap-1.5 text-center text-sm text-muted">
+              <MousePointerClick className="size-3.5" aria-hidden />
+              Cliquez sur un pays pour découvrir sa fiche
             </p>
           </div>
         </div>

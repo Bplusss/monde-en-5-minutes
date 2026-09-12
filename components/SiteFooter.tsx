@@ -7,10 +7,10 @@ export function SiteFooter() {
         <p>Données publiques, sourcées et datées. Présentation strictement factuelle.</p>
         <nav className="flex gap-4">
           <Link href="/pays" className="focus-ring rounded hover:text-foreground">
-            Pays
+            Tous les pays
           </Link>
           <Link href="/comparer" className="focus-ring rounded hover:text-foreground">
-            Comparer
+            Comparer les pays
           </Link>
         </nav>
       </div>

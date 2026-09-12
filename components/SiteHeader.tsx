@@ -18,13 +18,13 @@ export function SiteHeader() {
             href="/pays"
             className="focus-ring rounded-full px-3 py-2 text-sm font-medium text-muted transition-colors hover:bg-surface-muted hover:text-foreground sm:px-4"
           >
-            Pays
+            Tous les pays
           </Link>
           <Link
             href="/comparer"
             className="focus-ring rounded-full px-3 py-2 text-sm font-medium text-muted transition-colors hover:bg-surface-muted hover:text-foreground sm:px-4"
           >
-            Comparer
+            Comparer les pays
           </Link>
         </nav>
       </div>
