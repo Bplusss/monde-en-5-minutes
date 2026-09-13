@@ -236,6 +236,15 @@ const RIVER_MATCHES = {
     // result — retry later if this keeps failing.
     { riverName: "Cross River", osm: { nameRegex: "^Cross River", bbox: [8.0, 4.8, 9.3, 6.2] } },
   ],
+  argentine: [
+    { riverName: "Paraná", neNames: ["Paraná"] },
+    { riverName: "Uruguay", neNames: ["Uruguay"] },
+    // An estuary rather than a classic river line — may have no centerline
+    // geometry in either dataset; a documented, acceptable gap if so.
+    { riverName: "Río de la Plata", osm: { nameRegex: "Plata", bbox: [-58.7, -36.0, -55.5, -34.0] } },
+    { riverName: "Colorado", neNames: ["Colorado"] },
+    { riverName: "Río Negro", neNames: ["Negro"] },
+  ],
 };
 
 function writeFeatureCollection(filePath, features) {
