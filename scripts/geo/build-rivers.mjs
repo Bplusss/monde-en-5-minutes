@@ -201,6 +201,18 @@ const RIVER_MATCHES = {
     { riverName: "Mono", osm: { nameRegex: "^Mono", bbox: [1.4, 6.2, 1.9, 9.6] } },
     { riverName: "Oti (Pendjari)", neNames: ["Oti"] },
   ],
+  bresil: [
+    { riverName: "Amazone", neNames: ["Amazonas"] },
+    { riverName: "São Francisco", osm: { nameRegex: "São Francisco", bbox: [-46.0, -21.0, -36.0, -9.0] } },
+    { riverName: "Paraná", neNames: ["Paraná"] },
+    { riverName: "Madeira", neNames: ["Madeira"] },
+    { riverName: "Rio Negro", neNames: ["Negro"] },
+  ],
+  australie: [
+    { riverName: "Murray", neNames: ["Murray"] },
+    { riverName: "Darling (Baaka)", neNames: ["Darling"] },
+    { riverName: "Murrumbidgee", osm: { nameRegex: "^Murrumbidgee", bbox: [143.5, -35.5, 149.5, -34.5] } },
+  ],
 };
 
 function writeFeatureCollection(filePath, features) {

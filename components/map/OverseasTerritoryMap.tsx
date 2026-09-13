@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Map as MapLibreMap } from "maplibre-gl";
+import { MapPin } from "lucide-react";
 import { loadMapLibre } from "@/lib/maplibre-global";
 import { computeBounds } from "@/lib/geo-utils";
 
@@ -24,6 +25,11 @@ interface OverseasTerritoryMapProps {
 export function OverseasTerritoryMap({ geojsonUrl, groupId, className }: OverseasTerritoryMapProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<MapLibreMap | null>(null);
+  // No geometry for this group is a real, expected case — some territories are
+  // too small for the Natural Earth dataset this map draws from (e.g. Christmas
+  // Island, Cocos Islands) — fall back to the same placeholder used when a
+  // territory has no mapGroupId at all.
+  const [notFound, setNotFound] = useState(false);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -53,7 +59,10 @@ export function OverseasTerritoryMap({ geojsonUrl, groupId, className }: Oversea
       map.on("load", async () => {
         const geojson: GeoJSON.FeatureCollection = await fetch(geojsonUrl).then((r) => r.json());
         const features = geojson.features.filter((f) => f.properties?.group === groupId);
-        if (!features.length) return;
+        if (!features.length) {
+          if (!cancelled) setNotFound(true);
+          return;
+        }
 
         map.addSource("territory", { type: "geojson", data: { type: "FeatureCollection", features } });
         map.addLayer({
@@ -80,6 +89,14 @@ export function OverseasTerritoryMap({ geojsonUrl, groupId, className }: Oversea
       mapRef.current = null;
     };
   }, [geojsonUrl, groupId]);
+
+  if (notFound) {
+    return (
+      <div className={`flex items-center justify-center text-muted ${className ?? ""}`}>
+        <MapPin className="size-5" aria-hidden />
+      </div>
+    );
+  }
 
   return <div ref={containerRef} className={className} />;
 }
