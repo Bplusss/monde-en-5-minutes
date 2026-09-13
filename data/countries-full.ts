@@ -49,6 +49,7 @@ import { japan } from "./japon";
 import { togo } from "./togo";
 import { brazil } from "./bresil";
 import { australia } from "./australie";
+import { mexico } from "./mexique";
 
 /** Full `Country` records — the only ones that can be rendered as a country page or in a comparison. */
 export const FULL_COUNTRIES: Record<string, Country> = {
@@ -101,6 +102,7 @@ export const FULL_COUNTRIES: Record<string, Country> = {
   [togo.slug]: togo,
   [brazil.slug]: brazil,
   [australia.slug]: australia,
+  [mexico.slug]: mexico,
 };
 
 export function getFullCountry(slug: string): Country | undefined {

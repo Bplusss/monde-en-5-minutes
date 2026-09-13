@@ -213,6 +213,13 @@ const RIVER_MATCHES = {
     { riverName: "Darling (Baaka)", neNames: ["Darling"] },
     { riverName: "Murrumbidgee", osm: { nameRegex: "^Murrumbidgee", bbox: [143.5, -35.5, 149.5, -34.5] } },
   ],
+  mexique: [
+    { riverName: "Rio Bravo", neNames: ["Rio Grande"] },
+    { riverName: "Usumacinta", neNames: ["Usumacinta"] },
+    { riverName: "Lerma-Santiago", neNames: ["Lerma", "Santiago"] },
+    { riverName: "Balsas", neNames: ["Balsas"] },
+    { riverName: "Grijalva", neNames: ["Grijalva"] },
+  ],
 };
 
 function writeFeatureCollection(filePath, features) {
