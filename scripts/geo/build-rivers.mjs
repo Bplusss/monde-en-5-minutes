@@ -220,6 +220,13 @@ const RIVER_MATCHES = {
     { riverName: "Balsas", neNames: ["Balsas"] },
     { riverName: "Grijalva", neNames: ["Grijalva"] },
   ],
+  inde: [
+    { riverName: "Gange (Ganga)", neNames: ["Ganges"] },
+    { riverName: "Brahmapoutre", neNames: ["Yarlung", "Brahmaputra"] },
+    { riverName: "Yamuna", neNames: ["Yamuna"] },
+    { riverName: "Godavari", osm: { nameRegex: "^Godavari", bbox: [73.5, 16.5, 82.3, 20.1] } },
+    { riverName: "Narmada", neNames: ["Narmada"] },
+  ],
 };
 
 function writeFeatureCollection(filePath, features) {
