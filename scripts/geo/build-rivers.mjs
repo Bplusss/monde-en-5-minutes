@@ -227,6 +227,15 @@ const RIVER_MATCHES = {
     { riverName: "Godavari", osm: { nameRegex: "^Godavari", bbox: [73.5, 16.5, 82.3, 20.1] } },
     { riverName: "Narmada", neNames: ["Narmada"] },
   ],
+  nigeria: [
+    { riverName: "Niger", neNames: ["Niger"] },
+    { riverName: "Bénoué", neNames: ["Benue"] },
+    { riverName: "Kaduna", neNames: ["Kaduna"] },
+    // Checked: no NE geometry; Overpass has repeatedly timed out on this query
+    // (server-side, verified via direct curl) rather than returning an empty
+    // result — retry later if this keeps failing.
+    { riverName: "Cross River", osm: { nameRegex: "^Cross River", bbox: [8.0, 4.8, 9.3, 6.2] } },
+  ],
 };
 
 function writeFeatureCollection(filePath, features) {
