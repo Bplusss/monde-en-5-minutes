@@ -5,6 +5,7 @@ import type { Map as MapLibreMap } from "maplibre-gl";
 import { loadMapLibre } from "@/lib/maplibre-global";
 import type { City, CountryMaps, River } from "@/lib/types";
 import { formatNumber } from "@/lib/format";
+import { fetchOutlineBounds, isFittableBounds } from "@/lib/geo-utils";
 
 const GLYPHS = "https://fonts.openmaptiles.org/{fontstack}/{range}.pbf";
 
@@ -52,7 +53,7 @@ export function CountryMap({ maps, layer, className, cities = [], rivers = [] }:
         },
         center,
         zoom,
-        minZoom: Math.max(zoom - 1.2, 0),
+        minZoom: 0.5,
         maxZoom,
         attributionControl: { compact: true },
         dragRotate: false,
@@ -200,6 +201,17 @@ export function CountryMap({ maps, layer, className, cities = [], rivers = [] }:
               .addTo(map);
           });
         }
+
+        // Fit the whole country in view by default, regardless of the
+        // authored center/zoom (tuned per-country and not always accurate
+        // for every shape) — falls back to it only when the outline wraps
+        // the antimeridian, where a naive fit would show mostly ocean.
+        fetchOutlineBounds(maps.outlineGeojsonUrl).then((bounds) => {
+          if (cancelled || !mapRef.current) return;
+          if (bounds && isFittableBounds(bounds)) {
+            mapRef.current.fitBounds(bounds, { padding: 24, animate: false, maxZoom });
+          }
+        });
       });
     });
 

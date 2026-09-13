@@ -35,3 +35,23 @@ export function computeCentroid(features: GeoJSON.Feature[]): [number, number] |
   const [[minX, minY], [maxX, maxY]] = bounds;
   return [(minX + maxX) / 2, (minY + maxY) / 2];
 }
+
+/** Fetches a country's own outline GeoJSON and returns its bounding box, for framing a map on the whole country. */
+export async function fetchOutlineBounds(url: string): Promise<[[number, number], [number, number]] | null> {
+  const res = await fetch(url);
+  if (!res.ok) return null;
+  const geojson: GeoJSON.FeatureCollection = await res.json();
+  return computeBounds(geojson.features);
+}
+
+/**
+ * A longitude span this wide only happens when a country's outline wraps the
+ * antimeridian (e.g. the US's Aleutian islands) — naively fitting to it would
+ * zoom out to show mostly ocean, so callers should fall back to an authored
+ * center/zoom instead in that case.
+ */
+export const ANTIMERIDIAN_SPAN_THRESHOLD = 100;
+
+export function isFittableBounds(bounds: [[number, number], [number, number]]): boolean {
+  return bounds[1][0] - bounds[0][0] < ANTIMERIDIAN_SPAN_THRESHOLD;
+}

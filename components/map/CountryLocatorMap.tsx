@@ -4,39 +4,9 @@ import { useEffect, useRef } from "react";
 import type { Map as MapLibreMap } from "maplibre-gl";
 import { loadMapLibre } from "@/lib/maplibre-global";
 import type { CountryMaps } from "@/lib/types";
+import { fetchOutlineBounds, isFittableBounds } from "@/lib/geo-utils";
 
 const GLYPHS = "https://fonts.openmaptiles.org/{fontstack}/{range}.pbf";
-
-/**
- * A longitude span this wide only happens when a country's outline wraps the
- * antimeridian (e.g. the US's Aleutian islands) — naively fitting to it would
- * zoom out to show mostly ocean, so we fall back to the country's authored
- * `center`/`zoom` instead (already tuned by hand for exactly this case).
- */
-const ANTIMERIDIAN_SPAN_THRESHOLD = 100;
-
-type Bbox = [number, number, number, number]; // [minLon, minLat, maxLon, maxLat]
-
-function extendBbox(bbox: Bbox, coords: unknown): void {
-  if (typeof (coords as unknown[])[0] === "number") {
-    const [lon, lat] = coords as [number, number];
-    if (lon < bbox[0]) bbox[0] = lon;
-    if (lat < bbox[1]) bbox[1] = lat;
-    if (lon > bbox[2]) bbox[2] = lon;
-    if (lat > bbox[3]) bbox[3] = lat;
-  } else {
-    for (const c of coords as unknown[]) extendBbox(bbox, c);
-  }
-}
-
-async function fetchOutlineBbox(url: string): Promise<Bbox | null> {
-  const res = await fetch(url);
-  if (!res.ok) return null;
-  const geojson = await res.json();
-  const bbox: Bbox = [Infinity, Infinity, -Infinity, -Infinity];
-  for (const feature of geojson.features ?? []) extendBbox(bbox, feature.geometry.coordinates);
-  return Number.isFinite(bbox[0]) ? bbox : null;
-}
 
 interface CountryLocatorMapProps {
   /** ISO 3166-1 alpha-3 code — matches `properties.iso_a3` in /geo/world.json. */
@@ -144,14 +114,10 @@ export function CountryLocatorMap({ iso3, maps, capital, className }: CountryLoc
           paint: { "text-color": foreground, "text-halo-color": surface, "text-halo-width": 1.3 },
         });
 
-        fetchOutlineBbox(maps.outlineGeojsonUrl).then((bbox) => {
+        fetchOutlineBounds(maps.outlineGeojsonUrl).then((bounds) => {
           if (cancelled || !mapRef.current) return;
-          if (bbox && bbox[2] - bbox[0] < ANTIMERIDIAN_SPAN_THRESHOLD) {
-            mapRef.current.fitBounds([[bbox[0], bbox[1]], [bbox[2], bbox[3]]], {
-              padding: 28,
-              animate: false,
-              maxZoom: maps.maxZoom ?? 9,
-            });
+          if (bounds && isFittableBounds(bounds)) {
+            mapRef.current.fitBounds(bounds, { padding: 28, animate: false, maxZoom: maps.maxZoom ?? 9 });
           } else {
             mapRef.current.jumpTo({ center: maps.center, zoom: maps.zoom });
           }
