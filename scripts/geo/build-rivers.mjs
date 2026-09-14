@@ -102,6 +102,10 @@ const RIVER_MATCHES = {
     { riverName: "Gudenå", osm: { nameRegex: "Guden", bbox: [8.0, 54.5, 13.0, 57.0] } },
   ],
   islande: [{ riverName: "Þjórsá", neNames: ["Thjórsá"] }],
+  andorre: [
+    // No Natural Earth geometry at 1:10m for the Valira (too minor); OSM has it.
+    { riverName: "Valira", osm: { nameRegex: "^Valira", bbox: [1.4, 42.35, 1.8, 42.66] } },
+  ],
   "macedoine-du-nord": [
     // No Natural Earth geometry at 1:10m for the Vardar (too minor); OSM has it,
     // tagged under its Macedonian Cyrillic name (Вардар), with "Vardar" only in name:en.

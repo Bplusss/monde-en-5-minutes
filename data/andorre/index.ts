@@ -34,6 +34,7 @@ export const andorra: Country = {
   maps: {
     outlineGeojsonUrl: "/geo/andorre-outline.json",
     regionsGeojsonUrl: "/geo/andorre-regions.json",
+    riversGeojsonUrl: "/geo/andorre-rivers.json",
     center: [1.586, 42.539],
     zoom: 8.7,
   },
