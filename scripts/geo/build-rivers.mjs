@@ -106,6 +106,18 @@ const RIVER_MATCHES = {
     // No Natural Earth geometry at 1:10m for the Valira (too minor); OSM has it.
     { riverName: "Valira", osm: { nameRegex: "^Valira", bbox: [1.4, 42.35, 1.8, 42.66] } },
   ],
+  chine: [
+    { riverName: "Yangtsé (Chang Jiang)", neNames: ["Jinsha", "Chang Jiang", "Yangtze"] },
+    { riverName: "Fleuve Jaune (Huang He)", neNames: ["Huang"] },
+    // NE's "Pearl" feature is the unrelated Louisiana river; the Chinese Pearl/Xi Jiang has no NE geometry.
+    // OSM tags it under its Chinese name (西江); "Xi Jiang" only appears in name:en.
+    { riverName: "Rivière des Perles (Xi Jiang)", osm: { nameRegex: "西江", bbox: [104.0, 21.5, 114.5, 26.5] } },
+    { riverName: "Heilong Jiang (Amour)", neNames: ["Heilong Jiang", "Amur"] },
+    // NE's "Brahmaputra" segment stops at the India/Bangladesh border, short of Tibet; OSM has it tagged
+    // under its Chinese name (雅鲁藏布江) throughout Tibet — "Yarlung"/"Brahmaputra" alone only picks up a
+    // short stretch near the Great Bend, right at the disputed India border, which gets clipped away.
+    { riverName: "Yarlung Tsangpo (haut Brahmapoutre)", osm: { nameRegex: "雅鲁藏布江", bbox: [82.0, 28.0, 97.5, 31.5] } },
+  ],
   "macedoine-du-nord": [
     // No Natural Earth geometry at 1:10m for the Vardar (too minor); OSM has it,
     // tagged under its Macedonian Cyrillic name (Вардар), with "Vardar" only in name:en.
