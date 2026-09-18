@@ -56,6 +56,7 @@ import { argentina } from "./argentine";
 import { china } from "./chine";
 import { iran } from "./iran";
 import { southKorea } from "./coree-du-sud";
+import { southAfrica } from "./afrique-du-sud";
 
 /** Full `Country` records — the only ones that can be rendered as a country page or in a comparison. */
 export const FULL_COUNTRIES: Record<string, Country> = {
@@ -115,6 +116,7 @@ export const FULL_COUNTRIES: Record<string, Country> = {
   [china.slug]: china,
   [iran.slug]: iran,
   [southKorea.slug]: southKorea,
+  [southAfrica.slug]: southAfrica,
 };
 
 export function getFullCountry(slug: string): Country | undefined {

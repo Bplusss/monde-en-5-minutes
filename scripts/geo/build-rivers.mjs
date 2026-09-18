@@ -286,6 +286,13 @@ const RIVER_MATCHES = {
     { riverName: "Geum-gang (Geum)", osm: { nameRegex: "금강", bbox: [126.5, 35.8, 127.9, 36.6] } },
     { riverName: "Yeongsan-gang (Yeongsan)", osm: { nameRegex: "영산강", bbox: [126.2, 34.7, 126.95, 35.35] } },
   ],
+  "afrique-du-sud": [
+    { riverName: "Orange (Gariep)", neNames: ["Orange"] },
+    { riverName: "Vaal", neNames: ["Vaal"] },
+    { riverName: "Limpopo", neNames: ["Limpopo"] },
+    // No NE geometry at 1:10m for the Tugela (too minor); OSM has it.
+    { riverName: "Tugela", osm: { nameRegex: "^Tugela", bbox: [28.5, -29.3, 31.6, -28.1] } },
+  ],
 };
 
 function writeFeatureCollection(filePath, features) {

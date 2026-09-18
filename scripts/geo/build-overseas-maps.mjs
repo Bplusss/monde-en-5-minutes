@@ -48,6 +48,12 @@ const SUBREGIONS = {
     svalbard: { name: "Svalbard", bbox: [9, 74, 35, 81] },
     "jan-mayen": { name: "Jan Mayen", bbox: [-9.5, 70.5, -7.5, 71.5] },
   },
+  "afrique-du-sud": {
+    // Marion and Prince Edward islands are two small polygons within ZAF's own
+    // admin0 multipolygon (not a separate ADM0 unit), same pattern as Norway's
+    // Svalbard/Jan Mayen extracted from NOR's own multipolygon.
+    "prince-edward-islands": { name: "Îles du Prince Édouard", bbox: [37.5, -47.0, 38.0, -46.5] },
+  },
 };
 
 // Overseas territories that ARE their own Natural Earth admin0 map unit.
@@ -130,6 +136,7 @@ async function main() {
     ["finlande", null],
     ["etats-unis", null],
     ["australie", null],
+    ["afrique-du-sud", "ZAF"],
   ]) {
     const features = buildOverseas(slug, admin0.features, parentAdm0a3);
     writeFeatureCollection(path.join(GEO_DIR, `${slug}-overseas.json`), features);
