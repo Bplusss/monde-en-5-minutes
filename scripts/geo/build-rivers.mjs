@@ -261,6 +261,31 @@ const RIVER_MATCHES = {
     { riverName: "Colorado", neNames: ["Colorado"] },
     { riverName: "Río Negro", neNames: ["Negro"] },
   ],
+  iran: [
+    // No NE geometry at 1:10m for the Karun (too minor despite being Iran's longest
+    // and only navigable river). OSM tags it under its Persian name (کارون); the
+    // Latin "Karun"/"Karoun" only appears in name:en, which this query doesn't check.
+    { riverName: "Karoun", osm: { nameRegex: "کارون", bbox: [47.8, 29.9, 51.2, 32.2] } },
+    { riverName: "Sefid-Roud", neNames: ["Sefid"] },
+    { riverName: "Karkheh", neNames: ["Karkheh"] },
+    // No NE geometry at 1:10m for the Zayandeh-Roud (too minor; also seasonally dry
+    // for much of its lower course in recent years). OSM tags it under its Persian
+    // name (زاینده‌رود / زاینده رود).
+    { riverName: "Zayandeh-Roud", osm: { nameRegex: "زاینده", bbox: [49.8, 32.0, 53.0, 32.9] } },
+    { riverName: "Aras (Araxe)", neNames: ["Aras"] },
+  ],
+  "coree-du-sud": [
+    // NE's "Han" line includes an unrelated Chinese Han (Hubei/Shaanxi, tributary
+    // of the Yangtze) plus the actual Korean Han-gang near Seoul — clipping to the
+    // outline drops the Chinese segments automatically. "Namhan" adds the South
+    // Han tributary branch.
+    { riverName: "Han-gang (Han)", neNames: ["Han", "Namhan"] },
+    { riverName: "Nakdong-gang (Nakdong)", neNames: ["Nakdong"] },
+    // No NE geometry at 1:10m for the Geum or the Yeongsan (too minor); OSM
+    // tags them under their Hangul names.
+    { riverName: "Geum-gang (Geum)", osm: { nameRegex: "금강", bbox: [126.5, 35.8, 127.9, 36.6] } },
+    { riverName: "Yeongsan-gang (Yeongsan)", osm: { nameRegex: "영산강", bbox: [126.2, 34.7, 126.95, 35.35] } },
+  ],
 };
 
 function writeFeatureCollection(filePath, features) {
