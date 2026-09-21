@@ -293,6 +293,18 @@ const RIVER_MATCHES = {
     // No NE geometry at 1:10m for the Tugela (too minor); OSM has it.
     { riverName: "Tugela", osm: { nameRegex: "^Tugela", bbox: [28.5, -29.3, 31.6, -28.1] } },
   ],
+  indonesie: [
+    { riverName: "Kapuas", neNames: ["Kapuas"] },
+    { riverName: "Barito", neNames: ["Barito"] },
+    { riverName: "Mahakam", neNames: ["Mahakam"] },
+    // No NE geometry at 1:10m for the Musi (too minor). OSM fallback has
+    // repeatedly errored (Overpass returning an HTML error page rather than
+    // JSON, verified across several retries) rather than returning an empty
+    // result — a documented gap, retry later if this keeps failing.
+    { riverName: "Musi", osm: { nameRegex: "Musi", bbox: [102.5, -4.5, 105.5, -1.5] } },
+    // No NE geometry at 1:10m for the Bengawan Solo (too minor); OSM has it.
+    { riverName: "Bengawan Solo", osm: { nameRegex: "Bengawan Solo|^Solo$", bbox: [110.6, -8.0, 112.9, -6.7] } },
+  ],
 };
 
 function writeFeatureCollection(filePath, features) {
