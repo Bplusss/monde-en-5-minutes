@@ -293,6 +293,9 @@ const RIVER_MATCHES = {
     // No NE geometry at 1:10m for the Tugela (too minor); OSM has it.
     { riverName: "Tugela", osm: { nameRegex: "^Tugela", bbox: [28.5, -29.3, 31.6, -28.1] } },
   ],
+  egypte: [
+    { riverName: "Nil", neNames: ["Nile"] },
+  ],
   indonesie: [
     { riverName: "Kapuas", neNames: ["Kapuas"] },
     { riverName: "Barito", neNames: ["Barito"] },
