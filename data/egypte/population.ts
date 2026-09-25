@@ -10,7 +10,7 @@ export const population: PopulationData = {
     year: 2026,
     source: CAPMAS,
     sourceUrl: CAPMAS_URL,
-    note: "Population « intérieure » (résidant effectivement sur le territoire égyptien), franchie le 9 mai 2026 selon le compteur de population de l'agence nationale de statistique CAPMAS ; le dernier recensement complet, en 2017, avait dénombré environ 94,8 millions d'habitants. En intégrant la diaspora égyptienne à l'étranger (plus de 11 millions de personnes, essentiellement dans les pays du Golfe), l'estimation de population totale mi-2026 des Nations unies atteint environ 120 millions.",
+    note: "Population résidant sur le territoire, franchie le 9 mai 2026 selon le compteur CAPMAS (94,8 millions au recensement de 2017). Avec la diaspora (plus de 11 millions, surtout dans le Golfe), l'ONU estime la population totale mi-2026 à environ 120 millions.",
   },
   density: {
     value: 107.9,
@@ -18,7 +18,7 @@ export const population: PopulationData = {
     year: 2026,
     source: "Calculé (population CAPMAS ÷ superficie)",
     sourceUrl: CAPMAS_URL,
-    note: "Moyenne nationale trompeuse : plus de 95 % des Égyptiens vivent sur les 5 à 6 % du territoire qu'occupent la vallée et le delta du Nil, où la densité réelle dépasse largement 1 000 hab./km² (jusqu'à plus de 3 000 hab./km² dans certains quartiers du Caire), tandis que les déserts Occidental et Oriental restent quasiment vides.",
+    note: "Moyenne nationale trompeuse : plus de 95 % des Égyptiens vivent sur les 5 à 6 % du territoire qu'occupent la vallée et le delta du Nil, où la densité réelle dépasse 1 000 hab./km², tandis que les déserts restent quasiment vides.",
   },
   growthRate: {
     value: 1.73,
@@ -42,5 +42,5 @@ export const population: PopulationData = {
     sourceUrl: "https://data.worldbank.org/indicator/SP.URB.TOTL.IN.ZS?locations=EG",
   },
   summary:
-    "Avec près de 109 millions d'habitants sur son sol (et environ 120 millions en comptant sa diaspora), l'Égypte est le pays le plus peuplé du monde arabe et le troisième d'Afrique après le Nigeria et l'Éthiopie. Sa population, jeune (âge médian d'environ 25 ans) et en croissance rapide (elle a plus que doublé depuis les années 1980), est concentrée de façon extrême sur l'étroite bande fertile du Nil et de son delta, qui ne représente qu'environ 5 à 6 % du territoire national mais où vivent plus de 95 % des Égyptiens, faisant du Caire et de sa région l'une des agglomérations les plus densément peuplées de la planète. Cette pression démographique sur des ressources en eau et en terres arables déjà contraintes — accentuée par les incertitudes liées au grand barrage éthiopien de la Renaissance (GERD) sur le Nil bleu — constitue l'un des grands défis structurels du pays, aux côtés d'une émigration de travail importante, notamment vers les monarchies du Golfe et la Libye, qui fait des transferts de fonds des Égyptiens de l'étranger une ressource économique majeure.",
+    "Avec près de 109 millions d'habitants sur son sol (et environ 120 millions en comptant sa diaspora), l'Égypte est le pays le plus peuplé du monde arabe et le troisième d'Afrique. Sa population, jeune (âge médian d'environ 25 ans) et en croissance rapide, est concentrée de façon extrême sur l'étroite bande fertile du Nil et de son delta, où vivent plus de 95 % des Égyptiens sur 5 à 6 % du territoire. Cette pression démographique sur des ressources en eau et en terres arables déjà contraintes constitue l'un des grands défis structurels du pays, aux côtés d'une émigration de travail importante, notamment vers le Golfe, qui fait des transferts de fonds une ressource économique majeure.",
 };

@@ -5,7 +5,7 @@ const WIKI = "Wikipedia";
 
 export const territories: TerritoriesData = {
   summary:
-    "L'Afrique du Sud est un État unitaire divisé en 9 provinces, elles-mêmes subdivisées en 8 municipalités métropolitaines (les grandes agglomérations, dont Johannesburg, Le Cap, eThekwini/Durban et Tshwane/Pretoria), 44 districts municipaux et 205 municipalités locales. Au large de ses côtes, le pays administre également les îles subantarctiques du Prince Édouard (Marion et Prince Édouard), un territoire isolé et inhabité en dehors d'une base scientifique permanente, annexé en 1947-1948 — la seule possession du pays en dehors de son territoire continental.",
+    "L'Afrique du Sud est un État unitaire divisé en 9 provinces, elles-mêmes subdivisées en 8 municipalités métropolitaines (dont Johannesburg, Le Cap et Tshwane/Pretoria), 44 districts municipaux et 205 municipalités locales. Au large de ses côtes, le pays administre aussi les îles subantarctiques du Prince Édouard, inhabitées hors base scientifique, annexées en 1947-1948 — sa seule possession hors du territoire continental.",
   divisions: [
     { name: "Provinces", count: 9, source: "Statistics South Africa (Stats SA)", sourceUrl: "https://www.statssa.gov.za/" },
     { name: "Municipalités métropolitaines", count: 8, note: "Johannesburg, Le Cap, eThekwini (Durban), Tshwane (Pretoria), Ekurhuleni, Nelson Mandela Bay, Mangaung (Bloemfontein), Buffalo City.", source: WIKI, sourceUrl: "https://en.wikipedia.org/wiki/Metropolitan_municipality_(South_Africa)" },
@@ -16,13 +16,13 @@ export const territories: TerritoriesData = {
   overseas: [
     {
       name: "Îles du Prince Édouard (Marion et Prince Édouard)",
-      status: "Territoire inhabité (hors base scientifique permanente) sous souveraineté sud-africaine directe depuis leur annexion en 1947-1948 ; réserve naturelle spéciale protégée depuis 1995, à environ 1 900 km au sud-est du Cap dans l'océan Indien subantarctique.",
+      status: "Territoire inhabité (hors base scientifique) sous souveraineté sud-africaine depuis 1947-1948 ; réserve naturelle spéciale depuis 1995, à environ 1 900 km au sud-est du Cap.",
       population: {
         value: 0,
         unit: "habitants permanents",
         source: WIKI,
         sourceUrl: "https://en.wikipedia.org/wiki/Prince_Edward_Islands",
-        note: "Aucune population permanente ; seule l'île Marion accueille une station de recherche scientifique sud-africaine occupée en continu depuis 1948 par des équipes tournantes d'une quarantaine de personnes au maximum.",
+        note: "Seule l'île Marion accueille une station de recherche occupée en continu depuis 1948 par des équipes tournantes d'une quarantaine de personnes.",
       },
       mapGroupId: "prince-edward-islands",
     },

@@ -10,14 +10,14 @@ export const geography: GeographyData = {
     unit: "km²",
     source: "CIA World Factbook",
     sourceUrl: "https://www.cia.gov/the-world-factbook/countries/korea-south/",
-    note: "Superficie de la seule partie sud de la péninsule coréenne ; un pays de taille comparable au Portugal ou à la Hongrie, densément peuplé sur un territoire aux trois quarts montagneux.",
+    note: "Taille comparable au Portugal ou à la Hongrie.",
   },
   coastlineKm: {
     value: 2_413,
     unit: "km",
     source: WIKI,
     sourceUrl: WIKI_URL,
-    note: "Un littoral très découpé, en particulier au sud-ouest et au sud, bordé de plusieurs milliers d'îles et d'îlots.",
+    note: "Littoral très découpé, bordé de plusieurs milliers d'îles.",
   },
   highestPoint: {
     name: "Hallasan (île de Jeju)",
@@ -28,7 +28,7 @@ export const geography: GeographyData = {
   borderingCountries: ["Corée du Nord"],
   generalSource: { source: WIKI, sourceUrl: WIKI_URL },
   climate:
-    "Climat à quatre saisons bien marquées : hiver froid et sec sous l'influence de l'anticyclone sibérien, été chaud et très humide dominé par la mousson d'Asie de l'Est, avec une saison des pluies concentrée en juillet (le jangma), et des intersaisons (printemps, automne) courtes mais douces. Le sud et l'île de Jeju, plus tempérés, sont proches d'un climat subtropical humide. Le pays est en outre exposé chaque année, entre l'été et le début de l'automne, au passage de typhons issus du Pacifique nord-ouest.",
+    "Climat à quatre saisons marquées : hiver froid et sec, été chaud et humide dominé par la mousson (jangma en juillet). Le sud et Jeju sont plus tempérés. Le pays est exposé chaque été-automne aux typhons.",
   summary:
-    "La Corée du Sud occupe la moitié méridionale d'une péninsule montagneuse qui s'avance entre la mer Jaune à l'ouest et la mer du Japon (mer de l'Est en Corée) à l'est, face à l'archipel japonais. Le relief, montagneux et vallonné sur environ 70 % du territoire, culmine au Hallasan (1 947 m), volcan bouclier qui forme à lui seul l'île volcanique de Jeju au large de la pointe sud du pays ; sur le continent, la chaîne des Taebaek longe la côte est du nord au sud, laissant à l'ouest et au sud des plaines côtières plus propices à l'agriculture et à l'urbanisation, où se concentre l'essentiel de la population. Depuis l'armistice de 1953, la Corée du Sud ne partage qu'une unique frontière terrestre, avec la Corée du Nord, matérialisée par la zone démilitarisée (DMZ) : une bande d'environ 250 km de long et 4 km de large, l'une des plus lourdement fortifiées et des moins franchissables au monde, qui a paradoxalement préservé un couloir naturel resté largement à l'abri de l'activité humaine depuis plus de 70 ans.",
+    "La Corée du Sud occupe la moitié méridionale d'une péninsule montagneuse entre mer Jaune et mer du Japon. Le relief, montagneux sur environ 70 % du territoire, culmine au Hallasan (1 947 m), volcan qui forme l'île de Jeju ; les plaines de l'ouest et du sud concentrent l'essentiel de la population. Depuis 1953, le pays ne partage qu'une frontière terrestre, avec la Corée du Nord, matérialisée par la zone démilitarisée (DMZ), l'une des plus fortifiées au monde.",
 };

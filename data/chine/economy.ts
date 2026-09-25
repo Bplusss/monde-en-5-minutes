@@ -10,7 +10,7 @@ export const economy: EconomyData = {
     year: 2024,
     source: WB,
     sourceUrl: "https://data.worldbank.org/indicator/NY.GDP.MKTP.CD?locations=CN",
-    note: "Dollars courants ; 2ᵉ PIB mondial en valeur nominale derrière les États-Unis, mais 1er au monde en parité de pouvoir d'achat depuis le milieu des années 2010.",
+    note: "2ᵉ PIB mondial en valeur nominale, 1er en parité de pouvoir d'achat depuis le milieu des années 2010.",
   },
   gdpPerCapita: {
     value: 13_308,
@@ -18,7 +18,7 @@ export const economy: EconomyData = {
     year: 2024,
     source: WB,
     sourceUrl: "https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?locations=CN",
-    note: "Dollars courants ; classe la Chine parmi les pays à revenu intermédiaire de la tranche supérieure, loin derrière les économies développées malgré la taille de son PIB total.",
+    note: "Classe la Chine parmi les pays à revenu intermédiaire supérieur, loin derrière les économies développées malgré la taille de son PIB total.",
   },
   unemploymentRate: {
     value: 4.7,
@@ -26,7 +26,7 @@ export const economy: EconomyData = {
     year: 2024,
     source: "Bureau national de statistique de Chine (taux d'enquête en zone urbaine)",
     sourceUrl: "https://www.stats.gov.cn/english/",
-    note: "Taux d'enquête urbain officiel, qui ne couvre pas la vaste population de travailleurs migrants ruraux (nongmingong) ni le sous-emploi rural ; le chômage des jeunes urbains (16-24 ans) a atteint des niveaux nettement plus élevés au début des années 2020, jusqu'à ce que l'indicateur soit temporairement suspendu puis redéfini en 2023.",
+    note: "Taux d'enquête urbain officiel, qui ne couvre pas les travailleurs migrants ruraux ; le chômage des jeunes urbains a atteint des niveaux nettement plus élevés début 2020, avant que l'indicateur soit redéfini en 2023.",
   },
   sectors: [
     { name: "Services (tertiaire)", sharePercent: 56.7 },
@@ -45,9 +45,9 @@ export const economy: EconomyData = {
     },
     {
       label: "Crise du secteur immobilier",
-      value: { value: "en cours depuis 2021", unit: "", year: 2024, source: "Wikipedia", sourceUrl: "https://en.wikipedia.org/wiki/2020%E2%80%93present_Chinese_property_crisis", note: "Défauts de paiement en chaîne de grands promoteurs (dont Evergrande, en faillite depuis 2023) après des années d'endettement massif du secteur, qui pesait avant la crise sur environ un quart du PIB." },
+      value: { value: "en cours depuis 2021", unit: "", year: 2024, source: "Wikipedia", sourceUrl: "https://en.wikipedia.org/wiki/2020%E2%80%93present_Chinese_property_crisis", note: "Défauts de paiement en chaîne de grands promoteurs (dont Evergrande) après des années d'endettement massif d'un secteur qui pesait sur environ un quart du PIB." },
     },
   ],
   summary:
-    "Deuxième économie mondiale en valeur nominale et première en parité de pouvoir d'achat, la Chine a connu depuis le lancement des réformes de 1978 la croissance soutenue la plus rapide et la plus longue de l'histoire économique moderne, tirée par l'industrialisation, les exportations manufacturières et des investissements massifs en infrastructures, qui ont permis de sortir de la pauvreté extrême plusieurs centaines de millions de personnes. Devenue l'« usine du monde », elle occupe désormais une position dominante dans des secteurs technologiques de pointe (panneaux solaires, batteries et véhicules électriques, intelligence artificielle) tout en restant, selon les statistiques officielles, un pays « en développement » au PIB par habitant environ six fois inférieur à celui des États-Unis. Depuis le début des années 2020, la croissance ralentit structurellement — vieillissement démographique, rendements décroissants de l'investissement — dans un contexte aggravé par une grave crise du secteur immobilier (faillite d'Evergrande), un chômage élevé chez les jeunes diplômés urbains et des tensions commerciales et technologiques croissantes avec les États-Unis.",
+    "Depuis les réformes de 1978, la Chine a connu la croissance soutenue la plus rapide et la plus longue de l'histoire économique moderne, devenant l'« usine du monde » et sortant plusieurs centaines de millions de personnes de la pauvreté extrême. Elle domine désormais des secteurs technologiques de pointe (solaire, véhicules électriques, IA) tout en restant un pays « en développement » au PIB par habitant bien inférieur à celui des États-Unis. Depuis les années 2020, la croissance ralentit structurellement, aggravée par la crise immobilière, le chômage des jeunes diplômés et les tensions commerciales avec Washington.",
 };

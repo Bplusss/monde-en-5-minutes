@@ -3,7 +3,7 @@ import type { KeyFact } from "@/lib/types";
 export const keyFacts: KeyFact[] = [
   {
     title: "De très loin le plus grand pays du monde",
-    description: "Avec plus de 17 millions de km², la Russie est presque deux fois plus vaste que le Canada, deuxième pays le plus étendu, et couvre environ 11 % des terres émergées de la planète sur onze fuseaux horaires.",
+    description: "Avec plus de 17 millions de km², la Russie est presque deux fois plus vaste que le Canada et couvre environ 11 % des terres émergées, sur onze fuseaux horaires.",
     source: "CIA World Factbook",
     sourceUrl: "https://www.cia.gov/the-world-factbook/countries/russia/",
   },

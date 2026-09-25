@@ -10,7 +10,7 @@ export const population: PopulationData = {
     year: 2025,
     source: KOSIS,
     sourceUrl: KOSIS_URL,
-    note: "Population résidente totale, en léger recul depuis le pic de 2020 (environ 51,84 millions) — la Corée du Sud est entrée dans un déclin démographique structurel.",
+    note: "En léger recul depuis le pic de 2020 — déclin démographique structurel.",
   },
   density: {
     value: 516,
@@ -18,7 +18,7 @@ export const population: PopulationData = {
     year: 2025,
     source: "Calculé (KOSIS ÷ superficie CIA World Factbook)",
     sourceUrl: KOSIS_URL,
-    note: "L'une des densités les plus élevées au monde parmi les grands pays, avec une concentration extrême dans la région métropolitaine de Séoul.",
+    note: "L'une des densités les plus élevées au monde parmi les grands pays.",
   },
   growthRate: {
     value: -0.13,
@@ -26,7 +26,7 @@ export const population: PopulationData = {
     year: 2025,
     source: KOSIS,
     sourceUrl: KOSIS_URL,
-    note: "Population en recul depuis 2020, sous l'effet direct de l'indice de fécondité le plus bas au monde ; le pays enregistre par ailleurs davantage de décès que de naissances chaque année depuis 2020.",
+    note: "Davantage de décès que de naissances chaque année depuis 2020.",
   },
   medianAge: {
     value: 45.6,
@@ -41,8 +41,8 @@ export const population: PopulationData = {
     year: 2024,
     source: "Banque mondiale",
     sourceUrl: "https://data.worldbank.org/indicator/SP.URB.TOTL.IN.ZS?locations=KR",
-    note: "Plus de la moitié de la population totale du pays vit dans la seule région métropolitaine de Séoul (Séoul, Incheon, province du Gyeonggi), l'une des plus fortes concentrations urbaines au monde rapportée à la taille du pays.",
+    note: "Plus de la moitié vit dans la seule région métropolitaine de Séoul.",
   },
   summary:
-    "La Corée du Sud affiche depuis le milieu des années 2010 l'indice de fécondité le plus bas jamais enregistré dans le monde moderne — 0,75 enfant par femme en 2024, très légèrement remonté après un plancher de 0,72 en 2023, contre un seuil de renouvellement des générations de 2,1. Coût du logement et de l'éducation des enfants, précarité de l'emploi des jeunes, pression sociale extrême autour de la réussite scolaire et inégalités persistantes entre hommes et femmes dans la répartition des tâches domestiques sont les explications les plus souvent avancées à ce phénomène, qui a fait basculer le pays dans un déclin démographique structurel depuis 2020 malgré des mesures natalistes massives (aides financières, congés parentaux étendus) engagées depuis le milieu des années 2000 sans résultat probant à ce jour. Combiné à l'un des vieillissements les plus rapides du monde développé, ce recul démographique fait peser une menace directe sur le financement des retraites, le système de santé et, à terme, la taille de la population active.",
+    "La Corée du Sud affiche l'indice de fécondité le plus bas jamais enregistré dans le monde moderne — 0,75 enfant par femme en 2024, contre un seuil de renouvellement de 2,1 — malgré des mesures natalistes massives sans résultat probant. Combiné à un vieillissement très rapide, ce déclin démographique menace le financement des retraites et la population active.",
 };

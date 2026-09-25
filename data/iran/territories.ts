@@ -5,7 +5,7 @@ const WIKI = "Wikipedia";
 
 export const territories: TerritoriesData = {
   summary:
-    "L'Iran est un État unitaire divisé en 31 provinces (ostan), elles-mêmes subdivisées en comtés (shahrestan) puis en districts et villages — un découpage entièrement administratif, sans autonomie politique régionale comparable à un système fédéral. La province d'Alborz, détachée de celle de Téhéran en 2010 face à la saturation de la capitale, est la plus récente création. L'Iran ne possède aucun territoire d'outre-mer, mais revendique et administre depuis 1971 trois îles du golfe Persique — Abou Moussa, et les Grande et Petite Tomb — également revendiquées par les Émirats arabes unis, un contentieux territorial non résolu qui empoisonne régulièrement les relations entre les deux pays sans jamais avoir dégénéré en conflit ouvert.",
+    "L'Iran est un État unitaire divisé en 31 provinces (ostan), elles-mêmes subdivisées en comtés (shahrestan) puis en districts et villages. La province d'Alborz, détachée de celle de Téhéran en 2010, est la plus récente création. L'Iran ne possède aucun territoire d'outre-mer, mais revendique et administre depuis 1971 trois îles du golfe Persique — Abou Moussa, Grande et Petite Tomb — également revendiquées par les Émirats arabes unis.",
   divisions: [
     { name: "Provinces (ostan)", count: 31, source: "Centre statistique d'Iran (SCI)", sourceUrl: "https://www.amar.org.ir/english" },
     {

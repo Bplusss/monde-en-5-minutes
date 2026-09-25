@@ -8,13 +8,13 @@ export const languages: LanguagesData = {
     {
       name: "Persan (farsi)",
       kind: "officielle",
-      sharePercent: { value: 53, unit: "%", year: 2021, source: WIKI, sourceUrl: WIKI_URL, note: "Langue maternelle d'environ la moitié de la population ; langue unique de l'enseignement, de l'administration et des médias nationaux, comprise par la quasi-totalité des Iraniens comme langue seconde." },
+      sharePercent: { value: 53, unit: "%", year: 2021, source: WIKI, sourceUrl: WIKI_URL, note: "Langue maternelle d'environ la moitié de la population ; langue unique de l'enseignement, de l'administration et des médias nationaux." },
     },
     {
       name: "Azéri (turc azerbaïdjanais)",
       kind: "parlée",
       sharePercent: { value: 16, unit: "%", year: 2021, source: WIKI, sourceUrl: WIKI_URL },
-      note: "Principale langue turcique du pays, parlée surtout dans l'Azerbaïdjan iranien (nord-ouest) ; ses locuteurs forment la plus importante minorité ethnolinguistique d'Iran.",
+      note: "Principale langue turcique du pays, parlée surtout dans l'Azerbaïdjan iranien (nord-ouest).",
     },
     {
       name: "Kurde",
@@ -35,7 +35,7 @@ export const languages: LanguagesData = {
     {
       name: "Arabe",
       kind: "régionale",
-      note: "Parlé dans le Khouzestan (sud-ouest, frontière irakienne) ; l'arabe est par ailleurs la langue de l'enseignement religieux et de la liturgie chiite dans tout le pays.",
+      note: "Parlé dans le Khouzestan ; l'arabe est aussi la langue de l'enseignement religieux et de la liturgie chiite dans tout le pays.",
     },
     {
       name: "Baloutchi",
@@ -44,5 +44,5 @@ export const languages: LanguagesData = {
     },
   ],
   summary:
-    "Le persan (farsi), langue iranienne écrite en alphabet arabe modifié, est la seule langue officielle et le principal vecteur de l'identité nationale iranienne, mais l'Iran est un pays multiethnique où environ la moitié de la population parle une autre langue maternelle. Les minorités turciques (azéris, mais aussi Turkmènes et Qashqaïs) et les autres minorités iraniennes (kurdes, lores, baloutches, gilakis, mazandaranis) ne bénéficient d'aucun statut coofficiel régional, contrairement à des pays voisins comme l'Irak : la Constitution autorise leur enseignement en tant que matière optionnelle mais impose le persan comme unique langue de scolarisation, une politique régulièrement critiquée par les organisations de défense des minorités.",
+    "Le persan (farsi), écrit en alphabet arabe modifié, est la seule langue officielle, mais l'Iran est un pays multiethnique où environ la moitié de la population parle une autre langue maternelle. Les minorités turciques et iraniennes ne bénéficient d'aucun statut coofficiel régional : la Constitution autorise leur enseignement en matière optionnelle mais impose le persan comme unique langue de scolarisation.",
 };
