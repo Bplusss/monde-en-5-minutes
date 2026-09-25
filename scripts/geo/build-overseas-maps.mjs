@@ -54,6 +54,14 @@ const SUBREGIONS = {
     // Svalbard/Jan Mayen extracted from NOR's own multipolygon.
     "prince-edward-islands": { name: "Îles du Prince Édouard", bbox: [37.5, -47.0, 38.0, -46.5] },
   },
+  russie: {
+    // Kaliningrad Oblast is a Russian exclave on the Baltic, separated from
+    // the rest of Russia by Lithuania and Poland — a single polygon within
+    // RUS's own admin0 multipolygon, same pattern as Norway's Svalbard. Bbox
+    // padded slightly from the measured 19.6095–22.8328 / 54.3429–55.2878
+    // range so nothing clips.
+    kaliningrad: { name: "Kaliningrad", bbox: [19.55, 54.3, 22.9, 55.3] },
+  },
 };
 
 // Overseas territories that ARE their own Natural Earth admin0 map unit.
@@ -137,6 +145,7 @@ async function main() {
     ["etats-unis", null],
     ["australie", null],
     ["afrique-du-sud", "ZAF"],
+    ["russie", "RUS"],
   ]) {
     const features = buildOverseas(slug, admin0.features, parentAdm0a3);
     writeFeatureCollection(path.join(GEO_DIR, `${slug}-overseas.json`), features);

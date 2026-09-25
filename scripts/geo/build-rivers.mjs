@@ -296,6 +296,16 @@ const RIVER_MATCHES = {
   egypte: [
     { riverName: "Nil", neNames: ["Nile"] },
   ],
+  russie: [
+    { riverName: "Volga", neNames: ["Volga"] },
+    { riverName: "Ob", neNames: ["Ob"] },
+    { riverName: "Ienisseï", neNames: ["Yenisey"] },
+    { riverName: "Lena", neNames: ["Lena"] },
+    { riverName: "Amour", neNames: ["Amur", "Heilong Jiang"] },
+    { riverName: "Don", neNames: ["Don"] },
+    { riverName: "Kama", neNames: ["Kama"] },
+    { riverName: "Oural", neNames: ["Ural"] },
+  ],
   indonesie: [
     { riverName: "Kapuas", neNames: ["Kapuas"] },
     { riverName: "Barito", neNames: ["Barito"] },

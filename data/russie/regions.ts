@@ -1,0 +1,106 @@
+import type { Region } from "@/lib/types";
+
+const SRC = "Rosstat, estimation préliminaire au 1er janvier 2025, via Wikipedia";
+const URL = "https://en.wikipedia.org/wiki/Federal_subjects_of_Russia";
+
+/**
+ * Les 83 sujets fédéraux russes reconnus internationalement (21 républiques,
+ * 9 kraïs, 46 oblasts, 3 villes fédérales — Moscou, Saint-Pétersbourg,
+ * Sébastopol non incluse ici —, 4 okrugs autonomes et 1 oblast autonome),
+ * codés selon ISO 3166-2:RU tel qu'extrait de Natural Earth.
+ *
+ * La République de Crimée et la ville de Sébastopol, annexées unilatéralement
+ * par la Russie en 2014 (codes Natural Earth UA-43 et UA-40, hérités du
+ * découpage ukrainien puisque la source ne reconnaît pas l'annexion), sont
+ * volontairement EXCLUES de cette liste et de la carte des régions, à
+ * l'identique du traitement retenu côté ukrainien (voir data/ukraine/regions.ts
+ * et data/russie/territories.ts). Les quatre oblasts ukrainiens partiellement
+ * occupés depuis 2022 (Donetsk, Louhansk, Zaporijjia, Kherson) ne sont pas
+ * administrés par la Russie selon les frontières internationalement reconnues
+ * et n'apparaissent nulle part dans ce jeu de données.
+ */
+export const regions: Region[] = [
+  { code: "RU-MOS", name: "Moscou (ville)", population: { value: 13258262, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-MOW", name: "Oblast de Moscou", population: { value: 8766594, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-KDA", name: "Kraï de Krasnodar", population: { value: 5841846, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-SPE", name: "Saint-Pétersbourg (ville)", population: { value: 5645943, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-SVE", name: "Oblast de Sverdlovsk", population: { value: 4218204, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-ROS", name: "Oblast de Rostov", population: { value: 4135018, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-BA", name: "Bachkirie (Bachkortostan)", population: { value: 4046094, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-TA", name: "Tatarstan", population: { value: 4016571, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-CHE", name: "Oblast de Tcheliabinsk", population: { value: 3383188, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-DA", name: "Daguestan", population: { value: 3258993, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-SAM", name: "Oblast de Samara", population: { value: 3108944, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-NIZ", name: "Oblast de Nijni Novgorod", population: { value: 3037816, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-STA", name: "Kraï de Stavropol", population: { value: 2883494, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-KYA", name: "Kraï de Krasnoïarsk", population: { value: 2837374, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-NVS", name: "Oblast de Novossibirsk", population: { value: 2784587, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-KEM", name: "Oblast de Kemerovo", population: { value: 2526384, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-PER", name: "Kraï de Perm", population: { value: 2482080, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-VGG", name: "Oblast de Volgograd", population: { value: 2435355, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-SAR", name: "Oblast de Saratov", population: { value: 2368387, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-IRK", name: "Oblast d'Irkoutsk", population: { value: 2316571, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-VOR", name: "Oblast de Voronej", population: { value: 2259610, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-ALT", name: "Kraï de l'Altaï", population: { value: 2098979, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-LEN", name: "Oblast de Léningrad", population: { value: 2057708, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-ORE", name: "Oblast d'Orenbourg", population: { value: 1815655, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-OMS", name: "Oblast d'Omsk", population: { value: 1805443, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-PRI", name: "Kraï du Primorie", population: { value: 1798047, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-KHM", name: "Okrug autonome de Khantys-Mansis (Iougra)", population: { value: 1779510, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-TYU", name: "Oblast de Tioumen", population: { value: 1625129, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-CE", name: "Tchétchénie", population: { value: 1575819, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-BEL", name: "Oblast de Belgorod", population: { value: 1481098, year: 2025, source: SRC, sourceUrl: URL, note: "Frontalier de l'Ukraine ; régulièrement visé par des tirs d'artillerie et de drones depuis 2022." } },
+  { code: "RU-TUL", name: "Oblast de Toula", population: { value: 1455911, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-UD", name: "Oudmourtie", population: { value: 1427018, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-VLA", name: "Oblast de Vladimir", population: { value: 1295930, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-KHA", name: "Kraï de Khabarovsk", population: { value: 1273093, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-PNZ", name: "Oblast de Penza", population: { value: 1225984, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-TVE", name: "Oblast de Tver", population: { value: 1189685, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-YAR", name: "Oblast de Iaroslavl", population: { value: 1179301, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-ULY", name: "Oblast d'Oulianovsk", population: { value: 1164837, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-CU", name: "Tchouvachie", population: { value: 1159757, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-BRY", name: "Oblast de Briansk", population: { value: 1132475, year: 2025, source: SRC, sourceUrl: URL, note: "Frontalier de l'Ukraine ; brièvement touché par une incursion armée ukrainienne en 2024." } },
+  { code: "RU-KIR", name: "Oblast de Kirov", population: { value: 1120178, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-VLG", name: "Oblast de Vologda", population: { value: 1114639, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-LIP", name: "Oblast de Lipetsk", population: { value: 1107812, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-RYA", name: "Oblast de Riazan", population: { value: 1073981, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-KGD", name: "Oblast de Kaliningrad", population: { value: 1064747, year: 2025, source: SRC, sourceUrl: URL, note: "Exclave russe sur la Baltique, séparée du reste du pays par la Lituanie et la Pologne — voir la section Territoire." } },
+  { code: "RU-KLU", name: "Oblast de Kalouga", population: { value: 1064747, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-KRS", name: "Oblast de Koursk", population: { value: 1050134, year: 2025, source: SRC, sourceUrl: URL, note: "Frontalier de l'Ukraine ; une partie du territoire a été occupée par l'armée ukrainienne entre août 2024 et l'été 2025." } },
+  { code: "RU-TOM", name: "Oblast de Tomsk", population: { value: 1039458, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-SA", name: "République de Sakha (Iakoutie)", population: { value: 1007058, year: 2025, source: SRC, sourceUrl: URL, note: "De très loin le plus vaste sujet fédéral russe (plus de 3 millions de km²), pour à peine plus d'un million d'habitants." } },
+  { code: "RU-ZAB", name: "Kraï de Transbaïkalie", population: { value: 982525, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-BU", name: "Bouriatie", population: { value: 970679, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-ARK", name: "Oblast d'Arkhangelsk", population: { value: 947192, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-TAM", name: "Oblast de Tambov", population: { value: 946010, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-AST", name: "Oblast d'Astrakhan", population: { value: 945991, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-KB", name: "Kabardino-Balkarie", population: { value: 908090, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-IVA", name: "Oblast d'Ivanovo", population: { value: 897869, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-SMO", name: "Oblast de Smolensk", population: { value: 857847, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-MO", name: "Mordovie", population: { value: 758390, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-AMU", name: "Oblast de l'Amour", population: { value: 750870, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-KGN", name: "Oblast de Kourgan", population: { value: 744197, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-KO", name: "République des Komis", population: { value: 714391, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-ORL", name: "Oblast d'Orel", population: { value: 685693, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-SE", name: "Ossétie du Nord-Alanie", population: { value: 678454, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-ME", name: "Mari-El", population: { value: 665983, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-MUR", name: "Oblast de Mourmansk", population: { value: 650920, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-PSK", name: "Oblast de Pskov", population: { value: 574199, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-NGR", name: "Oblast de Novgorod", population: { value: 566745, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-KOS", name: "Oblast de Kostroma", population: { value: 560758, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-KK", name: "Khakassie", population: { value: 534795, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-IN", name: "Ingouchie", population: { value: 534219, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-YAN", name: "Okrug autonome de Iamalo-Nénétsie", population: { value: 521655, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-KR", name: "Carélie", population: { value: 518644, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-AD", name: "Adyguée", population: { value: 501038, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-KC", name: "Karatchaïévo-Tcherkessie", population: { value: 468531, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-SAK", name: "Oblast de Sakhaline", population: { value: 456792, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-TY", name: "Touva", population: { value: 338341, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-KAM", name: "Kraï du Kamtchatka", population: { value: 287949, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-KL", name: "Kalmoukie", population: { value: 267376, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-AL", name: "République de l'Altaï", population: { value: 210099, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-YEV", name: "Oblast autonome juif", population: { value: 144389, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-MAG", name: "Oblast de Magadan", population: { value: 134202, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-CHU", name: "Okrug autonome de Tchoukotka", population: { value: 47902, year: 2025, source: SRC, sourceUrl: URL } },
+  { code: "RU-NEN", name: "Okrug autonome nénètse", population: { value: 41829, year: 2025, source: SRC, sourceUrl: URL } },
+];
