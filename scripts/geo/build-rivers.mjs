@@ -19,6 +19,12 @@
 // re-runs don't re-hit the (rate-limited) public API. OSM data is ODbL —
 // keep that in mind if this ever needs public attribution.
 //
+// Optional per-river flags: `neBbox` [minLon,minLat,maxLon,maxLat] keeps only
+// the NE segments lying entirely inside that box (when NE reuses one name for
+// segments of different rivers); `keepBorder: true` also keeps clipped pieces
+// within 3 km of the outline, for rivers that trace an international border
+// (otherwise the line's wobble across the border chops it into dashes).
+//
 // After writing each file this also clips it to the country's own outline
 // (see clip-rivers.mjs) so a river shared with a neighbour only draws the
 // segment inside this country.
@@ -344,6 +350,43 @@ const RIVER_MATCHES = {
     // rivers.ts: OSM only maps ~50 km of its course inside Tunisia.
     { riverName: "Medjerda", osm: { nameRegex: "مجردة", bbox: [7.5, 35.8, 10.4, 37.3] } },
   ],
+  senegal: [
+    { riverName: "Sénégal", neNames: ["Sénégal"] },
+    { riverName: "Gambie", neNames: ["Gambia"] },
+    // No NE geometry at 1:10m for the Casamance or the Falémé; OSM has both.
+    { riverName: "Casamance", osm: { nameRegex: "^Casamance", bbox: [-16.8, 12.3, -14.3, 13.2] } },
+    { riverName: "Falémé", osm: { nameRegex: "Fal[eé]m[eé]", bbox: [-12.6, 12.2, -11.3, 14.8] } },
+  ],
+  "republique-democratique-du-congo": [
+    // NE chains Lualaba (sources → Bukama) / "Congo" (Bukama → -5.6°, actually the
+    // middle Lualaba) / "Lualaba" (→ Kisangani) / "Congo" (Kisangani → Atlantic).
+    // `neBbox` keeps the four disjoint segments apart so nothing is drawn twice:
+    // the Congo starts at Boyoma Falls (Kisangani), everything upstream is the Lualaba.
+    { riverName: "Congo", neNames: ["Congo"], neBbox: [12.0, -6.5, 25.0, 3.0], keepBorder: true },
+    { riverName: "Lualaba", neNames: ["Lualaba", "Congo"], neBbox: [24.0, -12.0, 27.5, 1.0] },
+    { riverName: "Kasaï", neNames: ["Kasai"], keepBorder: true },
+    // NE's "Ubangi" only starts below Bangui (the Yakoma → Bangui stretch is part of its "Uele" line),
+    // so the full course comes from OSM instead.
+    { riverName: "Oubangui", osm: { nameRegex: "Ubangi|Oubangui", bbox: [16.5, -1.5, 23.0, 5.5] }, keepBorder: true },
+  ],
+  cameroun: [
+    { riverName: "Sanaga", neNames: ["Sanaga"] },
+    // No NE geometry at 1:10m for the Nyong or the Wouri (too minor); OSM has them.
+    { riverName: "Nyong", osm: { nameRegex: "^Nyong", bbox: [9.8, 3.0, 13.2, 4.2] } },
+    { riverName: "Wouri", osm: { nameRegex: "^Wouri", bbox: [9.4, 3.9, 10.4, 5.0] } },
+    { riverName: "Bénoué", neNames: ["Bénoué"] },
+    // The lower Logone forms the Chad border down to N'Djamena/Kousséri.
+    { riverName: "Logone", neNames: ["Logone"], keepBorder: true },
+  ],
+  "cote-d-ivoire": [
+    { riverName: "Comoé", neNames: ["Komoé"] },
+    // NE splits the upper course ("Bandama Blanc") from the main stem.
+    { riverName: "Bandama", neNames: ["Bandama", "Bandama Blanc"] },
+    { riverName: "Sassandra", neNames: ["Sassandra"] },
+    // No NE geometry at 1:10m for the Cavally; OSM has it. Its middle and
+    // lower course forms the Liberia border.
+    { riverName: "Cavally", osm: { nameRegex: "^Cavall", bbox: [-8.8, 4.3, -7.2, 7.8] }, keepBorder: true },
+  ],
 };
 
 function writeFeatureCollection(filePath, features) {
@@ -353,6 +396,15 @@ function writeFeatureCollection(filePath, features) {
 
 function readFeatureCollection(filePath) {
   return JSON.parse(readFileSync(filePath, "utf8"));
+}
+
+/** True when `pt` lies within 3 km of the outline boundary — used for `keepBorder` rivers that trace an international border, whose line wobbles across it. */
+function nearBoundary(pt, outlinePolygon) {
+  let d = Infinity;
+  turf.flattenEach(outlinePolygon, (poly) => {
+    d = Math.min(d, Math.abs(turf.pointToPolygonDistance(pt, poly)));
+  });
+  return d <= 3;
 }
 
 function clipToOutline(features, outlinePolygon) {
@@ -374,7 +426,8 @@ function clipToOutline(features, outlinePolygon) {
       for (const piece of pieces) {
         const len = turf.length(piece);
         const mid = len > 0 ? turf.along(piece, len / 2) : turf.point(piece.geometry.coordinates[0]);
-        if (turf.booleanPointInPolygon(mid, outlinePolygon)) segments.push(piece.geometry.coordinates);
+        const keep = turf.booleanPointInPolygon(mid, outlinePolygon) || (feat.keepBorder && nearBoundary(mid, outlinePolygon));
+        if (keep) segments.push(piece.geometry.coordinates);
       }
     }
     if (!segments.length) { dropped++; continue; }
@@ -396,10 +449,17 @@ async function main() {
 
     const features = [];
     const missing = [];
-    for (const { riverName, neNames, osm } of matches) {
+    for (const { riverName, neNames, neBbox, osm, keepBorder } of matches) {
       let lines = [];
       if (neNames) {
-        const segments = neRivers.features.filter((f) => neNames.includes(f.properties.name));
+        // Optional `neBbox` ([minLon,minLat,maxLon,maxLat]): keep only the NE segments lying entirely inside it —
+        // for when NE gives one name to segments that belong to different rivers (e.g. its "Congo" includes part of the Lualaba).
+        const inBbox = (f) => {
+          if (!neBbox) return true;
+          const [a, b, c, d] = turf.bbox(f);
+          return a >= neBbox[0] && b >= neBbox[1] && c <= neBbox[2] && d <= neBbox[3];
+        };
+        const segments = neRivers.features.filter((f) => neNames.includes(f.properties.name) && inBbox(f));
         for (const seg of segments) {
           const parts = seg.geometry.type === "LineString" ? [seg.geometry.coordinates] : seg.geometry.coordinates;
           lines.push(...parts);
@@ -414,7 +474,7 @@ async function main() {
       }
       if (!lines.length) { missing.push(riverName); continue; }
       const geometry = lines.length === 1 ? { type: "LineString", coordinates: lines[0] } : { type: "MultiLineString", coordinates: lines };
-      features.push({ type: "Feature", geometry, properties: { name: riverName } });
+      features.push({ type: "Feature", geometry, properties: { name: riverName }, keepBorder });
     }
 
     const outline = readFeatureCollection(outlinePath);
