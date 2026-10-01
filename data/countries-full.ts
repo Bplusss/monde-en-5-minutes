@@ -60,6 +60,9 @@ import { southAfrica } from "./afrique-du-sud";
 import { indonesia } from "./indonesie";
 import { egypt } from "./egypte";
 import { russia } from "./russie";
+import { morocco } from "./maroc";
+import { algeria } from "./algerie";
+import { tunisia } from "./tunisie";
 
 /** Full `Country` records — the only ones that can be rendered as a country page or in a comparison. */
 export const FULL_COUNTRIES: Record<string, Country> = {
@@ -123,6 +126,9 @@ export const FULL_COUNTRIES: Record<string, Country> = {
   [indonesia.slug]: indonesia,
   [egypt.slug]: egypt,
   [russia.slug]: russia,
+  [morocco.slug]: morocco,
+  [algeria.slug]: algeria,
+  [tunisia.slug]: tunisia,
 };
 
 export function getFullCountry(slug: string): Country | undefined {

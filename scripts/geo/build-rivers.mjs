@@ -318,6 +318,32 @@ const RIVER_MATCHES = {
     // No NE geometry at 1:10m for the Bengawan Solo (too minor); OSM has it.
     { riverName: "Bengawan Solo", osm: { nameRegex: "Bengawan Solo|^Solo$", bbox: [110.6, -8.0, 112.9, -6.7] } },
   ],
+  algerie: [
+    // Natural Earth 1:10m carries no Algerian river at all (checked: no NE line
+    // intersects the outline); every entry falls back to OSM, matching either the
+    // French or the Arabic `name` tag. The Chélif is tagged "Chelif", "Oued Chlef"
+    // or "Oued Chelef" depending on the segment; OSM only names it from Boughezoul
+    // downstream (~510 of ~700 km — the upper course, Nahr Ouassel, is not drawn).
+    // The overpass-api.de endpoint repeatedly timed out on this query; the cache
+    // was seeded with the identical query run against overpass.kumi.systems.
+    { riverName: "Chélif", osm: { nameRegex: "Ch[eé]?l[eé]?i?f|الشلف", bbox: [-0.2, 34.0, 3.2, 36.4] } },
+    { riverName: "Seybouse", osm: { nameRegex: "Seybouse|سيبوس", bbox: [7.2, 36.2, 7.9, 36.95] } },
+    { riverName: "Soummam", osm: { nameRegex: "Soummam|الصومام", bbox: [4.4, 36.4, 5.1, 36.8] } },
+    { riverName: "Medjerda", osm: { nameRegex: "Medjerda|مجردة", bbox: [7.5, 36.0, 8.7, 36.6] } },
+  ],
+  maroc: [
+    { riverName: "Oum Er-Rbia", neNames: ["Oum Er Rbia"] },
+    { riverName: "Sebou", neNames: ["Oued Sebou"] },
+    { riverName: "Moulouya", neNames: ["Moulouya"] },
+    // No NE geometry at 1:10m for the Draa (intermittent desert river); OSM has it.
+    { riverName: "Draa", osm: { nameRegex: "درعة|Dr[aâ]a", bbox: [-11.5, 28.0, -5.0, 31.6] } },
+  ],
+  tunisie: [
+    // Natural Earth 1:10m has no river at all in Tunisia; OSM tags the Medjerda
+    // with its Arabic name (مجردة). Its tributary the Mellègue is left out of
+    // rivers.ts: OSM only maps ~50 km of its course inside Tunisia.
+    { riverName: "Medjerda", osm: { nameRegex: "مجردة", bbox: [7.5, 35.8, 10.4, 37.3] } },
+  ],
 };
 
 function writeFeatureCollection(filePath, features) {
