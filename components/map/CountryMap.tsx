@@ -5,7 +5,7 @@ import type { Map as MapLibreMap } from "maplibre-gl";
 import { loadMapLibre } from "@/lib/maplibre-global";
 import type { City, CountryMaps, River } from "@/lib/types";
 import { formatNumber } from "@/lib/format";
-import { fetchOutlineBounds, isFittableBounds } from "@/lib/geo-utils";
+import { computeLabelPoints, fetchOutlineBounds, isFittableBounds } from "@/lib/geo-utils";
 
 const GLYPHS = "https://fonts.openmaptiles.org/{fontstack}/{range}.pbf";
 
@@ -95,17 +95,26 @@ export function CountryMap({ maps, layer, className, cities = [], rivers = [] }:
             source: "regions",
             paint: { "line-color": border, "line-width": 1 },
           });
-          map.addLayer({
-            id: "regions-label",
-            type: "symbol",
-            source: "regions",
-            layout: {
-              "text-field": ["get", "name"],
-              "text-font": ["Noto Sans Regular"],
-              "text-size": 11,
-            },
-            paint: { "text-color": foreground, "text-halo-color": surface, "text-halo-width": 1.3 },
-          });
+          fetch(maps.regionsGeojsonUrl)
+            .then((res) => (res.ok ? res.json() : null))
+            .then((fc: GeoJSON.FeatureCollection | null) => {
+              if (!fc || cancelled || mapRef.current !== map) return;
+              map.addSource("regions-labels", { type: "geojson", data: computeLabelPoints(fc) });
+              map.addLayer({
+                id: "regions-label",
+                type: "symbol",
+                source: "regions-labels",
+                layout: {
+                  "text-field": ["get", "name"],
+                  "text-font": ["Noto Sans Regular"],
+                  "text-size": 11,
+                  "text-variable-anchor": ["center", "top", "bottom", "left", "right"],
+                  "text-radial-offset": 0.4,
+                  "text-padding": 1,
+                },
+                paint: { "text-color": foreground, "text-halo-color": surface, "text-halo-width": 1.3 },
+              });
+            });
 
           let hoveredId: string | number | undefined;
           map.on("mousemove", "regions-fill", (e) => {

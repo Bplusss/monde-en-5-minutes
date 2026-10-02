@@ -35,7 +35,7 @@ export const thailand: Country = {
     outlineGeojsonUrl: "/geo/thailande-outline.json",
     regionsGeojsonUrl: "/geo/thailande-regions.json",
     riversGeojsonUrl: "/geo/thailande-rivers.json",
-    center: [101, 13.2],
-    zoom: 4.6,
+    center: [101.2, 13],
+    zoom: 4.5,
   },
 };
