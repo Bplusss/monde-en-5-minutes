@@ -13,7 +13,7 @@
   "bulgarie": "2026-09-10",
   "cameroun": "2026-10-01",
   "canada": "2026-09-13",
-  "chine": "2026-09-25",
+  "chine": "2026-10-02",
   "cite-du-vatican": "2026-09-10",
   "coree-du-sud": "2026-09-25",
   "cote-d-ivoire": "2026-10-01",
@@ -48,6 +48,7 @@
   "nigeria": "2026-09-13",
   "norvege": "2026-09-10",
   "pays-bas": "2026-09-10",
+  "philippines": "2026-10-02",
   "pologne": "2026-09-10",
   "portugal": "2026-09-10",
   "republique-democratique-du-congo": "2026-10-01",
@@ -63,7 +64,9 @@
   "suede": "2026-09-10",
   "suisse": "2026-09-10",
   "tchequie": "2026-09-10",
+  "thailande": "2026-10-02",
   "togo": "2026-09-13",
   "tunisie": "2026-10-01",
-  "ukraine": "2026-09-11"
+  "ukraine": "2026-09-11",
+  "vietnam": "2026-10-02"
 }
