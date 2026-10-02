@@ -67,6 +67,9 @@ import { senegal } from "./senegal";
 import { coteDIvoire } from "./cote-d-ivoire";
 import { cameroon } from "./cameroun";
 import { drCongo } from "./republique-democratique-du-congo";
+import { vietnam } from "./vietnam";
+import { thailand } from "./thailande";
+import { philippines } from "./philippines";
 
 /** Full `Country` records — the only ones that can be rendered as a country page or in a comparison. */
 export const FULL_COUNTRIES: Record<string, Country> = {
@@ -137,6 +140,9 @@ export const FULL_COUNTRIES: Record<string, Country> = {
   [coteDIvoire.slug]: coteDIvoire,
   [cameroon.slug]: cameroon,
   [drCongo.slug]: drCongo,
+  [vietnam.slug]: vietnam,
+  [thailand.slug]: thailand,
+  [philippines.slug]: philippines,
 };
 
 export function getFullCountry(slug: string): Country | undefined {

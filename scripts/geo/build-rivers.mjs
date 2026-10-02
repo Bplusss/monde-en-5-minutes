@@ -387,6 +387,38 @@ const RIVER_MATCHES = {
     // lower course forms the Liberia border.
     { riverName: "Cavally", osm: { nameRegex: "^Cavall", bbox: [-8.8, 4.3, -7.2, 7.8] }, keepBorder: true },
   ],
+  thailande: [
+    // NE names the upstream course (Golden Triangle stretch) "Lancang" and the
+    // Laos-border stretch "Mekong"; both trace the border, hence keepBorder.
+    { riverName: "Mékong", neNames: ["Mekong", "Lancang"], keepBorder: true },
+    { riverName: "Chao Phraya", neNames: ["Chao Phraya"] },
+    { riverName: "Chi", neNames: ["Chi"] },
+    { riverName: "Mun", neNames: ["Mun"] },
+    { riverName: "Ping", neNames: ["Ping"] },
+    // No NE geometry at 1:10m for the Nan; OSM tags it in Thai (แม่น้ำน่าน).
+    { riverName: "Nan", osm: { nameRegex: "^แม่น้ำน่าน$|^Nan River$", bbox: [99.8, 15.6, 101.4, 19.7] } },
+  ],
+  vietnam: [
+    { riverName: "Mékong", neNames: ["Mekong"] },
+    { riverName: "Fleuve Rouge", neNames: ["Hong"] },
+    { riverName: "Rivière Noire", neNames: ["Da"] },
+    { riverName: "Cả", neNames: ["Ca"] },
+    // No NE geometry at 1:10m for the Đồng Nai (too minor); OSM has it (named
+    // only down to Nhà Bè — the lower course is the Nhà Bè / Soài Rạp). The
+    // overpass-api.de and kumi endpoints returned 504s; the cache was seeded
+    // with the identical query run against overpass.private.coffee.
+    { riverName: "Đồng Nai", osm: { nameRegex: "Sông Đồng Nai|Đồng Nai$", bbox: [106.6, 10.5, 108.6, 12.3] } },
+  ],
+  philippines: [
+    { riverName: "Cagayan", neNames: ["Cagayan"] },
+    // Natural Earth 1:10m has no other Philippine river; OSM fallbacks below.
+    // The Rio Grande de Mindanao's 373 km include its upper course, the Pulangi.
+    { riverName: "Rio Grande de Mindanao", osm: { nameRegex: "Rio Grande de Mindanao|Mindanao River|Pulangi", bbox: [124.0, 6.8, 125.5, 8.5] } },
+    { riverName: "Agusan", osm: { nameRegex: "^Agusan", bbox: [125.3, 7.3, 126.3, 9.1] } },
+    { riverName: "Pampanga", osm: { nameRegex: "^Pampanga", bbox: [120.5, 14.7, 121.4, 15.9] } },
+    { riverName: "Agno", osm: { nameRegex: "^Agno", bbox: [120.1, 15.6, 121.0, 16.7] } },
+    { riverName: "Pasig", osm: { nameRegex: "^Pasig River$|^Ilog Pasig$", bbox: [120.9, 14.5, 121.15, 14.65] } },
+  ],
 };
 
 function writeFeatureCollection(filePath, features) {

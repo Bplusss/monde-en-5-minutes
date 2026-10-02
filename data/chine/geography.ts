@@ -22,7 +22,7 @@ export const geography: GeographyData = {
     sourceUrl: "https://en.wikipedia.org/wiki/Mount_Everest",
   },
   borderingCountries: [
-    "Russie", "Mongolie", "Kazakhstan", "Kirghizistan", "Tadjikistan", "Afghanistan", "Pakistan", "Inde", "Népal", "Bhoutan", "Myanmar", "Laos", "Viêt Nam", "Corée du Nord",
+    "Russie", "Mongolie", "Kazakhstan", "Kirghizistan", "Tadjikistan", "Afghanistan", "Pakistan", "Inde", "Népal", "Bhoutan", "Myanmar", "Laos", "Vietnam", "Corée du Nord",
   ],
   generalSource: { source: "Wikipedia / Bureau national de statistique de Chine", sourceUrl: "https://en.wikipedia.org/wiki/Geography_of_China" },
   climate:
