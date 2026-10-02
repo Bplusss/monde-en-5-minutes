@@ -24,7 +24,7 @@ export const economy: EconomyData = {
     year: 2024,
     source: "Office statistique de la République de Serbie (RZS), enquête sur la main-d'œuvre",
     sourceUrl: "https://www.stat.gov.rs/en-us/oblasti/trziste-rada/anketa-o-radnoj-snazi/",
-    note: "Moyenne annuelle ; en net recul par rapport aux niveaux souvent supérieurs à 20 % observés au début des années 2010.",
+    note: "Moyenne annuelle ; en net recul depuis le début des années 2010, où il dépassait souvent 20 %.",
   },
   sectors: [
     { name: "Services", sharePercent: 58.8 },
@@ -55,5 +55,5 @@ export const economy: EconomyData = {
     },
   ],
   summary:
-    "Le dinar serbe flotte officiellement mais reste étroitement géré par la Banque nationale de Serbie vis-à-vis de l'euro. L'économie, tirée par les services, l'industrie manufacturière (dont une importante filière automobile et de sous-traitance liée aux investissements étrangers) et par une agriculture exportatrice de premier plan — la Serbie est l'un des tout premiers exportateurs mondiaux de framboises congelées —, a connu depuis le milieu des années 2010 une phase de stabilisation macroéconomique et de désendettement, couronnée par l'obtention en 2024 de sa première note de crédit « investment grade ».",
+    "Le dinar flotte officiellement mais reste étroitement géré face à l'euro par la Banque nationale de Serbie. Tirée par les services, l'industrie manufacturière (notamment automobile et sous-traitance liée aux investissements étrangers) et une agriculture exportatrice, l'économie s'est stabilisée et désendettée depuis le milieu des années 2010, jusqu'à obtenir en 2024 sa première note de crédit « investment grade ».",
 };

@@ -4,7 +4,7 @@ const WIKIPEDIA = "Wikipedia";
 
 export const history: HistoryData = {
   intro:
-    "Quelques repères pour situer les grandes étapes de l'histoire marocaine — pas un résumé exhaustif de plus de deux millénaires d'histoire.",
+    "Quelques repères pour situer les grandes étapes de l'histoire marocaine — pas un résumé exhaustif.",
   periods: [
     {
       id: "antiquite-premieres-dynasties",
@@ -12,7 +12,7 @@ export const history: HistoryData = {
       startYear: -300,
       endYear: 1050,
       summary:
-        "Peuplé de Berbères (Amazighes), le nord du Maroc actuel est en contact avec les comptoirs phéniciens puis carthaginois, avant de former le royaume de Maurétanie, annexé par Rome en 40 apr. J.-C. ; Volubilis en garde les vestiges. Les armées arabes atteignent la région à la fin du VIIᵉ siècle et l'islam s'y diffuse progressivement. En 789, Idris Iᵉʳ, descendant du Prophète réfugié chez les Berbères, fonde la dynastie idrisside ; son fils fait de Fès la capitale, souvent considérée comme le premier État marocain.",
+        "Peuplé de Berbères (Amazighes), le nord du Maroc actuel côtoie les comptoirs phéniciens puis carthaginois avant de former le royaume de Maurétanie, annexé par Rome. Les armées arabes arrivent à la fin du VIIᵉ siècle et l'islam se diffuse progressivement. Idris Iᵉʳ, descendant du Prophète, fonde l'État idrisside, souvent considéré comme le premier État marocain.",
       source: WIKIPEDIA,
       sourceUrl: "https://en.wikipedia.org/wiki/History_of_Morocco",
       events: [
@@ -33,7 +33,7 @@ export const history: HistoryData = {
         {
           date: "859",
           title: "Fondation de la mosquée Al Quaraouiyine à Fès",
-          description: "Fondée par Fatima al-Fihriya, elle devient l'un des plus anciens centres d'enseignement encore en activité au monde.",
+          description: "Fondée par Fatima al-Fihriya, c'est l'un des plus anciens centres d'enseignement encore actifs au monde.",
           source: WIKIPEDIA,
           sourceUrl: "https://en.wikipedia.org/wiki/University_of_al-Qarawiyyin",
         },
@@ -45,7 +45,7 @@ export const history: HistoryData = {
       startYear: 1050,
       endYear: 1912,
       summary:
-        "Deux dynasties berbères venues du sud, les Almoravides puis les Almohades, bâtissent aux XIᵉ et XIIᵉ siècles des empires allant du Sahara à l'Andalousie ; Marrakech, fondée vers 1070, en est la capitale. Les Mérinides leur succèdent. Au XVIᵉ siècle, les Saadiens repoussent les Portugais et battent leur armée à la bataille des Trois Rois (1578) ; le Maroc reste le seul pays d'Afrique du Nord à échapper à la domination ottomane. La dynastie alaouite, toujours régnante, s'impose en 1666 ; Moulay Ismaïl fait de Meknès sa capitale. Au XIXᵉ siècle, le pays subit la pression croissante des puissances européennes.",
+        "Les Almoravides puis les Almohades, dynasties berbères venues du sud, bâtissent aux XIᵉ et XIIᵉ siècles des empires allant du Sahara à l'Andalousie ; les Mérinides leur succèdent. Au XVIᵉ siècle, les Saadiens repoussent les Portugais ; le Maroc reste le seul pays d'Afrique du Nord à échapper aux Ottomans. La dynastie alaouite s'impose en 1666 ; Moulay Ismaïl fait de Meknès sa capitale. Au XIXᵉ siècle, la pression européenne s'accroît.",
       source: WIKIPEDIA,
       sourceUrl: "https://en.wikipedia.org/wiki/History_of_Morocco",
       events: [
@@ -78,14 +78,14 @@ export const history: HistoryData = {
       startYear: 1912,
       endYear: 1956,
       summary:
-        "Le traité de Fès (1912) place la majeure partie du Maroc sous protectorat français, tandis que l'Espagne contrôle le Rif au nord et Tarfaya au sud, et que Tanger reçoit un statut international. Le résident général Lyautey conserve le sultan et crée des villes nouvelles à côté des médinas. Dans le Rif, Abdelkrim el-Khattabi mène une guerre contre l'Espagne puis la France (1921-1926). Le mouvement nationaliste, porté par l'Istiqlal à partir de 1944, gagne le soutien du sultan Mohammed ben Youssef ; son exil par la France en 1953 provoque une crise qui débouche sur l'indépendance.",
+        "La France administre l'essentiel du pays, l'Espagne le Rif et Tarfaya, et Tanger reçoit un statut international. Le résident général Lyautey conserve le sultan et bâtit des villes nouvelles à côté des médinas. Le mouvement nationaliste, porté par l'Istiqlal à partir de 1944, gagne le soutien du sultan Mohammed ben Youssef, dont l'exil par la France en 1953 précipite l'indépendance.",
       source: WIKIPEDIA,
       sourceUrl: "https://en.wikipedia.org/wiki/French_protectorate_in_Morocco",
       events: [
         {
           date: "30 mars 1912",
           title: "Traité de Fès",
-          description: "Le sultan Moulay Abdelhafid accepte le protectorat français ; un accord franco-espagnol confie le nord du pays à l'Espagne la même année.",
+          description: "Le sultan Moulay Abdelhafid accepte le protectorat français ; le nord revient à l'Espagne la même année.",
           source: WIKIPEDIA,
           sourceUrl: "https://en.wikipedia.org/wiki/Treaty_of_Fez",
         },
@@ -111,14 +111,14 @@ export const history: HistoryData = {
       startYear: 1961,
       endYear: 1999,
       summary:
-        "Hassan II succède à son père en 1961. Il survit à deux tentatives de coup d'État militaire (1971 et 1972) et gouverne de manière autoritaire : les « années de plomb » sont marquées par la répression des opposants, disparitions et détentions politiques. En 1975, la Marche verte lance la prise de contrôle du Sahara occidental, que l'Espagne quitte, ouvrant un conflit armé avec le Front Polisario jusqu'au cessez-le-feu de 1991. La fin du règne voit une ouverture politique, avec l'arrivée de l'opposition socialiste au gouvernement en 1998.",
+        "Hassan II succède à son père en 1961 et gouverne de manière autoritaire : les « années de plomb » sont marquées par la répression, les disparitions et les détentions politiques. La prise de contrôle du Sahara occidental ouvre un conflit armé avec le Front Polisario. La fin du règne voit l'opposition socialiste entrer au gouvernement en 1998.",
       source: WIKIPEDIA,
       sourceUrl: "https://en.wikipedia.org/wiki/Hassan_II_of_Morocco",
       events: [
         {
           date: "1971-1972",
           title: "Tentatives de coup d'État de Skhirat et du Boeing royal",
-          description: "Deux putschs militaires échouent ; le roi renforce son contrôle sur l'armée et la répression s'intensifie.",
+          description: "Deux putschs militaires échouent ; la répression s'intensifie.",
           source: WIKIPEDIA,
           sourceUrl: "https://en.wikipedia.org/wiki/Years_of_Lead_(Morocco)",
         },
@@ -132,7 +132,7 @@ export const history: HistoryData = {
         {
           date: "1991",
           title: "Cessez-le-feu au Sahara occidental",
-          description: "Le cessez-le-feu entre le Maroc et le Polisario s'accompagne de la création de la MINURSO, chargée d'organiser un référendum qui n'a jamais eu lieu.",
+          description: "Le cessez-le-feu avec le Polisario s'accompagne de la création de la MINURSO, chargée d'un référendum qui n'a jamais eu lieu.",
           source: WIKIPEDIA,
           sourceUrl: "https://en.wikipedia.org/wiki/MINURSO",
         },
@@ -144,7 +144,7 @@ export const history: HistoryData = {
       startYear: 1999,
       endYear: "present",
       summary:
-        "Mohammed VI accède au trône en 1999. Il crée l'Instance équité et réconciliation sur les violations des années de plomb et fait adopter en 2004 un nouveau Code de la famille (Moudawana). En réponse aux manifestations du Mouvement du 20-Février en 2011, une nouvelle Constitution renforce le rôle du chef du gouvernement ; les islamistes du PJD dirigent le gouvernement de 2011 à 2021. En 2020, le Maroc normalise ses relations avec Israël et les États-Unis reconnaissent sa souveraineté sur le Sahara occidental. Fin septembre 2025, le mouvement de jeunes GenZ 212 manifeste pour la santé et l'éducation ; deux manifestants sont tués près d'Agadir. En septembre 2026, Fatima Ezzahra El Mansouri devient la première femme cheffe du gouvernement.",
+        "Mohammed VI crée l'Instance équité et réconciliation sur les années de plomb et fait adopter en 2004 un nouveau Code de la famille (Moudawana). Après les manifestations du Mouvement du 20-Février, la Constitution de 2011 renforce le chef du gouvernement ; les islamistes du PJD gouvernent de 2011 à 2021. Fin septembre 2025, le mouvement de jeunes GenZ 212 manifeste pour la santé et l'éducation ; deux manifestants sont tués près d'Agadir.",
       source: WIKIPEDIA,
       sourceUrl: "https://en.wikipedia.org/wiki/Mohammed_VI_of_Morocco",
       events: [

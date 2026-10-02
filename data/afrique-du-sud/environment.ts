@@ -7,7 +7,7 @@ export const environment: EnvironmentData = {
     year: 2024,
     source: "Agence internationale de l'énergie (AIE)",
     sourceUrl: "https://www.iea.org/countries/south-africa",
-    note: "Modeste mais en croissance rapide : le mix électrique reste dominé à plus de 80 % par le charbon, mais la crise du délestage a déclenché depuis 2022-2023 un essor de l'autoproduction solaire privée, hors réseau public d'Eskom.",
+    note: "Modeste mais en croissance rapide : le charbon domine le mix électrique, mais la crise du délestage a déclenché depuis 2022-2023 un essor de l'autoproduction solaire privée.",
   },
   co2PerCapita: {
     value: 6.9,
@@ -15,7 +15,7 @@ export const environment: EnvironmentData = {
     year: 2024,
     source: "Global Carbon Atlas",
     sourceUrl: "https://globalcarbonatlas.org/emissions/carbon-emissions/",
-    note: "Très élevées pour un pays à revenu intermédiaire, du fait du charbon dans la production électrique et industrielle (dont Sasol, qui le transforme en carburants liquides) ; parmi les plus hautes d'Afrique.",
+    note: "Très élevées pour un pays à revenu intermédiaire, du fait du charbon (dont Sasol, qui le transforme en carburants liquides) ; parmi les plus hautes d'Afrique.",
   },
   indicators: [
     {
@@ -31,7 +31,7 @@ export const environment: EnvironmentData = {
     },
     {
       label: "Part du charbon dans l'électricité",
-      value: { value: 83.0, unit: "%", year: 2024, source: "lowcarbonpower.org / Agence internationale de l'énergie", sourceUrl: "https://www.iea.org/countries/south-africa", note: "L'un des mix les plus intensifs en charbon au monde ; le parc de centrales vieillissant est la source directe de la crise de délestage des années 2020." },
+      value: { value: 83.0, unit: "%", year: 2024, source: "lowcarbonpower.org / Agence internationale de l'énergie", sourceUrl: "https://www.iea.org/countries/south-africa", note: "L'un des mix les plus intensifs en charbon au monde ; le parc vieillissant est à l'origine de la crise de délestage." },
     },
   ],
   risks: [
@@ -43,5 +43,5 @@ export const environment: EnvironmentData = {
   ],
   risksSource: { source: "Programme des Nations unies pour l'environnement (PNUE) / Wikipedia", sourceUrl: "https://en.wikipedia.org/wiki/Environmental_issues_in_South_Africa" },
   summary:
-    "L'Afrique du Sud reste l'un des pays les plus intensifs en carbone au monde rapporté à son niveau de développement, du fait du charbon (plus de 80 % du mix électrique) et de la pétrochimie de synthèse Sasol, héritage des sanctions pétrolières de l'apartheid. La crise de délestage du début des années 2020 a paradoxalement accéléré l'essor du solaire privé. Le pays est aussi un point chaud mondial de biodiversité endémique (fynbos du Cap, parc iSimangaliso) tout en restant structurellement pauvre en eau — Le Cap a frôlé le « Jour zéro » (rupture totale d'approvisionnement) en 2018.",
+    "L'Afrique du Sud est l'un des pays les plus intensifs en carbone au monde rapporté à son niveau de développement, du fait du charbon et de la pétrochimie de synthèse Sasol, héritage des sanctions pétrolières de l'apartheid. Point chaud mondial de biodiversité endémique (fynbos du Cap, parc iSimangaliso), le pays reste structurellement pauvre en eau : Le Cap a frôlé le « Jour zéro » (rupture totale d'approvisionnement) en 2018.",
 };

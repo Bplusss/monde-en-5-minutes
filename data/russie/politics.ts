@@ -27,10 +27,10 @@ export const politics: PoliticsData = {
     ],
   },
   constitution: {
-    adopted: "12 décembre 1993 ; profondément amendée par référendum en juillet 2020 (remise à zéro des mandats présidentiels de Poutine, primauté du droit russe sur le droit international, entre autres)",
+    adopted: "12 décembre 1993 ; amendée par référendum en juillet 2020 (remise à zéro des mandats de Poutine, primauté du droit russe sur le droit international)",
     source: WIKI,
     sourceUrl: "https://en.wikipedia.org/wiki/Constitution_of_Russia",
   },
   summary:
-    "La Constitution de 1993 établit une république semi-présidentielle où le président, élu pour six ans, dispose de pouvoirs très étendus. Vladimir Poutine, au pouvoir sans discontinuer depuis 1999-2000 (hormis l'intermède 2008-2012 comme Premier ministre, où il a conservé l'essentiel du pouvoir réel), a construit un système de pouvoir personnel appuyé sur les services de sécurité et une verticale administrative centralisée. La révision constitutionnelle de 2020 lui a permis d'être réélu en mars 2024 pour un cinquième mandat (plus de 87 % des voix, sans opposant crédible — Alexeï Navalny étant mort en détention en février 2024), théoriquement jusqu'en 2030 voire 2036. Aux législatives de septembre 2026, Russie unie a remporté un score sans précédent (environ 58 %, 355 sièges sur 450) dans un espace politique verrouillé. Le pays est classé parmi les régimes les plus fermés au monde par les organisations de défense des droits humains, avec une presse indépendante quasiment éradiquée.",
+    "La Constitution de 1993 donne au président, élu pour six ans, des pouvoirs très étendus. Vladimir Poutine a bâti un pouvoir personnel appuyé sur les services de sécurité et une administration centralisée. La révision de 2020 lui a permis d'être réélu en mars 2024 (plus de 87 % des voix, sans opposant crédible — Alexeï Navalny étant mort en détention en février 2024). Aux législatives de septembre 2026, Russie unie a obtenu environ 58 % et 355 sièges sur 450. La presse indépendante est quasiment éradiquée.",
 };

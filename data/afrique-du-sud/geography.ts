@@ -11,7 +11,7 @@ export const geography: GeographyData = {
     year: 2024,
     source: "Statistics South Africa (Stats SA) / Banque mondiale",
     sourceUrl: "https://data.worldbank.org/indicator/AG.SRF.TOTL.K2?locations=ZA",
-    note: "Inclut les îles subantarctiques du Prince Édouard (Marion et Prince Édouard, environ 335 km² à elles deux), très isolées dans l'océan Indien Sud — voir « Territoires ».",
+    note: "Inclut les îles subantarctiques du Prince Édouard (environ 335 km²) — voir « Territoires ».",
   },
   coastlineKm: {
     value: 2_798,
@@ -31,5 +31,5 @@ export const geography: GeographyData = {
   climate:
     "Climat très contrasté : méditerranéen dans la région du Cap, subtropical humide sur la côte est du KwaZulu-Natal, semi-aride sur le plateau intérieur du highveld (Johannesburg, Pretoria), et aride à désertique dans le Karoo et le Kalahari. L'essentiel du pays reçoit ses pluies en été, sauf la région du Cap, arrosée en hiver.",
   summary:
-    "Nation la plus australe du continent africain, elle se partage entre trois capitales aux fonctions distinctes — Pretoria (exécutif), Le Cap (Parlement) et Bloemfontein (Cour suprême d'appel) — un compromis hérité de l'Union sud-africaine de 1910. Elle entoure entièrement le royaume enclavé du Lesotho et bénéficie d'une double façade maritime, Atlantique et Indien, dont les eaux se rencontrent près du cap des Aiguilles, point le plus méridional d'Afrique (et non le cap de Bonne-Espérance, souvent confondu). Le relief s'organise en un vaste plateau intérieur bordé par le Grand Escarpement, dont le massif du Drakensberg culmine au Njesuthi (3 408 m).",
+    "Nation la plus australe du continent, elle se partage entre trois capitales — Pretoria (exécutif), Le Cap (Parlement) et Bloemfontein (Cour suprême d'appel). Elle entoure entièrement le royaume enclavé du Lesotho et possède une double façade maritime, Atlantique et Indien, dont les eaux se rencontrent près du cap des Aiguilles, point le plus méridional d'Afrique (et non le cap de Bonne-Espérance). Le relief s'organise en un vaste plateau intérieur bordé par le Grand Escarpement, dont le massif du Drakensberg culmine au Njesuthi.",
 };

@@ -8,7 +8,7 @@ export const rivers: River[] = [
       unit: "km",
       source: "Wikipedia",
       sourceUrl: "https://fr.wikipedia.org/wiki/Sanaga",
-      note: "Plus long fleuve du pays, entièrement camerounais ; son bassin couvre plus du quart du territoire. Ses barrages d'Edéa, de Song Loulou et de Nachtigal fournissent l'essentiel de l'électricité nationale.",
+      note: "Plus long fleuve du pays, entièrement camerounais ; son bassin couvre plus du quart du territoire et ses barrages fournissent l'essentiel de l'électricité nationale.",
     },
     source_location: "Plateau de l'Adamaoua (son cours supérieur porte le nom de Djérem)",
     mouth: "Golfe de Guinée (baie du Biafra), au sud de Douala",

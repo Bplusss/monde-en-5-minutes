@@ -36,5 +36,5 @@ export const environment: EnvironmentData = {
   ],
   risksSource: { source: "Programme des Nations unies pour l'environnement (PNUE) / Wikipedia", sourceUrl: "https://en.wikipedia.org/wiki/Environmental_issues_in_Egypt" },
   summary:
-    "L'environnement égyptien est structurellement dominé par la rareté de l'eau douce : le pays dépend du Nil pour plus de 90 % de ses besoins, une situation rendue plus précaire par le remplissage, achevé en 2025, du barrage éthiopien de la Renaissance (GERD), source de tensions diplomatiques persistantes avec l'Éthiopie. Le delta du Nil, zone agricole parmi les plus densément peuplées au monde, est particulièrement exposé à l'élévation du niveau de la mer et à la salinisation des sols côtiers. Sur le plan énergétique, l'Égypte a accéléré ses investissements renouvelables depuis le milieu des années 2010, portés par le parc solaire de Benban, mais reste encore très dépendante du gaz naturel.",
+    "L'environnement égyptien est dominé par la rareté de l'eau, rendue plus précaire par le remplissage, achevé en 2025, du barrage éthiopien de la Renaissance, source de tensions avec l'Éthiopie. Le delta du Nil est très exposé à la montée de la mer. Malgré l'essor du solaire, le pays reste très dépendant du gaz naturel.",
 };

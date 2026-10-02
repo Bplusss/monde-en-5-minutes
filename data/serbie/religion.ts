@@ -14,7 +14,7 @@ export const religion: ReligionData = {
     { label: "Autres, non-déclarés ou sans religion", sharePercent: 10.0 },
   ],
   summary:
-    "L'écrasante majorité des Serbes orthodoxes appartient à l'Église orthodoxe serbe, autocéphale depuis le XIIIᵉ siècle et institution qui a joué un rôle central dans la préservation de l'identité nationale sous domination ottomane. La minorité catholique se concentre en Voïvodine (Hongrois, Croates), et la minorité musulmane dans le Sandžak (Bosniaques) et le sud du pays.",
+    "L'écrasante majorité des orthodoxes appartient à l'Église orthodoxe serbe, autocéphale depuis le XIIIᵉ siècle, qui a joué un rôle central dans la préservation de l'identité nationale sous domination ottomane. Les catholiques se concentrent en Voïvodine (Hongrois, Croates), les musulmans dans le Sandžak (Bosniaques) et le sud du pays.",
   methodologyNote:
     "Dernier recensement disponible, réalisé en 2022 ; comme l'ensemble des statistiques officielles serbes depuis 1999, il ne couvre pas le territoire du Kosovo.",
 };

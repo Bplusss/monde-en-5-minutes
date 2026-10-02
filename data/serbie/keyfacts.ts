@@ -3,7 +3,7 @@ import type { KeyFact } from "@/lib/types";
 export const keyFacts: KeyFact[] = [
   {
     title: "Premier exportateur mondial de framboises congelées",
-    description: "La Serbie est l'un des tout premiers producteurs et exportateurs mondiaux de framboises, une filière qui repose largement sur l'exportation sous forme congelée.",
+    description: "La Serbie est l'un des tout premiers producteurs et exportateurs mondiaux de framboises, vendues surtout congelées.",
     source: "Wikipedia",
     sourceUrl: "https://en.wikipedia.org/wiki/Agriculture_in_Serbia",
   },
@@ -21,13 +21,13 @@ export const keyFacts: KeyFact[] = [
   },
   {
     title: "Un pays enclavé depuis 2006",
-    description: "La Serbie a perdu son accès à la mer Adriatique avec l'indépendance du Monténégro en 2006, dernier État issu de la Yougoslavie à s'être séparé d'elle.",
+    description: "La Serbie a perdu son accès à la mer Adriatique avec l'indépendance du Monténégro en 2006.",
     source: "Wikipedia",
     sourceUrl: "https://en.wikipedia.org/wiki/2006_Montenegrin_independence_referendum",
   },
   {
     title: "Deux alphabets pour une langue",
-    description: "Le serbe est officiellement écrit en alphabet cyrillique, mais l'alphabet latin, tout aussi correct, est largement utilisé dans l'usage quotidien, la presse et l'affichage commercial.",
+    description: "Le serbe s'écrit officiellement en cyrillique, mais l'alphabet latin est largement utilisé au quotidien, dans la presse et l'affichage commercial.",
     source: "Wikipedia",
     sourceUrl: "https://en.wikipedia.org/wiki/Serbian_Cyrillic_alphabet",
   },

@@ -10,7 +10,7 @@ export const population: PopulationData = {
     year: 2025,
     source: SRC,
     sourceUrl: URL,
-    note: "Estimation de mi-année 2025 ; le recensement de 2022 (affecté par un taux de sous-dénombrement estimé à environ 31 %, corrigé statistiquement) avait dénombré 62 027 503 habitants.",
+    note: "Estimation de mi-année 2025 ; le recensement de 2022 (sous-dénombrement estimé à environ 31 %, corrigé statistiquement) avait dénombré 62 027 503 habitants.",
   },
   density: {
     value: 51.7,
@@ -41,5 +41,5 @@ export const population: PopulationData = {
     sourceUrl: "https://data.worldbank.org/indicator/SP.URB.TOTL.IN.ZS?locations=ZA",
   },
   summary:
-    "Avec un peu plus de 63 millions d'habitants, l'Afrique du Sud est le pays le plus industrialisé du continent mais seulement le 5ᵉ plus peuplé, loin derrière le Nigeria. Stats SA continue de suivre la répartition par « groupe de population » — catégorie héritée de l'apartheid, utilisée notamment pour le Black Economic Empowerment — avec environ 81 % de Sud-Africains noirs, 8 % de métis, 7 % de Blancs et 3 % d'Indiens et Asiatiques. La population se concentre dans le Gauteng (Johannesburg-Pretoria) et sur les côtes du Cap et du KwaZulu-Natal, l'intérieur semi-aride restant peu peuplé.",
+    "Avec un peu plus de 63 millions d'habitants, l'Afrique du Sud n'est que le 5ᵉ pays le plus peuplé du continent, loin derrière le Nigeria. Stats SA suit toujours la répartition par « groupe de population », catégorie héritée de l'apartheid : environ 81 % de Noirs, 8 % de métis, 7 % de Blancs et 3 % d'Indiens et Asiatiques. La population se concentre dans le Gauteng (Johannesburg-Pretoria) et sur les côtes du Cap et du KwaZulu-Natal.",
 };

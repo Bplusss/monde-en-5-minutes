@@ -2,7 +2,7 @@ import type { CultureData } from "@/lib/types";
 
 export const culture: CultureData = {
   intro:
-    "Un aperçu de pratiques et de patrimoines culturels documentés — non une liste exhaustive de plus de cinq mille ans d'histoire culturelle égyptienne.",
+    "Un aperçu de pratiques et de patrimoines culturels documentés — non une liste exhaustive.",
   items: [
     {
       category: "Patrimoine pharaonique",
@@ -26,7 +26,7 @@ export const culture: CultureData = {
       category: "Religion et spiritualité",
       title: "Coexistence islamo-copte et rayonnement d'Al-Azhar",
       description:
-        "L'Égypte abrite la plus importante communauté chrétienne du Proche-Orient, l'Église copte orthodoxe, qui a préservé la langue copte dans sa liturgie. L'université-mosquée d'Al-Azhar, fondée au Xe siècle au Caire, fait autorité dans l'islam sunnite bien au-delà de l'Égypte.",
+        "L'Église copte orthodoxe a préservé la langue copte dans sa liturgie. L'université-mosquée d'Al-Azhar fait autorité dans l'islam sunnite bien au-delà de l'Égypte.",
       examples: ["Cathédrale Saint-Marc du Caire", "Université Al-Azhar", "Monastère Sainte-Catherine (Sinaï)"],
       source: "Wikipedia",
       sourceUrl: "https://en.wikipedia.org/wiki/Coptic_Orthodox_Church_of_Alexandria",

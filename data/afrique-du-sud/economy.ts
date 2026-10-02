@@ -11,7 +11,7 @@ export const economy: EconomyData = {
     year: 2024,
     source: WB,
     sourceUrl: "https://data.worldbank.org/indicator/NY.GDP.MKTP.CD?locations=ZA",
-    note: "Dollars courants ; deuxième économie d'Afrique en valeur nominale derrière l'Égypte selon les années, mais la plus diversifiée et la plus industrialisée du continent.",
+    note: "Dollars courants ; deuxième économie d'Afrique derrière l'Égypte selon les années, mais la plus diversifiée et industrialisée du continent.",
   },
   gdpPerCapita: {
     value: 6_253,
@@ -19,7 +19,7 @@ export const economy: EconomyData = {
     year: 2024,
     source: WB,
     sourceUrl: "https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?locations=ZA",
-    note: "Dollars courants ; classe le pays parmi les revenus intermédiaires de la tranche supérieure, mais la moyenne masque des écarts de revenu extrêmes entre ménages (voir coefficient de Gini).",
+    note: "Revenu intermédiaire de la tranche supérieure, mais la moyenne masque des écarts extrêmes (voir coefficient de Gini).",
   },
   unemploymentRate: {
     value: 33.6,
@@ -44,7 +44,7 @@ export const economy: EconomyData = {
         year: 2014,
         source: "Banque mondiale",
         sourceUrl: "https://data.worldbank.org/indicator/SI.POV.GINI?locations=ZA",
-        note: "Dernière estimation officielle de la Banque mondiale ; parmi les plus élevées au monde, héritage direct des politiques économiques et foncières de l'apartheid.",
+        note: "Dernière estimation officielle ; parmi les plus élevées au monde, héritage de l'apartheid.",
       },
     },
     {
@@ -53,14 +53,14 @@ export const economy: EconomyData = {
         value: "coupures programmées quasi quotidiennes de 2022 à 2024, très atténuées depuis mi-2024",
         source: "Eskom",
         sourceUrl: "https://www.eskom.co.za/",
-        note: "Le producteur public Eskom, en sous-capacité chronique (vieillissement du parc, sous-investissement, corruption sous Zuma), a imposé des coupures nationales pendant plusieurs années ; celles-ci se sont fortement réduites depuis mi-2024 grâce à la maintenance et à l'essor du solaire privé.",
+        note: "Le producteur public Eskom, en sous-capacité chronique (vieillissement du parc, sous-investissement, corruption sous Zuma), a imposé des coupures nationales, fortement réduites depuis mi-2024 grâce à la maintenance et à l'essor du solaire privé.",
       },
     },
     {
       label: "Membre des BRICS et seul pays africain du G20",
-      value: { value: "membre depuis 2010 (BRICS) et fondateur (G20)", source: "Wikipedia", sourceUrl: "https://en.wikipedia.org/wiki/BRICS", note: "A rejoint le groupe BRIC (Brésil, Russie, Inde, Chine) en 2010 et reste le seul pays africain membre permanent du G20." },
+      value: { value: "membre depuis 2010 (BRICS) et fondateur (G20)", source: "Wikipedia", sourceUrl: "https://en.wikipedia.org/wiki/BRICS", note: "A rejoint le groupe BRIC (Brésil, Russie, Inde, Chine) en 2010." },
     },
   ],
   summary:
-    "Économie la plus industrialisée et diversifiée d'Afrique, bâtie sur une longue tradition minière (or, platine — premier producteur mondial —, diamants) puis des secteurs financier et de services sophistiqués. Elle reste freinée par un chômage de masse, la crise électrique d'Eskom et des inégalités de revenu parmi les plus extrêmes au monde, héritées de la géographie raciale de l'apartheid. Seul pays africain du G20 et membre des BRICS depuis 2010, elle joue un rôle diplomatique disproportionné à son poids démographique continental.",
+    "Économie la plus industrialisée et diversifiée d'Afrique, bâtie sur une longue tradition minière (or, platine — premier producteur mondial —, diamants) puis sur des secteurs financier et de services sophistiqués. Elle reste freinée par un chômage de masse, la crise électrique d'Eskom et des inégalités parmi les plus extrêmes au monde, héritées de la géographie raciale de l'apartheid.",
 };

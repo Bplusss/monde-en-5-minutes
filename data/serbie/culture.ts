@@ -2,7 +2,7 @@ import type { CultureData } from "@/lib/types";
 
 export const culture: CultureData = {
   intro:
-    "Un aperçu de pratiques culturelles documentées — non une liste exhaustive, et sans prétendre résumer la diversité des habitudes réelles de chacun.",
+    "Un aperçu de pratiques culturelles documentées, sans prétention à l'exhaustivité.",
   items: [
     {
       category: "Patrimoine",
@@ -25,7 +25,7 @@ export const culture: CultureData = {
       category: "Traditions",
       title: "La slava, fête du saint patron familial",
       description:
-        "Propre aux Serbes orthodoxes et transmise en ligne paternelle, la slava célèbre chaque année le saint protecteur de la famille par un rituel (bougie, gâteau rituel coupé en croix, repas partagé) qui sert aussi de moment de sociabilité entre familles, voisins et amis. Elle est inscrite depuis 2014 sur la liste du patrimoine culturel immatériel de l'UNESCO.",
+        "Propre aux Serbes orthodoxes et transmise en ligne paternelle, la slava célèbre chaque année le saint protecteur de la famille (bougie, gâteau rituel, repas partagé avec voisins et amis). Elle est inscrite depuis 2014 au patrimoine culturel immatériel de l'UNESCO.",
       source: "UNESCO",
       sourceUrl: "https://ich.unesco.org/en/RL/slava-celebration-of-family-saint-patron-s-day-01010",
     },
@@ -49,7 +49,7 @@ export const culture: CultureData = {
       category: "Gastronomie",
       title: "Ćevapi, ajvar et rakija",
       description:
-        "La cuisine serbe, marquée par l'héritage ottoman et centre-européen, se caractérise par des grillades de viande (ćevapi, pljeskavica), la sauce de poivrons rouges ajvar préparée en fin d'été, et la rakija, eau-de-vie de fruits (souvent de prune, šljivovica) omniprésente lors des repas et célébrations.",
+        "Marquée par les héritages ottoman et centre-européen, la cuisine serbe se distingue par ses grillades (ćevapi, pljeskavica), l'ajvar, sauce de poivrons rouges préparée en fin d'été, et la rakija, eau-de-vie de fruits (souvent de prune, šljivovica).",
       examples: ["Ćevapi", "Ajvar", "Šljivovica"],
       source: "Wikipedia",
       sourceUrl: "https://en.wikipedia.org/wiki/Serbian_cuisine",
@@ -58,7 +58,7 @@ export const culture: CultureData = {
       category: "Sciences et inventions",
       title: "Mihajlo Pupin",
       description:
-        "Né à Idvor, en Voïvodine, en 1858, le physicien et inventeur Mihajlo Pupin émigre aux États-Unis où il met au point les « bobines de Pupin », qui permettent d'étendre considérablement la portée des communications téléphoniques longue distance.",
+        "Né à Idvor, en Voïvodine, en 1858, le physicien Mihajlo Pupin émigre aux États-Unis, où ses « bobines de Pupin » étendent considérablement la portée des communications téléphoniques.",
       source: "Wikipedia",
       sourceUrl: "https://en.wikipedia.org/wiki/Mihajlo_Pupin",
     },

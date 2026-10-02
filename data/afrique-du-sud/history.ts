@@ -4,7 +4,7 @@ const WIKIPEDIA = "Wikipedia";
 
 export const history: HistoryData = {
   intro:
-    "Quelques repères pour situer les grandes étapes de construction du pays moderne — pas un résumé exhaustif de l'histoire sud-africaine, déjà largement documentée par ailleurs.",
+    "Quelques repères pour situer les grandes étapes de construction du pays moderne.",
   periods: [
     {
       id: "colonisation",
@@ -12,14 +12,14 @@ export const history: HistoryData = {
       startYear: 1652,
       endYear: 1910,
       summary:
-        "Le territoire est peuplé de longue date par les Khoisan puis par des peuples bantous (ancêtres des Zoulous, Xhosas, Sothos, Tswanas). La Compagnie néerlandaise des Indes orientales fonde un comptoir au Cap en 1652 (Jan van Riebeeck), qui devient colonie de peuplement esclavagiste à l'origine de la communauté afrikaner. Le Royaume-Uni annexe le Cap en 1806 ; le Grand Trek (1836) pousse les Boers vers l'intérieur, où ils fondent le Transvaal et l'État libre d'Orange au prix de guerres contre les royaumes africains, dont le royaume zoulou (vaincu en 1879). Les découvertes de diamants (1867) puis d'or (1886, Johannesburg) attisent les tensions avec l'Empire britannique, vainqueur à l'issue de deux guerres anglo-boers (1880-1881, 1899-1902, marquée par des camps de concentration). L'Union sud-africaine, dominion britannique excluant la majorité noire du vote, est proclamée en 1910.",
+        "Le territoire est peuplé de longue date par les Khoisan puis par des peuples bantous (ancêtres des Zoulous, Xhosas, Sothos, Tswanas). La Compagnie néerlandaise des Indes orientales fonde un comptoir au Cap en 1652, qui devient une colonie de peuplement esclavagiste, berceau de la communauté afrikaner. Le Royaume-Uni annexe le Cap en 1806 ; le Grand Trek (1836) pousse les Boers vers l'intérieur, où ils fondent le Transvaal et l'État libre d'Orange au prix de guerres contre les royaumes africains, dont le royaume zoulou (vaincu en 1879). Les découvertes de diamants (1867) puis d'or (1886) attisent les tensions avec l'Empire britannique, vainqueur de deux guerres anglo-boers (1880-1881, 1899-1902). L'Union sud-africaine, dominion excluant la majorité noire du vote, est proclamée en 1910.",
       source: WIKIPEDIA,
       sourceUrl: "https://en.wikipedia.org/wiki/History_of_South_Africa",
       events: [
         {
           date: "1652",
           title: "Fondation du comptoir du Cap",
-          description: "Jan van Riebeeck établit pour la Compagnie néerlandaise des Indes orientales un poste de ravitaillement au Cap de Bonne-Espérance, à l'origine de la colonisation européenne du territoire.",
+          description: "Jan van Riebeeck établit pour la Compagnie néerlandaise des Indes orientales un poste de ravitaillement au Cap de Bonne-Espérance.",
           source: WIKIPEDIA,
           sourceUrl: "https://en.wikipedia.org/wiki/Dutch_Cape_Colony",
         },
@@ -33,7 +33,7 @@ export const history: HistoryData = {
         {
           date: "31 mai 1910",
           title: "Formation de l'Union sud-africaine",
-          description: "Le Royaume-Uni unifie ses colonies et les anciennes républiques boers en un dominion autonome, l'Union sud-africaine, excluant la majorité noire du droit de vote.",
+          description: "Le Royaume-Uni unifie ses colonies et les anciennes républiques boers en un dominion autonome qui exclut la majorité noire du droit de vote.",
           source: WIKIPEDIA,
           sourceUrl: "https://en.wikipedia.org/wiki/Union_of_South_Africa",
         },
@@ -45,21 +45,21 @@ export const history: HistoryData = {
       startYear: 1948,
       endYear: 1994,
       summary:
-        "Le Parti national, élu en 1948 par le seul électorat blanc, institutionnalise l'apartheid (« séparation ») : classification raciale légale, interdiction des unions interraciales, déplacements forcés vers des zones réservées (Group Areas Act, 1950) et dix « bantoustans » censés priver à terme les Noirs de citoyenneté. Face à la résistance de l'ANC (fondé en 1912) et de son aile armée Umkhonto we Sizwe (1961), la répression se durcit après le massacre de Sharpeville (1960, 69 morts) et l'interdiction de l'ANC. Nelson Mandela est condamné à perpétuité au procès de Rivonia (1964) et y passe vingt-sept ans. Le soulèvement de Soweto (1976), réprimé dans le sang, internationalise la cause anti-apartheid et déclenche boycotts et sanctions croissantes dans les années 1980.",
+        "Le Parti national, élu en 1948 par le seul électorat blanc, institutionnalise l'apartheid (« séparation ») : classification raciale, interdiction des unions interraciales, déplacements forcés (Group Areas Act, 1950) et dix « bantoustans » censés priver à terme les Noirs de citoyenneté. Face à l'ANC (fondé en 1912) et à son aile armée Umkhonto we Sizwe (1961), la répression se durcit après le massacre de Sharpeville (1960) et l'interdiction de l'ANC. Nelson Mandela est condamné à perpétuité en 1964. Le soulèvement de Soweto (1976) internationalise la cause anti-apartheid ; boycotts et sanctions se multiplient dans les années 1980.",
       source: WIKIPEDIA,
       sourceUrl: "https://en.wikipedia.org/wiki/Apartheid",
       events: [
         {
           date: "1948",
           title: "Victoire électorale du Parti national et instauration de l'apartheid",
-          description: "Le Parti national accède au pouvoir et institutionnalise la ségrégation raciale sous le nom d'apartheid.",
+          description: "Le Parti national accède au pouvoir et institutionnalise la ségrégation raciale.",
           source: WIKIPEDIA,
           sourceUrl: "https://en.wikipedia.org/wiki/Apartheid",
         },
         {
           date: "21 mars 1960",
           title: "Massacre de Sharpeville",
-          description: "La police tue 69 manifestants pacifiques opposés aux lois sur les laissez-passer imposées à la population noire, provoquant un tournant dans la répression et la contestation.",
+          description: "La police tue 69 manifestants pacifiques opposés aux laissez-passer imposés à la population noire.",
           source: WIKIPEDIA,
           sourceUrl: "https://en.wikipedia.org/wiki/Sharpeville_massacre",
         },
@@ -73,7 +73,7 @@ export const history: HistoryData = {
         {
           date: "16 juin 1976",
           title: "Soulèvement de Soweto",
-          description: "La répression violente d'une manifestation lycéenne contre l'enseignement obligatoire en afrikaans fait plusieurs centaines de morts et relance la mobilisation internationale contre l'apartheid.",
+          description: "La répression d'une manifestation lycéenne contre l'enseignement obligatoire en afrikaans fait plusieurs centaines de morts.",
           source: WIKIPEDIA,
           sourceUrl: "https://en.wikipedia.org/wiki/Soweto_uprising",
         },
@@ -85,28 +85,28 @@ export const history: HistoryData = {
       startYear: 1990,
       endYear: 1994,
       summary:
-        "Sous la pression des sanctions et de la résistance intérieure, le président de Klerk légalise l'ANC le 2 février 1990 et libère Nelson Mandela neuf jours plus tard, après vingt-sept ans de détention. Une négociation constitutionnelle souvent violente aboutit aux premières élections multiraciales (26-29 avril 1994), remportées par l'ANC à 62,6 % des voix. Mandela devient le 10 mai 1994 le premier président noir du pays, à la tête d'un gouvernement d'union nationale ; de Klerk et lui reçoivent conjointement le prix Nobel de la paix en 1993.",
+        "Sous la pression des sanctions et de la résistance intérieure, le président de Klerk légalise l'ANC le 2 février 1990 et libère Nelson Mandela neuf jours plus tard. Une négociation souvent violente aboutit aux premières élections multiraciales (26-29 avril 1994), remportées par l'ANC à 62,6 % des voix. Mandela devient le 10 mai 1994 le premier président noir du pays ; de Klerk et lui avaient reçu conjointement le prix Nobel de la paix en 1993.",
       source: WIKIPEDIA,
       sourceUrl: "https://en.wikipedia.org/wiki/History_of_South_Africa_(1994%E2%80%93present)",
       events: [
         {
           date: "11 février 1990",
           title: "Libération de Nelson Mandela",
-          description: "Nelson Mandela est libéré après vingt-sept ans d'emprisonnement, quelques jours après la légalisation de l'ANC par le président de Klerk.",
+          description: "Nelson Mandela est libéré après vingt-sept ans d'emprisonnement.",
           source: WIKIPEDIA,
           sourceUrl: "https://en.wikipedia.org/wiki/Nelson_Mandela",
         },
         {
           date: "26-29 avril 1994",
           title: "Premières élections démocratiques multiraciales",
-          description: "L'ANC remporte les premières élections générales ouvertes à tous les Sud-Africains, quelle que soit leur origine raciale.",
+          description: "L'ANC remporte les premières élections générales ouvertes à tous les Sud-Africains.",
           source: WIKIPEDIA,
           sourceUrl: "https://en.wikipedia.org/wiki/1994_South_African_general_election",
         },
         {
           date: "10 mai 1994",
           title: "Investiture de Nelson Mandela",
-          description: "Nelson Mandela devient le premier président noir et démocratiquement élu d'Afrique du Sud, mettant fin à l'apartheid.",
+          description: "Nelson Mandela devient le premier président noir et démocratiquement élu d'Afrique du Sud.",
           source: WIKIPEDIA,
           sourceUrl: "https://en.wikipedia.org/wiki/Nelson_Mandela",
         },
@@ -118,21 +118,21 @@ export const history: HistoryData = {
       startYear: 1994,
       endYear: "present",
       summary:
-        "La Constitution de 1996, l'une des plus progressistes au monde, s'accompagne d'une Commission Vérité et Réconciliation présidée par Desmond Tutu. Les politiques de discrimination positive (Black Economic Empowerment) ne résorbent ni le chômage de masse ni les inégalités héritées de l'apartheid. La présidence de Jacob Zuma (2009-2018) est ternie par les scandales de corruption dits de « State capture », qui fragilisent des entreprises publiques comme Eskom, à l'origine des coupures d'électricité récurrentes des années 2020. En mai 2024, l'ANC perd pour la première fois sa majorité absolue et forme un gouvernement d'union nationale avec l'Alliance démocratique. Le pays organise la Coupe du monde de football en 2010, une première africaine.",
+        "La Constitution de 1996 s'accompagne d'une Commission Vérité et Réconciliation présidée par Desmond Tutu. La discrimination positive (Black Economic Empowerment) ne résorbe ni le chômage de masse ni les inégalités héritées de l'apartheid. La présidence de Jacob Zuma (2009-2018) est ternie par les scandales de « State capture », qui fragilisent des entreprises publiques comme Eskom, à l'origine des coupures d'électricité des années 2020. En mai 2024, l'ANC perd pour la première fois sa majorité absolue et forme un gouvernement d'union nationale avec l'Alliance démocratique.",
       source: WIKIPEDIA,
       sourceUrl: "https://en.wikipedia.org/wiki/History_of_South_Africa_(1994%E2%80%93present)",
       events: [
         {
           date: "1996",
           title: "Adoption de la Constitution définitive",
-          description: "L'Afrique du Sud se dote d'une Constitution comptant parmi les plus progressistes au monde en matière de droits fondamentaux.",
+          description: "Le pays se dote d'une Constitution parmi les plus progressistes au monde en matière de droits fondamentaux.",
           source: WIKIPEDIA,
           sourceUrl: "https://en.wikipedia.org/wiki/Constitution_of_South_Africa",
         },
         {
           date: "2009-2018",
           title: "Présidence de Jacob Zuma et scandales de « State capture »",
-          description: "Le mandat de Jacob Zuma est marqué par de vastes scandales de corruption et de captation des institutions publiques par des intérêts privés, jusqu'à sa démission forcée en 2018.",
+          description: "Le mandat de Jacob Zuma est marqué par de vastes scandales de corruption et de captation des institutions, jusqu'à sa démission forcée en 2018.",
           source: WIKIPEDIA,
           sourceUrl: "https://en.wikipedia.org/wiki/Jacob_Zuma",
         },
@@ -146,7 +146,7 @@ export const history: HistoryData = {
         {
           date: "29 mai 2024",
           title: "L'ANC perd sa majorité absolue",
-          description: "Pour la première fois depuis 1994, l'ANC obtient moins de 50 % des voix et forme un Gouvernement d'union nationale avec plusieurs partis d'opposition, dont l'Alliance démocratique.",
+          description: "Pour la première fois depuis 1994, l'ANC obtient moins de 50 % des voix et forme un Gouvernement d'union nationale avec, notamment, l'Alliance démocratique.",
           source: WIKIPEDIA,
           sourceUrl: "https://en.wikipedia.org/wiki/2024_South_African_general_election",
         },

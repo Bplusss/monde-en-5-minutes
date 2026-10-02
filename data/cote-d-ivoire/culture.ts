@@ -2,7 +2,7 @@ import type { CultureData } from "@/lib/types";
 
 export const culture: CultureData = {
   intro:
-    "Un aperçu de pratiques et de patrimoines culturels documentés — non une liste exhaustive des cultures d'un pays qui compte une soixantaine de groupes ethniques.",
+    "Un aperçu de pratiques et de patrimoines documentés, parmi la soixantaine de groupes ethniques du pays.",
   items: [
     {
       category: "Musique",
@@ -26,7 +26,7 @@ export const culture: CultureData = {
       category: "Gastronomie",
       title: "Attiéké, alloco et foutou",
       description:
-        "L'attiéké, semoule de manioc fermenté originaire des peuples lagunaires du sud, accompagne poissons et viandes grillés ; son savoir-faire de production est inscrit au patrimoine immatériel de l'UNESCO depuis 2024. L'alloco (banane plantain frite) et le foutou (pâte de banane ou d'igname servie avec une sauce graine ou arachide) complètent les plats du quotidien, servis notamment dans les « maquis », restaurants populaires en plein air.",
+        "L'attiéké, semoule de manioc fermenté originaire des peuples lagunaires du sud, accompagne poissons et viandes grillés ; son savoir-faire est inscrit au patrimoine immatériel de l'UNESCO depuis 2024. L'alloco (banane plantain frite) et le foutou (pâte de banane ou d'igname, en sauce graine ou arachide) se mangent notamment dans les « maquis », restaurants populaires en plein air.",
       examples: ["Attiéké-poisson", "Alloco", "Foutou sauce graine", "Garba"],
       source: "UNESCO / Wikipedia",
       sourceUrl: "https://fr.wikipedia.org/wiki/Atti%C3%A9k%C3%A9",
@@ -35,7 +35,7 @@ export const culture: CultureData = {
       category: "Patrimoine",
       title: "Grand-Bassam et basilique de Yamoussoukro",
       description:
-        "La ville historique de Grand-Bassam, première capitale coloniale, est inscrite au patrimoine mondial de l'UNESCO depuis 2012 pour son urbanisme colonial et ses quartiers africains. À Yamoussoukro, la basilique Notre-Dame-de-la-Paix, inspirée de Saint-Pierre de Rome et achevée en 1989, est l'un des plus grands édifices religieux chrétiens du monde.",
+        "La ville historique de Grand-Bassam, première capitale coloniale, est inscrite au patrimoine mondial de l'UNESCO depuis 2012 pour son urbanisme colonial et ses quartiers africains. À Yamoussoukro, la basilique Notre-Dame-de-la-Paix, inspirée de Saint-Pierre de Rome et achevée en 1989, est l'un des plus grands édifices chrétiens du monde.",
       examples: ["Quartier France de Grand-Bassam", "Basilique Notre-Dame-de-la-Paix"],
       source: "UNESCO",
       sourceUrl: "https://whc.unesco.org/fr/list/1322/",
@@ -44,7 +44,7 @@ export const culture: CultureData = {
       category: "Littérature",
       title: "Bernard Dadié et Ahmadou Kourouma",
       description:
-        "Bernard Dadié, figure de la littérature anticoloniale, et Ahmadou Kourouma, dont Les Soleils des indépendances (1968) et Allah n'est pas obligé (prix Renaudot 2000) ont renouvelé le roman africain francophone, sont les auteurs ivoiriens les plus connus. Le pays accueille aussi le Marché des arts du spectacle d'Abidjan (MASA).",
+        "Bernard Dadié, figure de la littérature anticoloniale, et Ahmadou Kourouma, dont Les Soleils des indépendances (1968) et Allah n'est pas obligé (prix Renaudot 2000) ont renouvelé le roman africain francophone, sont les auteurs ivoiriens les plus connus.",
       examples: ["Les Soleils des indépendances", "Allah n'est pas obligé", "Climbié"],
       source: "Wikipedia",
       sourceUrl: "https://fr.wikipedia.org/wiki/Ahmadou_Kourouma",

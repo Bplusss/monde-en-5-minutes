@@ -2,7 +2,7 @@ import type { CultureData } from "@/lib/types";
 
 export const culture: CultureData = {
   intro:
-    "Un aperçu de pratiques et de patrimoines culturels documentés — non un inventaire des quelque 250 cultures que compte le pays.",
+    "Un aperçu de pratiques et de patrimoines documentés, parmi les quelque 250 cultures du pays.",
   items: [
     {
       category: "Musique",
@@ -17,7 +17,7 @@ export const culture: CultureData = {
       category: "Sport",
       title: "Les Lions indomptables",
       description:
-        "L'équipe nationale de football a remporté cinq Coupes d'Afrique des nations (1984, 1988, 2000, 2002, 2017) et fut en 1990, avec Roger Milla, la première sélection africaine à atteindre les quarts de finale d'une Coupe du monde. Samuel Eto'o, élu à la tête de la fédération en 2021, en reste le meilleur buteur.",
+        "L'équipe nationale a remporté cinq Coupes d'Afrique des nations (1984, 1988, 2000, 2002, 2017) et fut en 1990, avec Roger Milla, la première sélection africaine quart de finaliste d'une Coupe du monde. Samuel Eto'o, président de la fédération depuis 2021, en reste le meilleur buteur.",
       examples: ["Roger Milla", "Samuel Eto'o", "Coupe du monde 1990"],
       source: "Wikipedia",
       sourceUrl: "https://en.wikipedia.org/wiki/Cameroon_national_football_team",
@@ -35,7 +35,7 @@ export const culture: CultureData = {
       category: "Littérature",
       title: "Une littérature bilingue",
       description:
-        "Mongo Beti et Ferdinand Oyono ont dénoncé dans les années 1950 la colonisation et la mission ; Calixthe Beyala et Léonora Miano, prix Femina 2013, ont prolongé cette tradition francophone, tandis qu'Imbolo Mbue écrit en anglais.",
+        "Mongo Beti et Ferdinand Oyono ont dénoncé dans les années 1950 la colonisation et la mission ; Calixthe Beyala et Léonora Miano, prix Femina 2013, ont pris leur suite, tandis qu'Imbolo Mbue écrit en anglais.",
       examples: ["Le Pauvre Christ de Bomba (Mongo Beti)", "Une vie de boy (Ferdinand Oyono)", "La Saison de l'ombre (Léonora Miano)"],
       source: "Wikipedia",
       sourceUrl: "https://en.wikipedia.org/wiki/Cameroonian_literature",
@@ -44,7 +44,7 @@ export const culture: CultureData = {
       category: "Gastronomie",
       title: "Ndolé, eru et poulet DG",
       description:
-        "Le ndolé, ragoût de feuilles amères à l'arachide et à la viande ou aux crevettes, est souvent présenté comme le plat national ; l'eru est la spécialité du Sud-Ouest et le poulet DG, aux plantains frits, un plat de fête urbain. Le manioc se consomme en bâtons (miondo, bobolo).",
+        "Le ndolé, ragoût de feuilles amères à l'arachide, est souvent présenté comme le plat national ; l'eru est la spécialité du Sud-Ouest et le poulet DG, aux plantains frits, un plat de fête urbain. Le manioc se consomme en bâtons (miondo, bobolo).",
       examples: ["Ndolé", "Eru", "Poulet DG", "Bâtons de manioc"],
       source: "Wikipedia",
       sourceUrl: "https://en.wikipedia.org/wiki/Cameroonian_cuisine",

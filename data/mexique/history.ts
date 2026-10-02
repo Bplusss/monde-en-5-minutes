@@ -5,7 +5,7 @@ const WIKIPEDIA_HISTORY = "https://en.wikipedia.org/wiki/History_of_Mexico";
 
 export const history: HistoryData = {
   intro:
-    "Quelques repères pour situer les grandes étapes de construction du pays moderne — pas un résumé exhaustif de l'histoire mexicaine, déjà largement documentée par ailleurs.",
+    "Quelques repères pour situer les grandes étapes de construction du pays moderne — pas un résumé exhaustif de son histoire.",
   periods: [
     {
       id: "civilisations-precolombiennes",
@@ -13,7 +13,7 @@ export const history: HistoryData = {
       startYear: -1200,
       endYear: 1521,
       summary:
-        "Le territoire mexicain a vu se succéder plusieurs grandes civilisations mésoaméricaines : les Olmèques, considérés comme la « culture mère » de la région dès environ 1200 avant notre ère, la civilisation maya, qui développa dans le Sud-Est (Yucatán, Chiapas) une écriture, une astronomie et une architecture monumentale sophistiquées, ou encore la cité de Teotihuacan, dont la population dépassait peut-être 100 000 habitants à son apogée (Ier-VIIe siècle). Les Mexicas (Aztèques) fondent en 1325 leur capitale, Tenochtitlan, sur un îlot du lac Texcoco, et dominent au XVe siècle, via la Triple Alliance conclue en 1428 avec Texcoco et Tlacopan, un vaste empire tributaire de plusieurs millions d'habitants en Mésoamérique centrale.",
+        "Plusieurs grandes civilisations mésoaméricaines se succèdent : les Olmèques, « culture mère » de la région dès environ 1200 avant notre ère, les Mayas, qui développent dans le Sud-Est une écriture, une astronomie et une architecture monumentale, ou la cité de Teotihuacan, peut-être peuplée de plus de 100 000 habitants à son apogée (Ier-VIIe siècle). Au XVe siècle, les Mexicas (Aztèques) dominent un vaste empire tributaire en Mésoamérique centrale.",
       source: WIKIPEDIA,
       sourceUrl: "https://en.wikipedia.org/wiki/Aztec_Empire",
       events: [
@@ -39,14 +39,14 @@ export const history: HistoryData = {
       startYear: 1519,
       endYear: 1821,
       summary:
-        "L'expédition de Hernán Cortés débarque au Yucatán en 1519 avec environ 630 hommes et progresse vers Tenochtitlan, où l'empereur Moctezuma II les accueille d'abord pacifiquement. Après l'épisode de la « Noche Triste » (30 juin 1520), où les Espagnols sont chassés de la ville, une épidémie de variole — maladie contre laquelle les populations amérindiennes n'avaient aucune immunité — décime la capitale, tuant selon les estimations plus de la moitié de sa population, dont l'empereur Cuitláhuac ; Tenochtitlan tombe finalement le 13 août 1521. La conquête et surtout les épidémies successives (variole, rougeole, typhus) provoquent, sur l'ensemble du XVIe siècle, l'un des effondrements démographiques les plus massifs de l'histoire : la population du Mexique central, estimée entre 15 et 25 millions d'habitants avant contact, tombe à environ un million au début du XVIIe siècle selon les estimations des historiens Cook et Borah. Le territoire, rebaptisé Nouvelle-Espagne, devient pendant trois siècles l'une des colonies les plus riches de l'empire espagnol, grâce notamment à l'argent extrait des mines de Zacatecas et de Guanajuato, avant que le prêtre Miguel Hidalgo ne lance, par son « Grito de Dolores » du 16 septembre 1810, le mouvement d'indépendance, achevé en 1821.",
+        "Les conquistadors de Hernán Cortés, d'abord accueillis par l'empereur Moctezuma II, sont chassés de Tenochtitlan lors de la « Noche Triste » (30 juin 1520), avant qu'une épidémie de variole ne décime la ville. Les épidémies successives provoquent au XVIe siècle l'un des effondrements démographiques les plus massifs de l'histoire : la population du Mexique central, estimée entre 15 et 25 millions avant contact, tombe à environ un million au début du XVIIe siècle selon les historiens Cook et Borah. Rebaptisé Nouvelle-Espagne, le territoire devient pour trois siècles l'une des colonies les plus riches de l'empire espagnol, grâce à l'argent de Zacatecas et de Guanajuato.",
       source: WIKIPEDIA,
       sourceUrl: "https://en.wikipedia.org/wiki/Spanish_conquest_of_the_Aztec_Empire",
       events: [
         {
           date: "1519",
           title: "Débarquement de Hernán Cortés",
-          description: "L'expédition espagnole conduite par Hernán Cortés débarque au Yucatán et entame sa marche vers Tenochtitlan.",
+          description: "L'expédition de Hernán Cortés, environ 630 hommes, débarque au Yucatán et marche vers Tenochtitlan.",
           source: WIKIPEDIA,
           sourceUrl: "https://en.wikipedia.org/wiki/Hern%C3%A1n_Cort%C3%A9s",
         },
@@ -60,7 +60,7 @@ export const history: HistoryData = {
         {
           date: "16 septembre 1810",
           title: "Grito de Dolores",
-          description: "Le prêtre Miguel Hidalgo appelle à l'insurrection contre l'autorité coloniale espagnole, marquant le début de la guerre d'indépendance ; cette date est depuis célébrée comme fête nationale.",
+          description: "Le prêtre Miguel Hidalgo appelle à l'insurrection contre l'Espagne, début de la guerre d'indépendance ; la date est devenue fête nationale.",
           source: WIKIPEDIA,
           sourceUrl: "https://en.wikipedia.org/wiki/Grito_de_Dolores",
         },
@@ -79,7 +79,7 @@ export const history: HistoryData = {
       startYear: 1821,
       endYear: 1876,
       summary:
-        "Le jeune État mexicain, instable, connaît de nombreux coups d'État et pronunciamientos, ainsi que la sécession du Texas en 1836. Le différend sur l'annexion du Texas par les États-Unis en 1845 dégénère en guerre américano-mexicaine (1846-1848), conclue par le traité de Guadalupe Hidalgo du 2 février 1848 : le Mexique y cède aux États-Unis environ 1,36 million de km², soit un peu plus de la moitié de son territoire d'avant-guerre, correspondant aujourd'hui à la totalité ou une partie de la Californie, du Nevada, de l'Utah, de l'Arizona, du Nouveau-Mexique, du Colorado et du Wyoming. Profitant ensuite de l'endettement du pays, la France envahit le Mexique en 1862 et y installe un empire éphémère sous Maximilien de Habsbourg (1864-1867), renversé et fusillé après la victoire des forces républicaines de Benito Juárez, qui avait entre-temps engagé d'importantes réformes libérales et anticléricales (la « Reforma »).",
+        "Le jeune État, instable, multiplie les coups d'État et perd le Texas, qui fait sécession en 1836. L'annexion du Texas par les États-Unis en 1845 dégénère en guerre (1846-1848) : le Mexique perd plus de la moitié de son territoire, de la Californie au Nouveau-Mexique. Profitant de l'endettement du pays, la France l'envahit en 1862, avant d'être chassée par les républicains de Benito Juárez, artisan des réformes libérales et anticléricales de la « Reforma ».",
       source: WIKIPEDIA,
       sourceUrl: "https://en.wikipedia.org/wiki/Treaty_of_Guadalupe_Hidalgo",
       events: [
@@ -105,14 +105,14 @@ export const history: HistoryData = {
       startYear: 1876,
       endYear: 1929,
       summary:
-        "Le général Porfirio Díaz domine la vie politique mexicaine pendant environ 35 ans (1876-1911), une période de modernisation économique et d'ouverture aux capitaux étrangers connue sous le nom de « Porfiriat », mais marquée par l'absence de démocratie réelle et de fortes inégalités. Sa réélection contestée en 1910 déclenche la Révolution mexicaine, guerre civile complexe et meurtrière (estimée à plus d'un million de morts) qui voit s'affronter et parfois s'allier des figures comme Francisco Madero, Pancho Villa, Emiliano Zapata et Venustiano Carranza. Elle débouche sur l'adoption, le 5 février 1917, d'une nouvelle Constitution à Querétaro, toujours en vigueur, qui instaure la réforme agraire, les droits du travail et la mainmise de l'État sur le sous-sol.",
+        "Le « Porfiriat » de Porfirio Díaz (1876-1911) modernise l'économie et l'ouvre aux capitaux étrangers, sans démocratie réelle et avec de fortes inégalités. Sa réélection contestée en 1910 déclenche la Révolution, guerre civile meurtrière (plus d'un million de morts estimés) où s'affrontent et s'allient Francisco Madero, Pancho Villa, Emiliano Zapata et Venustiano Carranza. Elle aboutit à la Constitution de 1917, qui instaure la réforme agraire, les droits du travail et la mainmise de l'État sur le sous-sol.",
       source: WIKIPEDIA,
       sourceUrl: "https://en.wikipedia.org/wiki/Mexican_Revolution",
       events: [
         {
           date: "1876-1911",
           title: "Le Porfiriat",
-          description: "Porfirio Díaz dirige le pays pendant environ trois décennies et demie, modernisant l'économie mais concentrant le pouvoir politique.",
+          description: "Porfirio Díaz modernise l'économie tout en concentrant le pouvoir.",
           source: WIKIPEDIA,
           sourceUrl: "https://en.wikipedia.org/wiki/Porfirio_D%C3%ADaz",
         },
@@ -138,14 +138,14 @@ export const history: HistoryData = {
       startYear: 1929,
       endYear: 2000,
       summary:
-        "Fondé le 4 mars 1929 par le président Plutarco Elías Calles sous le nom de Parti national révolutionnaire (PNR), rebaptisé Parti de la révolution mexicaine (PRM) en 1938 par Lázaro Cárdenas puis Parti révolutionnaire institutionnel (PRI) le 18 janvier 1946, ce parti a remporté sans discontinuité toutes les élections présidentielles de 1929 à 2000, soit 71 années consécutives au pouvoir — l'une des plus longues dominations électorales ininterrompues d'un même parti au XXe siècle. L'écrivain péruvien Mario Vargas Llosa qualifiait en 1990 ce système de « dictature parfaite », en ce qu'il combinait des élections régulières avec un contrôle très étroit de l'appareil d'État, du clientélisme et, selon plusieurs organisations de défense des droits humains, une répression de l'opposition (notamment lors du massacre de Tlatelolco, le 2 octobre 1968, où l'armée a tiré sur des manifestants étudiants). Cette domination prend fin le 2 juillet 2000 avec l'élection de Vicente Fox, du Parti action nationale (PAN), première alternance démocratique au pouvoir exécutif depuis 1929 ; le PRI reviendra brièvement à la présidence de 2012 à 2018 avec Enrique Peña Nieto, avant une nouvelle défaite électorale.",
+        "Rebaptisé Parti de la révolution mexicaine (PRM) en 1938 par Lázaro Cárdenas puis Parti révolutionnaire institutionnel (PRI) en 1946, le parti fondé en 1929 remporte toutes les présidentielles pendant 71 ans. Mario Vargas Llosa qualifie en 1990 ce système de « dictature parfaite » : des élections régulières, mais un contrôle étroit de l'appareil d'État, du clientélisme et la répression de l'opposition. Le PRI reviendra au pouvoir de 2012 à 2018 avec Enrique Peña Nieto.",
       source: WIKIPEDIA,
       sourceUrl: "https://en.wikipedia.org/wiki/Institutional_Revolutionary_Party",
       events: [
         {
           date: "4 mars 1929",
           title: "Fondation du parti (PNR)",
-          description: "Plutarco Elías Calles fonde le Parti national révolutionnaire, qui deviendra le PRI en 1946 et dominera la vie politique mexicaine pendant 71 ans.",
+          description: "Le président Plutarco Elías Calles fonde le Parti national révolutionnaire, futur PRI.",
           source: WIKIPEDIA,
           sourceUrl: "https://en.wikipedia.org/wiki/Institutional_Revolutionary_Party",
         },
@@ -159,7 +159,7 @@ export const history: HistoryData = {
         {
           date: "2 juillet 2000",
           title: "Élection de Vicente Fox",
-          description: "Le candidat du Parti action nationale (PAN) met fin à 71 ans de pouvoir ininterrompu du PRI, dans ce qui est considéré comme la première véritable alternance démocratique du pays.",
+          description: "Le candidat du Parti action nationale (PAN) met fin à 71 ans de pouvoir du PRI : première véritable alternance démocratique du pays.",
           source: WIKIPEDIA,
           sourceUrl: "https://en.wikipedia.org/wiki/2000_Mexican_general_election",
         },
@@ -171,21 +171,21 @@ export const history: HistoryData = {
       startYear: 2000,
       endYear: "present",
       summary:
-        "Depuis 2000, le pouvoir a alterné entre plusieurs partis (PAN, PRI, puis Morena à partir de 2018). Le président Felipe Calderón (PAN) lance le 11 décembre 2006 une vaste offensive militaire contre les cartels de la drogue, la « guerra contra el narcotráfico », en déployant l'armée dans plusieurs États. Cette politique s'accompagne d'une hausse spectaculaire et durable des homicides : selon les données officielles, le nombre d'homicides recensés est passé de quelques milliers par an au milieu des années 2000 à plus de 31 000 en 2017, année la plus meurtrière jamais enregistrée jusque-là, pour un total cumulé estimé à plusieurs centaines de milliers de morts depuis 2006. Andrés Manuel López Obrador (Morena), élu en 2018 avec la promesse d'une stratégie de sécurité différente (« des câlins, pas des balles »), voit les homicides se stabiliser à un niveau élevé sans refluer significativement. Sa proche collaboratrice Claudia Sheinbaum, ancienne cheffe du gouvernement de Mexico, lui succède en 2024 et devient la première femme élue présidente du Mexique.",
+        "Depuis 2000, le pouvoir alterne entre PAN, PRI puis Morena à partir de 2018. L'offensive militaire contre les cartels, la « guerra contra el narcotráfico », s'accompagne d'une hausse spectaculaire et durable des homicides, de quelques milliers par an au milieu des années 2000 à plusieurs centaines de milliers de morts cumulés depuis 2006. Sous Andrés Manuel López Obrador (Morena), élu en 2018 sur la promesse « des câlins, pas des balles », les homicides se stabilisent à un niveau élevé. Sa proche Claudia Sheinbaum, ancienne cheffe du gouvernement de Mexico, lui succède en 2024.",
       source: WIKIPEDIA,
       sourceUrl: "https://en.wikipedia.org/wiki/Mexican_drug_war",
       events: [
         {
           date: "11 décembre 2006",
           title: "Lancement de la guerre contre le narcotrafic",
-          description: "Le président Felipe Calderón déploie l'armée contre les cartels de la drogue, notamment dans l'État du Michoacán, ouvrant une escalade de violence durable.",
+          description: "Le président Felipe Calderón (PAN) déploie l'armée contre les cartels, d'abord au Michoacán, ouvrant une escalade de violence durable.",
           source: WIKIPEDIA,
           sourceUrl: "https://en.wikipedia.org/wiki/Mexican_drug_war",
         },
         {
           date: "2017",
           title: "Année la plus meurtrière jusqu'alors",
-          description: "Plus de 31 000 homicides sont recensés dans l'année, un record depuis le début des statistiques modernes, dépassé par la suite.",
+          description: "Plus de 31 000 homicides recensés, un record dépassé par la suite.",
           source: WIKIPEDIA,
           sourceUrl: "https://en.wikipedia.org/wiki/Crime_in_Mexico",
         },

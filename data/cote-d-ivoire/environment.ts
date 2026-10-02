@@ -7,7 +7,7 @@ export const environment: EnvironmentData = {
     year: 2021,
     source: "Banque mondiale",
     sourceUrl: "https://data.worldbank.org/indicator/EG.FEC.RNEW.ZS?locations=CI",
-    note: "Part de la consommation finale d'énergie ; elle reflète surtout l'usage de la biomasse traditionnelle (bois de feu, charbon de bois) par les ménages. L'électricité provient majoritairement de centrales au gaz, complétées par l'hydroélectricité (barrages de Kossou, Taabo, Buyo, Soubré).",
+    note: "Part de la consommation finale d'énergie, qui reflète surtout la biomasse traditionnelle (bois de feu, charbon de bois). L'électricité provient majoritairement de centrales au gaz, complétées par l'hydroélectricité (barrages de Kossou, Taabo, Buyo, Soubré).",
   },
   co2PerCapita: {
     value: 0.59,
@@ -19,7 +19,7 @@ export const environment: EnvironmentData = {
   indicators: [
     {
       label: "Couverture forestière",
-      value: { value: 7.9, unit: "%", year: 2023, source: "Banque mondiale", sourceUrl: "https://data.worldbank.org/indicator/AG.LND.FRST.ZS?locations=CI", note: "La forêt dense, qui couvrait environ la moitié du territoire au début du XXe siècle, a été largement défrichée, principalement au profit des plantations de cacao." },
+      value: { value: 7.9, unit: "%", year: 2023, source: "Banque mondiale", sourceUrl: "https://data.worldbank.org/indicator/AG.LND.FRST.ZS?locations=CI", note: "La forêt dense, qui couvrait environ la moitié du territoire au début du XXe siècle, a été largement défrichée, surtout pour le cacao." },
     },
     {
       label: "Accès à l'électricité",
@@ -34,5 +34,5 @@ export const environment: EnvironmentData = {
   ],
   risksSource: { source: "Banque mondiale / Wikipedia", sourceUrl: "https://en.wikipedia.org/wiki/Environmental_issues_in_Ivory_Coast" },
   summary:
-    "La Côte d'Ivoire a perdu l'essentiel de sa forêt tropicale en un siècle, sous l'effet de l'expansion agricole et en premier lieu des plantations de cacao, qui ont aussi empiété sur les aires protégées. Le parc national de Taï, l'un des derniers grands massifs de forêt primaire d'Afrique de l'Ouest, et le parc national de la Comoé sont inscrits au patrimoine mondial de l'UNESCO. Le règlement européen contre la déforestation importée pousse la filière à tracer l'origine des fèves. Les émissions de CO2 par habitant restent faibles, mais le littoral, et en particulier Abidjan, est exposé à l'érosion et aux inondations meurtrières lors des fortes pluies.",
+    "La Côte d'Ivoire a perdu l'essentiel de sa forêt tropicale en un siècle, au profit surtout des plantations de cacao, qui ont aussi empiété sur les aires protégées. Les parcs nationaux de Taï, l'un des derniers grands massifs de forêt primaire d'Afrique de l'Ouest, et de la Comoé sont inscrits au patrimoine mondial de l'UNESCO. Le règlement européen contre la déforestation importée pousse la filière à tracer l'origine des fèves. Les émissions de CO2 par habitant restent faibles, mais le littoral, en particulier Abidjan, est exposé à l'érosion et aux inondations meurtrières.",
 };

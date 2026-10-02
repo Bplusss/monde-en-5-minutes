@@ -2,13 +2,13 @@ import type { CultureData } from "@/lib/types";
 
 export const culture: CultureData = {
   intro:
-    "Un aperçu de pratiques culturelles documentées — non une liste exhaustive, et sans prétendre résumer la diversité des habitudes réelles de chacun.",
+    "Un aperçu de pratiques culturelles documentées — non une liste exhaustive.",
   items: [
     {
       category: "Musique et danse",
       title: "Le tango",
       description:
-        "Né dans les quartiers populaires et les bordels de Buenos Aires et de Montevideo à la fin du XIXe siècle, au carrefour des influences des immigrants européens et des traditions afro-argentines, le tango — musique, chant et danse — est inscrit depuis 2009 au patrimoine culturel immatériel de l'humanité de l'UNESCO, conjointement par l'Argentine et l'Uruguay.",
+        "Né à la fin du XIXe siècle dans les quartiers populaires de Buenos Aires et de Montevideo, entre influences européennes et afro-argentines, le tango est inscrit depuis 2009 au patrimoine immatériel de l'UNESCO, conjointement avec l'Uruguay.",
       examples: ["Carlos Gardel", "Astor Piazzolla", "La Boca (Buenos Aires)"],
       source: "UNESCO",
       sourceUrl: "https://ich.unesco.org/fr/RL/le-tango-00258",
@@ -17,7 +17,7 @@ export const culture: CultureData = {
       category: "Gastronomie",
       title: "L'asado et le maté",
       description:
-        "L'asado, grillade traditionnelle de viande de bœuf cuite lentement sur braises, occupe une place centrale dans la sociabilité argentine, souvent partagée en famille le week-end. Le maté, infusion d'yerba mate consommée dans une calebasse et bue à la paille (bombilla), rythme quant à lui le quotidien et se partage traditionnellement entre proches.",
+        "L'asado, grillade de bœuf cuite lentement sur braises, est au cœur de la sociabilité argentine. Le maté, infusion d'yerba mate bue dans une calebasse avec une paille (bombilla), se partage au quotidien entre proches.",
       examples: ["Asado", "Maté", "Empanadas", "Dulce de leche"],
       source: "Wikipedia",
       sourceUrl: "https://en.wikipedia.org/wiki/Argentine_cuisine",
@@ -43,7 +43,7 @@ export const culture: CultureData = {
       category: "Littérature",
       title: "Jorge Luis Borges et la littérature argentine",
       description:
-        "Figure majeure de la littérature du XXe siècle, Jorge Luis Borges (1899-1986), auteur de nouvelles labyrinthiques comme « Fictions » ou « L'Aleph », a profondément marqué la littérature mondiale sans jamais recevoir le prix Nobel. Julio Cortázar, autre écrivain argentin majeur, est notamment l'auteur du roman « Marelle » (Rayuela).",
+        "Jorge Luis Borges (1899-1986), auteur de nouvelles labyrinthiques comme « Fictions » ou « L'Aleph », a profondément marqué la littérature mondiale sans recevoir le prix Nobel. Julio Cortázar, autre écrivain argentin majeur, est notamment l'auteur du roman « Marelle » (Rayuela).",
       examples: ["Jorge Luis Borges", "Julio Cortázar", "Fictions"],
       source: "Wikipedia",
       sourceUrl: "https://en.wikipedia.org/wiki/Jorge_Luis_Borges",

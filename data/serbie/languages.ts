@@ -9,7 +9,7 @@ export const languages: LanguagesData = {
       name: "Serbe",
       kind: "officielle",
       sharePercent: { value: 84.4, unit: "%", year: 2022, source: SRC, sourceUrl: URL, note: "Langue maternelle." },
-      note: "Langue officielle sur tout le territoire, s'écrivant indifféremment en alphabet cyrillique (officiel, utilisé dans l'administration) ou latin (très largement employé dans l'usage courant).",
+      note: "Langue officielle, écrite en cyrillique (officiel, administration) ou en latin (très employé au quotidien).",
     },
     {
       name: "Hongrois",

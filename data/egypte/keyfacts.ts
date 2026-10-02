@@ -9,19 +9,19 @@ export const keyFacts: KeyFact[] = [
   },
   {
     title: "La dernière des sept merveilles du monde antique",
-    description: "Les pyramides de Gizeh, dont la grande pyramide de Khéops, sont la seule des sept merveilles du monde antique encore debout aujourd'hui, plus de 4 500 ans après leur construction.",
+    description: "Les pyramides de Gizeh sont la seule des sept merveilles du monde antique encore debout, plus de 4 500 ans après leur construction.",
     source: "UNESCO",
     sourceUrl: "https://whc.unesco.org/en/list/86/",
   },
   {
     title: "27 gouvernorats, dont 4 purement urbains",
-    description: "L'Égypte est divisée en 27 gouvernorats ; quatre d'entre eux (Le Caire, Alexandrie, Port-Saïd, Suez) sont de simples agglomérations urbaines, tandis que la Nouvelle Vallée, presque vide, couvre à elle seule plus de 40 % du territoire national.",
+    description: "Quatre des 27 gouvernorats (Le Caire, Alexandrie, Port-Saïd, Suez) sont de simples agglomérations, tandis que la Nouvelle Vallée, presque vide, couvre plus de 40 % du territoire.",
     source: "CAPMAS / Wikipedia",
     sourceUrl: "https://en.wikipedia.org/wiki/Governorates_of_Egypt",
   },
   {
     title: "Le canal de Suez, artère du commerce mondial",
-    description: "Ouvert en 1869, le canal de Suez relie directement la Méditerranée à la mer Rouge sans contourner l'Afrique ; ses recettes, environ 4 milliards de dollars en 2024, ont chuté de plus de moitié depuis 2023 en raison du détournement du trafic maritime lié aux attaques houthies en mer Rouge.",
+    description: "Ouvert en 1869, le canal de Suez évite de contourner l'Afrique ; ses recettes, environ 4 milliards de dollars en 2024, ont chuté de plus de moitié depuis 2023 à cause des attaques houthies en mer Rouge.",
     source: "Autorité du canal de Suez / Wikipedia",
     sourceUrl: "https://en.wikipedia.org/wiki/Suez_Canal",
   },
@@ -33,7 +33,7 @@ export const keyFacts: KeyFact[] = [
   },
   {
     title: "Une crise monétaire suivie d'un programme du FMI",
-    description: "Après plusieurs dévaluations brutales de la livre égyptienne entre 2022 et 2024 et une inflation ayant culminé à environ 38 % fin 2024, un programme du FMI de 8 milliards de dollars et d'importants apports de capitaux du Golfe ont permis une stabilisation progressive, l'inflation retombant à environ 13 % début 2026.",
+    description: "Après plusieurs dévaluations entre 2022 et 2024 et une inflation culminant à environ 38 %, un programme du FMI et des capitaux du Golfe ont stabilisé la situation : l'inflation est retombée à environ 13 % début 2026.",
     source: "Fonds monétaire international",
     sourceUrl: "https://www.imf.org/en/countries/egy/egypt-qandas",
   },

@@ -18,7 +18,7 @@ export const population: PopulationData = {
     year: 2024,
     source: "Calculé (population hors Sahara occidental ÷ superficie)",
     sourceUrl: HCP_URL,
-    note: "La population se concentre sur la façade atlantique, de Tanger à Agadir, et dans les plaines du nord-ouest ; le sud-est présaharien est très peu peuplé.",
+    note: "Population concentrée sur la façade atlantique ; le sud-est présaharien est très peu peuplé.",
   },
   growthRate: {
     value: 0.85,
@@ -43,5 +43,5 @@ export const population: PopulationData = {
     sourceUrl: "https://data.worldbank.org/indicator/SP.URB.TOTL.IN.ZS?locations=MA",
   },
   summary:
-    "Le Maroc compte environ 36 millions d'habitants hors Sahara occidental. La fécondité a fortement baissé (moins de deux enfants par femme selon le recensement de 2024), si bien que la croissance démographique ralentit et que la population vieillit, même si elle reste jeune à l'échelle européenne. Près des deux tiers des Marocains vivent en ville, surtout sur l'axe atlantique Tanger–Kénitra–Rabat–Casablanca–El Jadida. Une importante diaspora vit en Europe, d'abord en France et en Espagne.",
+    "Le Maroc compte environ 36 millions d'habitants hors Sahara occidental. Avec moins de deux enfants par femme en 2024, la croissance ralentit et la population vieillit. Près des deux tiers des Marocains vivent en ville, surtout sur l'axe atlantique Tanger–Casablanca–El Jadida. Une importante diaspora vit en Europe, d'abord en France et en Espagne.",
 };

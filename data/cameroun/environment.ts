@@ -7,7 +7,7 @@ export const environment: EnvironmentData = {
     year: 2021,
     source: "Banque mondiale",
     sourceUrl: "https://data.worldbank.org/indicator/EG.FEC.RNEW.ZS?locations=CM",
-    note: "Part élevée mais trompeuse : elle reflète surtout le poids du bois de feu et du charbon de bois dans la consommation des ménages, plutôt qu'un accès généralisé à une électricité propre.",
+    note: "Part élevée mais trompeuse : elle reflète surtout le poids du bois de feu et du charbon de bois, plutôt qu'un accès généralisé à une électricité propre.",
   },
   co2PerCapita: {
     value: 0.35,
@@ -41,5 +41,5 @@ export const environment: EnvironmentData = {
   ],
   risksSource: { source: "Wikipedia", sourceUrl: "https://en.wikipedia.org/wiki/Geography_of_Cameroon" },
   summary:
-    "Le Cameroun abrite une part importante des forêts du bassin du Congo et une biodiversité très riche, dont des populations de gorilles, de chimpanzés et d'éléphants de forêt, menacées par la déforestation et le braconnage. Au nord, le lac Tchad a perdu l'essentiel de sa surface depuis les années 1960, aggravant la pression sur les ressources dans une région déjà fragilisée par Boko Haram. La ligne volcanique de l'Ouest expose le pays à des risques rares : en 1986, une éruption limnique de dioxyde de carbone au lac Nyos a tué environ 1 700 personnes. L'électricité, majoritairement hydraulique, reste insuffisante, et les délestages sont fréquents.",
+    "Le Cameroun abrite une part importante des forêts du bassin du Congo, où gorilles, chimpanzés et éléphants de forêt sont menacés par la déforestation et le braconnage. Au nord, le lac Tchad a perdu l'essentiel de sa surface depuis les années 1960, aggravant la pression sur les ressources dans une région fragilisée par Boko Haram. Sur la ligne volcanique de l'Ouest, une éruption limnique de dioxyde de carbone au lac Nyos a tué environ 1 700 personnes en 1986.",
 };

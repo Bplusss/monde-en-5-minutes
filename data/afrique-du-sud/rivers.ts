@@ -44,7 +44,7 @@ export const rivers: River[] = [
       unit: "km",
       source: "Wikipedia",
       sourceUrl: "https://en.wikipedia.org/wiki/Tugela_River",
-      note: "Fleuve emblématique du KwaZulu-Natal, dont les chutes du Tugela (Tugela Falls), sur son cours supérieur dans le Drakensberg, comptent parmi les plus hautes chutes d'eau du monde (environ 948 m sur plusieurs ressauts).",
+      note: "Fleuve emblématique du KwaZulu-Natal ; les chutes du Tugela, dans le Drakensberg, comptent parmi les plus hautes du monde (environ 948 m sur plusieurs ressauts).",
     },
     source_location: "Mont-aux-Sources, massif du Drakensberg (KwaZulu-Natal)",
     mouth: "Océan Indien, au nord de Durban",

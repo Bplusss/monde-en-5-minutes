@@ -2,13 +2,13 @@ import type { CultureData } from "@/lib/types";
 
 export const culture: CultureData = {
   intro:
-    "Un aperçu de pratiques et de patrimoines culturels documentés — non une liste exhaustive de la culture marocaine, à la croisée des héritages amazigh, arabe, andalou, juif et africain.",
+    "Un aperçu de patrimoines culturels documentés, à la croisée des héritages amazigh, arabe, andalou, juif et africain — non une liste exhaustive.",
   items: [
     {
       category: "Villes historiques",
       title: "Médinas de Fès et de Marrakech",
       description:
-        "Les médinas, villes anciennes entourées de remparts, sont inscrites au patrimoine mondial de l'UNESCO pour plusieurs villes marocaines. Fès el-Bali, fondée au IXᵉ siècle, est l'une des plus grandes zones urbaines piétonnes au monde ; à Marrakech, la place Jemaa el-Fna, avec ses conteurs et musiciens, est inscrite au patrimoine culturel immatériel.",
+        "Plusieurs médinas, villes anciennes ceintes de remparts, sont inscrites au patrimoine mondial. Fès el-Bali est l'une des plus grandes zones urbaines piétonnes au monde ; à Marrakech, la place Jemaa el-Fna, avec ses conteurs et musiciens, relève du patrimoine immatériel.",
       examples: ["Médina de Fès", "Place Jemaa el-Fna", "Médina de Tétouan", "Essaouira"],
       source: "UNESCO",
       sourceUrl: "https://whc.unesco.org/en/list/170/",
@@ -17,7 +17,7 @@ export const culture: CultureData = {
       category: "Patrimoine bâti",
       title: "Ksour, kasbahs et architecture de terre",
       description:
-        "Dans les vallées présahariennes, les ksour (villages fortifiés) et les kasbahs en pisé illustrent une architecture adaptée au climat aride. Le ksar d'Aït-Ben-Haddou, près de Ouarzazate, souvent utilisé comme décor de cinéma, est inscrit au patrimoine mondial.",
+        "Dans les vallées présahariennes, les ksour (villages fortifiés) et les kasbahs en pisé illustrent une architecture adaptée au climat aride. Le ksar d'Aït-Ben-Haddou, près de Ouarzazate, est inscrit au patrimoine mondial.",
       examples: ["Aït-Ben-Haddou", "Vallée du Drâa", "Kasbah de Taourirt"],
       source: "UNESCO",
       sourceUrl: "https://whc.unesco.org/en/list/444/",
@@ -35,7 +35,7 @@ export const culture: CultureData = {
       category: "Musique",
       title: "Gnaoua, musique andalouse et chaâbi",
       description:
-        "La musique gnaoua, héritée de descendants d'esclaves d'Afrique subsaharienne et associée à des rituels de transe, est inscrite au patrimoine immatériel de l'UNESCO ; le festival d'Essaouira lui est consacré. La musique arabo-andalouse perpétue l'héritage d'Al-Andalus, tandis que le chaâbi et la musique amazighe (ahidous, ahwach) restent très populaires.",
+        "La musique gnaoua, héritée de descendants d'esclaves d'Afrique subsaharienne et liée à des rituels de transe, est inscrite au patrimoine immatériel ; le festival d'Essaouira lui est consacré. La musique arabo-andalouse, le chaâbi et la musique amazighe (ahidous, ahwach) restent très populaires.",
       examples: ["Festival Gnaoua d'Essaouira", "Musique arabo-andalouse", "Ahidous"],
       source: "UNESCO",
       sourceUrl: "https://ich.unesco.org/en/RL/gnawa-01170",
@@ -44,7 +44,7 @@ export const culture: CultureData = {
       category: "Artisanat",
       title: "Zellige, tapis et cuir",
       description:
-        "L'artisanat occupe une place importante dans l'économie et l'identité du pays : mosaïques de zellige, tapis amazighs du Moyen Atlas, cuir tanné dans les tanneries de Fès, bois de thuya d'Essaouira. L'huile d'argan, produite par des coopératives féminines du Souss, est inscrite au patrimoine immatériel de l'UNESCO.",
+        "L'artisanat pèse dans l'économie et l'identité du pays : zellige, tapis amazighs, cuir des tanneries de Fès, thuya d'Essaouira. L'huile d'argan, produite par des coopératives féminines du Souss, est inscrite au patrimoine immatériel de l'UNESCO.",
       examples: ["Zellige", "Tanneries Chouara (Fès)", "Huile d'argan"],
       source: "UNESCO",
       sourceUrl: "https://ich.unesco.org/en/RL/argan-practices-and-know-how-concerning-the-argan-tree-01205",

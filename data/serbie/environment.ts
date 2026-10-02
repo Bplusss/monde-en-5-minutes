@@ -7,7 +7,7 @@ export const environment: EnvironmentData = {
     year: 2023,
     source: "Agence internationale de l'énergie (AIE)",
     sourceUrl: "https://www.iea.org/countries/serbia",
-    note: "Part des renouvelables dans la production d'électricité (hydroélectricité pour l'essentiel) ; le charbon (lignite) fournit encore environ 60 % de l'électricité serbe.",
+    note: "Part des renouvelables, surtout hydrauliques, dans la production d'électricité ; le lignite en fournit encore environ 60 %.",
   },
   co2PerCapita: {
     value: 6.4,
@@ -26,5 +26,5 @@ export const environment: EnvironmentData = {
   risks: ["Crues (notamment les inondations catastrophiques de mai 2014)", "Sécheresses estivales", "Séismes"],
   risksSource: { source: "Wikipedia", sourceUrl: "https://en.wikipedia.org/wiki/2014_Southeast_Europe_floods" },
   summary:
-    "L'électricité serbe reste très dépendante du lignite extrait localement (bassin de Kolubara), malgré un potentiel hydroélectrique important sur le Danube (barrage des Portes de Fer) et les rivières de l'ouest du pays. La Serbie a instauré en 1989, après l'accident de Tchernobyl, un moratoire légal sur la construction de centrales nucléaires ; ce moratoire a été levé par le Parlement en 2025 dans le cadre d'une réflexion sur la diversification du mix électrique, mais le pays n'exploite à ce jour aucune centrale nucléaire. Le pays reste marqué par les inondations historiques de mai 2014, les plus graves en Serbie depuis 120 ans, qui ont touché environ 1,6 million de personnes et causé des dégâts évalués à plus de 4 % du PIB.",
+    "L'électricité serbe reste très dépendante du lignite local (bassin de Kolubara), malgré un important potentiel hydroélectrique sur le Danube (barrage des Portes de Fer) et les rivières de l'ouest. Le moratoire sur les centrales nucléaires instauré en 1989, après Tchernobyl, a été levé par le Parlement en 2025, mais le pays n'exploite aucune centrale nucléaire. Les inondations de mai 2014, les plus graves depuis 120 ans, ont touché environ 1,6 million de personnes et causé des dégâts évalués à plus de 4 % du PIB.",
 };

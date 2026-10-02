@@ -18,7 +18,7 @@ export const population: PopulationData = {
     year: 2025,
     source: "Calculé (population Rosstat ÷ superficie CIA World Factbook)",
     sourceUrl: ROSSTAT_URL,
-    note: "Parmi les plus faibles au monde en moyenne : plus des trois quarts des Russes vivent en Russie européenne, tandis que d'immenses régions sibériennes comptent moins d'un habitant au km².",
+    note: "Plus des trois quarts des Russes vivent en Russie européenne ; d'immenses régions sibériennes comptent moins d'un habitant au km².",
   },
   growthRate: {
     value: -0.19,
@@ -26,7 +26,7 @@ export const population: PopulationData = {
     year: 2024,
     source: "Banque mondiale",
     sourceUrl: "https://data.worldbank.org/indicator/SP.POP.GROW?locations=RU",
-    note: "Déclin structurel depuis les années 2020 : natalité basse, mortalité alourdie par le vieillissement, et depuis 2022 pertes militaires et émigration (plusieurs centaines de milliers de Russes vers la Géorgie, l'Arménie, la Serbie...).",
+    note: "Déclin structurel : natalité basse, vieillissement, et depuis 2022 pertes militaires et émigration (plusieurs centaines de milliers de Russes).",
   },
   medianAge: {
     value: 40.3,
@@ -43,5 +43,5 @@ export const population: PopulationData = {
     sourceUrl: "https://data.worldbank.org/indicator/SP.URB.TOTL.IN.ZS?locations=RU",
   },
   summary:
-    "Avec environ 143,6 millions d'habitants, la Russie reste le pays le plus peuplé d'Europe et le neuvième au monde, malgré un déclin démographique structurel amorcé dans les années 1990. La population est très concentrée en Russie européenne et fortement urbanisée, tandis que l'immensité sibérienne reste peu peuplée. Le pays est aussi l'un des plus multiethniques au monde : outre les Russes ethniques (~80 %), plus de 190 groupes ethniques sont officiellement recensés. Depuis 2022, l'invasion de l'Ukraine a aggravé la crise démographique par des pertes militaires massives et une émigration significative, notamment après la mobilisation partielle de septembre 2022.",
+    "Avec environ 143,6 millions d'habitants, la Russie est le pays le plus peuplé d'Europe et le neuvième au monde, malgré un déclin amorcé dans les années 1990. Outre les Russes ethniques (~80 %), plus de 190 groupes ethniques sont recensés. La guerre a aggravé la crise démographique, notamment après la mobilisation partielle de septembre 2022.",
 };

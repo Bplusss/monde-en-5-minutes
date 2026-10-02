@@ -59,10 +59,10 @@ export const economy: EconomyData = {
         value: "deux des principales sources de devises du pays, aux côtés du canal de Suez et des hydrocarbures",
         source: "Banque centrale d'Égypte / Wikipedia",
         sourceUrl: "https://en.wikipedia.org/wiki/Economy_of_Egypt",
-        note: "Le tourisme (Gizeh, Louxor, Assouan, mer Rouge) et les envois de fonds des Égyptiens expatriés, en premier lieu dans les monarchies du Golfe, devancent les exportations agricoles et gazières.",
+        note: "Tourisme et envois de fonds des expatriés, surtout dans le Golfe, devancent les exportations agricoles et gazières.",
       },
     },
   ],
   summary:
-    "L'économie égyptienne repose sur quatre piliers : les recettes du canal de Suez, le tourisme, les transferts de fonds d'une vaste diaspora expatriée et une agriculture dépendante de l'irrigation par le Nil, auxquels s'ajoutent des ressources gazières offshore depuis la découverte du gisement de Zohr en 2015. Le pays a traversé depuis 2022 une grave crise monétaire, marquée par plusieurs dévaluations brutales de la livre et une inflation ayant culminé autour de 38 % fin 2024, avant une stabilisation à la faveur d'un nouveau programme du FMI (8 milliards de dollars, mars 2024) et d'apports de capitaux du Golfe, dont l'accord de 35 milliards conclu avec les Émirats arabes unis pour développer Ras El-Hekma. Les recettes du canal, frappées depuis fin 2023 par le détournement du trafic maritime lié aux attaques houthies, restent une vulnérabilité majeure, aux côtés d'une dette publique élevée et d'un secteur informel étendu.",
+    "L'économie égyptienne repose sur le canal de Suez, le tourisme, les transferts de la diaspora et une agriculture irriguée par le Nil, auxquels s'ajoute le gaz offshore depuis la découverte du gisement de Zohr en 2015. Après la crise monétaire ouverte en 2022, la stabilisation doit beaucoup au FMI et aux capitaux du Golfe, dont l'accord de 35 milliards conclu avec les Émirats arabes unis pour Ras El-Hekma. Dette publique élevée et secteur informel étendu restent des faiblesses majeures.",
 };

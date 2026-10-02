@@ -2,13 +2,13 @@ import type { CultureData } from "@/lib/types";
 
 export const culture: CultureData = {
   intro:
-    "Un aperçu de pratiques culturelles documentées — non une liste exhaustive, et sans prétendre résumer la diversité des habitudes réelles de chacun.",
+    "Un aperçu de pratiques culturelles documentées, sans prétention à l'exhaustivité.",
   items: [
     {
       category: "Concept national",
       title: "La « nation arc-en-ciel »",
       description:
-        "Popularisée par Desmond Tutu puis Nelson Mandela au sortir de l'apartheid, l'expression désigne l'idéal d'une Afrique du Sud unie dans sa diversité plutôt que divisée par elle. Mandela en reste l'incarnation, célébré chaque 18 juillet par la Journée internationale Nelson Mandela.",
+        "Popularisée par Desmond Tutu puis Nelson Mandela au sortir de l'apartheid, l'expression désigne l'idéal d'une Afrique du Sud unie dans sa diversité. Mandela en reste l'incarnation, célébré chaque 18 juillet par la Journée internationale Nelson Mandela.",
       examples: ["Nelson Mandela", "Desmond Tutu", "Journée Mandela (18 juillet)"],
       source: "Wikipedia",
       sourceUrl: "https://en.wikipedia.org/wiki/Rainbow_nation",
@@ -26,7 +26,7 @@ export const culture: CultureData = {
       category: "Musique",
       title: "Du mbaqanga et de l'isicathamiya à l'amapiano mondialisé",
       description:
-        "Le mbaqanga urbain, le chant choral isicathamiya (Ladysmith Black Mambazo, sur l'album Graceland de Paul Simon, 1986) et l'amapiano, genre de house né dans les townships de Johannesburg à la fin des années 2010, jalonnent une scène musicale déjà portée à l'international par Miriam Makeba (« Mama Africa ») dans les années 1960.",
+        "Le mbaqanga urbain, le chant choral isicathamiya (Ladysmith Black Mambazo, sur l'album Graceland de Paul Simon, 1986) et l'amapiano, house née dans les townships de Johannesburg à la fin des années 2010, prolongent une scène portée à l'international par Miriam Makeba (« Mama Africa ») dès les années 1960.",
       examples: ["Ladysmith Black Mambazo", "Miriam Makeba", "Amapiano"],
       source: "Wikipedia",
       sourceUrl: "https://en.wikipedia.org/wiki/Amapiano",

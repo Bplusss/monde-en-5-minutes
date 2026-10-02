@@ -27,7 +27,7 @@ export const economy: EconomyData = {
     year: 2024,
     source: "Banque mondiale (estimation modélisée OIT)",
     sourceUrl: "https://data.worldbank.org/indicator/SL.UEM.TOTL.ZS?locations=NG",
-    note: "Chiffre structurellement bas et peu représentatif du marché du travail réel : le Bureau national de statistique (NBS) a modifié sa méthodologie de calcul du chômage en 2023-2024, faisant chuter le taux officiel (qui dépassait 33 % selon l'ancienne définition en 2020) alors même que le sous-emploi et l'emploi informel restent massifs.",
+    note: "Peu représentatif : la nouvelle méthodologie du Bureau national de statistique (2023-2024) a fait chuter le taux officiel (plus de 33 % selon l'ancienne définition en 2020), alors que sous-emploi et emploi informel restent massifs.",
   },
   sectors: [
     { name: "Services", sharePercent: 55.9 },
@@ -42,7 +42,7 @@ export const economy: EconomyData = {
         value: "environ 2/3 des recettes de l'État fédéral",
         source: "Wikipedia (Economy of Nigeria)",
         sourceUrl: "https://en.wikipedia.org/wiki/Economy_of_Nigeria",
-        note: "Le pétrole ne représente pourtant qu'environ 9 % du PIB nigérian, l'essentiel de la richesse créée provenant de secteurs non pétroliers (services, agriculture, télécommunications) ; mais il fournit l'écrasante majorité des recettes d'exportation et des revenus budgétaires de l'État fédéral, rendant l'économie très sensible aux cours mondiaux du brut.",
+        note: "Le pétrole ne représente qu'environ 9 % du PIB, mais fournit l'écrasante majorité des recettes d'exportation, ce qui rend l'économie très sensible aux cours du brut.",
       },
     },
     {
@@ -57,5 +57,5 @@ export const economy: EconomyData = {
     },
   ],
   summary:
-    "Premier producteur de pétrole d'Afrique et membre de l'OPEP, le Nigeria tire de l'or noir — extrait principalement dans le delta du Niger — l'essentiel de ses recettes d'exportation et budgétaires, alors que le pétrole ne pèse qu'environ 9 % du PIB, largement dominé par les services et l'agriculture (qui emploie encore une large part de la population active). Depuis 2023, le président Bola Tinubu a engagé des réformes libérales rapides — suppression des subventions historiques aux carburants et flottement du naira, mis fin à des décennies de taux de change administrés — qui ont provoqué une flambée de l'inflation et une chute spectaculaire du PIB en dollars courants, tout en visant à assainir les finances publiques à moyen terme. Malgré la taille de son économie, l'une des plus importantes d'Afrique, le pays reste marqué par une pauvreté de masse, de fortes inégalités régionales entre un sud plus industrialisé et urbanisé et un nord davantage rural, ainsi qu'une dépendance structurelle aux importations de produits raffinés malgré ses immenses réserves de brut, en partie liée au sous-fonctionnement chronique de ses raffineries publiques.",
+    "Premier producteur de pétrole d'Afrique et membre de l'OPEP, le Nigeria tire du brut du delta du Niger l'essentiel de ses recettes d'exportation et budgétaires, alors que son PIB est dominé par les services et l'agriculture, qui emploie encore une large part des actifs. Depuis 2023, Bola Tinubu a supprimé les subventions aux carburants et laissé flotter le naira, mettant fin à des décennies de change administré : l'inflation a flambé et le PIB en dollars s'est effondré. Le pays reste marqué par une pauvreté de masse, un fort écart entre un sud industrialisé et un nord rural, et une dépendance aux importations de carburants raffinés, faute de raffineries publiques fonctionnelles.",
 };

@@ -9,13 +9,13 @@ export const keyFacts: KeyFact[] = [
   },
   {
     title: "Le Sahara occidental, un territoire au statut non résolu",
-    description: "Le Maroc administre environ 80 % du Sahara occidental, qu'il considère comme marocain, mais l'ONU le classe parmi les territoires non autonomes. Conformément aux frontières reconnues, la carte et les chiffres de cette fiche n'incluent pas ce territoire (voir Territoire).",
+    description: "Le Maroc administre environ 80 % du Sahara occidental, que l'ONU classe parmi les territoires non autonomes ; la carte et les chiffres de cette fiche ne l'incluent pas (voir Territoire).",
     source: "Nations unies",
     sourceUrl: "https://www.un.org/dppa/decolonization/en/nsgt/western-sahara",
   },
   {
     title: "Environ deux tiers des réserves mondiales de phosphate",
-    description: "Le Maroc, Sahara occidental compris, détient environ 50 milliards de tonnes de réserves de phosphate, près de 68 % du total mondial, une matière première indispensable aux engrais.",
+    description: "Le Maroc, Sahara occidental compris, détient environ 50 milliards de tonnes de réserves de phosphate, près de 68 % du total mondial, indispensables aux engrais.",
     source: "United States Geological Survey (USGS)",
     sourceUrl: "https://pubs.usgs.gov/periodicals/mcs2025/mcs2025-phosphate.pdf",
   },
@@ -33,7 +33,7 @@ export const keyFacts: KeyFact[] = [
   },
   {
     title: "Une première femme à la tête du gouvernement",
-    description: "Après la victoire du PAM aux législatives du 23 septembre 2026, le roi a nommé le 29 septembre Fatima Ezzahra El Mansouri cheffe du gouvernement, une première dans l'histoire du pays.",
+    description: "Le 29 septembre 2026, le roi a nommé Fatima Ezzahra El Mansouri cheffe du gouvernement, une première dans l'histoire du pays.",
     source: "France 24",
     sourceUrl: "https://www.france24.com/fr/info-en-continu/20260930-au-maroc-fatima-ezzahra-el-mansouri-devient-la-premi%C3%A8re-cheffe-du-gouvernement",
   },

@@ -41,5 +41,5 @@ export const population: PopulationData = {
     sourceUrl: "https://data.worldbank.org/indicator/SP.URB.TOTL.IN.ZS?locations=CI",
   },
   summary:
-    "Avec environ 33 millions d'habitants, la Côte d'Ivoire est l'un des pays les plus peuplés d'Afrique de l'Ouest. Sa population est très jeune (les trois quarts des habitants ont moins de 35 ans selon le recensement de 2021) et croît d'environ 2,4 % par an. Pôle d'immigration régional depuis l'époque coloniale, le pays compte 22 % de résidents de nationalité étrangère, principalement burkinabè et maliens, venus travailler dans les plantations puis dans les villes. Un peu plus de la moitié de la population est urbaine, et l'agglomération d'Abidjan concentre à elle seule plus d'un habitant sur cinq.",
+    "Avec environ 33 millions d'habitants, la Côte d'Ivoire est l'un des pays les plus peuplés d'Afrique de l'Ouest. Sa population est très jeune (les trois quarts ont moins de 35 ans selon le recensement de 2021) et croît d'environ 2,4 % par an. Pôle d'immigration régional depuis l'époque coloniale, le pays compte 22 % de résidents étrangers, principalement burkinabè et maliens. Un peu plus de la moitié de la population est urbaine, et l'agglomération d'Abidjan concentre plus d'un habitant sur cinq.",
 };

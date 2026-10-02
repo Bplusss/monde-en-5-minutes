@@ -3,7 +3,7 @@ import type { KeyFact } from "@/lib/types";
 export const keyFacts: KeyFact[] = [
   {
     title: "Trois capitales pour un seul pays",
-    description: "L'Afrique du Sud partage ses fonctions capitales entre trois villes : Pretoria (exécutif), Le Cap (législatif, siège du Parlement) et Bloemfontein (judiciaire, Cour suprême d'appel) — un compromis hérité de l'Union sud-africaine de 1910.",
+    description: "L'Afrique du Sud partage ses fonctions capitales entre trois villes : Pretoria (exécutif), Le Cap (législatif) et Bloemfontein (judiciaire), un compromis hérité de l'Union sud-africaine de 1910.",
     source: "Wikipedia",
     sourceUrl: "https://en.wikipedia.org/wiki/Pretoria",
   },
@@ -15,26 +15,20 @@ export const keyFacts: KeyFact[] = [
   },
   {
     title: "L'apartheid et la présidence de Nelson Mandela",
-    description: "De 1948 à 1994, l'apartheid a institutionnalisé la ségrégation raciale ; Nelson Mandela, emprisonné vingt-sept ans pour son combat contre ce système, est devenu en 1994 le premier président noir démocratiquement élu du pays.",
+    description: "De 1948 à 1994, l'apartheid a institutionnalisé la ségrégation raciale ; Nelson Mandela, emprisonné vingt-sept ans, est devenu en 1994 le premier président noir du pays.",
     source: "Wikipedia",
     sourceUrl: "https://en.wikipedia.org/wiki/Nelson_Mandela",
   },
   {
     title: "L'une des inégalités de revenu les plus fortes au monde",
-    description: "Avec un coefficient de Gini de 63, l'Afrique du Sud affiche l'une des répartitions de revenu les plus inégalitaires de la planète, héritage direct des politiques économiques et foncières de l'apartheid.",
+    description: "Avec un coefficient de Gini de 63, l'Afrique du Sud est l'un des pays les plus inégalitaires de la planète, héritage de l'apartheid.",
     source: "Banque mondiale",
     sourceUrl: "https://data.worldbank.org/indicator/SI.POV.GINI?locations=ZA",
   },
   {
     title: "Seul pays africain membre du G20",
-    description: "L'Afrique du Sud est le seul pays du continent africain à siéger de manière permanente au G20, et membre des BRICS depuis 2010, un rôle diplomatique disproportionné par rapport à son poids démographique continental.",
+    description: "L'Afrique du Sud est le seul pays africain membre permanent du G20, et membre des BRICS depuis 2010.",
     source: "Wikipedia",
     sourceUrl: "https://en.wikipedia.org/wiki/G20",
-  },
-  {
-    title: "Première Coupe du monde de football en Afrique",
-    description: "En 2010, l'Afrique du Sud est devenue le premier pays africain à accueillir la Coupe du monde de football de la FIFA, seize ans après la fin de l'apartheid.",
-    source: "Wikipedia",
-    sourceUrl: "https://en.wikipedia.org/wiki/2010_FIFA_World_Cup",
   },
 ];

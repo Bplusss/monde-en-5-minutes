@@ -11,21 +11,21 @@ export const keyFacts: KeyFact[] = [
   {
     title: "La plus grande démocratie du monde",
     description:
-      "Avec près d'un milliard d'électeurs inscrits, les élections générales indiennes constituent le plus vaste exercice électoral organisé dans le monde ; celles de 2024 ont mobilisé plus de 640 millions de votants sur environ six semaines de scrutin.",
+      "Avec près d'un milliard d'électeurs inscrits, les élections générales indiennes sont le plus vaste scrutin au monde ; celles de 2024 ont mobilisé plus de 640 millions de votants sur environ six semaines.",
     source: "Election Commission of India",
     sourceUrl: "https://en.wikipedia.org/wiki/2024_Indian_general_election",
   },
   {
     title: "Puissance nucléaire hors traité de non-prolifération",
     description:
-      "L'Inde a fait exploser sa première charge nucléaire en 1974, puis a procédé à une seconde série d'essais en 1998 en se déclarant officiellement État doté de l'arme nucléaire. Elle n'a jamais signé le traité de non-prolifération nucléaire (TNP), à l'instar du Pakistan et d'Israël.",
+      "Après un premier essai en 1974, l'Inde s'est déclarée État doté de l'arme nucléaire en 1998. Elle n'a jamais signé le traité de non-prolifération (TNP), à l'instar du Pakistan et d'Israël.",
     source: "Wikipedia",
     sourceUrl: "https://en.wikipedia.org/wiki/Pokhran-II",
   },
   {
     title: "Premier alunissage près du pôle sud lunaire",
     description:
-      "Le 23 août 2023, la mission Chandrayaan-3 de l'agence spatiale indienne (ISRO) a réussi le premier alunissage de l'histoire à proximité du pôle sud de la Lune, faisant de l'Inde la quatrième nation à poser un engin sur la surface lunaire — pour un budget de mission souvent comparé à celui d'un film hollywoodien.",
+      "Le 23 août 2023, la mission Chandrayaan-3 de l'agence spatiale indienne (ISRO) a réussi le premier alunissage près du pôle sud de la Lune, pour un budget souvent comparé à celui d'un film hollywoodien.",
     source: "Indian Space Research Organisation (ISRO)",
     sourceUrl: "https://en.wikipedia.org/wiki/Chandrayaan-3",
   },

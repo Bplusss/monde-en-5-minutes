@@ -13,5 +13,5 @@ export const languages: LanguagesData = {
     { name: "Espagnol", kind: "parlée", note: "Présent dans le nord (ancienne zone de protectorat espagnol) et autour de Ceuta et Melilla." },
   ],
   summary:
-    "Le Maroc a deux langues officielles depuis 2011 : l'arabe et l'amazighe, langue des premiers habitants du pays, utilisée au quotidien par environ un quart de la population. Au quotidien, la plupart des Marocains parlent la darija, un arabe dialectal distinct de l'arabe standard écrit. Le français, hérité du protectorat, reste une langue de l'économie et des études supérieures, tandis que l'anglais progresse dans l'enseignement depuis le milieu des années 2020.",
+    "Le Maroc a deux langues officielles depuis 2011 : l'arabe et l'amazighe, langue des premiers habitants. La plupart des Marocains parlent au quotidien la darija, un arabe dialectal distinct de l'arabe standard écrit. Le français, hérité du protectorat, reste une langue de l'économie et des études supérieures ; l'anglais progresse dans l'enseignement depuis le milieu des années 2020.",
 };

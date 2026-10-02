@@ -10,7 +10,7 @@ export const population: PopulationData = {
     year: 2025,
     source: SRC,
     sourceUrl: URL,
-    note: "Estimation excluant le Kosovo, hors du contrôle statistique effectif de Belgrade depuis 1999 — c'est la scope retenue par l'office serbe des statistiques pour toutes ses données courantes.",
+    note: "Estimation excluant le Kosovo, hors du contrôle statistique de Belgrade depuis 1999, comme toutes les données courantes de l'office serbe.",
   },
   density: {
     value: 84.5,
@@ -26,7 +26,7 @@ export const population: PopulationData = {
     year: 2025,
     source: SRC,
     sourceUrl: URL,
-    note: "Calculé à partir des estimations officielles consécutives (6 586 476 en 2024 puis 6 549 901 en 2025) ; déclin dû à un solde naturel très négatif (natalité basse, population âgée) partiellement compensé par l'immigration de retour.",
+    note: "Calculé à partir des estimations officielles (6 586 476 en 2024 puis 6 549 901 en 2025) ; solde naturel très négatif, partiellement compensé par l'immigration de retour.",
   },
   urbanShare: {
     value: 56.9,
@@ -36,5 +36,5 @@ export const population: PopulationData = {
     sourceUrl: "https://data.worldbank.org/indicator/SP.URB.TOTL.IN.ZS?locations=RS",
   },
   summary:
-    "La population serbe est en déclin continu depuis le début des années 1990, sous l'effet conjugué d'une natalité durablement basse, d'un vieillissement marqué et, par le passé, d'une émigration économique importante. Environ un habitant sur six vit dans l'agglomération de Belgrade, tandis que la Voïvodine, au nord, conserve une mosaïque ethnique héritée de l'histoire habsbourgeoise de la région (Hongrois, Slovaques, Roumains, Ruthènes...).",
+    "La population serbe décline depuis le début des années 1990, sous l'effet d'une natalité basse, du vieillissement et, par le passé, d'une forte émigration économique. Environ un habitant sur six vit dans l'agglomération de Belgrade, tandis que la Voïvodine conserve une mosaïque ethnique héritée des Habsbourg (Hongrois, Slovaques, Roumains, Ruthènes...).",
 };

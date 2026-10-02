@@ -24,5 +24,5 @@ export const languages: LanguagesData = {
     },
   ],
   summary:
-    "L'espagnol, dans sa variante rioplatense marquée par l'influence de l'immigration italienne, est la langue de facto de l'ensemble du pays, bien qu'aucun texte ne lui confère explicitement ce statut au niveau national. Le guarani est coofficiel dans la province de Corrientes, près de la frontière paraguayenne, et plusieurs langues indigènes (quechua, mapudungun, qom) subsistent en tant que langues minoritaires, aux côtés de langues d'immigration comme l'italien, l'allemand ou le gallois, ce dernier toujours parlé par une petite communauté de la province patagonique de Chubut.",
+    "L'espagnol rioplatense est la langue de facto du pays, sans statut officiel explicite au niveau national. Le guarani est coofficiel dans la province de Corrientes, et plusieurs langues indigènes (quechua, mapudungun, qom) subsistent en tant que langues minoritaires, aux côtés de langues d'immigration comme l'italien, l'allemand ou le gallois, ce dernier toujours parlé par une petite communauté de la province patagonique de Chubut.",
 };

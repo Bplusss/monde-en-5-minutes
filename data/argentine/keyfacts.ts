@@ -15,13 +15,13 @@ export const keyFacts: KeyFact[] = [
   },
   {
     title: "Un litige territorial vieux de près de deux siècles",
-    description: "L'Argentine revendique depuis le XIXe siècle la souveraineté sur les îles Malouines (Malvinas), administrées par le Royaume-Uni depuis 1833 ; l'occupation militaire argentine de 1982 s'est soldée par une défaite face aux forces britanniques après 74 jours de guerre.",
+    description: "L'Argentine revendique les îles Malouines (Malvinas), administrées par le Royaume-Uni depuis 1833 ; leur occupation en 1982 s'est soldée par une défaite après 74 jours de guerre.",
     source: "Wikipedia",
     sourceUrl: "https://en.wikipedia.org/wiki/Falklands_War",
   },
   {
     title: "Cinq présidents en deux semaines",
-    description: "Lors de la crise économique de décembre 2001, marquée par le gel des dépôts bancaires (« corralito ») et le plus important défaut de paiement souverain de l'histoire à l'époque, l'Argentine a connu cinq chefs d'État différents en l'espace de deux semaines.",
+    description: "Lors de la crise de décembre 2001, l'Argentine a connu cinq chefs d'État différents en deux semaines.",
     source: "Wikipedia",
     sourceUrl: "https://en.wikipedia.org/wiki/Argentine_great_depression",
   },

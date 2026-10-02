@@ -26,7 +26,7 @@ export const economy: EconomyData = {
     year: 2025,
     source: WB,
     sourceUrl: "https://data.worldbank.org/indicator/SL.UEM.TOTL.ZS?locations=CM",
-    note: "Estimation OIT ; chiffre bas qui masque un sous-emploi massif, l'économie informelle occupant la grande majorité des actifs.",
+    note: "Estimation OIT ; chiffre qui masque un sous-emploi massif dans l'économie informelle.",
   },
   sectors: [
     { name: "Services", sharePercent: 50.4 },
@@ -55,5 +55,5 @@ export const economy: EconomyData = {
     },
   ],
   summary:
-    "Plus diversifiée que celle de ses voisins pétroliers d'Afrique centrale, l'économie camerounaise associe hydrocarbures en déclin, cultures d'exportation (cacao, café, coton, banane), exploitation forestière, agro-industrie et un secteur des services concentré à Douala, dont le port dessert aussi le Tchad et la Centrafrique. Le pays a enchaîné depuis 2017 plusieurs programmes du FMI. La croissance, autour de 3 à 4 % par an, reste à peine supérieure à celle de la population, freinée par une dette publique jugée à risque élevé, des délestages électriques, une gouvernance critiquée et les conflits dans les régions anglophones, qui ont durement touché les plantations de la Cameroon Development Corporation. De grands projets d'infrastructure, comme le port en eau profonde de Kribi et les barrages de Lom Pangar et de Nachtigal, visent à lever ces goulets d'étranglement.",
+    "Plus diversifiée que celle de ses voisins pétroliers, l'économie camerounaise associe hydrocarbures en déclin, cultures d'exportation, exploitation forestière, agro-industrie et services concentrés à Douala, dont le port dessert aussi le Tchad et la Centrafrique. Sous programmes du FMI depuis 2017, le pays croît d'environ 3 à 4 % par an, à peine plus que sa population, freiné par une dette jugée à risque élevé, les délestages électriques, une gouvernance critiquée et les conflits anglophones, qui ont durement touché les plantations de la Cameroon Development Corporation. Le port en eau profonde de Kribi et les barrages de Lom Pangar et de Nachtigal visent à lever ces goulets d'étranglement.",
 };

@@ -14,5 +14,5 @@ export const languages: LanguagesData = {
     { name: "Anglais et français", kind: "parlée", note: "Sans statut officiel, mais largement enseignés et utilisés dans l'enseignement supérieur, le tourisme et les affaires." },
   ],
   summary:
-    "L'arabe standard moderne est la seule langue officielle de l'Égypte, utilisée à l'écrit et dans l'administration, mais la vie quotidienne se déroule en arabe égyptien, dialecte au statut culturel unique dans le monde arabe : porté depuis les années 1930-1950 par le cinéma et la musique égyptiens (le Caire surnommé « Hollywood du Nil »), il reste le dialecte arabe le plus largement compris de la région. Les langues minoritaires (nubien, berbère siwi, domari) reculent face à l'arabisation, tandis que l'anglais, et dans une moindre mesure le français, jouent un rôle notable dans l'enseignement supérieur et les affaires sans statut officiel.",
+    "L'arabe standard moderne, seule langue officielle, sert à l'écrit et dans l'administration, mais la vie quotidienne se déroule en arabe égyptien, dialecte le plus largement compris de la région. Les langues minoritaires (nubien, siwi, domari) reculent face à l'arabisation.",
 };

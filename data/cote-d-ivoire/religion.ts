@@ -14,7 +14,7 @@ export const religion: ReligionData = {
     { label: "Autres / non déclaré", sharePercent: 2.9 },
   ],
   summary:
-    "La Côte d'Ivoire est un pays religieusement partagé, sans religion d'État. L'islam, majoritairement sunnite, est surtout présent dans le nord et parmi les populations d'origine sahélienne ; le christianisme, catholique et de plus en plus évangélique, domine dans le sud et le centre. La basilique Notre-Dame-de-la-Paix de Yamoussoukro, consacrée par le pape Jean-Paul II en 1990, est l'un des plus grands édifices chrétiens du monde. La coexistence est généralement paisible, même si l'appartenance religieuse a recoupé les clivages régionaux et politiques lors des crises des années 2000.",
+    "La Côte d'Ivoire est religieusement partagée, sans religion d'État. L'islam, majoritairement sunnite, domine dans le nord et parmi les populations d'origine sahélienne ; le christianisme, catholique et de plus en plus évangélique, dans le sud et le centre. La coexistence est généralement paisible, même si l'appartenance religieuse a recoupé les clivages régionaux et politiques lors des crises des années 2000.",
   methodologyNote:
-    "Répartition issue du recensement de 2021, qui porte sur l'ensemble des résidents, y compris les étrangers (22 % de la population), majoritairement musulmans. Le reliquat « autres / non déclaré » est calculé par différence. Une part notable des croyants combine pratiques chrétiennes ou musulmanes et croyances traditionnelles.",
+    "Répartition issue du recensement de 2021, qui inclut les résidents étrangers (22 % de la population), majoritairement musulmans. Le reliquat « autres / non déclaré » est calculé par différence. Une part notable des croyants combine pratiques chrétiennes ou musulmanes et croyances traditionnelles.",
 };
