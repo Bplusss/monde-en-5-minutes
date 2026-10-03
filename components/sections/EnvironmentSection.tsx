@@ -1,7 +1,7 @@
 import { Leaf, Wind, TriangleAlert } from "lucide-react";
 import { getCategory } from "@/lib/categories";
 import type { Country } from "@/lib/types";
-import { formatNumber, formatPercent, withUnit } from "@/lib/format";
+import { deCountry, formatNumber, formatPercent, withUnit } from "@/lib/format";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card, CardContent } from "@/components/ui/Card";
 import { StatTile } from "@/components/ui/StatTile";
@@ -19,7 +19,7 @@ export function EnvironmentSection({ country }: { country: Country }) {
         icon={<cat.icon className="size-4" aria-hidden />}
         accentText={cat.text}
         accentBg={cat.bg}
-        title={`Ressources et enjeux environnementaux de ${country.nameWithArticle}`}
+        title={`Ressources et enjeux environnementaux ${deCountry(country.nameWithArticle)}`}
         description={environment.summary}
       />
 

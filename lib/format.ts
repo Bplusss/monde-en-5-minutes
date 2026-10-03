@@ -49,3 +49,15 @@ export function formatCurrencyCompact(value: number, currency: string, decimals 
 export function nowrap(text: string): string {
   return text.replace(/ /g, NBSP);
 }
+
+/**
+ * "de" + a country's `nameWithArticle`, with French contraction/elision:
+ * "le Japon" → "du Japon", "les Pays-Bas" → "des Pays-Bas",
+ * "Israël" → "d'Israël", "la France" / "l'Iran" / "Malte" → "de la France"…
+ */
+export function deCountry(nameWithArticle: string): string {
+  if (nameWithArticle.startsWith("le ")) return `du ${nameWithArticle.slice(3)}`;
+  if (nameWithArticle.startsWith("les ")) return `des ${nameWithArticle.slice(4)}`;
+  if (/^[aeiouyàâäéèêëîïôöùûüœAEIOUYÀÂÄÉÈÊËÎÏÔÖÙÛÜŒ]/.test(nameWithArticle)) return `d'${nameWithArticle}`;
+  return `de ${nameWithArticle}`;
+}

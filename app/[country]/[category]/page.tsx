@@ -4,6 +4,7 @@ import { CountryCategoryPage } from "@/components/CountryCategoryPage";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FULL_COUNTRIES, getFullCountry, getFullCountryWithLiveData } from "@/data/countries-full";
 import { CATEGORIES, getCategory } from "@/lib/categories";
+import { deCountry } from "@/lib/format";
 import type { CategoryKey } from "@/lib/types";
 
 export const revalidate = 3600;
@@ -22,7 +23,7 @@ export async function generateMetadata({ params }: PageProps<"/[country]/[catego
   const isDefault = cat.slug === "geographie";
   return {
     title: `${cat.label} — ${country.name}`,
-    description: `${cat.label} de ${country.nameWithArticle} : données publiques, sourcées et à jour, présentées de façon claire et visuelle.`,
+    description: `${cat.label} ${deCountry(country.nameWithArticle)} : données publiques, sourcées et à jour, présentées de façon claire et visuelle.`,
     alternates: { canonical: isDefault ? `/${country.slug}` : `/${country.slug}/${cat.slug}` },
   };
 }

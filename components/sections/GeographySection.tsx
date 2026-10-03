@@ -1,7 +1,7 @@
 import { Mountain, Waves, MapPinned } from "lucide-react";
 import type { Country } from "@/lib/types";
 import { getCategory } from "@/lib/categories";
-import { formatNumber, withUnit } from "@/lib/format";
+import { deCountry, formatNumber, withUnit } from "@/lib/format";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card, CardContent } from "@/components/ui/Card";
 import { StatTile } from "@/components/ui/StatTile";
@@ -70,7 +70,7 @@ export function GeographySection({ country }: { country: Country }) {
           </div>
           <CardContent className="pt-4">
             <p className="text-sm text-muted">
-              Les principaux fleuves de {country.name}. Cliquez sur un tracé pour voir sa longueur, sa source et son
+              Les principaux fleuves {deCountry(country.nameWithArticle)}. Cliquez sur un tracé pour voir sa longueur, sa source et son
               embouchure.
             </p>
           </CardContent>
@@ -127,7 +127,7 @@ export function GeographySection({ country }: { country: Country }) {
           </div>
           <CardContent className="pt-4">
             <p className="text-sm text-muted">
-              Les {territories.metropolitanRegions.length} régions du territoire principal de {country.name}.
+              Les {territories.metropolitanRegions.length} régions du territoire principal {deCountry(country.nameWithArticle)}.
             </p>
           </CardContent>
         </Card>
