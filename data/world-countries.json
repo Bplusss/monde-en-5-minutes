@@ -70,6 +70,20 @@
     "continent": "Asie"
   },
   {
+    "id": "ISR",
+    "slug": "israel",
+    "name": "Israël",
+    "flag": "🇮🇱",
+    "continent": "Asie"
+  },
+  {
+    "id": "PSE",
+    "slug": "palestine",
+    "name": "Palestine",
+    "flag": "🇵🇸",
+    "continent": "Asie"
+  },
+  {
     "id": "ETH",
     "slug": "ethiopie",
     "name": "Éthiopie",
@@ -620,6 +634,13 @@
     "slug": "serbie",
     "name": "Serbie",
     "flag": "🇷🇸",
+    "continent": "Europe"
+  },
+  {
+    "id": "KOS",
+    "slug": "kosovo",
+    "name": "Kosovo",
+    "flag": "🇽🇰",
     "continent": "Europe"
   },
   {

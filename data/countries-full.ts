@@ -70,6 +70,10 @@ import { drCongo } from "./republique-democratique-du-congo";
 import { vietnam } from "./vietnam";
 import { thailand } from "./thailande";
 import { philippines } from "./philippines";
+import { turkey } from "./turquie";
+import { israel } from "./israel";
+import { lebanon } from "./liban";
+import { saudiArabia } from "./arabie-saoudite";
 
 /** Full `Country` records — the only ones that can be rendered as a country page or in a comparison. */
 export const FULL_COUNTRIES: Record<string, Country> = {
@@ -143,6 +147,10 @@ export const FULL_COUNTRIES: Record<string, Country> = {
   [vietnam.slug]: vietnam,
   [thailand.slug]: thailand,
   [philippines.slug]: philippines,
+  [turkey.slug]: turkey,
+  [israel.slug]: israel,
+  [lebanon.slug]: lebanon,
+  [saudiArabia.slug]: saudiArabia,
 };
 
 export function getFullCountry(slug: string): Country | undefined {

@@ -302,6 +302,29 @@ const RIVER_MATCHES = {
   egypte: [
     { riverName: "Nil", neNames: ["Nile"] },
   ],
+  turquie: [
+    // NE stores the Kızılırmak with a mangled dotless-i ("Kiz?lirmak") and the
+    // Büyük Menderes as "Byk Menderes"; the Euphrates' Turkish course is "Firat"
+    // (river + lake centerline through the Atatürk/Keban reservoirs) and the
+    // Tigris' is "Dicle". "Tigris"/"Al Furat" are their Iraqi/Syrian segments,
+    // which clipping to the outline drops anyway.
+    { riverName: "Kızılırmak", neNames: ["Kiz?lirmak"] },
+    { riverName: "Euphrate", neNames: ["Firat", "Al Furat"] },
+    { riverName: "Tigre", neNames: ["Dicle", "Tigris"], keepBorder: true },
+    { riverName: "Sakarya", neNames: ["Sakarya"] },
+    { riverName: "Ceyhan", neNames: ["Ceyhan"] },
+    { riverName: "Grand Méandre (Büyük Menderes)", neNames: ["Byk Menderes"] },
+  ],
+  liban: [
+    // Natural Earth 1:10m carries no Lebanese river (only the Jordan, outside
+    // the outline); every entry falls back to OSM's Arabic `name` tag. The
+    // Litani cache was seeded with the identical query run against
+    // overpass.kumi.systems (overpass-api.de was erroring). OSM only names
+    // ~131 of the Litani's 174 km and ~11 of the Nahr Ibrahim's 23 km.
+    { riverName: "Litani", osm: { nameRegex: "الليطاني", bbox: [35.1, 33.2, 36.3, 34.1] } },
+    { riverName: "Oronte (Nahr al-Assi)", osm: { nameRegex: "العاصي", bbox: [36.1, 34.1, 36.7, 34.7] } },
+    { riverName: "Nahr Ibrahim (fleuve Adonis)", osm: { nameRegex: "نهر إبراهيم", bbox: [35.6, 34.0, 35.95, 34.12] } },
+  ],
   russie: [
     { riverName: "Volga", neNames: ["Volga"] },
     { riverName: "Ob", neNames: ["Ob"] },
@@ -418,6 +441,14 @@ const RIVER_MATCHES = {
     { riverName: "Pampanga", osm: { nameRegex: "^Pampanga", bbox: [120.5, 14.7, 121.4, 15.9] } },
     { riverName: "Agno", osm: { nameRegex: "^Agno", bbox: [120.1, 15.6, 121.0, 16.7] } },
     { riverName: "Pasig", osm: { nameRegex: "^Pasig River$|^Ilog Pasig$", bbox: [120.9, 14.5, 121.15, 14.65] } },
+  ],
+  israel: [
+    // Upper Jordan lies inside the 1949 line; below Lake Tiberias it traces the
+    // border with Jordan, hence keepBorder.
+    { riverName: "Jourdain", neNames: ["Jordan"], keepBorder: true },
+    // Too minor for NE 1:10m; OSM tags them under their Hebrew names.
+    { riverName: "Yarkon", osm: { nameRegex: "ירקון", bbox: [34.75, 32.05, 35.0, 32.15] } },
+    { riverName: "Kishon", osm: { nameRegex: "קישון", bbox: [34.98, 32.45, 35.4, 32.85] } },
   ],
 };
 
