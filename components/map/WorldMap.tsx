@@ -4,9 +4,11 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { Map as MapLibreMap, MapGeoJSONFeature } from "maplibre-gl";
 import { loadMapLibre } from "@/lib/maplibre-global";
-import { getCountryByIso3 } from "@/data/countries-registry";
+import type { CountrySummary } from "@/lib/types";
 
 interface WorldMapProps {
+  /** Country summaries, passed by a server component so the registry never ships in client JS. */
+  countries: CountrySummary[];
   className?: string;
 }
 
@@ -22,7 +24,7 @@ interface HoverLabel {
  * discovery happens on click. Hovering tints the country under the cursor
  * and shows its name in a small floating tag.
  */
-export function WorldMap({ className }: WorldMapProps) {
+export function WorldMap({ countries, className }: WorldMapProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<MapLibreMap | null>(null);
   const router = useRouter();
@@ -114,7 +116,7 @@ export function WorldMap({ className }: WorldMapProps) {
           const f = e.features?.[0] as MapGeoJSONFeature | undefined;
           const iso = f?.properties?.iso_a3 as string | undefined;
           const name = (f?.properties?.name_fr as string | undefined) ?? "Ce pays";
-          const country = iso ? getCountryByIso3(iso) : undefined;
+          const country = iso ? countries.find((c) => c.id === iso) : undefined;
           if (country?.status === "available") {
             router.push(`/${country.slug}`);
           } else {

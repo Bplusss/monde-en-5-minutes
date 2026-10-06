@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { CountryCategoryPage } from "@/components/CountryCategoryPage";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { FULL_COUNTRIES, getFullCountry, getFullCountryWithLiveData } from "@/data/countries-full";
+import { categoryDescription } from "@/lib/seo-description";
 
 export const revalidate = 3600;
 
@@ -16,7 +17,7 @@ export async function generateMetadata({ params }: PageProps<"/[country]">): Pro
   if (!country) return {};
   return {
     title: country.name,
-    description: `Découvrez ${country.nameWithArticle} en quelques minutes : géographie et territoire, population, langues, religions, politique, économie, histoire, culture, environnement, et l'essentiel à retenir.`,
+    description: categoryDescription(country, "geographie"),
     alternates: { canonical: `/${country.slug}` },
   };
 }

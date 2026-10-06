@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { CompareSelector } from "@/components/compare/CompareSelector";
+import { COUNTRIES } from "@/data/countries-registry";
 
 export const metadata: Metadata = {
   title: "Comparer deux pays",
@@ -18,7 +19,7 @@ export default function ComparerPage() {
         </p>
       </div>
       <Suspense fallback={null}>
-        <CompareSelector />
+        <CompareSelector countries={COUNTRIES} />
       </Suspense>
     </div>
   );

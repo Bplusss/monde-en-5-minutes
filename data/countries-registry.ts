@@ -10,17 +10,29 @@ import worldCountries from "./world-countries.json";
  * identity-only so the map and `/pays` can display it as "Bientôt disponible"
  * without fabricating stats.
  */
-export const COUNTRIES: CountrySummary[] = worldCountries.map(
-  (c) =>
-    FULL_COUNTRIES[c.slug] ?? {
-      id: c.id,
-      slug: c.slug,
-      name: c.name,
-      flag: c.flag,
-      continent: c.continent,
-      status: "coming-soon" as const,
-    },
-);
+export const COUNTRIES: CountrySummary[] = worldCountries.map((c) => {
+  const full = FULL_COUNTRIES[c.slug];
+  // Summary fields only: this list is passed to client components, and spreading a full
+  // `Country` here would serialize every country's dataset into each page's HTML.
+  return full
+    ? {
+        id: full.id,
+        slug: full.slug,
+        name: full.name,
+        flag: full.flag,
+        continent: full.continent,
+        status: full.status,
+        ...(full.wikidataId ? { wikidataId: full.wikidataId } : {}),
+      }
+    : {
+        id: c.id,
+        slug: c.slug,
+        name: c.name,
+        flag: c.flag,
+        continent: c.continent,
+        status: "coming-soon" as const,
+      };
+});
 
 export function getCountryBySlug(slug: string): CountrySummary | undefined {
   return COUNTRIES.find((c) => c.slug === slug);

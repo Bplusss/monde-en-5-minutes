@@ -24,7 +24,7 @@ export default function PaysPage() {
       </div>
 
       <div className="mb-10 aspect-[16/9] w-full overflow-hidden rounded-2xl border border-border sm:aspect-[21/9]">
-        <WorldMap className="size-full" />
+        <WorldMap countries={COUNTRIES} className="size-full" />
       </div>
 
       <CountryDirectory countries={COUNTRIES} />

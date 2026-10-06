@@ -3,11 +3,11 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { ArrowLeftRight, Scale } from "lucide-react";
-import { COUNTRIES } from "@/data/countries-registry";
 import type { Country, CountrySummary } from "@/lib/types";
 import { type CountrySortMode, sortCountriesAlpha, groupCountriesByContinent } from "@/lib/country-sort";
 import { SortToggle } from "@/components/SortToggle";
 import { CountryComparison } from "./CountryComparison";
+import { CompareCountriesProvider } from "./CompareCountriesContext";
 
 /** Fetches the (possibly Supabase-refreshed) country from /api/country/[slug] — undefined for no/unavailable slug. */
 function useLiveCountry(slug: string): Country | undefined {
@@ -40,7 +40,9 @@ function CountrySelect({
   onChange,
   label,
   sortMode,
+  countries,
 }: {
+  countries: CountrySummary[];
   value: string;
   onChange: (slug: string) => void;
   label: string;
@@ -58,14 +60,14 @@ function CountrySelect({
       >
         <option value="">Choisir un pays…</option>
         {sortMode === "alpha"
-          ? sortCountriesAlpha(COUNTRIES).map((c) => (
+          ? sortCountriesAlpha(countries).map((c) => (
               <option key={c.id} value={c.slug}>
                 {optionLabel(c)}
               </option>
             ))
-          : groupCountriesByContinent(COUNTRIES).map(({ continent, countries }) => (
+          : groupCountriesByContinent(countries).map(({ continent, countries: group }) => (
               <optgroup key={continent} label={continent}>
-                {countries.map((c) => (
+                {group.map((c) => (
                   <option key={c.id} value={c.slug}>
                     {optionLabel(c)}
                   </option>
@@ -77,10 +79,11 @@ function CountrySelect({
   );
 }
 
-export function CompareSelector() {
+/** `countries` comes from the registry via the server page, so the registry never ships in client JS. */
+export function CompareSelector({ countries }: { countries: CountrySummary[] }) {
   const searchParams = useSearchParams();
   const preselected = searchParams.get("pays");
-  const initialSlugA = preselected && COUNTRIES.some((c) => c.slug === preselected) ? preselected : "";
+  const initialSlugA = preselected && countries.some((c) => c.slug === preselected) ? preselected : "";
 
   const [slugA, setSlugA] = useState(initialSlugA);
   const [slugB, setSlugB] = useState("");
@@ -105,15 +108,17 @@ export function CompareSelector() {
       </div>
 
       <div className="mb-6 flex flex-col items-stretch gap-3 sm:flex-row sm:items-end">
-        <CountrySelect value={slugA} onChange={setSlugA} label="Premier pays" sortMode={sortMode} />
+        <CountrySelect value={slugA} onChange={setSlugA} label="Premier pays" sortMode={sortMode} countries={countries} />
         <div className="hidden shrink-0 items-center justify-center pb-2.5 sm:flex">
           <ArrowLeftRight className="size-4 text-muted" aria-hidden />
         </div>
-        <CountrySelect value={slugB} onChange={setSlugB} label="Second pays" sortMode={sortMode} />
+        <CountrySelect value={slugB} onChange={setSlugB} label="Second pays" sortMode={sortMode} countries={countries} />
       </div>
 
       {canCompare && countryA && countryB ? (
-        <CountryComparison a={countryA} b={countryB} />
+        <CompareCountriesProvider value={countries}>
+          <CountryComparison a={countryA} b={countryB} />
+        </CompareCountriesProvider>
       ) : (
         <div className="flex flex-col items-center gap-3 rounded-2xl border border-dashed border-border bg-surface-muted px-6 py-16 text-center">
           <span className="flex size-12 items-center justify-center rounded-full bg-surface text-muted">

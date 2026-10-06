@@ -3,9 +3,10 @@ import { QuantitativeMetrics } from "../QuantitativeMetrics";
 import { CompareColumns } from "../CompareColumns";
 import { Badge } from "@/components/ui/Badge";
 import { CountryBadgeLink } from "@/components/ui/CountryBadgeLink";
-import { getCountryByName } from "@/data/countries-registry";
+import { useCompareCountries } from "../CompareCountriesContext";
 
 export function GeographyCompare({ a, b }: { a: Country; b: Country }) {
+  const countries = useCompareCountries();
   return (
     <div className="flex flex-col gap-6">
       <QuantitativeMetrics category="geographie" a={a} b={b} />
@@ -20,7 +21,7 @@ export function GeographyCompare({ a, b }: { a: Country; b: Country }) {
             <div className="flex flex-wrap gap-1.5">
               {c.geography.borderingCountries.length > 0 ? (
                 c.geography.borderingCountries.map((name) => {
-                  const match = getCountryByName(name);
+                  const match = countries.find((c) => c.name === name);
                   return (
                     <CountryBadgeLink
                       key={name}

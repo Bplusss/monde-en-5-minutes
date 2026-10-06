@@ -30,7 +30,7 @@ export default function HomePage() {
 
           <div>
             <div className="aspect-[3/2] w-full overflow-hidden rounded-2xl border border-border sm:aspect-[16/9]">
-              <WorldMap className="size-full" />
+              <WorldMap countries={COUNTRIES} className="size-full" />
             </div>
             <p className="mt-3 flex items-center justify-center gap-1.5 text-center text-sm text-muted">
               <MousePointerClick className="size-3.5" aria-hidden />
