@@ -74,6 +74,9 @@ import { turkey } from "./turquie";
 import { israel } from "./israel";
 import { lebanon } from "./liban";
 import { saudiArabia } from "./arabie-saoudite";
+import { chile } from "./chili";
+import { colombia } from "./colombie";
+import { kenya } from "./kenya";
 
 /** Full `Country` records — the only ones that can be rendered as a country page or in a comparison. */
 export const FULL_COUNTRIES: Record<string, Country> = {
@@ -151,6 +154,9 @@ export const FULL_COUNTRIES: Record<string, Country> = {
   [israel.slug]: israel,
   [lebanon.slug]: lebanon,
   [saudiArabia.slug]: saudiArabia,
+  [chile.slug]: chile,
+  [colombia.slug]: colombia,
+  [kenya.slug]: kenya,
 };
 
 export function getFullCountry(slug: string): Country | undefined {

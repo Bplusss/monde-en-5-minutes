@@ -24,6 +24,8 @@
 // segments of different rivers); `keepBorder: true` also keeps clipped pieces
 // within 3 km of the outline, for rivers that trace an international border
 // (otherwise the line's wobble across the border chops it into dashes).
+// `osm.simplify` (degrees) simplifies OSM's full-resolution ways, for long
+// rivers whose raw geometry would otherwise bloat the file.
 //
 // After writing each file this also clips it to the country's own outline
 // (see clip-rivers.mjs) so a river shared with a neighbour only draws the
@@ -450,6 +452,33 @@ const RIVER_MATCHES = {
     { riverName: "Yarkon", osm: { nameRegex: "ירקון", bbox: [34.75, 32.05, 35.0, 32.15] } },
     { riverName: "Kishon", osm: { nameRegex: "קישון", bbox: [34.98, 32.45, 35.4, 32.85] } },
   ],
+  chili: [
+    // NE 1:10m only carries the Biobío among Chile's rivers; the rest come
+    // from OSM, where they're tagged "Río <name>".
+    { riverName: "Biobío", neNames: ["Bío-Bío"] },
+    { riverName: "Loa", osm: { nameRegex: "^Río Loa$", bbox: [-70.3, -22.5, -68.0, -21.0], simplify: 0.0005 } },
+    { riverName: "Maipo", osm: { nameRegex: "^Río Maipo$", bbox: [-71.8, -34.3, -69.8, -33.4], simplify: 0.0005 } },
+    { riverName: "Maule", osm: { nameRegex: "^Río Maule$", bbox: [-72.5, -36.2, -70.4, -35.2], simplify: 0.0005 } },
+    { riverName: "Baker", osm: { nameRegex: "^Río Baker$", bbox: [-73.6, -48.0, -72.3, -46.9], simplify: 0.0005 } },
+  ],
+  colombie: [
+    { riverName: "Magdalena", neNames: ["Magdalena"] },
+    { riverName: "Cauca", neNames: ["Cauca"] },
+    { riverName: "Atrato", neNames: ["Atrato"] },
+    // Part of the Meta's lower course is the border with Venezuela.
+    { riverName: "Meta", neNames: ["Meta"], keepBorder: true },
+    // Its lower course, in Brazil, is NE's "Japurá" — dropped by the outline clip anyway.
+    { riverName: "Caquetá", neNames: ["Caquetá"] },
+  ],
+  kenya: [
+    { riverName: "Tana", neNames: ["Tana"] },
+    // Too minor for NE 1:10m. The Athi changes name twice downstream; the
+    // northern Ewaso Ng'iro's bbox excludes its southern namesake (Lake Natron basin).
+    { riverName: "Athi-Galana-Sabaki", osm: { nameRegex: "^(Athi|Galana|Sabaki|Athi-Galana-Sabaki|Galana-Sabaki)( [Rr]iver)?$", bbox: [36.6, -3.4, 40.2, -1.0], simplify: 0.0005 } },
+    { riverName: "Ewaso Ng'iro", osm: { nameRegex: "Ewaso|Uaso Nyiro", bbox: [36.3, -0.3, 40.5, 1.5], simplify: 0.0005 } },
+    { riverName: "Mara", osm: { nameRegex: "^Mara( River)?$", bbox: [34.0, -1.6, 35.9, -0.4], simplify: 0.0005 } },
+    { riverName: "Nzoia", osm: { nameRegex: "Nzoia", bbox: [34.0, 0.0, 35.5, 1.3], simplify: 0.0005 } },
+  ],
 };
 
 function writeFeatureCollection(filePath, features) {
@@ -531,6 +560,11 @@ async function main() {
       if (!lines.length && osm) {
         try {
           lines = await fetchOsmRiverWays(`${slug}-${riverName}`, osm.nameRegex, osm.bbox);
+          if (osm.simplify) {
+            lines = lines
+              .filter((c) => c.length >= 2)
+              .map((c) => turf.simplify(turf.lineString(c), { tolerance: osm.simplify, highQuality: true }).geometry.coordinates);
+          }
         } catch (err) {
           console.warn(`! ${slug}/${riverName}: OSM fetch failed — ${err.message}`);
         }

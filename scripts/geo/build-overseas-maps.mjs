@@ -62,6 +62,20 @@ const SUBREGIONS = {
     // range so nothing clips.
     kaliningrad: { name: "Kaliningrad", bbox: [19.55, 54.3, 22.9, 55.3] },
   },
+  chili: {
+    // Pacific islands far off the mainland, all inside CHL's own admin0
+    // multipolygon. Rapa Nui's group also takes Salas y Gómez (~400 km east),
+    // which belongs to the same commune (Isla de Pascua).
+    "rapa-nui": { name: "Rapa Nui (île de Pâques)", bbox: [-109.6, -27.3, -105.3, -26.3] },
+    "juan-fernandez": { name: "Archipel Juan Fernández", bbox: [-81.0, -34.0, -78.5, -33.4] },
+    desventuradas: { name: "Îles Desventuradas", bbox: [-80.3, -26.5, -79.7, -26.2] },
+  },
+  colombie: {
+    // San Andrés, Providencia and outlying cays in the Caribbean (~700 km
+    // off the coast) and Malpelo in the Pacific, inside COL's own multipolygon.
+    "san-andres": { name: "San Andrés et Providencia", bbox: [-82.0, 12.0, -79.5, 14.6] },
+    malpelo: { name: "Île de Malpelo", bbox: [-81.8, 3.8, -81.4, 4.2] },
+  },
 };
 
 // Overseas territories that ARE their own Natural Earth admin0 map unit.
@@ -146,6 +160,8 @@ async function main() {
     ["australie", null],
     ["afrique-du-sud", "ZAF"],
     ["russie", "RUS"],
+    ["chili", "CHL"],
+    ["colombie", "COL"],
   ]) {
     const features = buildOverseas(slug, admin0.features, parentAdm0a3);
     writeFeatureCollection(path.join(GEO_DIR, `${slug}-overseas.json`), features);

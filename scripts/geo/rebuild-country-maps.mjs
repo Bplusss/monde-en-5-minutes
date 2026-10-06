@@ -80,6 +80,10 @@ const COUNTRIES = [
   { slug: "suede", adm0: "SWE", regionMatch: "code", codeProp: "code" },
   { slug: "suisse", adm0: "CHE", regionMatch: "code", codeProp: "code" },
   { slug: "royaume-uni", adm0: "GBR", regionMatch: "none" },
+  // Rapa Nui, Juan Fernández and the Desventuradas get their own overseas map.
+  { slug: "chili", adm0: "CHL", regionMatch: "code", codeProp: "code", mainlandBbox: [-76, -56.5, -66, -17] },
+  // San Andrés y Providencia and Malpelo get their own overseas map; regions come from build-colombie-regions.mjs.
+  { slug: "colombie", adm0: "COL", regionMatch: "none", mainlandBbox: [-79.5, -4.5, -66.5, 12.7] },
 ];
 
 /**
