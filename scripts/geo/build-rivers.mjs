@@ -479,6 +479,31 @@ const RIVER_MATCHES = {
     { riverName: "Mara", osm: { nameRegex: "^Mara( River)?$", bbox: [34.0, -1.6, 35.9, -0.4], simplify: 0.0005 } },
     { riverName: "Nzoia", osm: { nameRegex: "Nzoia", bbox: [34.0, 0.0, 35.5, 1.3], simplify: 0.0005 } },
   ],
+  perou: [
+    // NE's "Amazonas" also covers the Brazilian course; the outline clip keeps the Peruvian part.
+    { riverName: "Amazone", neNames: ["Amazonas"] },
+    { riverName: "Ucayali", neNames: ["Ucayali"] },
+    { riverName: "Marañón", neNames: ["Marañón"] },
+    { riverName: "Madre de Dios", neNames: ["Madre de Dios"] },
+    // Too minor for NE 1:10m.
+    { riverName: "Rímac", osm: { nameRegex: "^Río Rímac$", bbox: [-77.2, -12.1, -76.1, -11.5], simplify: 0.0005 } },
+  ],
+  ethiopie: [
+    { riverName: "Nil Bleu (Abay)", neNames: ["Abay"] },
+    { riverName: "Awash", neNames: ["Awash"] },
+    { riverName: "Omo", neNames: ["Omo"] },
+    // Part of the Tekezé's course is the border with Eritrea.
+    { riverName: "Tekezé", neNames: ["Tekeze"], keepBorder: true },
+    // NE splits it into an Ethiopian ("Shebele") and a Somali ("Shabeelle") stretch.
+    { riverName: "Shebele", neNames: ["Shebele", "Shabeelle"] },
+  ],
+  "nouvelle-zelande": [
+    { riverName: "Waikato", neNames: ["Waikato"] },
+    { riverName: "Clutha", neNames: ["Clutha"] },
+    { riverName: "Whanganui", neNames: ["Whanganui"] },
+    { riverName: "Waitaki", neNames: ["Waitaki"] },
+    { riverName: "Waimakariri", neNames: ["Waimakariri"] },
+  ],
 };
 
 function writeFeatureCollection(filePath, features) {

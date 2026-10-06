@@ -27,6 +27,7 @@ const COUNTRIES = [
   "maroc", "tunisie", "senegal", "cote-d-ivoire", "cameroun",
   "republique-democratique-du-congo", "vietnam", "thailande", "philippines",
   "turquie", "israel", "liban", "arabie-saoudite", "chili", "colombie", "kenya",
+  "perou", "ethiopie", "nouvelle-zelande",
   // Note: "slovenie" intentionally excluded — its regions.ts uses Slovenia's 12
   // statistical regions, but slovenie-regions.json holds Natural Earth's 212
   // municipalities instead; the country doesn't reference that file in maps

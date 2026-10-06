@@ -84,6 +84,10 @@ const COUNTRIES = [
   { slug: "chili", adm0: "CHL", regionMatch: "code", codeProp: "code", mainlandBbox: [-76, -56.5, -66, -17] },
   // San Andrés y Providencia and Malpelo get their own overseas map; regions come from build-colombie-regions.mjs.
   { slug: "colombie", adm0: "COL", regionMatch: "none", mainlandBbox: [-79.5, -4.5, -66.5, 12.7] },
+  // NZL's multipolygon spans the antimeridian (Chatham, Kermadec) and reaches
+  // Tokelau and the subantarctic islands, all on the overseas map instead;
+  // regions come from build-nouvelle-zelande-regions.mjs.
+  { slug: "nouvelle-zelande", adm0: "NZL", regionMatch: "none", mainlandBbox: [165, -48, 179, -34] },
 ];
 
 /**

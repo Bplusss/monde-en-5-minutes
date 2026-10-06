@@ -76,6 +76,14 @@ const SUBREGIONS = {
     "san-andres": { name: "San Andrés et Providencia", bbox: [-82.0, 12.0, -79.5, 14.6] },
     malpelo: { name: "Île de Malpelo", bbox: [-81.8, 3.8, -81.4, 4.2] },
   },
+  "nouvelle-zelande": {
+    // All inside NZL's own multipolygon, on both sides of the antimeridian.
+    chatham: { name: "Îles Chatham", bbox: [-177, -44.5, -176, -43.5] },
+    kermadec: { name: "Îles Kermadec", bbox: [-179, -30, -177, -29] },
+    // Snares, Auckland, Campbell and Antipodes islands (Bounty is absent from NE 1:10m).
+    subantarctiques: { name: "Îles subantarctiques", bbox: [165, -53, 179, -48] },
+    tokelau: { name: "Tokelau", bbox: [-172.6, -9.5, -171, -8.4] },
+  },
 };
 
 // Overseas territories that ARE their own Natural Earth admin0 map unit.
@@ -118,6 +126,11 @@ const DIRECT_ADM0 = {
     NFK: { group: "ile-norfolk", name: "Île Norfolk" },
     CXR: { group: "ile-christmas", name: "Île Christmas" },
     CCK: { group: "iles-cocos", name: "Îles Cocos (Keeling)" },
+  },
+  "nouvelle-zelande": {
+    // Self-governing states in free association with New Zealand.
+    COK: { group: "iles-cook", name: "Îles Cook" },
+    NIU: { group: "niue", name: "Niue" },
   },
 };
 
@@ -162,6 +175,7 @@ async function main() {
     ["russie", "RUS"],
     ["chili", "CHL"],
     ["colombie", "COL"],
+    ["nouvelle-zelande", "NZL"],
   ]) {
     const features = buildOverseas(slug, admin0.features, parentAdm0a3);
     writeFeatureCollection(path.join(GEO_DIR, `${slug}-overseas.json`), features);
