@@ -504,6 +504,45 @@ const RIVER_MATCHES = {
     { riverName: "Waitaki", neNames: ["Waitaki"] },
     { riverName: "Waimakariri", neNames: ["Waimakariri"] },
   ],
+  pakistan: [
+    { riverName: "Indus", neNames: ["Indus"] },
+    { riverName: "Jhelum", neNames: ["Jhelum"] },
+    { riverName: "Chenab", neNames: ["Chenab"] },
+    // The Ravi and the Sutlej both form part of the India-Pakistan border.
+    { riverName: "Ravi", neNames: ["Ravi"], keepBorder: true },
+    { riverName: "Sutlej", neNames: ["Sutlej"], keepBorder: true },
+  ],
+  malaisie: [
+    // NE misspells the Rajang as "Bajang".
+    { riverName: "Rajang", neNames: ["Bajang"] },
+    { riverName: "Pahang", neNames: ["Pahang"] },
+    { riverName: "Baram", neNames: ["Baram"] },
+    // Too minor for NE 1:10m.
+    { riverName: "Kinabatangan", osm: { nameRegex: "^(Sungai )?Kinabatangan( River)?$", bbox: [116.2, 4.8, 118.6, 6.0], simplify: 0.0005 } },
+    { riverName: "Perak", osm: { nameRegex: "^(Sungai )?Perak( River)?$", bbox: [100.6, 3.7, 101.7, 5.9], simplify: 0.0005 } },
+  ],
+  madagascar: [
+    { riverName: "Mangoky", neNames: ["Mangoky"] },
+    { riverName: "Betsiboka", neNames: ["Betsiboka"] },
+    { riverName: "Tsiribihina", neNames: ["Tsiribihina"] },
+    { riverName: "Onilahy", neNames: ["Onilahy"] },
+    // Too minor for NE 1:10m.
+    { riverName: "Ikopa", osm: { nameRegex: "^Ikopa$", bbox: [46.3, -19.3, 47.8, -16.3], simplify: 0.0005 } },
+  ],
+  cuba: [
+    // No Cuban river is in NE 1:10m.
+    { riverName: "Cauto", osm: { nameRegex: "^(Río )?Cauto$", bbox: [-77.3, 20.0, -75.6, 20.9], simplify: 0.0005 } },
+    { riverName: "Zaza", osm: { nameRegex: "^(Río )?Zaza$", bbox: [-79.9, 21.5, -79.1, 22.45], simplify: 0.0005 } },
+    { riverName: "Toa", osm: { nameRegex: "^(Río )?Toa$", bbox: [-75.3, 20.1, -74.4, 20.6], simplify: 0.0005 } },
+    { riverName: "Almendares", osm: { nameRegex: "^(Río )?Almendares$", bbox: [-82.5, 22.8, -82.2, 23.2], simplify: 0.0005 } },
+  ],
+  jordanie: [
+    // The Jordan and the Yarmouk form the borders with Israel, the West Bank and Syria.
+    { riverName: "Jourdain", neNames: ["Jordan"], keepBorder: true },
+    // Too minor for NE 1:10m.
+    { riverName: "Yarmouk", osm: { nameRegex: "Yarmouk|Yarmuk|اليرموك", bbox: [35.5, 32.5, 36.3, 32.9], simplify: 0.0005 }, keepBorder: true },
+    { riverName: "Zarqa", osm: { nameRegex: "Zarqa|الزرقاء", bbox: [35.5, 31.9, 36.3, 32.3], simplify: 0.0005 } },
+  ],
 };
 
 function writeFeatureCollection(filePath, features) {

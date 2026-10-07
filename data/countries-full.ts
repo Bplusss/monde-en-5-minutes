@@ -80,6 +80,11 @@ import { kenya } from "./kenya";
 import { peru } from "./perou";
 import { ethiopia } from "./ethiopie";
 import { newZealand } from "./nouvelle-zelande";
+import { pakistan } from "./pakistan";
+import { malaysia } from "./malaisie";
+import { madagascar } from "./madagascar";
+import { cuba } from "./cuba";
+import { jordan } from "./jordanie";
 
 /** Full `Country` records — the only ones that can be rendered as a country page or in a comparison. */
 export const FULL_COUNTRIES: Record<string, Country> = {
@@ -163,6 +168,11 @@ export const FULL_COUNTRIES: Record<string, Country> = {
   [peru.slug]: peru,
   [ethiopia.slug]: ethiopia,
   [newZealand.slug]: newZealand,
+  [pakistan.slug]: pakistan,
+  [malaysia.slug]: malaysia,
+  [madagascar.slug]: madagascar,
+  [cuba.slug]: cuba,
+  [jordan.slug]: jordan,
 };
 
 export function getFullCountry(slug: string): Country | undefined {
