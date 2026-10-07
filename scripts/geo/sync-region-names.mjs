@@ -26,7 +26,7 @@ const COUNTRIES = [
   "iran", "coree-du-sud", "afrique-du-sud", "indonesie", "egypte", "russie",
   "maroc", "tunisie", "senegal", "cote-d-ivoire", "cameroun",
   "republique-democratique-du-congo", "vietnam", "thailande", "philippines",
-  "turquie", "israel", "liban", "arabie-saoudite", "chili", "colombie", "kenya",
+  "turquie", "israel", "liban", "arabie-saoudite", "chili", "colombie", "kenya", "algerie",
   "perou", "ethiopie", "nouvelle-zelande", "pakistan", "malaisie", "madagascar",
   "cuba", "jordanie",
   // Note: "slovenie" intentionally excluded — its regions.ts uses Slovenia's 12

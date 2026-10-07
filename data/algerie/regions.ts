@@ -15,8 +15,8 @@ import type { Region } from "@/lib/types";
  * Aucune population n'est indiquée : le dernier recensement publié (2008)
  * est antérieur aux deux redécoupages et ne correspond plus à ces périmètres.
  *
- * Pas de carte des régions : Natural Earth ne fournit que les 48 wilayas de
- * 1984 (voir data/algerie/index.ts).
+ * Carte : contours issus d'OpenStreetMap (scripts/geo/build-algerie-regions.mjs),
+ * Natural Earth ne fournissant que les 48 wilayas de 1984.
  */
 export const regions: Region[] = [
   { code: "DZ-01", name: "Adrar" },

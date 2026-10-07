@@ -33,13 +33,9 @@ export const algeria: Country = {
   regions,
   maps: {
     outlineGeojsonUrl: "/geo/algerie-outline.json",
-    // No regionsGeojsonUrl: Natural Earth only carries the 48 wilayas of the 1984
-    // division, while regions.ts/territories.ts follow the current 69 (10 created
-    // in 2019, 11 by law no. 26-06 of April 2026). The new wilayas are carved out
-    // of commune groupings that no available dataset draws yet, so drawing 48
-    // outdated outlines under a "69 wilayas" stat would be misleading — the
-    // regional layer is omitted (same approach as data/slovenie/index.ts).
-    // public/geo/algerie-regions.json (48 NE wilayas) is kept but unreferenced.
+    // The 69 wilayas (48 of 1984, 10 of 2019, 11 of April 2026) come from OSM via
+    // scripts/geo/build-algerie-regions.mjs: Natural Earth only has the 48 of 1984.
+    regionsGeojsonUrl: "/geo/algerie-regions.json",
     riversGeojsonUrl: "/geo/algerie-rivers.json",
     center: [2.6, 28.2],
     zoom: 4.3,
