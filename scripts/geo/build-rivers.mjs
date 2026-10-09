@@ -543,6 +543,44 @@ const RIVER_MATCHES = {
     { riverName: "Yarmouk", osm: { nameRegex: "Yarmouk|Yarmuk|اليرموك", bbox: [35.5, 32.5, 36.3, 32.9], simplify: 0.0005 }, keepBorder: true },
     { riverName: "Zarqa", osm: { nameRegex: "Zarqa|الزرقاء", bbox: [35.5, 31.9, 36.3, 32.3], simplify: 0.0005 } },
   ],
+  ghana: [
+    { riverName: "Volta", neNames: ["Volta"] },
+    // The Black Volta traces the borders with Burkina Faso and Côte d'Ivoire, the Oti part of the one with Togo.
+    { riverName: "Volta noire", neNames: ["Mouhoun"], keepBorder: true },
+    { riverName: "Volta blanche", neNames: ["Nakanbé"] },
+    { riverName: "Oti", neNames: ["Oti"], keepBorder: true },
+  ],
+  tanzanie: [
+    { riverName: "Rufiji", neNames: ["Rufiji"] },
+    { riverName: "Grand Ruaha", neNames: ["Great Ruaha"] },
+    { riverName: "Pangani", neNames: ["Pangani"] },
+    { riverName: "Malagarasi", neNames: ["Malagarasi"] },
+    // Forms the border with Rwanda, then part of the one with Uganda.
+    { riverName: "Kagera", neNames: ["Kagera"], keepBorder: true },
+  ],
+  bangladesh: [
+    { riverName: "Padma (Gange)", neNames: ["Ganges"], keepBorder: true },
+    { riverName: "Jamuna (Brahmapoutre)", neNames: ["Brahmaputra"] },
+    { riverName: "Teesta", neNames: ["Tista"] },
+    // Not named in NE 1:10m.
+    { riverName: "Meghna", osm: { nameRegex: "Meghna|মেঘনা", bbox: [90.4, 22.2, 91.3, 24.3], simplify: 0.0005 } },
+  ],
+  kazakhstan: [
+    { riverName: "Irtych", neNames: ["Ertis", "Ertix"] },
+    { riverName: "Ichim", neNames: ["Esil", "Ishim"] },
+    // Part of the Ural traces the border with Russia.
+    { riverName: "Oural", neNames: ["Ural"], keepBorder: true },
+    { riverName: "Syr-Daria", neNames: ["Syr  Darya"] }, // sic: double space in NE
+    { riverName: "Ili", neNames: ["Ile"] },
+  ],
+  venezuela: [
+    // The Orinoco and the Meta trace part of the border with Colombia.
+    { riverName: "Orénoque", neNames: ["Orinoco"], keepBorder: true },
+    { riverName: "Caroní", neNames: ["Caroní"] },
+    { riverName: "Apure", neNames: ["Apure"] },
+    { riverName: "Meta", neNames: ["Meta"], keepBorder: true },
+    { riverName: "Casiquiare", neNames: ["Casiquiare"] },
+  ],
 };
 
 function writeFeatureCollection(filePath, features) {
