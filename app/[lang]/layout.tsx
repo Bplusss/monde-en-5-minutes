@@ -4,6 +4,7 @@ import { Inter, Fraunces } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { LanguageSuggestion } from "@/components/LanguageSuggestion";
 import { SITE_URL } from "@/lib/site";
 import { MAPLIBRE_CSS_URL } from "@/lib/maplibre-global";
 import { LOCALES, OG_LOCALE, getDictionary, hasLocale } from "@/lib/i18n";
@@ -64,6 +65,7 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
       </head>
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <SiteHeader locale={lang} availability={availability} />
+        <LanguageSuggestion locale={lang} availability={availability} />
         <main className="flex-1">{children}</main>
         <SiteFooter locale={lang} />
       </body>

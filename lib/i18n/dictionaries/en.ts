@@ -13,6 +13,11 @@ export const en: Dictionary = {
     switchLanguage: "Français",
     switchLanguageLabel: "Lire cette page en français",
   },
+  languageSuggestion: {
+    message: "This page is also available in English.",
+    action: "Read in English",
+    dismiss: "Dismiss",
+  },
   footer: {
     tagline: "Public data, sourced and dated. Strictly factual presentation.",
   },

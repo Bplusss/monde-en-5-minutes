@@ -14,6 +14,12 @@ export const fr = {
     switchLanguage: "English",
     switchLanguageLabel: "Read this page in English",
   },
+  /** Shown in this language to readers whose browser prefers it, on a page in another language. */
+  languageSuggestion: {
+    message: "Cette page existe aussi en français.",
+    action: "Lire en français",
+    dismiss: "Fermer",
+  },
   footer: {
     tagline: "Données publiques, sourcées et datées. Présentation strictement factuelle.",
   },
