@@ -1,9 +1,9 @@
-import type { Country } from "@/lib/types";
 import { Landmark, Gavel } from "lucide-react";
+import type { CompareCategoryProps } from ".";
 import { QuantitativeMetrics } from "../QuantitativeMetrics";
 import { CompareColumns } from "../CompareColumns";
 
-export function PoliticsCompare({ a, b }: { a: Country; b: Country }) {
+export function PoliticsCompare({ a, b, locale }: CompareCategoryProps) {
   return (
     <div className="flex flex-col gap-6">
       <CompareColumns
@@ -34,7 +34,7 @@ export function PoliticsCompare({ a, b }: { a: Country; b: Country }) {
           </>
         )}
       />
-      <QuantitativeMetrics category="politique" a={a} b={b} />
+      <QuantitativeMetrics category="politique" a={a} b={b} locale={locale} />
     </div>
   );
 }

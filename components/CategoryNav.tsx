@@ -1,22 +1,24 @@
 import Link from "next/link";
 import { CATEGORIES } from "@/lib/categories";
+import { type Locale, getDictionary } from "@/lib/i18n";
+import { countryPath } from "@/lib/i18n/routes";
 import { cn } from "@/lib/utils";
 import { ScrollableTabs } from "./ScrollableTabs";
 
-export function CategoryNav({ countrySlug, activeSlug }: { countrySlug: string; activeSlug: string }) {
+export function CategoryNav({ countrySlug, activeKey, locale }: { countrySlug: string; activeKey: string; locale: Locale }) {
   return (
     <nav
-      aria-label="Catégories"
+      aria-label={getDictionary(locale).country.categoriesLabel}
       className="sticky top-16 z-30 border-b border-border bg-background/95 backdrop-blur"
     >
       <div className="container-app">
-        <ScrollableTabs activeKey={activeSlug} className="py-2.5">
+        <ScrollableTabs activeKey={activeKey} className="py-2.5">
           {CATEGORIES.map((cat) => {
-            const active = cat.slug === activeSlug;
+            const active = cat.key === activeKey;
             return (
               <Link
                 key={cat.key}
-                href={`/${countrySlug}/${cat.slug}`}
+                href={countryPath(locale, countrySlug, cat.slugs[locale])}
                 data-active={active}
                 aria-current={active ? "page" : undefined}
                 className={cn(
@@ -25,7 +27,7 @@ export function CategoryNav({ countrySlug, activeSlug }: { countrySlug: string; 
                 )}
               >
                 <span aria-hidden>{cat.emoji}</span>
-                {cat.label}
+                {cat.labels[locale]}
               </Link>
             );
           })}

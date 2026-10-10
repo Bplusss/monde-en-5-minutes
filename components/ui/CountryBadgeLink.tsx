@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Badge } from "./Badge";
+import { type Locale, getDictionary } from "@/lib/i18n";
+import { countryPath } from "@/lib/i18n/routes";
 import { cn } from "@/lib/utils";
 
 /**
@@ -11,7 +13,17 @@ import { cn } from "@/lib/utils";
  * live; otherwise shows the same "bientôt disponible" toast as the world map,
  * so every entry is interactive without promising a page that doesn't exist yet.
  */
-export function CountryBadgeLink({ name, slug, available }: { name: string; slug?: string; available: boolean }) {
+export function CountryBadgeLink({
+  name,
+  slug,
+  available,
+  locale,
+}: {
+  name: string;
+  slug?: string;
+  available: boolean;
+  locale: Locale;
+}) {
   const [toast, setToast] = useState(false);
 
   const badge = (
@@ -20,7 +32,7 @@ export function CountryBadgeLink({ name, slug, available }: { name: string; slug
 
   if (available && slug) {
     return (
-      <Link href={`/${slug}`} className="focus-ring rounded-full">
+      <Link href={countryPath(locale, slug)} className="focus-ring rounded-full">
         {badge}
       </Link>
     );
@@ -45,7 +57,7 @@ export function CountryBadgeLink({ name, slug, available }: { name: string; slug
           toast ? "opacity-100" : "opacity-0",
         )}
       >
-        {name} — bientôt disponible
+        {getDictionary(locale).common.comingSoonToast(name)}
       </span>
     </span>
   );

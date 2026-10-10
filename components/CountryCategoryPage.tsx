@@ -1,15 +1,15 @@
 import { CategoryNav } from "@/components/CategoryNav";
 import { SECTION_COMPONENTS } from "@/components/sections";
-import { getCategoryByKey } from "@/lib/categories";
+import type { Locale } from "@/lib/i18n";
 import type { Country, CategoryKey } from "@/lib/types";
 
-export function CountryCategoryPage({ country, category }: { country: Country; category: CategoryKey }) {
+export function CountryCategoryPage({ country, category, locale }: { country: Country; category: CategoryKey; locale: Locale }) {
   const Section = SECTION_COMPONENTS[category];
   return (
     <div>
-      <CategoryNav countrySlug={country.slug} activeSlug={getCategoryByKey(category).slug} />
+      <CategoryNav countrySlug={country.slug} activeKey={category} locale={locale} />
       <div className="container-app py-8 sm:py-10">
-        <Section country={country} />
+        <Section country={country} locale={locale} />
       </div>
     </div>
   );

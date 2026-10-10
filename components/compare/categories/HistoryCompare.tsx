@@ -2,17 +2,17 @@
 
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
-import type { Country, HistoricalPeriod } from "@/lib/types";
+import type { HistoricalPeriod } from "@/lib/types";
+import type { CompareCategoryProps } from ".";
+import { type Locale, getDictionary } from "@/lib/i18n";
 import { CompareColumns } from "../CompareColumns";
 import { SourceTag } from "@/components/ui/SourceTag";
 import { cn } from "@/lib/utils";
 
-function formatYear(y: number) {
-  return y < 0 ? `${Math.abs(y)} av. J.-C.` : String(y);
-}
-
-function PeriodItem({ period }: { period: HistoricalPeriod }) {
+function PeriodItem({ period, locale }: { period: HistoricalPeriod; locale: Locale }) {
   const [open, setOpen] = useState(false);
+  const t = getDictionary(locale).sections;
+  const formatYear = (y: number) => (y < 0 ? t.yearBC(Math.abs(y)) : String(y));
 
   return (
     <li>
@@ -25,7 +25,7 @@ function PeriodItem({ period }: { period: HistoricalPeriod }) {
         <span className="min-w-0">
           <span className="block text-sm font-medium">{period.title}</span>
           <span className="block text-xs text-muted">
-            {formatYear(period.startYear)} – {period.endYear === "present" ? "aujourd'hui" : formatYear(period.endYear)}
+            {formatYear(period.startYear)} – {period.endYear === "present" ? t.today : formatYear(period.endYear)}
           </span>
         </span>
         <ChevronDown
@@ -46,7 +46,7 @@ function PeriodItem({ period }: { period: HistoricalPeriod }) {
             </ul>
           )}
           <div className="mt-2">
-            <SourceTag source={period.source} sourceUrl={period.sourceUrl} />
+            <SourceTag source={period.source} sourceUrl={period.sourceUrl} locale={locale} />
           </div>
         </div>
       )}
@@ -54,7 +54,7 @@ function PeriodItem({ period }: { period: HistoricalPeriod }) {
   );
 }
 
-export function HistoryCompare({ a, b }: { a: Country; b: Country }) {
+export function HistoryCompare({ a, b, locale }: CompareCategoryProps) {
   return (
     <CompareColumns
       a={a}
@@ -62,10 +62,10 @@ export function HistoryCompare({ a, b }: { a: Country; b: Country }) {
       render={(c) => (
         <>
           <p className="mb-1 text-sm font-semibold">{c.name}</p>
-          <p className="mb-4 text-xs text-muted">Cliquez une période pour voir le détail.</p>
+          <p className="mb-4 text-xs text-muted">{getDictionary(locale).compare.historyHint}</p>
           <ol className="flex flex-col gap-3 border-l-2 border-border pl-4">
             {c.history.periods.map((p) => (
-              <PeriodItem key={p.id} period={p} />
+              <PeriodItem key={p.id} period={p} locale={locale} />
             ))}
           </ol>
         </>

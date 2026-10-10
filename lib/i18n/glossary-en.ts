@@ -1,0 +1,65 @@
+import type { Glossaries } from "./translation";
+
+/**
+ * Shared French → English glossary for `source` and `unit` strings that recur
+ * across many countries. A country translation only needs its own `sources` /
+ * `units` entries for what isn't listed here. Language-neutral names (e.g.
+ * "UNESCO") are listed as identities so the validator knows they were checked.
+ */
+export const SHARED_GLOSSARY_EN: Glossaries = {
+  sources: {
+    Wikipedia: "Wikipedia",
+    "Wikipédia": "Wikipedia",
+    "Wikipedia (géographie physique)": "Wikipedia (physical geography)",
+    "Wikipedia (d'après les statistiques nationales)": "Wikipedia (based on national statistics)",
+    "Wikipedia (données municipales officielles)": "Wikipedia (official municipal data)",
+    Wikidata: "Wikidata",
+    "Banque mondiale": "World Bank",
+    "Banque mondiale (estimation modélisée OIT)": "World Bank (ILO modelled estimate)",
+    "Banque mondiale / Wikipedia": "World Bank / Wikipedia",
+    "Banque mondiale (FAO)": "World Bank (FAO)",
+    UNESCO: "UNESCO",
+    "Nations unies": "United Nations",
+    "Nations unies, World Population Prospects": "United Nations, World Population Prospects",
+    Eurostat: "Eurostat",
+    "CIA World Factbook": "CIA World Factbook",
+    "CIA World Factbook (via Wikipedia)": "CIA World Factbook (via Wikipedia)",
+    "Fonds monétaire international (FMI)": "International Monetary Fund (IMF)",
+    "countryeconomy.com": "countryeconomy.com",
+    "Commission européenne": "European Commission",
+    "Global Carbon Atlas": "Global Carbon Atlas",
+    "World Nuclear Association": "World Nuclear Association",
+    "Agence internationale de l'énergie (AIE)": "International Energy Agency (IEA)",
+    OTAN: "NATO",
+    "Fondation Nobel": "Nobel Foundation",
+    "Prix Nobel": "Nobel Prize",
+    "Encyclopaedia Britannica": "Encyclopaedia Britannica",
+    "Pew Research Center": "Pew Research Center",
+    "Our World in Data": "Our World in Data",
+    "Union européenne": "European Union",
+    "Programme des Nations unies pour l'environnement (PNUE) / Wikipedia": "United Nations Environment Programme (UNEP) / Wikipedia",
+    FIFA: "FIFA",
+    USGS: "USGS",
+    "Guinness World Records": "Guinness World Records",
+    Ember: "Ember",
+    "Banque centrale européenne": "European Central Bank",
+  },
+  units: {
+    "": "",
+    "km²": "km²",
+    "%": "%",
+    km: "km",
+    USD: "USD",
+    CHF: "CHF",
+    t: "t",
+    habitants: "inhabitants",
+    "hab./km²": "people/km²",
+    ans: "years",
+    "% du territoire": "% of land area",
+    "% de la population": "% of the population",
+    "% de la population (langue maternelle)": "% of the population (mother tongue)",
+    "% de la population (estimation)": "% of the population (estimate)",
+    "% des ménages": "% of households",
+    "% du PIB": "% of GDP",
+  },
+};

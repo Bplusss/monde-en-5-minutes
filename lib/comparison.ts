@@ -1,12 +1,13 @@
 import type { CategoryKey, Country } from "@/lib/types";
 import { formatCompact, formatCurrencyCompact, formatNumber, formatPercent, withUnit } from "@/lib/format";
+import { type Dictionary, type Locale, LOCALES, getDictionary } from "@/lib/i18n";
 
 export interface ComparisonMetric {
-  key: string;
-  label: string;
+  /** Also the metric's label key in the dictionary (`metrics`). */
+  key: keyof Dictionary["metrics"];
   /** Which of the site's categories this metric belongs to — drives the section grouping in the comparison view. */
   category: CategoryKey;
-  format: (country: Country) => string;
+  format: (country: Country, locale: Locale) => string;
   /** Raw numeric value used to size the comparison bars — must be the same unit for both countries. */
   rawValue: (country: Country) => number;
   /** Skip this metric for a country pair when either side has nothing meaningful (e.g. no capital population on record). */
@@ -15,10 +16,14 @@ export interface ComparisonMetric {
 
 const capitalPopulation = (c: Country) => c.cities.find((city) => city.isCapital)?.population?.value ?? 0;
 
-/** Reads the optional "nuclear share" environment indicator by label — absent for countries where nuclear power isn't part of the electricity mix. */
-const NUCLEAR_SHARE_LABEL = "Part du nucléaire dans l'électricité";
+/**
+ * Reads the optional "nuclear share" environment indicator by label — absent for countries where nuclear
+ * power isn't part of the electricity mix. Translated countries carry the dictionary's label for their
+ * locale (enforced by data/countries-localized.ts), so any locale's label matches.
+ */
+const NUCLEAR_SHARE_LABELS = new Set(LOCALES.map((l) => getDictionary(l).metrics.nuclearShare));
 const nuclearShare = (c: Country): number | undefined => {
-  const value = c.environment.indicators.find((i) => i.label === NUCLEAR_SHARE_LABEL)?.value.value;
+  const value = c.environment.indicators.find((i) => NUCLEAR_SHARE_LABELS.has(i.label))?.value.value;
   return typeof value === "number" ? value : undefined;
 };
 
@@ -31,109 +36,94 @@ const nuclearShare = (c: Country): number | undefined => {
 export const COMPARISON_METRICS: ComparisonMetric[] = [
   {
     key: "population",
-    label: "Population",
     category: "population",
-    format: (c) => withUnit(formatCompact(c.population.total.value), "hab."),
+    format: (c, l) => withUnit(formatCompact(c.population.total.value, 1, l), getDictionary(l).units.inhabitantsShort),
     rawValue: (c) => c.population.total.value,
   },
   {
     key: "density",
-    label: "Densité",
     category: "population",
-    format: (c) => withUnit(formatNumber(c.population.density.value), "hab./km²"),
+    format: (c, l) => withUnit(formatNumber(c.population.density.value, 0, l), getDictionary(l).units.perKm2),
     rawValue: (c) => c.population.density.value,
   },
   {
     key: "capitalPopulation",
-    label: "Population de la capitale",
     category: "population",
-    format: (c) => withUnit(formatCompact(capitalPopulation(c)), "hab."),
+    format: (c, l) => withUnit(formatCompact(capitalPopulation(c), 1, l), getDictionary(l).units.inhabitantsShort),
     rawValue: capitalPopulation,
     isAvailable: (c) => capitalPopulation(c) > 0,
   },
   {
     key: "area",
-    label: "Superficie",
     category: "geographie",
-    format: (c) => withUnit(formatNumber(c.geography.areaKm2.value), "km²"),
+    format: (c, l) => withUnit(formatNumber(c.geography.areaKm2.value, 0, l), "km²"),
     rawValue: (c) => c.geography.areaKm2.value,
   },
   {
     key: "borders",
-    label: "Frontières terrestres",
     category: "geographie",
     format: (c) => String(c.geography.borderingCountries.length),
     rawValue: (c) => c.geography.borderingCountries.length,
   },
   {
     key: "highestPoint",
-    label: "Point culminant",
     category: "geographie",
-    format: (c) => withUnit(formatNumber(c.geography.highestPoint?.elevationM ?? 0), "m"),
+    format: (c, l) => withUnit(formatNumber(c.geography.highestPoint?.elevationM ?? 0, 0, l), "m"),
     rawValue: (c) => c.geography.highestPoint?.elevationM ?? 0,
     isAvailable: (c) => !!c.geography.highestPoint,
   },
   {
     key: "regionsCount",
-    label: "Régions",
     category: "geographie",
     format: (c) => String(c.territories.metropolitanRegions.length),
     rawValue: (c) => c.territories.metropolitanRegions.length,
   },
   {
     key: "overseasCount",
-    label: "Territoires d'outre-mer",
     category: "geographie",
     format: (c) => String(c.territories.overseas.length),
     rawValue: (c) => c.territories.overseas.length,
   },
   {
     key: "gdp",
-    label: "PIB",
     category: "economie",
-    format: (c) => formatCurrencyCompact(c.economy.gdp.value, c.economy.gdp.unit ?? "€"),
+    format: (c, l) => formatCurrencyCompact(c.economy.gdp.value, c.economy.gdp.unit ?? "€", 1, l),
     rawValue: (c) => c.economy.gdp.value,
   },
   {
     key: "gdpPerCapita",
-    label: "PIB par habitant",
     category: "economie",
-    format: (c) => formatCurrencyCompact(c.economy.gdpPerCapita.value, c.economy.gdpPerCapita.unit ?? "€"),
+    format: (c, l) => formatCurrencyCompact(c.economy.gdpPerCapita.value, c.economy.gdpPerCapita.unit ?? "€", 1, l),
     rawValue: (c) => c.economy.gdpPerCapita.value,
   },
   {
     key: "unemploymentRate",
-    label: "Taux de chômage",
     category: "economie",
-    format: (c) => formatPercent(c.economy.unemploymentRate.value, 1),
+    format: (c, l) => formatPercent(c.economy.unemploymentRate.value, 1, l),
     rawValue: (c) => c.economy.unemploymentRate.value,
   },
   {
     key: "legislatureSeats",
-    label: "Sièges au Parlement",
     category: "politique",
-    format: (c) => formatNumber(legislatureSeats(c)),
+    format: (c, l) => formatNumber(legislatureSeats(c), 0, l),
     rawValue: legislatureSeats,
   },
   {
     key: "renewableShare",
-    label: "Part des renouvelables",
     category: "environnement",
-    format: (c) => formatPercent(c.environment.renewableShare.value, 1),
+    format: (c, l) => formatPercent(c.environment.renewableShare.value, 1, l),
     rawValue: (c) => c.environment.renewableShare.value,
   },
   {
     key: "co2PerCapita",
-    label: "Émissions de CO₂ par habitant",
     category: "environnement",
-    format: (c) => withUnit(formatNumber(c.environment.co2PerCapita.value, 1), "t"),
+    format: (c, l) => withUnit(formatNumber(c.environment.co2PerCapita.value, 1, l), "t"),
     rawValue: (c) => c.environment.co2PerCapita.value,
   },
   {
     key: "nuclearShare",
-    label: "Part du nucléaire dans l'électricité",
     category: "environnement",
-    format: (c) => formatPercent(nuclearShare(c) ?? 0, 1),
+    format: (c, l) => formatPercent(nuclearShare(c) ?? 0, 1, l),
     rawValue: (c) => nuclearShare(c) ?? 0,
     isAvailable: (c) => nuclearShare(c) !== undefined,
   },

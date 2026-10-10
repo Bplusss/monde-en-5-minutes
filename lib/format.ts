@@ -1,24 +1,38 @@
-const NBSP = " ";
+import { type Locale, INTL_LOCALE } from "@/lib/i18n/config";
 
-/** Formats big numbers the French editorial way: "69,1 M", "552 000". Uses non-breaking spaces so the value never wraps mid-number. */
-export function formatCompact(value: number, decimals = 1): string {
+const NBSP = " ";
+
+/** Large-number suffixes per locale: "69,1 M" / "3 366 Md USD" in French, "69.1M" / "3,366 bn USD" in English. */
+const SCALE: Record<Locale, { million: string; billion: string }> = {
+  fr: { million: `${NBSP}M`, billion: `${NBSP}Md` },
+  en: { million: "M", billion: `${NBSP}bn` },
+};
+
+function toLocale(value: number, locale: Locale, options: Intl.NumberFormatOptions): string {
+  return value.toLocaleString(INTL_LOCALE[locale], options).replace(/\s/g, NBSP);
+}
+
+/** Formats big numbers the editorial way: "69,1 M", "552 000" (fr) / "69.1M", "552,000" (en). Uses non-breaking spaces so the value never wraps mid-number. */
+export function formatCompact(value: number, decimals = 1, locale: Locale = "fr"): string {
   const abs = Math.abs(value);
   if (abs >= 1_000_000) {
-    const n = (value / 1_000_000).toLocaleString("fr-FR", { maximumFractionDigits: decimals, minimumFractionDigits: 0 });
-    return `${n}${NBSP}M`;
+    const n = toLocale(value / 1_000_000, locale, { maximumFractionDigits: decimals, minimumFractionDigits: 0 });
+    return `${n}${SCALE[locale].million}`;
   }
   if (abs >= 1_000) {
-    return value.toLocaleString("fr-FR", { maximumFractionDigits: 0 }).replace(/\s/g, NBSP);
+    return toLocale(value, locale, { maximumFractionDigits: 0 });
   }
-  return value.toLocaleString("fr-FR", { maximumFractionDigits: decimals });
+  return toLocale(value, locale, { maximumFractionDigits: decimals });
 }
 
-export function formatNumber(value: number, decimals = 0): string {
-  return value.toLocaleString("fr-FR", { maximumFractionDigits: decimals }).replace(/\s/g, NBSP);
+export function formatNumber(value: number, decimals = 0, locale: Locale = "fr"): string {
+  return toLocale(value, locale, { maximumFractionDigits: decimals });
 }
 
-export function formatPercent(value: number, decimals = 0): string {
-  return `${value.toLocaleString("fr-FR", { maximumFractionDigits: decimals })}${NBSP}%`;
+/** "22,2 %" in French, "22.2%" in English. */
+export function formatPercent(value: number, decimals = 0, locale: Locale = "fr"): string {
+  const n = toLocale(value, locale, { maximumFractionDigits: decimals });
+  return locale === "fr" ? `${n}${NBSP}%` : `${n}%`;
 }
 
 /** Wraps a value and unit so they never split across lines. */
@@ -27,22 +41,22 @@ export function withUnit(value: string, unit: string): string {
 }
 
 /**
- * Formats a raw currency amount the French editorial way, auto-scaling to
- * milliards/millions so a value never overflows its display regardless of
+ * Formats a raw currency amount the editorial way, auto-scaling to
+ * billions/millions so a value never overflows its display regardless of
  * whether it's a small per-capita figure or a country's full GDP in raw units:
- * "3 366,3 Md USD", "48 986 €".
+ * "3 366,3 Md USD", "48 986 €" (fr) / "3,366.3 bn USD", "48,986 €" (en).
  */
-export function formatCurrencyCompact(value: number, currency: string, decimals = 1): string {
+export function formatCurrencyCompact(value: number, currency: string, decimals = 1, locale: Locale = "fr"): string {
   const abs = Math.abs(value);
   if (abs >= 1_000_000_000) {
-    const n = (value / 1_000_000_000).toLocaleString("fr-FR", { maximumFractionDigits: decimals, minimumFractionDigits: 0 });
-    return `${n}${NBSP}Md${NBSP}${currency}`;
+    const n = toLocale(value / 1_000_000_000, locale, { maximumFractionDigits: decimals, minimumFractionDigits: 0 });
+    return `${n}${SCALE[locale].billion}${NBSP}${currency}`;
   }
   if (abs >= 1_000_000) {
-    const n = (value / 1_000_000).toLocaleString("fr-FR", { maximumFractionDigits: decimals, minimumFractionDigits: 0 });
+    const n = toLocale(value / 1_000_000, locale, { maximumFractionDigits: decimals, minimumFractionDigits: 0 });
     return `${n}${NBSP}M${NBSP}${currency}`;
   }
-  return withUnit(formatNumber(value), currency);
+  return withUnit(formatNumber(value, 0, locale), currency);
 }
 
 /** Replaces normal spaces with a non-breaking space so a short label never wraps awkwardly. */

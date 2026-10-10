@@ -1,22 +1,23 @@
 import { getCategory } from "@/lib/categories";
 import type { Country } from "@/lib/types";
+import { type Locale, getDictionary } from "@/lib/i18n";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card, CardContent } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { SourceTag } from "@/components/ui/SourceTag";
 
-export function CultureSection({ country }: { country: Country }) {
+export function CultureSection({ country, locale }: { country: Country; locale: Locale }) {
   const cat = getCategory("culture")!;
   const { culture } = country;
 
   return (
     <div>
       <SectionHeading
-        eyebrow={cat.label}
+        eyebrow={cat.labels[locale]}
         icon={<cat.icon className="size-4" aria-hidden />}
         accentText={cat.text}
         accentBg={cat.bg}
-        title="Vie quotidienne et pratiques culturelles"
+        title={getDictionary(locale).sections.cultureTitle}
         description={culture.intro}
       />
 
@@ -38,7 +39,7 @@ export function CultureSection({ country }: { country: Country }) {
               )}
               {item.source && (
                 <div className="mt-4">
-                  <SourceTag source={item.source} sourceUrl={item.sourceUrl} />
+                  <SourceTag source={item.source} sourceUrl={item.sourceUrl} locale={locale} />
                 </div>
               )}
             </CardContent>

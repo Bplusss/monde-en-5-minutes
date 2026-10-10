@@ -1,10 +1,10 @@
-import type { Country } from "@/lib/types";
+import type { CompareCategoryProps } from ".";
 import { formatPercent } from "@/lib/format";
 import { CompareColumns } from "../CompareColumns";
 import { Bar } from "@/components/ui/Bar";
 import { SourceTag } from "@/components/ui/SourceTag";
 
-export function ReligionCompare({ a, b }: { a: Country; b: Country }) {
+export function ReligionCompare({ a, b, locale }: CompareCategoryProps) {
   return (
     <CompareColumns
       a={a}
@@ -17,11 +17,11 @@ export function ReligionCompare({ a, b }: { a: Country; b: Country }) {
           </p>
           <div className="flex flex-col gap-3">
             {c.religion.points.map((p) => (
-              <Bar key={p.label} label={p.label} valueLabel={formatPercent(p.sharePercent)} percent={p.sharePercent} />
+              <Bar key={p.label} label={p.label} valueLabel={formatPercent(p.sharePercent, 0, locale)} percent={p.sharePercent} />
             ))}
           </div>
           <div className="mt-4">
-            <SourceTag source={c.religion.source} sourceUrl={c.religion.sourceUrl} />
+            <SourceTag source={c.religion.source} sourceUrl={c.religion.sourceUrl} locale={locale} />
           </div>
         </>
       )}

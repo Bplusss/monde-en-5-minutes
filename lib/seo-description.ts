@@ -1,5 +1,6 @@
 import type { CategoryKey, Country } from "@/lib/types";
 import { deCountry, formatCurrencyCompact, formatNumber, formatPercent } from "@/lib/format";
+import type { Locale } from "@/lib/i18n/config";
 
 /** Google truncates snippets around 155–160 characters. */
 const MAX_LENGTH = 158;
@@ -43,7 +44,7 @@ function firstSentence(text: string): string {
 }
 
 /** Key figures first (they're what a searcher scans for), then the section summary to fill the snippet. */
-function lead(country: Country, category: CategoryKey): string {
+function leadFr(country: Country, category: CategoryKey): string {
   const of = deCountry(country.nameWithArticle);
   switch (category) {
     case "geographie": {
@@ -92,6 +93,67 @@ function lead(country: Country, category: CategoryKey): string {
   }
 }
 
+/** Joins a list as "a, b and c". */
+function listEn(items: string[]): string {
+  if (items.length <= 1) return items.join("");
+  return `${items.slice(0, -1).join(", ")} and ${items.at(-1)}`;
+}
+
+function formatInhabitantsEn(value: number): string {
+  if (value >= 1_000_000) return `${formatNumber(value / 1_000_000, 1, "en")} million inhabitants`;
+  return `${formatNumber(value, 0, "en")} inhabitants`;
+}
+
+/** English counterpart of `leadFr` — same figures, English phrasing and number format. */
+function leadEn(country: Country, category: CategoryKey): string {
+  const of = `of ${country.nameWithArticle}`;
+  switch (category) {
+    case "geographie": {
+      const g = country.geography;
+      const parts = [`${formatNumber(g.areaKm2.value, g.areaKm2.value < 10 ? 2 : 0, "en")} km²`, `capital ${country.capital}`];
+      if (g.highestPoint) parts.push(`highest point ${withoutParenthetical(g.highestPoint.name)} (${formatNumber(g.highestPoint.elevationM, 0, "en")} m)`);
+      return `Geography ${of}: ${parts.join(", ")}.`;
+    }
+    case "population": {
+      const p = country.population;
+      return `Population ${of}: ${formatInhabitantsEn(p.total.value)}, ${formatNumber(p.density.value, 0, "en")} people/km².`;
+    }
+    case "langues": {
+      const official = country.languages.entries.filter((l) => l.kind === "officielle").map((l) => withoutParenthetical(l.name));
+      return official.length
+        ? `Official language${official.length > 1 ? "s" : ""} ${of}: ${listEn(official)}.`
+        : `Languages ${of}: no de jure official language.`;
+    }
+    case "religion": {
+      const top = [...country.religion.points]
+        .sort((a, b) => b.sharePercent - a.sharePercent)
+        .slice(0, 3)
+        .map((p) => `${p.label} ${formatPercent(p.sharePercent, 0, "en")}`);
+      return `Religions ${of}: ${top.join(", ")} (${country.religion.year}).`;
+    }
+    case "politique": {
+      const p = country.politics;
+      return `Politics ${of}: ${p.stateForm}. ${p.headOfState.title}: ${p.headOfState.name}.`;
+    }
+    case "economie": {
+      const e = country.economy;
+      return `Economy ${of}: GDP ${formatCurrencyCompact(e.gdp.value, e.gdp.unit ?? "USD", 1, "en")}, ${formatCurrencyCompact(e.gdpPerCapita.value, e.gdpPerCapita.unit ?? "USD", 1, "en")} per capita, unemployment ${formatPercent(e.unemploymentRate.value, 1, "en")}.`;
+    }
+    case "histoire": {
+      const periods = country.history.periods;
+      return `History ${of} in ${periods.length} major periods: ${periods.map((p) => p.title).join("; ")}.`;
+    }
+    case "culture":
+      return `Culture ${of}: ${listEn(country.culture.items.map((i) => i.title))}.`;
+    case "environnement": {
+      const env = country.environment;
+      return `Environment ${of}: ${formatPercent(env.renewableShare.value, 0, "en")} renewable energy, ${formatNumber(env.co2PerCapita.value, 1, "en")} t of CO₂ per capita.`;
+    }
+    case "a_retenir":
+      return `Key facts about ${country.nameWithArticle}: ${country.keyFacts.map((f) => f.title).join("; ")}.`;
+  }
+}
+
 function summaryOf(country: Country, category: CategoryKey): string | undefined {
   switch (category) {
     case "geographie": return country.geography.summary;
@@ -106,8 +168,8 @@ function summaryOf(country: Country, category: CategoryKey): string | undefined 
 }
 
 /** Specific, figure-led meta description for a country's category page, built only from its own data. */
-export function categoryDescription(country: Country, category: CategoryKey): string {
-  const head = plain(lead(country, category));
+export function categoryDescription(country: Country, category: CategoryKey, locale: Locale = "fr"): string {
+  const head = plain(locale === "en" ? leadEn(country, category) : leadFr(country, category));
   const summary = summaryOf(country, category);
   if (!summary || head.length > MAX_LENGTH - 40) return truncate(head);
   return truncate(`${head} ${firstSentence(summary)}`);

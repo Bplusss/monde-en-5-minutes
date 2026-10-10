@@ -12,12 +12,15 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import type { CategoryKey } from "./types";
+import type { Locale } from "./i18n/config";
 
 export interface CategoryConfig {
   key: CategoryKey;
+  /** Canonical (French) slug — the internal id; public URLs use `slugs[locale]`. */
   slug: string;
+  slugs: Record<Locale, string>;
   emoji: string;
-  label: string;
+  labels: Record<Locale, string>;
   icon: LucideIcon;
   /** Tailwind classes — kept literal (not composed) so the JIT scanner picks them up. */
   text: string;
@@ -31,8 +34,9 @@ export const CATEGORIES: CategoryConfig[] = [
   {
     key: "geographie",
     slug: "geographie",
+    slugs: { fr: "geographie", en: "geography" },
     emoji: "🗺️",
-    label: "Géographie et territoire",
+    labels: { fr: "Géographie et territoire", en: "Geography & territory" },
     icon: Map,
     text: "text-emerald-700 dark:text-emerald-400",
     bg: "bg-emerald-50 dark:bg-emerald-950/40",
@@ -43,8 +47,9 @@ export const CATEGORIES: CategoryConfig[] = [
   {
     key: "population",
     slug: "population",
+    slugs: { fr: "population", en: "population" },
     emoji: "👥",
-    label: "Population",
+    labels: { fr: "Population", en: "Population" },
     icon: Users,
     text: "text-blue-700 dark:text-blue-400",
     bg: "bg-blue-50 dark:bg-blue-950/40",
@@ -55,8 +60,9 @@ export const CATEGORIES: CategoryConfig[] = [
   {
     key: "langues",
     slug: "langues",
+    slugs: { fr: "langues", en: "languages" },
     emoji: "🗣️",
-    label: "Langues",
+    labels: { fr: "Langues", en: "Languages" },
     icon: Languages,
     text: "text-violet-700 dark:text-violet-400",
     bg: "bg-violet-50 dark:bg-violet-950/40",
@@ -67,8 +73,9 @@ export const CATEGORIES: CategoryConfig[] = [
   {
     key: "religion",
     slug: "religion",
+    slugs: { fr: "religion", en: "religion" },
     emoji: "🛐",
-    label: "Religions",
+    labels: { fr: "Religions", en: "Religions" },
     icon: Church,
     text: "text-stone-700 dark:text-stone-300",
     bg: "bg-stone-100 dark:bg-stone-800/40",
@@ -79,8 +86,9 @@ export const CATEGORIES: CategoryConfig[] = [
   {
     key: "politique",
     slug: "politique",
+    slugs: { fr: "politique", en: "politics" },
     emoji: "🏛️",
-    label: "Politique",
+    labels: { fr: "Politique", en: "Politics" },
     icon: Landmark,
     text: "text-slate-700 dark:text-slate-300",
     bg: "bg-slate-100 dark:bg-slate-800/40",
@@ -91,8 +99,9 @@ export const CATEGORIES: CategoryConfig[] = [
   {
     key: "economie",
     slug: "economie",
+    slugs: { fr: "economie", en: "economy" },
     emoji: "💰",
-    label: "Économie",
+    labels: { fr: "Économie", en: "Economy" },
     icon: Coins,
     text: "text-amber-700 dark:text-amber-400",
     bg: "bg-amber-50 dark:bg-amber-950/40",
@@ -103,8 +112,9 @@ export const CATEGORIES: CategoryConfig[] = [
   {
     key: "histoire",
     slug: "histoire",
+    slugs: { fr: "histoire", en: "history" },
     emoji: "📜",
-    label: "Histoire",
+    labels: { fr: "Histoire", en: "History" },
     icon: Scroll,
     text: "text-rose-700 dark:text-rose-400",
     bg: "bg-rose-50 dark:bg-rose-950/40",
@@ -115,8 +125,9 @@ export const CATEGORIES: CategoryConfig[] = [
   {
     key: "culture",
     slug: "culture",
+    slugs: { fr: "culture", en: "culture" },
     emoji: "🎭",
-    label: "Culture",
+    labels: { fr: "Culture", en: "Culture" },
     icon: Drama,
     text: "text-pink-700 dark:text-pink-400",
     bg: "bg-pink-50 dark:bg-pink-950/40",
@@ -127,8 +138,9 @@ export const CATEGORIES: CategoryConfig[] = [
   {
     key: "environnement",
     slug: "environnement",
+    slugs: { fr: "environnement", en: "environment" },
     emoji: "🌱",
-    label: "Environnement",
+    labels: { fr: "Environnement", en: "Environment" },
     icon: Leaf,
     text: "text-teal-700 dark:text-teal-400",
     bg: "bg-teal-50 dark:bg-teal-950/40",
@@ -139,8 +151,9 @@ export const CATEGORIES: CategoryConfig[] = [
   {
     key: "a_retenir",
     slug: "a-retenir",
+    slugs: { fr: "a-retenir", en: "key-facts" },
     emoji: "💡",
-    label: "À retenir",
+    labels: { fr: "À retenir", en: "Key facts" },
     icon: Lightbulb,
     text: "text-fuchsia-700 dark:text-fuchsia-400",
     bg: "bg-fuchsia-50 dark:bg-fuchsia-950/40",
@@ -152,6 +165,11 @@ export const CATEGORIES: CategoryConfig[] = [
 
 export function getCategory(slug: string): CategoryConfig | undefined {
   return CATEGORIES.find((c) => c.slug === slug);
+}
+
+/** Resolves a public category slug in `locale` (e.g. "economy" in English). */
+export function getCategoryBySlug(slug: string, locale: Locale): CategoryConfig | undefined {
+  return CATEGORIES.find((c) => c.slugs[locale] === slug);
 }
 
 export function getCategoryByKey(key: CategoryKey): CategoryConfig {

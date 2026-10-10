@@ -1,8 +1,8 @@
-import type { Country } from "@/lib/types";
+import type { CompareCategoryProps } from ".";
 import { CompareColumns } from "../CompareColumns";
 import { Badge } from "@/components/ui/Badge";
 
-export function CultureCompare({ a, b }: { a: Country; b: Country }) {
+export function CultureCompare({ a, b }: CompareCategoryProps) {
   return (
     <CompareColumns
       a={a}

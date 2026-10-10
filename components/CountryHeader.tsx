@@ -1,23 +1,26 @@
 import Link from "next/link";
 import { Scale } from "lucide-react";
 import type { Country } from "@/lib/types";
+import { type Locale, getDictionary } from "@/lib/i18n";
+import { comparePath } from "@/lib/i18n/routes";
 import { formatCompact, withUnit } from "@/lib/format";
 import { CountryLocatorMap } from "@/components/map/CountryLocatorMap";
 import { Button } from "@/components/ui/Button";
 
-export function CountryHeader({ country }: { country: Country }) {
+export function CountryHeader({ country, locale }: { country: Country; locale: Locale }) {
+  const t = getDictionary(locale);
   const capitalCity = country.cities.find((c) => c.isCapital);
   const capital = capitalCity
     ? { name: capitalCity.name, lat: capitalCity.lat, lon: capitalCity.lon }
     : { name: country.capital, lat: country.maps.center[1], lon: country.maps.center[0] };
 
   const kpis = [
-    { value: withUnit(formatCompact(country.population.total.value), "habitants"), label: "Population" },
+    { value: withUnit(formatCompact(country.population.total.value, 1, locale), t.units.inhabitants), label: t.country.population },
     {
-      value: withUnit(formatCompact(country.geography.areaKm2.value, country.geography.areaKm2.value < 1 ? 2 : 0), "km²"),
-      label: "Superficie",
+      value: withUnit(formatCompact(country.geography.areaKm2.value, country.geography.areaKm2.value < 1 ? 2 : 0, locale), "km²"),
+      label: t.country.area,
     },
-    { value: withUnit(String(country.regions.length), "régions"), label: "Territoire" },
+    { value: withUnit(String(country.regions.length), t.units.regions), label: t.country.territory },
   ];
 
   return (
@@ -28,7 +31,7 @@ export function CountryHeader({ country }: { country: Country }) {
             <span className="text-4xl leading-none">{country.flag}</span>
             <div>
               <h1 className="font-display text-3xl font-medium tracking-tight sm:text-4xl">{country.name}</h1>
-              <p className="text-sm text-muted">Capitale : {country.capital}</p>
+              <p className="text-sm text-muted">{t.country.capital(country.capital)}</p>
             </div>
           </div>
 
@@ -42,13 +45,13 @@ export function CountryHeader({ country }: { country: Country }) {
           </div>
 
           <div className="mt-6 flex flex-wrap items-center gap-3">
-            <Link href={`/comparer?pays=${country.slug}`}>
+            <Link href={comparePath(locale, country.slug)}>
               <Button variant="secondary" size="sm">
                 <Scale className="size-3.5" aria-hidden />
-                Comparer
+                {t.country.compare}
               </Button>
             </Link>
-            <p className="text-xs text-muted">Données publiques, sourcées et datées.</p>
+            <p className="text-xs text-muted">{t.country.dataNote}</p>
           </div>
         </div>
 

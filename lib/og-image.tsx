@@ -2,6 +2,7 @@ import { ImageResponse } from "next/og";
 import type { Country } from "@/lib/types";
 import { formatCompact, withUnit } from "@/lib/format";
 import { loadFrauncesBold, loadInterRegular, loadInterSemiBold } from "@/lib/og-fonts";
+import { type Locale, getDictionary } from "@/lib/i18n";
 
 export const OG_SIZE = { width: 1200, height: 630 };
 
@@ -29,25 +30,26 @@ async function loadFonts() {
   };
 }
 
-function BrandFooter() {
+function BrandFooter({ locale }: { locale: Locale }) {
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 12, fontSize: 26, color: BRAND_ACCENT, fontFamily: "Inter", fontWeight: 600 }}>
       <div style={{ display: "flex", width: 10, height: 10, borderRadius: 999, background: BRAND_ACCENT }} />
-      Le Monde en 5 minutes
+      {getDictionary(locale).site.name}
     </div>
   );
 }
 
-export async function renderCountryOgImage(country: Country) {
+export async function renderCountryOgImage(country: Country, locale: Locale) {
   const options = await loadFonts();
+  const t = getDictionary(locale);
 
   const kpis = [
-    { value: withUnit(formatCompact(country.population.total.value), "habitants"), label: "Population" },
+    { value: withUnit(formatCompact(country.population.total.value, 1, locale), t.units.inhabitants), label: t.country.population },
     {
-      value: withUnit(formatCompact(country.geography.areaKm2.value, country.geography.areaKm2.value < 1 ? 2 : 0), "km²"),
-      label: "Superficie",
+      value: withUnit(formatCompact(country.geography.areaKm2.value, country.geography.areaKm2.value < 1 ? 2 : 0, locale), "km²"),
+      label: t.country.area,
     },
-    { value: withUnit(String(country.regions.length), "régions"), label: "Territoire" },
+    { value: withUnit(String(country.regions.length), t.units.regions), label: t.country.territory },
   ];
 
   return new ImageResponse(
@@ -69,7 +71,7 @@ export async function renderCountryOgImage(country: Country) {
           <div style={{ display: "flex", fontSize: 130, lineHeight: 1 }}>{country.flag}</div>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div style={{ fontFamily: "Fraunces", fontSize: 74, fontWeight: 700, lineHeight: 1.08 }}>{country.name}</div>
-            <div style={{ display: "flex", fontSize: 30, color: BRAND_SUBTLE_BLUE, marginTop: 10 }}>Capitale : {country.capital}</div>
+            <div style={{ display: "flex", fontSize: 30, color: BRAND_SUBTLE_BLUE, marginTop: 10 }}>{t.country.capital(country.capital)}</div>
           </div>
         </div>
 
@@ -92,15 +94,16 @@ export async function renderCountryOgImage(country: Country) {
           ))}
         </div>
 
-        <BrandFooter />
+        <BrandFooter locale={locale} />
       </div>
     ),
     options,
   );
 }
 
-export async function renderSiteOgImage() {
+export async function renderSiteOgImage(locale: Locale) {
   const options = await loadFonts();
+  const t = getDictionary(locale);
 
   return new ImageResponse(
     (
@@ -120,9 +123,9 @@ export async function renderSiteOgImage() {
         <div style={{ display: "flex", fontSize: 90, lineHeight: 1 }}>🌍</div>
 
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <div style={{ fontFamily: "Fraunces", fontSize: 84, fontWeight: 700, lineHeight: 1.08 }}>Le Monde en 5 minutes</div>
+          <div style={{ fontFamily: "Fraunces", fontSize: 84, fontWeight: 700, lineHeight: 1.08 }}>{t.site.name}</div>
           <div style={{ display: "flex", fontSize: 32, color: BRAND_SUBTLE_BLUE, marginTop: 18, maxWidth: 900 }}>
-            Découvrez un pays en quelques minutes : géographie, population, économie, histoire et culture.
+            {t.site.ogTagline}
           </div>
         </div>
 

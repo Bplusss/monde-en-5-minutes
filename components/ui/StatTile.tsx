@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import type { Locale } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 import { SourceTag } from "./SourceTag";
 
@@ -12,6 +13,7 @@ interface StatTileProps {
   accentText?: string;
   accentBg?: string;
   size?: "md" | "lg";
+  locale: Locale;
   className?: string;
 }
 
@@ -29,6 +31,7 @@ export function StatTile({
   accentText = "text-foreground",
   accentBg = "bg-surface-muted",
   size = "md",
+  locale,
   className,
 }: StatTileProps) {
   return (
@@ -54,7 +57,7 @@ export function StatTile({
       </div>
       {source && (
         <div className="mt-2 border-t border-border pt-2">
-          <SourceTag source={source} sourceUrl={sourceUrl} year={year} />
+          <SourceTag source={source} sourceUrl={sourceUrl} year={year} locale={locale} />
         </div>
       )}
     </div>

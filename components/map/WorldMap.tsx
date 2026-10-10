@@ -5,10 +5,13 @@ import { useRouter } from "next/navigation";
 import type { Map as MapLibreMap, MapGeoJSONFeature } from "maplibre-gl";
 import { loadMapLibre } from "@/lib/maplibre-global";
 import type { CountrySummary } from "@/lib/types";
+import { type Locale, getDictionary } from "@/lib/i18n";
+import { countryPath } from "@/lib/i18n/routes";
 
 interface WorldMapProps {
   /** Country summaries, passed by a server component so the registry never ships in client JS. */
   countries: CountrySummary[];
+  locale: Locale;
   className?: string;
 }
 
@@ -24,7 +27,7 @@ interface HoverLabel {
  * discovery happens on click. Hovering tints the country under the cursor
  * and shows its name in a small floating tag.
  */
-export function WorldMap({ countries, className }: WorldMapProps) {
+export function WorldMap({ countries, locale, className }: WorldMapProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<MapLibreMap | null>(null);
   const router = useRouter();
@@ -39,6 +42,10 @@ export function WorldMap({ countries, className }: WorldMapProps) {
     const surfaceMuted = styles.getPropertyValue("--surface-muted").trim() || "#f3f1ed";
     const brand = styles.getPropertyValue("--brand").trim() || "#16233f";
     const muted = styles.getPropertyValue("--muted").trim() || "#6b7178";
+    const t = getDictionary(locale);
+    // Registry names are already in `locale`; the GeoJSON's own `name_fr` covers anything outside the registry.
+    const nameOf = (f: MapGeoJSONFeature) =>
+      countries.find((c) => c.id === f.properties?.iso_a3)?.name ?? (f.properties?.name_fr as string | undefined);
 
     loadMapLibre().then((maplibregl) => {
       if (cancelled || !containerRef.current) return;
@@ -103,7 +110,7 @@ export function WorldMap({ countries, className }: WorldMapProps) {
             hoveredId = f.id;
             if (hoveredId !== undefined) map.setFeatureState({ source: "world", id: hoveredId }, { hover: true });
           }
-          setHover({ x: e.point.x, y: e.point.y, name: (f.properties?.name_fr as string) ?? "" });
+          setHover({ x: e.point.x, y: e.point.y, name: nameOf(f) ?? "" });
         });
         map.on("mouseleave", "world-fill", () => {
           map.getCanvas().style.cursor = "";
@@ -115,12 +122,12 @@ export function WorldMap({ countries, className }: WorldMapProps) {
         map.on("click", "world-fill", (e) => {
           const f = e.features?.[0] as MapGeoJSONFeature | undefined;
           const iso = f?.properties?.iso_a3 as string | undefined;
-          const name = (f?.properties?.name_fr as string | undefined) ?? "Ce pays";
+          const name = (f && nameOf(f)) ?? t.common.thisCountry;
           const country = iso ? countries.find((c) => c.id === iso) : undefined;
           if (country?.status === "available") {
-            router.push(`/${country.slug}`);
+            router.push(countryPath(locale, country.slug));
           } else {
-            setToast(`${name} — bientôt disponible`);
+            setToast(t.common.comingSoonToast(name));
             window.clearTimeout((map as unknown as { _toastTimer?: number })._toastTimer);
             (map as unknown as { _toastTimer?: number })._toastTimer = window.setTimeout(() => setToast(null), 2200);
           }

@@ -1,21 +1,23 @@
 import { getCategory } from "@/lib/categories";
 import type { Country } from "@/lib/types";
+import { type Locale, getDictionary } from "@/lib/i18n";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card, CardContent } from "@/components/ui/Card";
 import { SourceTag } from "@/components/ui/SourceTag";
 
-export function AtRetenirSection({ country }: { country: Country }) {
+export function AtRetenirSection({ country, locale }: { country: Country; locale: Locale }) {
   const cat = getCategory("a-retenir")!;
+  const t = getDictionary(locale);
 
   return (
     <div>
       <SectionHeading
-        eyebrow={cat.label}
+        eyebrow={cat.labels[locale]}
         icon={<cat.icon className="size-4" aria-hidden />}
         accentText={cat.text}
         accentBg={cat.bg}
-        title={`Ce qu'il faut retenir sur ${country.name}`}
-        description="5 à 10 faits qui permettent de comprendre ce qui rend le pays particulier."
+        title={t.sections.keyFactsTitle(country.name)}
+        description={t.sections.keyFactsDescription}
       />
 
       <div className="grid gap-4 sm:grid-cols-2">
@@ -29,7 +31,7 @@ export function AtRetenirSection({ country }: { country: Country }) {
               <p className="text-sm leading-relaxed text-muted">{f.description}</p>
               {f.source && (
                 <div className="mt-4">
-                  <SourceTag source={f.source} sourceUrl={f.sourceUrl} />
+                  <SourceTag source={f.source} sourceUrl={f.sourceUrl} locale={locale} />
                 </div>
               )}
             </CardContent>

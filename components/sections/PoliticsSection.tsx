@@ -1,12 +1,14 @@
 import { Landmark, Scale, Gavel } from "lucide-react";
 import { getCategory } from "@/lib/categories";
 import type { Country } from "@/lib/types";
+import { type Locale, getDictionary } from "@/lib/i18n";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card, CardContent } from "@/components/ui/Card";
 import { SourceTag } from "@/components/ui/SourceTag";
 
-export function PoliticsSection({ country }: { country: Country }) {
+export function PoliticsSection({ country, locale }: { country: Country; locale: Locale }) {
   const cat = getCategory("politique")!;
+  const t = getDictionary(locale).sections;
   const { politics } = country;
 
   // In presidential regimes (e.g. the US), one person holds both roles — show
@@ -16,7 +18,7 @@ export function PoliticsSection({ country }: { country: Country }) {
   return (
     <div>
       <SectionHeading
-        eyebrow={cat.label}
+        eyebrow={cat.labels[locale]}
         icon={<cat.icon className="size-4" aria-hidden />}
         accentText={cat.text}
         accentBg={cat.bg}
@@ -32,16 +34,16 @@ export function PoliticsSection({ country }: { country: Country }) {
             </span>
             <div className="min-w-0">
               <p className="text-xs text-muted">
-                {oneHead ? "Chef de l'État et du gouvernement" : politics.headOfState.title}
+                {oneHead ? t.headOfStateAndGovernment : politics.headOfState.title}
               </p>
               <p className="truncate text-base font-semibold">{politics.headOfState.name}</p>
               <p className="text-xs text-muted">
                 {oneHead ? politics.headOfState.title : null}
                 {oneHead ? " · " : null}
-                Depuis le {politics.headOfState.since}
+                {t.since(politics.headOfState.since)}
               </p>
               {politics.headOfState.source && (
-                <SourceTag source={politics.headOfState.source} sourceUrl={politics.headOfState.sourceUrl} className="mt-1" />
+                <SourceTag source={politics.headOfState.source} sourceUrl={politics.headOfState.sourceUrl} locale={locale} className="mt-1" />
               )}
             </div>
           </CardContent>
@@ -55,9 +57,9 @@ export function PoliticsSection({ country }: { country: Country }) {
               <div className="min-w-0">
                 <p className="text-xs text-muted">{politics.headOfGovernment.title}</p>
                 <p className="truncate text-base font-semibold">{politics.headOfGovernment.name}</p>
-                <p className="text-xs text-muted">Depuis le {politics.headOfGovernment.since}</p>
+                <p className="text-xs text-muted">{t.since(politics.headOfGovernment.since)}</p>
                 {politics.headOfGovernment.source && (
-                  <SourceTag source={politics.headOfGovernment.source} sourceUrl={politics.headOfGovernment.sourceUrl} className="mt-1" />
+                  <SourceTag source={politics.headOfGovernment.source} sourceUrl={politics.headOfGovernment.sourceUrl} locale={locale} className="mt-1" />
                 )}
               </div>
             </CardContent>
@@ -80,8 +82,8 @@ export function PoliticsSection({ country }: { country: Country }) {
             ))}
           </div>
           <div className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-border pt-4">
-            <p className="text-xs text-muted">Constitution adoptée le {politics.constitution.adopted}</p>
-            <SourceTag source={politics.constitution.source} sourceUrl={politics.constitution.sourceUrl} />
+            <p className="text-xs text-muted">{t.constitutionAdopted(politics.constitution.adopted)}</p>
+            <SourceTag source={politics.constitution.source} sourceUrl={politics.constitution.sourceUrl} locale={locale} />
           </div>
         </CardContent>
       </Card>

@@ -4,6 +4,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Search } from "lucide-react";
 import type { CountrySummary } from "@/lib/types";
+import { type Locale, getDictionary } from "@/lib/i18n";
+import { countryPath } from "@/lib/i18n/routes";
 import { cn } from "@/lib/utils";
 
 const DIACRITICS = new RegExp("[\\u0300-\\u036f]", "g");
@@ -13,8 +15,9 @@ function normalize(s: string): string {
 }
 
 /** Type-ahead country search: filters the full registry client-side, navigates to a country page when it's live. */
-export function CountrySearchBar({ countries }: { countries: CountrySummary[] }) {
+export function CountrySearchBar({ countries, locale }: { countries: CountrySummary[]; locale: Locale }) {
   const router = useRouter();
+  const t = getDictionary(locale);
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -37,7 +40,7 @@ export function CountrySearchBar({ countries }: { countries: CountrySummary[] })
     if (country.status !== "available") return;
     setOpen(false);
     setQuery("");
-    router.push(`/${country.slug}`);
+    router.push(countryPath(locale, country.slug));
   }
 
   return (
@@ -56,8 +59,8 @@ export function CountrySearchBar({ countries }: { countries: CountrySummary[] })
             if (e.key === "Enter" && results[0]) select(results[0]);
             if (e.key === "Escape") setOpen(false);
           }}
-          placeholder="Rechercher un pays…"
-          aria-label="Rechercher un pays"
+          placeholder={t.search.placeholder}
+          aria-label={t.search.placeholder}
           className="focus-ring w-full rounded-full border border-border bg-surface py-2.5 pl-9 pr-4 text-sm placeholder:text-muted"
         />
       </div>
@@ -79,7 +82,7 @@ export function CountrySearchBar({ countries }: { countries: CountrySummary[] })
                   <span className="text-lg leading-none">{c.flag}</span>
                   <span className="font-medium">{c.name}</span>
                 </span>
-                {c.status !== "available" && <span className="text-xs text-muted">Bientôt disponible</span>}
+                {c.status !== "available" && <span className="text-xs text-muted">{t.common.comingSoon}</span>}
               </button>
             </li>
           ))}
@@ -88,7 +91,7 @@ export function CountrySearchBar({ countries }: { countries: CountrySummary[] })
 
       {open && query.trim() && results.length === 0 && (
         <div className="absolute z-20 mt-2 w-full rounded-2xl border border-border bg-surface p-4 text-sm text-muted shadow-lg">
-          Aucun pays ne correspond à « {query} ».
+          {t.search.noMatch(query)}
         </div>
       )}
     </div>

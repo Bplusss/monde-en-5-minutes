@@ -7,10 +7,12 @@ import { sameReferenceYear } from "@/lib/comparison";
 import { CATEGORIES } from "@/lib/categories";
 import { COMPARE_CATEGORY_COMPONENTS } from "./categories";
 import { ScrollableTabs } from "@/components/ScrollableTabs";
+import { type Locale, getDictionary } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
 /** Generic two-country comparison — works for any pair of full `Country` records, never a hardcoded pair. */
-export function CountryComparison({ a, b }: { a: Country; b: Country }) {
+export function CountryComparison({ a, b, locale }: { a: Country; b: Country; locale: Locale }) {
+  const t = getDictionary(locale);
   const [activeSlug, setActiveSlug] = useState(CATEGORIES[0].slug);
   const consistent = sameReferenceYear(a, b);
   const activeCategory = CATEGORIES.find((c) => c.slug === activeSlug) ?? CATEGORIES[0];
@@ -31,10 +33,7 @@ export function CountryComparison({ a, b }: { a: Country; b: Country }) {
       {!consistent && (
         <div className="mb-6 flex items-start gap-2 rounded-xl border border-amber-200 bg-amber-50 p-3.5 text-xs text-amber-800 dark:border-amber-900 dark:bg-amber-950/40 dark:text-amber-300">
           <AlertTriangle className="mt-0.5 size-3.5 shrink-0" aria-hidden />
-          <p>
-            Certaines données proviennent d&apos;années de référence différentes pour {a.name} et {b.name}. Vérifiez
-            l&apos;année indiquée sur chaque fiche pays avant de tirer des conclusions.
-          </p>
+          <p>{t.compare.yearMismatch(a.name, b.name)}</p>
         </div>
       )}
 
@@ -55,14 +54,14 @@ export function CountryComparison({ a, b }: { a: Country; b: Country }) {
                 )}
               >
                 <span aria-hidden>{cat.emoji}</span>
-                {cat.label}
+                {cat.labels[locale]}
               </button>
             );
           })}
         </ScrollableTabs>
       </div>
 
-      <ActiveContent a={a} b={b} />
+      <ActiveContent a={a} b={b} locale={locale} />
     </div>
   );
 }

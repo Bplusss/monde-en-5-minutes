@@ -1,5 +1,6 @@
 import type { ComponentType } from "react";
 import type { Country, CategoryKey } from "@/lib/types";
+import type { Locale } from "@/lib/i18n";
 import { GeographySection } from "./GeographySection";
 import { PopulationSection } from "./PopulationSection";
 import { LanguagesSection } from "./LanguagesSection";
@@ -11,7 +12,12 @@ import { CultureSection } from "./CultureSection";
 import { EnvironmentSection } from "./EnvironmentSection";
 import { AtRetenirSection } from "./AtRetenirSection";
 
-export const SECTION_COMPONENTS: Record<CategoryKey, ComponentType<{ country: Country }>> = {
+export interface SectionProps {
+  country: Country;
+  locale: Locale;
+}
+
+export const SECTION_COMPONENTS: Record<CategoryKey, ComponentType<SectionProps>> = {
   geographie: GeographySection,
   population: PopulationSection,
   langues: LanguagesSection,

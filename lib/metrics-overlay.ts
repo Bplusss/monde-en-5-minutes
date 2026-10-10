@@ -1,5 +1,20 @@
 import type { Country } from "@/lib/types";
 import { getSupabaseClient } from "@/lib/supabase";
+import type { Locale } from "@/lib/i18n/config";
+import type { Glossaries } from "@/lib/i18n/translation";
+
+const FR_MONTHS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
+
+/** The refresh cron stores office-holder start dates as French text ("9 septembre 2025"); re-render them for other locales. */
+function localizeFrenchDate(date: string, locale: Locale): string {
+  if (locale === "fr") return date;
+  const m = date.match(/^(\d{1,2})(?:er)? (\p{L}+) (\d{4})$/u);
+  const month = m ? FR_MONTHS.indexOf(m[2].toLowerCase()) : -1;
+  if (!m || month === -1) return date;
+  return new Intl.DateTimeFormat("en-US", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }).format(
+    new Date(Date.UTC(Number(m[3]), month, Number(m[1]))),
+  );
+}
 
 export interface MetricRow {
   country_slug: string;
@@ -29,9 +44,13 @@ export async function fetchMetricOverrides(slug: string): Promise<MetricRow[]> {
  * Merges metric rows into a fresh copy of a static Country. Each metric_key maps to a
  * `Sourced<T>`-shaped field (e.g. "economy.gdp") or a partial object field (e.g.
  * "politics.headOfState", which only overrides name/since/source, never the static `title`).
+ * For a translated country, pass its `locale` and `glossaries` so the stored
+ * (French) units, source names and dates are rendered in that language.
  */
-export function applyMetricOverrides(country: Country, rows: MetricRow[]): Country {
+export function applyMetricOverrides(country: Country, rows: MetricRow[], locale: Locale = "fr", glossaries?: Glossaries): Country {
   if (!rows.length) return country;
+  const unit = (u: string) => glossaries?.units[u] ?? u;
+  const source = (s: string) => glossaries?.sources[s] ?? s;
   const next: Country = structuredClone(country);
 
   for (const row of rows) {
@@ -49,9 +68,9 @@ export function applyMetricOverrides(country: Country, rows: MetricRow[]): Count
         if (typeof row.value === "number") {
           target[field] = {
             value: row.value,
-            unit: row.unit ?? target[field]?.unit,
+            unit: row.unit ? unit(row.unit) : target[field]?.unit,
             year: row.year ?? undefined,
-            source: row.source,
+            source: source(row.source),
             sourceUrl: row.source_url ?? undefined,
             note: row.note ?? undefined,
           };
@@ -66,8 +85,8 @@ export function applyMetricOverrides(country: Country, rows: MetricRow[]): Count
           next.politics[field] = {
             ...next.politics[field],
             name: override.name,
-            since: override.since,
-            source: row.source,
+            since: localizeFrenchDate(override.since, locale),
+            source: source(row.source),
             sourceUrl: row.source_url ?? undefined,
           };
         }

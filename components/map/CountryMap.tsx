@@ -5,6 +5,7 @@ import type { Map as MapLibreMap } from "maplibre-gl";
 import { loadMapLibre } from "@/lib/maplibre-global";
 import type { City, CountryMaps, River } from "@/lib/types";
 import { formatNumber } from "@/lib/format";
+import { type Locale, getDictionary } from "@/lib/i18n";
 import { computeLabelPoints, fetchOutlineBounds, isFittableBounds } from "@/lib/geo-utils";
 
 const GLYPHS = "https://fonts.openmaptiles.org/{fontstack}/{range}.pbf";
@@ -17,6 +18,9 @@ interface CountryMapProps {
   className?: string;
   cities?: City[];
   rivers?: River[];
+  /** GeoJSON region name → displayed label, for a translated country (see `Region.geoName`). */
+  regionLabels?: Record<string, string>;
+  locale?: Locale;
 }
 
 /**
@@ -24,7 +28,7 @@ interface CountryMapProps {
  * cities and rivers all read from `Country.maps` / `Country.cities` /
  * `Country.rivers`, so a new country needs new data, never a new component.
  */
-export function CountryMap({ maps, layer, className, cities = [], rivers = [] }: CountryMapProps) {
+export function CountryMap({ maps, layer, className, cities = [], rivers = [], regionLabels, locale = "fr" }: CountryMapProps) {
   const { center, zoom, maxZoom = 9 } = maps;
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<MapLibreMap | null>(null);
@@ -99,7 +103,14 @@ export function CountryMap({ maps, layer, className, cities = [], rivers = [] }:
             .then((res) => (res.ok ? res.json() : null))
             .then((fc: GeoJSON.FeatureCollection | null) => {
               if (!fc || cancelled || mapRef.current !== map) return;
-              map.addSource("regions-labels", { type: "geojson", data: computeLabelPoints(fc) });
+              const labelPoints = computeLabelPoints(fc);
+              if (regionLabels) {
+                for (const f of labelPoints.features) {
+                  const label = f.properties && regionLabels[f.properties.name];
+                  if (label) f.properties!.name = label;
+                }
+              }
+              map.addSource("regions-labels", { type: "geojson", data: labelPoints });
               map.addLayer({
                 id: "regions-label",
                 type: "symbol",
@@ -144,7 +155,8 @@ export function CountryMap({ maps, layer, className, cities = [], rivers = [] }:
           map.on("mouseleave", "rivers-line", () => (map.getCanvas().style.cursor = ""));
           map.on("click", "rivers-line", (e) => {
             const name = e.features?.[0]?.properties?.name as string | undefined;
-            const river = rivers.find((r) => r.name === name);
+            const river = rivers.find((r) => (r.geoName ?? r.name) === name);
+            const t = getDictionary(locale);
             if (!river) return;
             new maplibregl.Popup({ closeButton: true, maxWidth: "220px" })
               .setLngLat(e.lngLat)
@@ -152,9 +164,9 @@ export function CountryMap({ maps, layer, className, cities = [], rivers = [] }:
                 `<div style="font-family:inherit">
                 <div style="font-weight:600;margin-bottom:4px">${river.name}</div>
                 <div style="font-size:12px;line-height:1.5;opacity:.85">
-                  ${formatNumber(river.lengthKm.value)}&nbsp;km<br/>
-                  Source&nbsp;: ${river.source_location}<br/>
-                  Embouchure&nbsp;: ${river.mouth}
+                  ${formatNumber(river.lengthKm.value, 0, locale)}&nbsp;km<br/>
+                  ${t.river.source}${locale === "fr" ? "&nbsp;" : ""}: ${river.source_location}<br/>
+                  ${t.river.mouth}${locale === "fr" ? "&nbsp;" : ""}: ${river.mouth}
                 </div>
               </div>`,
               )
@@ -205,7 +217,7 @@ export function CountryMap({ maps, layer, className, cities = [], rivers = [] }:
             new maplibregl.Popup({ closeButton: true, maxWidth: "200px" })
               .setLngLat(e.lngLat)
               .setHTML(
-                `<div style="font-weight:600;margin-bottom:2px">${p.name}</div><div style="font-size:12px;opacity:.85">${formatNumber(p.population)} habitants</div>`,
+                `<div style="font-weight:600;margin-bottom:2px">${p.name}</div><div style="font-size:12px;opacity:.85">${formatNumber(p.population, 0, locale)} ${getDictionary(locale).units.inhabitants}</div>`,
               )
               .addTo(map);
           });

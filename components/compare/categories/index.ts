@@ -1,5 +1,6 @@
 import type { ComponentType } from "react";
 import type { CategoryKey, Country } from "@/lib/types";
+import type { Locale } from "@/lib/i18n";
 import { GeographyCompare } from "./GeographyCompare";
 import { PopulationCompare } from "./PopulationCompare";
 import { LanguagesCompare } from "./LanguagesCompare";
@@ -11,7 +12,13 @@ import { CultureCompare } from "./CultureCompare";
 import { EnvironmentCompare } from "./EnvironmentCompare";
 import { AtRetenirCompare } from "./AtRetenirCompare";
 
-export const COMPARE_CATEGORY_COMPONENTS: Record<CategoryKey, ComponentType<{ a: Country; b: Country }>> = {
+export interface CompareCategoryProps {
+  a: Country;
+  b: Country;
+  locale: Locale;
+}
+
+export const COMPARE_CATEGORY_COMPONENTS: Record<CategoryKey, ComponentType<CompareCategoryProps>> = {
   geographie: GeographyCompare,
   population: PopulationCompare,
   langues: LanguagesCompare,

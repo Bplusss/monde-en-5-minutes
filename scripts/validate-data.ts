@@ -1,6 +1,12 @@
 import { FULL_COUNTRIES } from "../data/countries-full";
 import { COUNTRIES } from "../data/countries-registry";
+import { TRANSLATIONS } from "../data/translations";
+import { glossariesFor } from "../data/countries-localized";
+import { COUNTRY_NAMES_EN } from "../lib/i18n/country-names-en";
+import { findTranslationIssues } from "../lib/i18n/translation";
+import { slugify } from "../lib/i18n/routes";
 import type { Country, Sourced } from "../lib/types";
+import { translatableSource, sourceTextHash } from "./i18n/source-text";
 
 interface Issue {
   level: "error" | "warning";
@@ -111,12 +117,50 @@ for (const country of Object.values(FULL_COUNTRIES)) {
   validateCountry(country);
 }
 
+// --- Translation checks ------------------------------------------------------
+
+const enSlugs = new Map<string, string>();
+for (const [slug, { name }] of Object.entries(COUNTRY_NAMES_EN)) {
+  const enSlug = slugify(name);
+  if (enSlugs.has(enSlug)) err(`Slug anglais dupliqué : "${enSlug}" (${enSlugs.get(enSlug)} et ${slug}).`);
+  enSlugs.set(enSlug, slug);
+}
+for (const c of COUNTRIES) {
+  if (!COUNTRY_NAMES_EN[c.slug]) err(`${c.slug} : nom anglais manquant dans lib/i18n/country-names-en.ts.`);
+}
+
+for (const [locale, translations] of Object.entries(TRANSLATIONS)) {
+  for (const [slug, translation] of Object.entries(translations)) {
+    const country = FULL_COUNTRIES[slug];
+    const p = `${slug} [${locale}]`;
+    if (!country) {
+      err(`${p} : traduction d'un pays sans données complètes.`);
+      continue;
+    }
+    const { sources, units, sourceHash, ...text } = translation;
+    void sources;
+    void units;
+    for (const issue of findTranslationIssues(translatableSource(country), text, glossariesFor(slug), p)) err(issue);
+
+    country.geography.borderingCountries.forEach((frName, i) => {
+      const match = COUNTRIES.find((c) => c.name === frName);
+      const expected = match && COUNTRY_NAMES_EN[match.slug]?.name;
+      const actual = text.geography?.borderingCountries?.[i];
+      if (expected && actual !== expected) err(`${p}.geography.borderingCountries[${i}] : "${actual}" au lieu de "${expected}" (nom du registre).`);
+    });
+
+    if (sourceHash !== sourceTextHash(country)) {
+      warn(`${p} : le texte français a changé depuis la traduction — relancez scripts/i18n/extract-translation.ts ${slug} et traduisez les nouveautés.`);
+    }
+  }
+}
+
 // --- Report ------------------------------------------------------------------
 
 const errors = issues.filter((i) => i.level === "error");
 const warnings = issues.filter((i) => i.level === "warning");
 
-console.log(`\nValidation du dataset — ${Object.keys(FULL_COUNTRIES).length} pays complet(s), ${COUNTRIES.length} pays au total.\n`);
+console.log(`\nValidation du dataset — ${Object.keys(FULL_COUNTRIES).length} pays complet(s), ${COUNTRIES.length} pays au total, ${Object.keys(TRANSLATIONS.en).length} traduit(s) en anglais.\n`);
 
 if (warnings.length) {
   console.log(`⚠ ${warnings.length} avertissement(s) :`);

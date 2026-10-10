@@ -24,7 +24,7 @@ export interface CountrySummary {
   name: string;
   flag: string; // emoji flag, display only
   status: CountryStatus;
-  /** French continent label (e.g. "Europe", "Afrique") — used to group/sort the country list. */
+  /** French continent label (e.g. "Europe", "Afrique") — used to group/sort the country list; displayed through the dictionary's `continents`. */
   continent: string;
   /** Wikidata QID (e.g. "Q142" for France) — used to look up the current head of state/government generically for every country. */
   wikidataId?: string;
@@ -40,6 +40,8 @@ export interface City {
 
 export interface River {
   name: string;
+  /** Name of the matching feature in `maps.riversGeojsonUrl` — set by localization when `name` is translated. */
+  geoName?: string;
   lengthKm: Sourced<number>;
   source_location: string;
   mouth: string;
@@ -48,6 +50,8 @@ export interface River {
 export interface Region {
   code: string;
   name: string;
+  /** Name of the matching feature in `maps.regionsGeojsonUrl` — set by localization when `name` is translated. */
+  geoName?: string;
   population?: Sourced<number>;
   areaKm2?: Sourced<number>;
 }

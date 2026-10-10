@@ -1,7 +1,7 @@
-import type { Country } from "@/lib/types";
+import type { CompareCategoryProps } from ".";
 import { CompareColumns } from "../CompareColumns";
 
-export function AtRetenirCompare({ a, b }: { a: Country; b: Country }) {
+export function AtRetenirCompare({ a, b }: CompareCategoryProps) {
   return (
     <CompareColumns
       a={a}
