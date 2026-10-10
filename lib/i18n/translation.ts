@@ -21,7 +21,6 @@ export const NON_TEXT_KEYS = new Set([
   "code",
   "kind",
   "flag",
-  "status",
   "symbol",
   "sourceUrl",
   "mapGroupId",
