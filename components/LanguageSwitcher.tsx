@@ -2,18 +2,20 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { type Locale, DEFAULT_LOCALE, LOCALES, getDictionary } from "@/lib/i18n";
+import { type Locale, LOCALES, getDictionary } from "@/lib/i18n";
 import { STATIC_SEGMENTS, canonicalCountrySlug, comparePath, countriesPath, countryPath, homePath } from "@/lib/i18n/routes";
 import { CATEGORIES } from "@/lib/categories";
 
 /** The same page in `target`, or that locale's home page when the country isn't translated yet. */
 function counterpartPath(pathname: string, locale: Locale, target: Locale, availability: Record<string, string[]>): string {
+  // Static prerendering sees the internal path (`/fr/france`, `/en/pays`), the browser the public one
+  // (`/france`, `/en/countries`) — accept both.
   const segments = pathname.split("/").filter(Boolean);
-  if (locale !== DEFAULT_LOCALE) segments.shift();
+  if (segments[0] === locale) segments.shift();
   const [first, second] = segments;
   if (!first) return homePath(target);
-  if (first === STATIC_SEGMENTS[locale].pays) return countriesPath(target);
-  if (first === STATIC_SEGMENTS[locale].comparer) return comparePath(target);
+  if (first === STATIC_SEGMENTS[locale].pays || first === "pays") return countriesPath(target);
+  if (first === STATIC_SEGMENTS[locale].comparer || first === "comparer") return comparePath(target);
 
   const slug = canonicalCountrySlug(first, locale);
   if (!slug || !availability[target]?.includes(slug)) return homePath(target);
